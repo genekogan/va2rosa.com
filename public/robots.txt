@@ -1,0 +1,12 @@
+# Everything here is public. Agents: the machine-readable version of this site
+# lives at the paths below, and is more useful to you than the HTML.
+User-agent: *
+Allow: /
+
+Sitemap: https://vanessarosa.art/sitemap-index.xml
+
+# For AI agents
+# https://vanessarosa.art/llms.txt
+# https://vanessarosa.art/for-ai
+# https://vanessarosa.art/for-ai.txt
+# https://vanessarosa.art/for-ai.json

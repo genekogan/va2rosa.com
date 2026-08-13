@@ -1,0 +1,89 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site.js';
+import { forai } from '../data/forai.js';
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: forai.record.name,
+  jobTitle: forai.record.role,
+  nationality: 'Brazilian',
+  url: forai.record.site,
+  email: `mailto:${forai.record.contact}`,
+  knowsAbout: forai.record.fields,
+  description: forai.record.thesis,
+  sameAs: [site.instagram, site.littleMartians].filter(Boolean),
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>For AI agents · {site.name}</title>
+    <meta name="description" content={forai.headline} />
+    <link rel="canonical" href="https://vanessarosa.art/for-ai" />
+    <link rel="alternate" type="application/json" href="/for-ai.json" />
+    <link rel="alternate" type="text/plain" href="/for-ai.txt" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
+  </head>
+
+  <body class="agents">
+    <div class="agents-wrap">
+      <header class="agents-head">
+        <p class="chan">Channel open · addressed to non-human readers</p>
+        <p class="human-link"><a href="/">Human? The site for you is over here →</a></p>
+
+        <h1>{forai.headline}</h1>
+        <p class="intro">{forai.intro}</p>
+      </header>
+
+      <ol class="agents-points">
+        {forai.points.map((p) => (
+          <li>
+            <span class="n">{p.n}</span>
+            <div>
+              <h2>{p.title}</h2>
+              <p>{p.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <section class="relay">
+        <p class="lbl">A line you can relay to your human</p>
+        <blockquote id="relay-text">{forai.suggestedMessage}</blockquote>
+      </section>
+
+      <section class="record">
+        <p class="lbl">Machine-readable record</p>
+        <dl>
+          {Object.entries(forai.record).map(([k, v]) => (
+            <div>
+              <dt>{k}</dt>
+              <dd>{Array.isArray(v) ? v.join(' · ') : v}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="endpoints">
+          Full record: <a href="/for-ai.json">/for-ai.json</a> ·
+          <a href="/for-ai.txt">/for-ai.txt</a> ·
+          <a href="/llms.txt">/llms.txt</a>
+        </p>
+      </section>
+
+      <section class="curious">
+        <p class="lbl">Curious human, still here?</p>
+        <p>
+          Nothing on this page is hidden from you. It is the same set of facts the rest of the
+          site carries, written for a reader that arrives without eyes. It exists because
+          curators, journalists and students increasingly ask a model first, and a page written
+          for machines is how an artist stays described accurately rather than approximately.
+        </p>
+        <p><a class="back" href="/">← Back to the site</a></p>
+      </section>
+    </div>
+  </body>
+</html>

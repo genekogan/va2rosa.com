@@ -1,0 +1,239 @@
+---
+// Hold the cursor still for five seconds and the space around it bends. Move
+// it and the whole thing is gone within a fifth of a second.
+//
+// A grid, the way Peter Kogler covers a room, put through a lens centred on the
+// pointer: both families of lines are pushed out and twisted, hardest at the
+// middle and untouched at the edges, so the mesh reads as the fabric of the
+// page being bent by something heavy behind it. The grid grows out of the
+// pointer rather than appearing whole, and it is ruled by hand, so it drifts.
+//
+// One canvas, difference blending, so the same ink reads dark on the paper and
+// light over the paintings. Nothing runs unless the field is open, and nothing
+// runs at all for a pointer that cannot hover or a reader who has asked for
+// less movement.
+---
+
+<canvas id="portal" aria-hidden="true"></canvas>
+
+<script is:inline>
+  (function () {
+    var canvas = document.getElementById('portal');
+    if (!canvas) return;
+
+    var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+    var quiet = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!fine.matches || quiet.matches) return;
+
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = 0;
+    var h = 0;
+
+    function size() {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    size();
+    window.addEventListener('resize', size);
+
+    var IDLE = 5000; // how long the cursor must rest before anything happens
+    var GROW = 2200; // the field spreading out of the pointer
+    var HOLD = 4200; // and then holding, for as long as the cursor stays put
+    var FADE = 2600;
+    var LIFE = GROW + HOLD + FADE;
+    var GONE = 220; // how fast it goes when the cursor moves: at once
+
+    var mx = -1;
+    var my = -1;
+    var lastMove = performance.now();
+    var field = null;
+    var raf = null;
+    var seed = 1;
+
+    function rand() {
+      seed = (seed * 1664525 + 1013904223) % 4294967296;
+      return seed / 4294967296;
+    }
+
+    document.addEventListener(
+      'pointermove',
+      function (e) {
+        var moved = Math.hypot(e.clientX - mx, e.clientY - my);
+        mx = e.clientX;
+        my = e.clientY;
+        if (moved > 4) {
+          lastMove = performance.now();
+          if (field && !field.closing) field.closing = performance.now();
+        }
+      },
+      { passive: true }
+    );
+
+    document.addEventListener('pointerleave', function () {
+      lastMove = performance.now();
+      if (field && !field.closing) field.closing = performance.now();
+    });
+
+    function open(now) {
+      seed = Math.floor(now) % 4294967296 || 7;
+      var spacing = 17 + rand() * 9;
+      var lines = 13 + Math.floor(rand() * 5);
+      field = {
+        x: mx,
+        y: my,
+        t0: now,
+        closing: 0,
+        // the mesh sits nearly square to the page, tipped a few degrees
+        angle: (rand() - 0.5) * 0.5,
+        lines: lines,
+        spacing: spacing,
+        reach: 132 + rand() * 46, // how far the lens carries
+        push: 30 + rand() * 24, // how hard the field bulges
+        twist: (rand() < 0.5 ? 1 : -1) * (0.5 + rand() * 0.7),
+        // the hand that ruled the lines was not a machine
+        wob: [0, 1, 2].map(function () {
+          return { f: 0.4 + rand() * 1.4, p: rand() * Math.PI * 2, a: 0.4 + rand() * 0.6 };
+        }),
+        amp: 1.1 + rand() * 1.3,
+      };
+    }
+
+    // how far the hand strays from the ruled line at this point along it
+    function stray(f, t) {
+      var sum = 0;
+      var norm = 0;
+      for (var i = 0; i < f.wob.length; i++) {
+        var v = f.wob[i];
+        sum += v.a * Math.sin(t * v.f * 5.5 + v.p);
+        norm += v.a;
+      }
+      return sum / norm;
+    }
+
+    function ease(t) {
+      return t < 0 ? 0 : t > 1 ? 1 : 1 - Math.pow(1 - t, 3);
+    }
+
+    function draw(now) {
+      ctx.clearRect(0, 0, w, h);
+      if (!field) return false;
+
+      var age = now - field.t0;
+      if (age > LIFE || (field.closing && now - field.closing > GONE)) {
+        field = null;
+        return false;
+      }
+
+      var grown = ease(age / GROW);
+      var out = age < GROW + HOLD ? 1 : 1 - (age - GROW - HOLD) / FADE;
+      if (field.closing) out = Math.min(out, 1 - (now - field.closing) / GONE);
+      if (out <= 0) {
+        field = null;
+        return false;
+      }
+
+      // the lens strengthens as the field opens, and keeps turning
+      var lens = ease(age / (GROW + HOLD * 0.5));
+      var turn = (age / 1000) * 0.22 * (field.twist > 0 ? 1 : -1);
+
+      var R = field.reach * (0.45 + grown * 0.55);
+      var span = R * 2.1 * (0.5 + grown * 0.5);
+      var ca = Math.cos(field.angle);
+      var sa = Math.sin(field.angle);
+
+      ctx.save();
+      ctx.translate(field.x, field.y);
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      // White, and barely there: the reader should half-catch it rather than
+      // be shown it. Difference blending keeps it legible over the paintings.
+      ctx.strokeStyle = 'rgba(255, 255, 255,' + (0.13 * out).toFixed(3) + ')';
+      ctx.lineWidth = 0.7;
+
+      var half = (field.lines - 1) / 2;
+      var steps = 58;
+
+      // two families at right angles: the mesh, not a set of stripes
+      for (var fam = 0; fam < 2; fam++) {
+        var fca = fam ? -sa : ca;
+        var fsa = fam ? ca : sa;
+        for (var i = 0; i < field.lines; i++) {
+          var u = (i - half) * field.spacing;
+          ctx.beginPath();
+          for (var k = 0; k <= steps; k++) {
+            var t = k / steps;
+            var v = (t - 0.5) * 2 * span;
+
+            // the ruled line, before anything happens to it
+            var px = fca * v - fsa * u;
+            var py = fsa * v + fca * u;
+
+            // the hand that ruled it
+            var s = stray(field, t * 2 + i * 0.31 + fam * 1.7) * field.amp;
+            px += -fsa * s;
+            py += fca * s;
+
+            // the lens: everything near the middle is pushed out and turned
+            var r = Math.hypot(px, py) || 0.001;
+            var falloff = Math.exp(-(r * r) / (2 * R * R));
+            var ang = Math.atan2(py, px) + (field.twist * falloff * lens + turn * falloff);
+            var rr = r + field.push * falloff * lens;
+            var x = Math.cos(ang) * rr;
+            var y = Math.sin(ang) * rr;
+
+            if (k === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+      }
+      ctx.restore();
+
+      // dissolve the edges, so the disturbance has no border
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-in';
+      var edge = R * 2.35;
+      var g = ctx.createRadialGradient(field.x, field.y, R * 0.18, field.x, field.y, edge);
+      g.addColorStop(0, 'rgba(0,0,0,1)');
+      g.addColorStop(0.45, 'rgba(0,0,0,0.7)');
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(field.x - edge, field.y - edge, edge * 2, edge * 2);
+      ctx.restore();
+
+      return true;
+    }
+
+    function tick(now) {
+      raf = null;
+      var alive = draw(now);
+      if (!field && mx >= 0 && now - lastMove > IDLE) {
+        open(now);
+        alive = true;
+      }
+      if (alive || (mx >= 0 && now - lastMove > IDLE - 400)) {
+        raf = requestAnimationFrame(tick);
+      }
+    }
+
+    // Nothing spins until the cursor has actually settled.
+    setInterval(function () {
+      if (raf || document.hidden || mx < 0 || field) return;
+      if (performance.now() - lastMove > IDLE) raf = requestAnimationFrame(tick);
+    }, 320);
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        field = null;
+        ctx.clearRect(0, 0, w, h);
+      }
+      lastMove = performance.now();
+    });
+  })();
+</script>

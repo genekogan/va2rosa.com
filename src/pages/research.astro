@@ -1,0 +1,174 @@
+---
+import Base from '../layouts/Base.astro';
+import { topics } from '../data/topics.js';
+import { positions, featured, groups, pending } from '../data/writing.js';
+import Shelf from '../components/Shelf.astro';
+
+const isExternal = (h) => h.startsWith('http');
+---
+
+<Base title="Research" current="Research" bodyClass="paper">
+  <section class="wrap" style="padding-top:70px">
+    <div class="kicker">Research</div>
+    <h1 class="sec" style="margin:12px 0 26px">History is an active process</h1>
+
+    <div class="res-intro">
+      <p class="lede">
+        Every generation has to write its own version of history in order to understand itself, to
+        make its present intelligible at all. By interrogating the past, we are also wondering what
+        is possible in our future.
+      </p>
+      <p>
+        With the rise of artificial intelligence and rapid environmental collapse, I believe the pace
+        of change forces us to look at our past on a much wider scale than the human. We have always
+        been part of a process of acceleration. Earth has existed for 4.5 billion years, life on
+        Earth for 3.7 billion years, mammals for 200 million years, Homo Sapiens for merely 300,000
+        years, writing for only 5,000 years, controlled airplanes for around 100 years and the
+        internet for less than 60 years. Our imagination probably falls short of conceiving a future
+        200 years ahead, let alone 1,000 or the time of the hypothetical heat death of the universe.
+        Yet, long term planning is essential for the survival of our species and our biosphere. How
+        can we train our imagination to reach other dimensions?
+      </p>
+      <p>
+        Intelligence is a much broader phenomenon than the human brain. We think through our whole
+        bodies; the brain is a coordination endpoint. The history of life makes more sense as the
+        evolution of ecosystems than as a sequence of individual actors. Crises are also
+        opportunities for new beginnings. Despite all the current suffering and understandable fear,
+        I practice existential hope, meaning I believe that the long future is not merely survivable
+        but extraordinary. I expose myself to outstanding situations, build spaces, read what
+        intrigues me, imagine future beings with my hands, and then try to see the patterns.
+      </p>
+      <p>
+        On this page I would like to share the fruits of my current research, but also the evolution
+        of my thought process.
+      </p>
+    </div>
+  </section>
+
+  <!-- TOPICS, first ------------------------------------------------------ -->
+  <section class="wrap topicblock" style="margin-top:54px">
+    <div class="kicker">Topics</div>
+    <h2 class="sec" style="margin:12px 0 6px">What I keep coming back to</h2>
+
+    <div class="topics">
+      {topics.map((t) => (
+        <article class="topic">
+          <h3>{t.title}</h3>
+          <p class="tp-body">{t.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- THE POSITIONS ------------------------------------------------------ -->
+  <section class="wrap" style="margin-top:86px">
+    <div class="kicker">Where I stand</div>
+    <h2 class="sec" style="margin:12px 0 6px">Three essays</h2>
+    <p style="font-size:14.5px; color:var(--ink-2); max-width:40em">
+      If you read only three things here, read these.
+    </p>
+
+    <div class="posset">
+      {positions.map((p) => (
+        <article class="posrow">
+          <a href={p.href} target="_blank" rel="noopener" data-nozoom>
+            <img src={p.image} alt={p.imageAlt ?? ''} loading="lazy" />
+          </a>
+          <div>
+            <h3>
+              <a href={p.href} target="_blank" rel="noopener">{p.title}</a>
+            </h3>
+            <div class="posrow-meta">{p.year} · {p.venue}</div>
+            <p>{p.detail}</p>
+            <a class="sc-link" href={p.href} target="_blank" rel="noopener">Read it →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- FEATURED PAPER ----------------------------------------------------- -->
+  <section class="wrap paper-feature">
+    <div class="pf-head">
+      <span class="pf-tag">{featured.kicker} · {featured.year}</span>
+      <h2>{featured.title}</h2>
+      <p class="pf-meta">{featured.authors}</p>
+      <p class="pf-venue">{featured.venue} · {featured.extra}</p>
+
+      {featured.images?.length > 0 && (
+        <div class="pf-figs">
+          {featured.images.map((im) => (
+            <figure>
+              <img src={im.src} alt={im.caption} loading="lazy" />
+              <figcaption>{im.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <div class="pf-body">
+      <p class="pf-abstract">{featured.abstract}</p>
+      <ul class="pf-points">
+        {featured.points.map((p) => <li>{p}</li>)}
+      </ul>
+      <p class="pf-links">
+        {featured.links.map((l, i) => (
+          <>
+            {i > 0 && <span class="sep">·</span>}
+            <a href={l.href} {...(isExternal(l.href) ? { rel: 'noopener', target: '_blank' } : {})}>{l.label}</a>
+          </>
+        ))}
+      </p>
+    </div>
+  </section>
+
+  <!-- THE SHELF ---------------------------------------------------------- -->
+  <section class="wrap" style="margin-top:80px">
+    <div class="kicker">The shelf</div>
+    <h2 class="sec" style="margin:12px 0 8px">A bit of what inspires me</h2>
+    <Shelf />
+  </section>
+
+  <!-- THE LIBRARY -------------------------------------------------------- -->
+  {groups.map((g) => (
+    <section class="wrap lib">
+      <div class="kicker">{g.title}</div>
+      {g.blurb && <p class="lib-blurb">{g.blurb}</p>}
+
+      <ul class="lib-list">
+        {g.items.map((it) => (
+          <li class={it.image ? 'has-img' : undefined}>
+            <span class="ly">{it.year ?? '·'}</span>
+
+            {it.image && (
+              <span class="li-img"><img src={it.image} alt={it.imageAlt ?? ''} loading="lazy" /></span>
+            )}
+
+            <div class="lb">
+              <h3>{it.title}</h3>
+              {it.original && <p class="lo">{it.original}</p>}
+              <p class="lk">{it.kind}{it.venue ? `. ${it.venue}` : ''}</p>
+              {it.detail && <p class="ld">{it.detail}</p>}
+              {it.note && <p class="ln">{it.note}</p>}
+              {it.links?.length > 0 && (
+                <p class="ll">
+                  {it.links.map((l, i) => (
+                    <>
+                      {i > 0 && <span class="sep">·</span>}
+                      <a href={l.href} {...(isExternal(l.href) ? { rel: 'noopener', target: '_blank' } : {})}>{l.label}</a>
+                    </>
+                  ))}
+                </p>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <section class="wrap" style="padding-bottom:80px">
+    <p class="lib-pending">{pending}</p>
+  </section>
+</Base>

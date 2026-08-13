@@ -1,0 +1,250 @@
+---
+import Base from '../layouts/Base.astro';
+import Timeline from '../components/Timeline.astro';
+import { site } from '../data/site.js';
+import { heroLoop, HOLD } from '../data/heroloop.js';
+import { collections, essays } from '../data/collections.js';
+import fs from 'node:fs';
+import { topics } from '../data/topics.js';
+import { nowRows } from '../data/cv.js';
+import { press } from '../data/misc.js';
+
+const livePress = press.filter((p) => p.live);
+
+// a figure is only drawn if its file is actually on disk, so a picture still
+// stuck in Drive cannot leave a broken image on the homepage
+const figs = essays.research.figures.filter((f) =>
+  fs.existsSync(new URL('../../public' + f.src, import.meta.url))
+);
+---
+
+<Base bodyClass="" hasHero={true}>
+  <!-- ENTRY ------------------------------------------------------------- -->
+  <header class="hero" data-hold={HOLD}>
+    <div class="hs">
+      {heroLoop.map((f, i) => (
+        <div class={`hs-slide mv-${f.move}${i === 0 ? ' is-on' : ''}`} data-i={i}>
+          <img
+            class="bg"
+            src={i === 0 ? f.src : undefined}
+            data-src={i === 0 ? undefined : f.src}
+            alt={i === 0 ? f.alt : ''}
+            style={`object-position:${f.pos}`}
+            fetchpriority={i === 0 ? 'high' : undefined}
+            aria-hidden={i === 0 ? undefined : 'true'}
+            data-nozoom
+          />
+        </div>
+      ))}
+    </div>
+    <div class="veil"></div>
+
+    <div class="scrollcue" aria-hidden="true">Scroll ↓</div>
+  </header>
+
+  <div class="paper">
+    <!-- WHO ------------------------------------------------------------- -->
+    <section class="wrap intro" id="intro">
+      <p class="greeting">{site.greeting}</p>
+      <h1 class="sec welcome" set:html={site.statementTitle.replace('\n', '<br>')} />
+      {site.statement.map((p) => <p class="lede">{p}</p>)}
+    </section>
+
+    <!-- TIMELINE -------------------------------------------------------- -->
+    <section class="wrap" style="margin-top:70px" id="timeline">
+      <Timeline />
+    </section>
+
+    <!-- RESEARCH -------------------------------------------------------- -->
+    <section class="wrap essay res-block" id="research-note">
+      {figs[0] && (
+        <img class="res-fig left" src={figs[0].src} alt={figs[0].alt} loading="lazy" />
+      )}
+
+      <div class="res-mid">
+        <div class="kicker">{essays.research.kicker}</div>
+        <p class="res-ask">{essays.research.highlight}</p>
+        <div class="res-note">
+          {essays.research.body.map((p) => <p>{p}</p>)}
+        </div>
+        <p class="res-topics">
+          {topics.map((t, i) => (
+            <>
+              {i > 0 && <span class="sep">·</span>}
+              <a href="/research">{t.title}</a>
+            </>
+          ))}
+        </p>
+        <a class="more" style="margin-top:22px" href={essays.research.href}>{essays.research.linkText}</a>
+      </div>
+
+      {figs[1] && (
+        <img class="res-fig right" src={figs[1].src} alt={figs[1].alt} loading="lazy" />
+      )}
+    </section>
+
+    <!-- COLLECTIONS ----------------------------------------------------- -->
+    <section class="wrap" style="margin-top:90px" id="work">
+      <div class="kicker">The art</div>
+      <h2 class="sec" style="margin:12px 0 10px">Many bodies of work</h2>
+      <p style="max-width:38em; color:var(--ink-2)">
+        Grouped by what they are made of and what they are for. They overlap, and each one fed
+        the next.
+      </p>
+
+      {collections.map((c) => (
+        <article class="coll-block">
+          <div class="coll-head">
+            <h3>{c.title}</h3>
+            <p class="coll-span">{c.span}</p>
+          </div>
+          <div class="coll-body">
+            <p>{c.blurb}</p>
+            <p class="coll-media">{c.media}</p>
+            <ul class="coll-list">
+              {c.items.map((it) => (
+                <li>
+                  {it.href ? (
+                    <a
+                      href={it.href}
+                      target={it.external ? '_blank' : undefined}
+                      rel={it.external ? 'noopener' : undefined}
+                    >
+                      {it.label}
+                    </a>
+                  ) : (
+                    <span class="noline">{it.label}</span>
+                  )}
+                  {it.note && <span class="note">{it.note}</span>}
+                  <span class="yr">{it.years ?? ''}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="coll-plate">
+            <img src={c.image} alt={c.imageAlt ?? ''} loading="lazy" />
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <!-- IN PRINT (hidden until real quotes exist) ------------------------ -->
+    {livePress.length > 0 && (
+      <section class="wrap essay" id="press">
+        <div class="kicker">In print</div>
+        {livePress.map((q) => (
+          <blockquote style="margin-top:26px; max-width:34em">
+            <p class="hand" style="font-size:24px; line-height:1.3">“{q.quote}”</p>
+            <cite class="kicker" style="font-style:normal">{q.outlet}, {q.year}</cite>
+          </blockquote>
+        ))}
+      </section>
+    )}
+
+    <!-- NOW ------------------------------------------------------------- -->
+    <section class="wrap essay" id="now">
+      <div class="kicker">Now</div>
+      <h2 class="sec" style="margin:12px 0 0">Now</h2>
+      <ul class="rows">
+        {nowRows.map((r) => (
+          <li>
+            <span>{r.year}{r.monthLabel ? ` · ${r.monthLabel}` : ''}</span>
+            <div>
+              {r.href ? (
+                <a
+                  class="pr-t"
+                  href={r.href}
+                  target={r.href.startsWith('http') ? '_blank' : undefined}
+                  rel={r.href.startsWith('http') ? 'noopener' : undefined}
+                >
+                  {r.title}
+                </a>
+              ) : (
+                r.title
+              )}
+              {r.venue && <span style="opacity:.7">, {r.venue}</span>}
+              {r.city && <span style="opacity:.7">, {r.city}</span>}
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p style="margin-top:34px"><a class="more" href="/info">Full record ⇢</a></p>
+    </section>
+
+    <!-- THE DOOR -------------------------------------------------------- -->
+    <section style="margin-top:90px; background:var(--lm-paper); padding:70px 0 80px" id="door">
+      <div class="wrap">
+        <div class="kicker" style="color:var(--green)">The door</div>
+        <h2 class="sec" style="margin:12px 0 18px; color:var(--green)">Little Martians</h2>
+        <p style="max-width:36em">
+          Imagining the future with my hands. I create a sci-fi world based on my ceramic
+          characters. They’re Little Martians: a species descended from all of Earth’s life,
+          tending life in extreme worlds and keeping our memory in the Imaginarium.
+        </p>
+        <a class="more" style="border-color:var(--green); color:var(--green)"
+           href={site.littleMartians} rel="noopener" target="_blank">
+          Enter littlemartians.world ⇢
+        </a>
+
+        <h2 class="sec" style="margin:56px 0 18px; color:var(--green)">Mars College</h2>
+        <p style="max-width:36em">
+          Mars College is an annual off-grid pop-up college built literally from the ground up
+          every winter in the California desert.
+        </p>
+        <a class="more" style="border-color:var(--green); color:var(--green)"
+           href="https://mars.college" rel="noopener" target="_blank">
+          mars.college ⇢
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+  // The homepage loop: crossfade the frames, and only fetch a picture when it
+  // is about to be needed. Pauses when the tab is hidden.
+  (function () {
+    var hero = document.querySelector('.hero[data-hold]');
+    if (!hero) return;
+    var slides = hero.querySelectorAll('.hs-slide');
+    if (slides.length < 2) return;
+    var hold = Number(hero.getAttribute('data-hold')) || 6200;
+    var at = 0;
+    var timer = null;
+
+    function load(i) {
+      var img = slides[(i + slides.length) % slides.length].querySelector('img.bg');
+      if (img && img.dataset.src) {
+        img.src = img.dataset.src;
+        delete img.dataset.src;
+      }
+    }
+
+    function go(i) {
+      var next = (i + slides.length) % slides.length;
+      slides[at].classList.remove('is-on');
+      // dropping and re-adding the class restarts the drift from rest
+      slides[next].offsetWidth;
+      slides[next].classList.add('is-on');
+      at = next;
+      load(at + 1);
+    }
+
+    function start() {
+      stop();
+      timer = setInterval(function () { go(at + 1); }, hold);
+    }
+    function stop() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    load(1);
+    start();
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stop();
+      else start();
+    });
+  })();
+</script>
+</Base>

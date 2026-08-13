@@ -1,0 +1,126 @@
+---
+import Base from '../../layouts/Base.astro';
+import Spine from '../../components/Spine.astro';
+import { threads, internalThreads, threadBySlug } from '../../data/threads.js';
+import { cvForThread } from '../../data/cv.js';
+
+export function getStaticPaths() {
+  return internalThreads.map((t) => ({ params: { slug: t.slug } }));
+}
+
+const { slug } = Astro.params;
+const t = threadBySlug(slug);
+const rows = t.exhibited?.length ? t.exhibited : cvForThread(slug).map((r) => ({
+  years: String(r.year),
+  text: [r.title, r.venue, r.city].filter(Boolean).join(', '),
+}));
+const related = (t.related || []).map(threadBySlug).filter((r) => r && r.hasPage);
+---
+
+<Base
+  title={t.title}
+  description={t.lede}
+  palette={t.palette || ''}
+  bodyClass="paper"
+>
+  {t.hero ? (
+    <div class="projhero">
+      <img src={t.hero} alt={t.heroAlt} fetchpriority="high" />
+      <div class="t">
+        <div class="kicker" style="color:#fff; opacity:.9">Thread {t.number} · {t.years}</div>
+        <h1>{t.title}</h1>
+      </div>
+    </div>
+  ) : (
+    <div class="projhero plain">
+      <div class="t">
+        <div class="kicker">Thread {t.number} · {t.years}</div>
+        <h1 class="hand" style="font-size:clamp(34px,5.5vw,68px)">{t.title}</h1>
+      </div>
+    </div>
+  )}
+
+  <div class="wrap">
+    <div class="meta">
+      <div><div class="k">Status</div>{t.status}</div>
+      <div><div class="k">Media</div>{t.media}</div>
+      <div><div class="k">Places</div>{t.places}</div>
+      <div>
+        <div class="k">Related</div>
+        {related.length
+          ? related.map((r, i) => (
+              <>
+                {i > 0 && ' · '}
+                <a href={`/threads/${r.slug}`} style="border-bottom:1px solid rgba(13,33,54,.3)">{r.title}</a>
+              </>
+            ))
+          : '–'}
+      </div>
+    </div>
+
+    {t.coauthor && <p class="coauthor-line">{t.coauthor}</p>}
+
+    <div class="narrow" style="margin-top:52px">
+      <p class="lede">{t.lede}</p>
+    </div>
+
+    <p class="thesis">{t.thesis}</p>
+
+    <!-- Sub-theses, two per row -->
+    {Array.from({ length: Math.ceil(t.strands.length / 2) }).map((_, row) => (
+      <div class="strand">
+        {t.strands.slice(row * 2, row * 2 + 2).map((s) => (
+          <div>
+            <h4>{s.title}</h4>
+            <p>{s.body}</p>
+          </div>
+        ))}
+      </div>
+    ))}
+
+    {rows.length > 0 && (
+      <>
+        <div class="kicker" style="margin:70px 0 0">Exhibited &amp; painted</div>
+        <ul class="rows">
+          {rows.map((r) => (
+            <li><span>{r.years}</span><div set:html={r.text} /></li>
+          ))}
+        </ul>
+      </>
+    )}
+
+    {t.reading?.length > 0 && (
+      <>
+        <div class="kicker" style="margin:70px 0 20px">Reading list</div>
+        <div class="readlist">
+          {t.reading.map((r) => <p set:html={r} />)}
+        </div>
+      </>
+    )}
+
+    {t.gallery?.length > 0 && (
+      <div class="gallery">
+        {t.gallery.map((src, i) => (
+          <figure><img src={src} alt="" loading="lazy" /></figure>
+        ))}
+      </div>
+    )}
+
+    {t.external && (
+      <p style="margin-top:50px">
+        <a class="more" href={t.external} rel="noopener" target="_blank">
+          Enter {t.external.replace('https://', '')} ⇢
+        </a>
+      </p>
+    )}
+
+    {t.credits && (
+      <>
+        <div class="kicker" style="margin:70px 0 20px">Credits</div>
+        <p style="font-size:14.5px; color:var(--ink-2)">{t.credits}</p>
+      </>
+    )}
+
+    <Spine current={t.slug} />
+  </div>
+</Base>

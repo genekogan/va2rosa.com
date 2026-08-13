@@ -1,0 +1,267 @@
+---
+// A small world, drawn nervously. The coastlines are coarse polylines in
+// longitude and latitude, redrawn with a wobble so they look like a hand that
+// could not hold still. The jitter comes from a seeded generator, so the map is
+// identical on every build.
+//
+// Projection is plain equirectangular and clipped to the inhabited band, which
+// means a pin's position is just its longitude and latitude. Pins come from the
+// festival record, so the map cannot claim a screening the list does not have.
+import { festivalRows } from '../data/festivals.js';
+import { places, extraPins } from '../data/places.js';
+
+const TOP = 78; // the top of the frame, in degrees of latitude
+const BOT = -58; // and the bottom
+const W = 360;
+const H = TOP - BOT;
+
+const px = (lon) => lon + 180;
+const py = (lat) => TOP - lat;
+
+// A deterministic wobble: the same seed always draws the same coast.
+function rng(seed) {
+  let s = seed >>> 0;
+  return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296);
+}
+
+// A slow meander rather than a jitter. Three long sine waves summed give a
+// line that drifts off course and comes back, the way a hand does, instead of
+// spiking at every point.
+function meander(seed) {
+  const r = rng(seed);
+  const waves = [0, 1, 2].map(() => ({
+    f: 0.04 + r() * 0.2, // long wavelengths, so the line drifts rather than shakes
+    p: r() * Math.PI * 2,
+    a: 0.4 + r() * 0.6,
+  }));
+  const norm = waves.reduce((sum, w) => sum + w.a, 0);
+  return (t) => waves.reduce((sum, w) => sum + w.a * Math.sin(t * w.f + w.p), 0) / norm;
+}
+
+// Walk the coast at an even pace, pushing each step gently off course.
+function drift(points, seed, amp = 0.95, step = 1.9) {
+  const wave = meander(seed);
+  const out = [];
+  let travelled = 0;
+  for (let i = 0; i < points.length - 1; i++) {
+    const [x1, y1] = points[i];
+    const [x2, y2] = points[i + 1];
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const len = Math.hypot(dx, dy) || 1;
+    const n = Math.max(1, Math.round(len / step));
+    const nx = -dy / len;
+    const ny = dx / len;
+    for (let k = 0; k < n; k++) {
+      const t = k / n;
+      const off = wave(travelled + len * t) * amp;
+      out.push([x1 + dx * t + nx * off, y1 + dy * t + ny * off]);
+    }
+    travelled += len;
+  }
+  return out;
+}
+
+// Catmull-Rom through the points, written out as cubic beziers, so the coast
+// curves instead of turning corners.
+function curve(pts, closed) {
+  const n = pts.length;
+  const at = (i) => pts[closed ? (i + n) % n : Math.max(0, Math.min(n - 1, i))];
+  let d = `M${at(0)[0].toFixed(1)} ${at(0)[1].toFixed(1)}`;
+  const last = closed ? n : n - 1;
+  for (let i = 0; i < last; i++) {
+    const p0 = at(i - 1);
+    const p1 = at(i);
+    const p2 = at(i + 1);
+    const p3 = at(i + 2);
+    const c1x = p1[0] + (p2[0] - p0[0]) / 6;
+    const c1y = p1[1] + (p2[1] - p0[1]) / 6;
+    const c2x = p2[0] - (p3[0] - p1[0]) / 6;
+    const c2y = p2[1] - (p3[1] - p1[1]) / 6;
+    d += ` C${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+  }
+  return d + (closed ? ' Z' : '');
+}
+
+function path(coords, seed, close = true) {
+  const pts = coords.map(([lon, lat]) => [px(lon), py(lat)]);
+  return curve(drift(close ? [...pts, pts[0]] : pts, seed), close);
+}
+
+// Coarse coastlines. Enough to be recognised, not enough to be a map.
+const LAND = [
+  // North America, with a dip for Hudson Bay and a hook for Florida
+  [[-166,66],[-162,70],[-156,71],[-140,70],[-128,70],[-115,69],[-105,69],[-95,72],[-85,73],[-80,70],[-78,62],[-82,55],[-79,52],[-76,56],[-70,60],[-64,60],[-56,52],[-53,47],[-60,45],[-66,45],[-70,42],[-74,40],[-76,37],[-79,33],[-81,31],[-80,27],[-80,25],[-83,29],[-85,30],[-89,29],[-94,29],[-97,26],[-97,22],[-95,19],[-91,19],[-88,21],[-87,16],[-84,10],[-79,9],[-83,15],[-90,14],[-95,16],[-105,20],[-110,24],[-114,28],[-117,32],[-120,34],[-122,37],[-124,41],[-124,47],[-127,50],[-133,55],[-140,60],[-148,60],[-153,59],[-158,56],[-163,59]],
+  // South America
+  [[-81,0],[-79,8],[-75,11],[-71,12],[-63,11],[-60,8],[-52,5],[-50,0],[-44,-2],[-38,-5],[-35,-8],[-39,-13],[-40,-20],[-48,-25],[-53,-34],[-57,-38],[-62,-40],[-65,-45],[-68,-50],[-71,-54],[-75,-52],[-74,-45],[-73,-37],[-71,-30],[-70,-23],[-70,-18],[-77,-12],[-81,-6],[-80,-2]],
+  // Africa, with the Gulf of Guinea and the Horn
+  [[-17,15],[-16,21],[-13,28],[-9,31],[-5,35],[0,36],[10,37],[11,33],[20,31],[25,32],[32,31],[34,28],[35,24],[37,18],[39,15],[43,12],[48,12],[51,11],[47,4],[42,-1],[40,-6],[40,-11],[36,-17],[34,-20],[32,-26],[28,-31],[25,-34],[20,-34],[17,-29],[14,-23],[12,-17],[13,-9],[9,-1],[9,4],[3,6],[-3,5],[-8,4],[-13,9]],
+  // Eurasia. Italy and Korea are drawn separately below, so this line can run
+  // clean instead of doubling back on itself.
+  [[-9,43],[-9,38],[-6,36],[0,39],[3,42],[7,43],[13,45],[16,45],[19,42],[23,40],[27,41],[30,41],[33,36],[36,36],[36,31],[35,29],[39,30],[43,29],[48,30],[50,25],[54,24],[57,25],[61,25],[66,25],[70,22],[72,20],[73,16],[76,9],[80,10],[82,17],[87,21],[89,22],[92,21],[95,16],[98,10],[100,13],[104,1],[110,10],[107,20],[110,21],[113,22],[117,24],[121,28],[122,31],[121,37],[122,39],[126,41],[131,43],[135,48],[141,53],[143,59],[150,59],[160,60],[163,58],[162,62],[170,66],[179,66],[179,71],[160,70],[140,73],[125,73],[110,76],[95,78],[80,73],[70,73],[60,70],[50,69],[40,68],[33,70],[28,71],[22,70],[16,69],[12,66],[8,63],[5,60],[9,59],[11,57],[8,55],[9,54],[5,53],[3,51],[-2,49],[-5,48]],
+  // Italy
+  [[7,44],[10,45],[13,45],[16,41],[18,40],[16,38],[14,40],[11,42],[9,44]],
+  // Korea
+  [[126,38],[129,36],[129,35],[126,34],[125,37]],
+  // Australia, with the Gulf of Carpentaria and Cape York
+  [[113,-22],[114,-26],[115,-30],[118,-34],[122,-34],[126,-32],[130,-32],[134,-33],[135,-35],[138,-35],[141,-38],[146,-39],[150,-37],[153,-32],[153,-28],[151,-24],[149,-21],[146,-19],[143,-14],[142,-11],[140,-17],[137,-16],[136,-12],[132,-11],[129,-15],[125,-14],[122,-17],[118,-20]],
+  // Greenland
+  [[-45,60],[-52,64],[-53,70],[-58,76],[-45,83],[-30,82],[-22,76],[-26,70],[-38,65]],
+  // Britain, Ireland
+  [[-5,50],[-3,54],[-2,57],[-5,58],[-6,55],[-8,52]],
+  [[-10,52],[-10,55],[-6,55],[-6,52]],
+  // Japan
+  [[130,32],[134,34],[137,35],[140,36],[142,40],[145,44],[141,45],[139,38],[133,34]],
+  // New Zealand
+  [[173,-35],[176,-38],[178,-38],[175,-41],[171,-44],[167,-46],[169,-44],[172,-40]],
+  // Iceland
+  [[-24,65],[-22,66],[-16,66],[-14,65],[-18,63],[-22,64]],
+  // Madagascar
+  [[49,-12],[50,-16],[47,-25],[44,-25],[44,-19],[47,-14]],
+  // Sri Lanka
+  [[80,10],[82,8],[81,6],[80,7]],
+  // Cuba, Hispaniola and the arc of the Antilles
+  [[-84,22],[-80,23],[-77,20],[-80,20],[-83,21]],
+  [[-74,20],[-69,19],[-68,18],[-72,18]],
+  [[-67,18],[-65,18],[-66,17]],
+  [[-61,15],[-61,13],[-61,11]],
+  // Tierra del Fuego
+  [[-68,-53],[-65,-54],[-68,-55],[-70,-54]],
+  // Scandinavia's fjords are a separate stroke, too fine for the main line
+  [[5,58],[6,61],[10,64],[14,67],[18,69],[21,70],[16,68],[12,65],[8,62],[6,59]],
+  // Sicily, Sardinia, Corsica, Crete, Cyprus
+  [[12,38],[15,37],[15,38],[13,38]],
+  [[8,41],[10,41],[9,39],[8,40]],
+  [[9,43],[9,42],[9,41]],
+  [[24,35],[26,35],[24,35]],
+  [[33,35],[34,35],[33,34]],
+  // the larger islands of Indonesia and the Philippines
+  [[95,5],[98,2],[102,-2],[106,-6],[104,-2],[100,1]],
+  [[105,-6],[110,-7],[114,-8],[112,-7],[107,-6]],
+  [[109,1],[114,-1],[117,-4],[119,-1],[117,3],[113,3]],
+  [[119,-2],[121,-5],[125,-2],[123,1],[120,0]],
+  [[131,-1],[136,-2],[141,-3],[141,-9],[137,-8],[132,-4]],
+  [[121,18],[123,14],[126,10],[126,6],[122,8],[120,13]],
+  // Taiwan, Hainan
+  [[121,25],[122,23],[120,22],[120,24]],
+  [[109,20],[111,19],[110,18],[108,19]],
+  // Tasmania
+  [[145,-41],[148,-41],[148,-43],[145,-43]],
+  // Newfoundland
+  [[-59,48],[-55,47],[-53,49],[-56,51]],
+  // Svalbard, Novaya Zemlya
+  [[13,78],[17,79],[20,78],[16,77]],
+  [[53,71],[57,73],[62,72],[68,73],[58,71],[54,70]],
+  // the Baltic and the Black Sea, drawn as inland water
+  [[19,55],[21,58],[24,60],[27,60],[24,57],[21,55]],
+  [[29,46],[34,46],[38,45],[41,42],[36,42],[31,44],[29,45]],
+  // the Caspian
+  [[47,45],[51,44],[54,42],[53,38],[50,37],[48,41]],
+  // the Great Lakes, sketched
+  [[-92,47],[-87,47],[-84,46],[-79,44],[-77,44],[-82,42],[-87,42],[-90,45]],
+];
+
+// One pin per city, carrying every festival that showed there.
+const byCity = new Map();
+const add = (city, festival, year) => {
+  const spot = places[city];
+  if (!spot) return;
+  // one record entry can name more than one city; each gets its own pin
+  const spots = Array.isArray(spot) ? spot : [spot];
+  spots.forEach((point) => {
+    const key = `${city}::${point.label}`;
+    if (!byCity.has(key)) byCity.set(key, { ...point, city, shows: [] });
+    const shows = byCity.get(key).shows;
+    const line = `${festival}${year ? `, ${year}` : ''}`;
+    if (!shows.includes(line)) shows.push(line);
+  });
+};
+festivalRows.forEach((r) => add(r.city, r.title, r.year));
+extraPins.forEach((p) => add(p.city, p.festival, p.year));
+
+const pins = [...byCity.values()].sort((a, b) => b.shows.length - a.shows.length);
+const cities = pins.length;
+---
+
+<div class="wmap">
+  <div class="wmap-frame">
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`A world map with ${cities} cities pinned`}>
+      {LAND.map((coast, i) => (
+        <>
+          {i < 8 && <path class="w-ghost" d={path(coast, 4441 + i * 613)} />}
+          <path class={i < 8 ? undefined : 'w-fine'} d={path(coast, 8191 + i * 977)} />
+        </>
+      ))}
+    </svg>
+
+    {pins.map((p, i) => (
+      <button
+        class="wpin"
+        type="button"
+        style={`left:${((px(p.lon) / W) * 100).toFixed(2)}%; top:${((py(p.lat) / H) * 100).toFixed(2)}%`}
+        data-pin={i}
+        aria-label={`${p.label}: ${p.shows.length} screening${p.shows.length > 1 ? 's' : ''}`}
+      >
+        <span class="wpin-dot"></span>
+      </button>
+    ))}
+
+    {pins.map((p, i) => (
+      <div class="wpop" data-pop={i} hidden>
+        <div class="wpop-in">
+          <div class="wpop-city">{p.label}</div>
+          <ul>
+            {p.shows.map((sh) => <li>{sh}</li>)}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <p class="wmap-note">
+    {cities} cities. Tap a pin to see which festival showed the film there.
+  </p>
+</div>
+
+<script is:inline>
+  (function () {
+    var map = document.querySelector('.wmap');
+    if (!map) return;
+    var pops = map.querySelectorAll('.wpop');
+    var pins = map.querySelectorAll('.wpin');
+
+    function closeAll() {
+      pops.forEach(function (p) { p.hidden = true; });
+      pins.forEach(function (p) { p.classList.remove('is-on'); });
+    }
+
+    pins.forEach(function (pin) {
+      pin.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var i = pin.getAttribute('data-pin');
+        var pop = map.querySelector('.wpop[data-pop="' + i + '"]');
+        var wasOpen = !pop.hidden;
+        closeAll();
+        if (wasOpen) return;
+        pin.classList.add('is-on');
+        // the bubble sits on the pin, and stays inside the frame
+        pop.style.left = pin.style.left;
+        pop.style.top = pin.style.top;
+        pop.hidden = false;
+        var box = pop.getBoundingClientRect();
+        var frame = map.querySelector('.wmap-frame').getBoundingClientRect();
+        var shiftX = 0;
+        if (box.left < frame.left) shiftX = frame.left - box.left + 6;
+        if (box.right > frame.right) shiftX = frame.right - box.right - 6;
+        pop.style.transform = 'translate(calc(-50% + ' + shiftX + 'px), -112%)';
+        // the bubble may have moved to stay in frame; the tail stays on the pin
+        pop.style.setProperty('--tail', shiftX + 'px');
+      });
+    });
+
+    document.addEventListener('click', closeAll);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAll();
+    });
+  })();
+</script>

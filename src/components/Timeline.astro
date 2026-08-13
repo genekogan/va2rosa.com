@@ -1,0 +1,136 @@
+---
+// Duration & overlap, in the manner of Sougwen's generational timeline.
+// Bars are positioned from the start/end years in threads.js; an ongoing
+// period has end: null and fades out to the right instead of stopping.
+import { threads, timelineExtra, linkFor } from '../data/threads.js';
+
+const FIRST = 2009;
+const LAST = 2027; // one year of runway past "now"
+const SPAN = LAST - FIRST;
+
+const pct = (year) => ((year - FIRST) / SPAN) * 100;
+
+const rows = [...threads, ...timelineExtra];
+
+// Every wash is mixed slightly differently: a seeded generator, so the chart
+// looks hand-laid but comes out the same on every build.
+let seed = 20090408;
+const rand = () => {
+  seed = (seed * 1664525 + 1013904223) % 4294967296;
+  return seed / 4294967296;
+};
+
+const bars = rows.map((t) => {
+  const end = t.end ?? LAST;
+  const width = pct(end) - pct(t.start);
+  return {
+    ...t,
+    left: pct(t.start),
+    width,
+    ongoing: t.end === null,
+    // a short period has no room for its own name: set it beside the bar
+    narrow: width < 22,
+    // pigment: a little off the house blue in hue and strength, a little
+    // off true in angle, and pooled somewhere other than the middle
+    wash: {
+      h: Math.round((rand() - 0.5) * 26),
+      s: (0.82 + rand() * 0.36).toFixed(2),
+      tilt: ((rand() - 0.5) * 0.5).toFixed(2),
+      px: Math.round(18 + rand() * 64),
+      py: Math.round(24 + rand() * 52),
+      qx: Math.round(30 + rand() * 60),
+      qy: Math.round(20 + rand() * 60),
+      dy: ((rand() - 0.5) * 2.4).toFixed(2),
+    },
+  };
+});
+
+const washVars = (w) =>
+  `--wc-h:${w.h}; --wc-s:${w.s}; --wc-tilt:${w.tilt}deg; ` +
+  `--wc-px:${w.px}%; --wc-py:${w.py}%; --wc-qx:${w.qx}%; --wc-qy:${w.qy}%; --wc-dy:${w.dy}px;`;
+
+const ticks = [2010, 2013, 2016, 2019, 2022, 2025];
+const stateLabel = { ended: 'ended', transformed: 'became the next thing', ongoing: 'ongoing' };
+---
+
+<!-- The filters that make a rectangle behave like pigment on wet paper:
+     one pushes every edge off true, the other grains the wash. -->
+<svg class="tl-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="tl-wash" x="-12%" y="-40%" width="124%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="4" seed="7" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" result="d" />
+      <feGaussianBlur in="d" stdDeviation="0.25" />
+    </filter>
+    <filter id="tl-edge" x="-12%" y="-40%" width="124%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.14" numOctaves="5" seed="23" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <filter id="tl-rule" x="-2%" y="-300%" width="104%" height="700%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.4" numOctaves="3" seed="11" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+</svg>
+
+<div class="tl">
+  <p class="kicker">Timeline</p>
+
+  <div class="tl-chart">
+    {ticks.map((y) => <span class="tl-grid" style={`left:${pct(y)}%`} aria-hidden="true" />)}
+
+    {bars.map((b) => (
+      <div class="tl-row">
+        {(b.href ?? linkFor(b)) ? (
+          <a
+            class={`tl-bar${b.ongoing ? ' ongoing' : ''}${b.state === 'transformed' ? ' transformed' : ''}${b.narrow ? ' narrow' : ''}${b.underlay ? ' underlay' : ''}`}
+            style={`left:${b.left}%; width:${b.width}%; ${washVars(b.wash)}`}
+            href={b.href ?? linkFor(b)}
+          >
+            <span>{b.number ? `${b.number} · ` : ''}{b.title}</span>
+          </a>
+        ) : (
+          <span
+            class={`tl-bar nolink${b.ongoing ? ' ongoing' : ''}${b.state === 'transformed' ? ' transformed' : ''}${b.narrow ? ' narrow' : ''}`}
+            style={`left:${b.left}%; width:${b.width}%; ${washVars(b.wash)}`}
+          >
+            <span>{b.number ? `${b.number} · ` : ''}{b.title}</span>
+          </span>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <div class="tl-axis" aria-hidden="true">
+    {ticks.map((y) => <span style={`left:${pct(y)}%`}>{y}</span>)}
+  </div>
+
+  <ul class="tl-key">
+    <li><i class="k-ended"></i>ended</li>
+    <li><i class="k-transformed"></i>became the next thing</li>
+    <li><i class="k-ongoing"></i>ongoing</li>
+  </ul>
+
+  <!-- the same data as a table, for narrow screens and for screen readers -->
+  <table class="tl-table">
+    <caption class="visually-hidden">The work by period</caption>
+    <thead>
+      <tr><th>№</th><th>Period</th><th>Years</th><th>What carries the memory</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      {rows.map((t) => (
+        <tr>
+          <td class="n">{t.number}</td>
+          <td class="ti">
+            {(t.href ?? linkFor(t))
+              ? <a href={t.href ?? linkFor(t)}>{t.title}</a>
+              : t.title}
+          </td>
+          <td class="yr">{t.years}</td>
+          <td>{t.carrier ?? '–'}</td>
+          <td class="st">{stateLabel[t.state]}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

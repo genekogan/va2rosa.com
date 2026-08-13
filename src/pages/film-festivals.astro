@@ -1,0 +1,292 @@
+---
+import Base from '../layouts/Base.astro';
+import { byYear } from '../data/cv.js';
+import { g } from '../data/galleries.js';
+import { films } from '../data/films.js';
+import WorldMap from '../components/WorldMap.astro';
+
+// The prizes and the circuit come out of the same dataset as the curriculum,
+// so this page can never drift from Info.
+const circuit = byYear.filter((r) => r.type === 'film' && r.film);
+const awards = byYear.filter((r) => r.type === 'award');
+// The drive-in in the desert opens the page; the rest is the slideshow at the
+// foot of it, ordered most striking first.
+const hero = g.fest.find((im) => im.src.includes('fest-hero'));
+const screenings = g.fest.filter((im) => !im.src.includes('fest-hero'));
+
+// Selected is Vanessa's own shortlist of festivals, set in festivals.js.
+// A win is a separate thing, and gets its own filter.
+const isWin = (r) => !/^(official selection|finalist|semi-finalist|quarter-finalist|nominee|honorable mention)/i.test(r.outcome ?? '');
+const years = [...new Set(circuit.map((r) => r.year))].sort((a, b) => b - a);
+const filters = [
+  { key: 'selected', label: 'Selected' },
+  { key: 'awards', label: 'Awards' },
+  { key: 'all', label: 'Everything' },
+  ...years.map((y) => ({ key: String(y), label: String(y) })),
+];
+---
+
+<Base
+  title="Screenings around the world"
+  current="Art"
+  description="The films of Vanessa Rosa, watchable in full, and the festivals and prizes they have travelled through."
+  bodyClass="paper"
+>
+  {hero && (
+    <div class="projhero">
+      <img
+        src={hero.src}
+        alt={hero.caption}
+        fetchpriority="high"
+      />
+      <div class="t">
+        <div class="kicker" style="color:#fff; opacity:.9">Film festivals</div>
+        <h1>Screenings around the world</h1>
+      </div>
+    </div>
+  )}
+
+  <div class="wrap">
+    <div class="meta">
+      <div><div class="k">Films</div>{films.length} to watch</div>
+      <div><div class="k">Prizes</div>{awards.length} wins and mentions</div>
+      <div><div class="k">Circuit</div>{circuit.length} festival appearances</div>
+      <div><div class="k">Made with</div>Ceramics, 3-D animation, generative models</div>
+    </div>
+
+    <div class="narrow" style="margin-top:52px">
+      <p class="lede">
+        The films began as clay. Every character on screen was a piece I built by hand, scanned
+        and handed to a model.
+      </p>
+    </div>
+
+    <div class="narrow" style="margin-top:26px">
+      <p>
+        Festivals were the fastest way to find out whether the work read to people who had never
+        heard of Little Martians. It’s been fascinating to be part of the AI cinema emerging scene.
+      </p>
+      <p>
+        The photograph at the top is a drive-in in the desert at Bombay Beach: a screen, a fire,
+        a golf cart and the whole town parked around it. That’s when I started the
+        <a class="ul" href="https://mars.college/mff" target="_blank" rel="noopener">Mars College AI Film Festival</a>
+        in 2023, and that’s when my filmmaker career started. Gene Kogan wrote about
+        <a
+          class="ul"
+          href="https://marscollege.substack.com/p/the-mars-college-ai-film-festival"
+          target="_blank"
+          rel="noopener"
+        >that first edition</a>.
+        The screenings at the foot of this page run from that to a proper auditorium in China and
+        a bomb shelter in Ukraine.
+      </p>
+    </div>
+
+    <!-- WATCH THEM ---------------------------------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">Watch</div>
+      <h2 class="sec" style="margin:10px 0 6px">All the films</h2>
+      <p style="font-size:14px; color:var(--ink-2); max-width:40em">
+        Newest first.
+      </p>
+
+      <div class="filmlist">
+        {films.map((f) => (
+          <article class="film">
+            <div class="film-play" data-yt={f.id} role="button" tabindex="0" aria-label={`Play ${f.title}`}>
+              <img src={`/images/films/${f.id}.webp`} alt="" loading="lazy" data-nozoom />
+              <span class="film-btn" aria-hidden="true">▶</span>
+            </div>
+            <div class="film-txt">
+              <h3>{f.title}</h3>
+              <div class="film-meta">
+                {f.year}
+                {f.lang ? `, ${f.lang}` : ''}
+                {f.note ? `. ${f.note}` : ''}
+              </div>
+              <p>{f.blurb}</p>
+              <a
+                class="sc-link"
+                href={`https://www.youtube.com/watch?v=${f.id}`}
+                target="_blank"
+                rel="noopener"
+              >
+                Watch on YouTube →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- THE MAP -------------------------------------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">The map</div>
+      <h2 class="sec" style="margin:10px 0 6px">Everywhere they have been</h2>
+      <WorldMap />
+    </section>
+
+    <!-- THE RECORD ---------------------------------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">The record</div>
+      <h2 class="sec" style="margin:10px 0 6px">Every festival, film by film</h2>
+      <p style="font-size:14px; color:var(--ink-2); max-width:40em">
+        Opens on a selection of the festivals that mattered. Awards lists the prizes,
+        Everything the whole circuit, or pick a year.
+        Each line links to the festival, and to the film’s own page there where one exists.
+      </p>
+
+      <div class="filters" role="group" aria-label="Filter the festivals">
+        {filters.map((f) => (
+          <button type="button" data-ffilter={f.key} aria-pressed={f.key === 'selected' ? 'true' : 'false'}>
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      <div id="festlist">
+        {circuit.map((c) => (
+          <div
+            class="cvline"
+            data-year={c.year}
+            data-win={isWin(c) ? 'yes' : 'no'}
+            data-featured={c.featured ? 'yes' : 'no'}
+          >
+            <b>{c.year}</b>
+            <div>
+              {c.href ? (
+                <a class="pr-t" href={c.href} target="_blank" rel="noopener">{c.title}</a>
+              ) : (
+                c.title
+              )}
+              <div class="t">{c.venue}{c.city ? `, ${c.city}` : ''}</div>
+            </div>
+            <div class="ty">{isWin(c) ? 'award' : ''}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {screenings.length > 0 && (
+      <section class="wsec">
+        <div class="kicker">Screenings</div>
+        <h2 class="sec" style="margin:10px 0 6px">Where they were shown</h2>
+        <p style="font-size:14px; color:var(--ink-2); max-width:40em">
+          Seoul, China, a bomb shelter in Ukraine, New York, Sofia, the desert. Click any
+          picture to see it large.
+        </p>
+        <div class="slides" data-slides>
+          <div class="sl-stage">
+            <button class="sl-nav sl-prev" type="button" aria-label="Previous">‹</button>
+            <div class="sl-track">
+              {screenings.map((im, i) => (
+                <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
+                  <img src={im.src} alt={im.caption} loading={i < 2 ? 'eager' : 'lazy'} />
+                  {im.caption && <figcaption>{im.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+            <button class="sl-nav sl-next" type="button" aria-label="Next">›</button>
+          </div>
+          <div class="sl-bar">
+            <span class="sl-count">1 / {screenings.length}</span>
+            <button class="sl-all" type="button" aria-pressed="false">Show all {screenings.length}</button>
+          </div>
+          <div class="wgrid sl-grid" hidden>
+            {screenings.map((im) => (
+              <figure>
+                <img src={im.src} alt={im.caption} loading="lazy" />
+                {im.caption && <figcaption>{im.caption}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <p style="margin:60px 0 90px">
+      <a class="more" href="/art">All the art ⇢</a>
+      <span style="display:inline-block; width:22px"></span>
+      <a class="more" href="https://littlemartians.world" target="_blank" rel="noopener">
+        The Little Martians world ⇢
+      </a>
+    </p>
+  </div>
+
+  <script is:inline>
+    // One picture at a time, with a button that opens the whole set.
+    document.querySelectorAll('[data-slides]').forEach(function (box) {
+      var items = box.querySelectorAll('.sl-item');
+      var count = box.querySelector('.sl-count');
+      var grid = box.querySelector('.sl-grid');
+      var all = box.querySelector('.sl-all');
+      var stage = box.querySelector('.sl-stage');
+      var at = 0;
+      function show(i) {
+        at = (i + items.length) % items.length;
+        items.forEach(function (el, k) {
+          el.hidden = k !== at;
+          if (k === at) el.querySelector('img').loading = 'eager';
+        });
+        count.textContent = at + 1 + ' / ' + items.length;
+      }
+      box.querySelector('.sl-prev').addEventListener('click', function () { show(at - 1); });
+      box.querySelector('.sl-next').addEventListener('click', function () { show(at + 1); });
+      all.addEventListener('click', function () {
+        var open = grid.hidden;
+        grid.hidden = !open;
+        stage.hidden = open;
+        count.hidden = open;
+        all.setAttribute('aria-pressed', String(open));
+        all.textContent = open ? 'One at a time' : 'Show all ' + items.length;
+      });
+    });
+
+    // The player arrives only when someone asks for it.
+    (function () {
+      function play(box) {
+        var id = box.getAttribute('data-yt');
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+        f.title = 'Film';
+        f.allow = 'autoplay; fullscreen; picture-in-picture';
+        f.setAttribute('allowfullscreen', '');
+        box.replaceChildren(f);
+        box.classList.add('is-live');
+        box.removeAttribute('role');
+        box.removeAttribute('tabindex');
+      }
+      document.querySelectorAll('.film-play').forEach(function (box) {
+        box.addEventListener('click', function () { play(box); });
+        box.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(box); }
+        });
+      });
+    })();
+
+    // Same filter behaviour as the curriculum on Info.
+    (function () {
+      var buttons = document.querySelectorAll('[data-ffilter]');
+      var rows = document.querySelectorAll('#festlist .cvline');
+      function apply(key) {
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-ffilter') === key));
+        });
+        rows.forEach(function (row) {
+          var show =
+            key === 'all' ||
+            (key === 'selected'
+              ? row.dataset.featured === 'yes'
+              : key === 'awards'
+                ? row.dataset.win === 'yes'
+                : row.dataset.year === key);
+          row.style.display = show ? '' : 'none';
+        });
+      }
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () { apply(b.getAttribute('data-ffilter')); });
+      });
+      apply('selected');
+    })();
+  </script>
+</Base>

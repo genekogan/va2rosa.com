@@ -1,0 +1,233 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site.js';
+import { byYear, cvTypes, typeLabel } from '../data/cv.js';
+import { pressByYear, pressKinds } from '../data/press.js';
+---
+
+<Base title="Info" current="Info" bodyClass="">
+  <!-- The portrait, cut out, on the speculative-biology ground.
+       "About Vanessa Rosa" sits over the top of it. -->
+  <div class="about">
+   <div class="about-inner">
+    <div class="about-art">
+      <img
+        class="about-title"
+        src="/images/about-lettering.webp"
+        alt="About Vanessa Rosa"
+        width="760"
+        height="513"
+      />
+      <img
+        class="about-portrait"
+        src="/images/portrait-cutout.webp"
+        alt="Vanessa Rosa in profile, holding a small painted globe."
+        width="1000"
+        height="1279"
+      />
+    </div>
+
+    <div class="about-text">
+      {site.bioLong.map((p) => <p>{p}</p>)}
+      <p style="margin-top:20px">
+        <a class="more" href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+   </div>
+  </div>
+
+  <div class="paper">
+    <!-- The talk, before the record: easier to watch than to read. -->
+    <section class="wrap" style="padding-top:70px">
+      <div class="kicker">Watch first</div>
+      <h2 class="sec" style="margin:12px 0 6px">Little Martians: building an AI powered sci-fi world</h2>
+      <p style="font-size:14px; color:var(--ink-2); max-width:40em">
+        A walk through the work, from the clay to the films.
+      </p>
+
+      <div class="infovid">
+        <div class="film-play" data-yt="TG16nfIx66o" role="button" tabindex="0"
+             aria-label="Play: Little Martians, building an AI powered sci-fi world">
+          <img src="/images/films/TG16nfIx66o.webp" alt="" data-nozoom />
+          <span class="film-btn" aria-hidden="true">▶</span>
+        </div>
+        <p style="margin-top:14px">
+          <a class="more" href="https://www.youtube.com/watch?v=TG16nfIx66o" target="_blank" rel="noopener">
+            Watch on YouTube ⇢
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap" style="padding-top:70px; padding-bottom:90px">
+      <div class="kicker">The record</div>
+      <h2 class="sec" style="margin:12px 0 6px">Curriculum</h2>
+      <p style="font-size:14px; color:var(--ink-2); max-width:40em">
+        Opens on a selection. Switch to Everything for the full record: exhibitions, solo shows,
+        films, awards, talks and teaching, residencies, public art, publishing, press, education
+        and affiliations, newest first.
+      </p>
+
+      <div class="filters" role="group" aria-label="Filter the record">
+        {cvTypes.map((t, i) => (
+          <button type="button" data-filter={t.key} aria-pressed={t.key === 'selected' ? 'true' : 'false'}>
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      <div id="cvlist">
+        {byYear.map((r) => (
+          <div class="cvline" data-type={r.type} data-featured={r.featured ? "yes" : "no"}>
+            <b>{r.year}</b>
+            <div>
+              {r.href ? (
+                <a class="pr-t" href={r.href} target="_blank" rel="noopener">{r.title}</a>
+              ) : (
+                r.title
+              )}
+              {(r.venue || r.city) && (
+                <div class="t">
+                  {[r.venue, r.city].filter(Boolean).join(', ')}
+                  {r.href2 && (
+                    <>
+                      {' · '}
+                      <a class="pr-t" href={r.href2} target="_blank" rel="noopener">
+                        {r.href2Label ?? 'More'}
+                      </a>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+            <div class="ty">{typeLabel[r.type]}</div>
+          </div>
+        ))}
+      </div>
+
+
+
+      <!-- PRESS ------------------------------------------------------------
+           Same machinery as the curriculum above, its own set of tabs. -->
+      <div class="rule" style="margin:56px 0 34px" id="press"></div>
+      <div class="kicker">The coverage</div>
+      <h2 class="sec" style="margin:12px 0 6px">Press &amp; media</h2>
+      <p style="font-size:14px; color:var(--ink-2); max-width:40em">
+        Opens on a selection. The tabs sort the rest by where it ran: Brazilian media,
+        television, online, the reporting on Mars College, written interviews, podcasts
+        and documentary series. Every line links out.
+      </p>
+
+      <div class="filters" role="group" aria-label="Filter the press">
+        {pressKinds.map((k) => (
+          <button
+            type="button"
+            data-pfilter={k.key}
+            aria-pressed={k.key === 'selected' ? 'true' : 'false'}
+          >
+            {k.label}
+          </button>
+        ))}
+      </div>
+
+      <div id="presslist">
+        {pressByYear.map((p) => (
+          <div
+            class="cvline"
+            data-kinds={p.kinds.join(' ')}
+            data-featured={p.featured ? 'yes' : 'no'}
+          >
+            <b>{p.year}</b>
+            <div>
+              <a class="pr-t" href={p.href} target="_blank" rel="noopener">{p.title}</a>
+              <div class="t">
+                {[
+                  p.outlet,
+                  p.note,
+                  p.by === 'her' ? 'Written by Vanessa Rosa.' : null,
+                ]
+                  .filter(Boolean)
+                  .map((x) => x.replace(/\.$/, ''))
+                  .join('. ') + '.'}
+              </div>
+            </div>
+            <div class="ty">
+              {[p.lang ? `in ${p.lang}` : null, p.clipping ? 'clipping' : null]
+                .filter(Boolean)
+                .join(', ')}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="rule" style="margin:50px 0 30px"></div>
+      <div class="kicker">Downloads</div>
+      {site.cvPdf && (
+        <p style="margin-top:14px">
+          <a class="more" href={site.cvPdf} download>{site.cvLabel} ⇢</a>
+        </p>
+      )}
+      <p style="margin-top:14px; font-size:14.5px; color:var(--ink-2)">
+        A 100-word bio, the full bio and a press photo pack go here too. The things
+        curators and journalists look for first.
+      </p>
+    </section>
+  </div>
+
+  <script is:inline>
+    (function () {
+      // One filter for two lists: the curriculum matches on a single type,
+      // the press on any of several kinds.
+      function wire(attr, listId, matches) {
+        var buttons = document.querySelectorAll('[' + attr + ']');
+        var rows = document.querySelectorAll('#' + listId + ' .cvline');
+        function apply(key) {
+          buttons.forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b.getAttribute(attr) === key));
+          });
+          rows.forEach(function (row) {
+            var show =
+              key === 'all' ||
+              (key === 'selected' ? row.dataset.featured === 'yes' : matches(row, key));
+            row.style.display = show ? '' : 'none';
+          });
+        }
+        buttons.forEach(function (b) {
+          b.addEventListener('click', function () {
+            apply(b.getAttribute(attr));
+          });
+        });
+        // Everything is in the HTML; the selection is what you land on.
+        apply('selected');
+      }
+
+      wire('data-filter', 'cvlist', function (row, key) {
+        return row.dataset.type === key;
+      });
+      wire('data-pfilter', 'presslist', function (row, key) {
+        return (' ' + row.dataset.kinds + ' ').indexOf(' ' + key + ' ') > -1;
+      });
+    })();
+
+    // The player arrives only when someone asks for it.
+    (function () {
+      function play(box) {
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') + '?autoplay=1&rel=0';
+        f.title = 'Little Martians: building an AI powered sci-fi world';
+        f.allow = 'autoplay; fullscreen; picture-in-picture';
+        f.setAttribute('allowfullscreen', '');
+        box.replaceChildren(f);
+        box.classList.add('is-live');
+        box.removeAttribute('role');
+        box.removeAttribute('tabindex');
+      }
+      document.querySelectorAll('.infovid .film-play').forEach(function (box) {
+        box.addEventListener('click', function () { play(box); });
+        box.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(box); }
+        });
+      });
+    })();
+  </script>
+</Base>

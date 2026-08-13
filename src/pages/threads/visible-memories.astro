@@ -1,0 +1,102 @@
+---
+import Base from '../../layouts/Base.astro';
+import Spine from '../../components/Spine.astro';
+import { visibleMemories as vm } from '../../data/visible-memories.js';
+---
+
+<Base title={vm.title} description={vm.lede} bodyClass="paper">
+  <div class="projhero">
+    <img src={vm.hero} alt={vm.heroAlt} fetchpriority="high" />
+    <div class="t">
+      <div class="kicker" style="color:#fff; opacity:.9">Thread 01 · {vm.years}</div>
+      <h1>{vm.title}</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="meta">
+      <div><div class="k">Status</div>{vm.status}</div>
+      <div><div class="k">Media</div>{vm.media}</div>
+      <div><div class="k">Places</div>{vm.places}</div>
+      <div><div class="k">Studio</div>Shared with Maurício Hora</div>
+    </div>
+
+    <div class="narrow" style="margin-top:52px">
+      <p class="lede">{vm.lede}</p>
+    </div>
+
+    <div class="narrow" style="margin-top:26px">
+      {vm.intro.map((p) => <p>{p}</p>)}
+    </div>
+
+    <p class="thesis">{vm.thesis}</p>
+
+    <!-- THE CHRONOLOGY -------------------------------------------------- -->
+    <div class="kicker" style="margin-top:20px">Six years, phase by phase</div>
+
+    <div class="phases">
+      {vm.phases.map((ph) => (
+        <section class="phase">
+          <div class="ph-year">{ph.year}</div>
+
+          <div class="ph-body">
+            <h2>{ph.title}</h2>
+            {ph.body.map((p) => <p>{p}</p>)}
+
+            {ph.participants && (
+              <>
+                <div class="kicker" style="margin-top:26px">Who made it</div>
+                <ul class="ph-people">
+                  {ph.participants.map(([who, role]) => (
+                    <li><b>{who}</b><span>{role}</span></li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {ph.imagesNote && <p class="ph-note">{ph.imagesNote}</p>}
+
+            {ph.videos?.map((v) => (
+              <>
+                <div class="vid" style="margin-top:26px">
+                  <iframe
+                    src={
+                      v.youtube
+                        ? `https://www.youtube-nocookie.com/embed/${v.youtube}?rel=0`
+                        : `https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fajplusenglish%2Fvideos%2F${v.facebook}%2F&show_text=0&width=560`
+                    }
+                    title={v.caption ?? ph.title}
+                    loading="lazy"
+                    allow="fullscreen; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                {v.caption && <p class="vidcap">{v.caption}</p>}
+              </>
+            ))}
+          </div>
+
+          {ph.images.length > 0 && (
+            <div class="ph-images">
+              {ph.images.map((im) => (
+                <figure class={im.wide ? 'wide' : undefined}>
+                  <img src={im.src} alt={im.caption || ''} loading="lazy" />
+                  {im.caption && <figcaption>{im.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          )}
+        </section>
+      ))}
+    </div>
+
+    <p class="closing">{vm.closing}</p>
+
+    <div class="kicker" style="margin:70px 0 20px">Reading</div>
+    <div class="readlist">
+      {vm.reading.map((r) => <p set:html={r} />)}
+    </div>
+
+    <Spine current="visible-memories" />
+  </div>
+</Base>

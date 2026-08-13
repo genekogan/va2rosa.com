@@ -1,0 +1,160 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { samePutumi as sp, sameProject } from '../../../data/same-putumi.js';
+
+export function getStaticPaths() {
+  return sp.projects.map((p) => ({ params: { sub: p.slug } }));
+}
+
+const { sub } = Astro.params;
+const p = sameProject(sub);
+const idx = sp.projects.findIndex((x) => x.slug === sub);
+const prev = sp.projects[idx - 1];
+const next = sp.projects[idx + 1];
+---
+
+<Base
+  title={`${p.title} · Same Putumi`}
+  description={p.lede}
+  palette="envira"
+  bodyClass="paper"
+>
+  <div class="projhero">
+    <img src={p.hero} alt={p.heroAlt} fetchpriority="high" />
+    <div class="t">
+      <div class="kicker" style="color:#fff; opacity:.9">
+        <a href="/threads/same-putumi" style="border-bottom:1px solid rgba(255,255,255,.5)">Same Putumi</a>
+        &nbsp;·&nbsp; {p.years}
+      </div>
+      <h1>{p.title}</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="meta">
+      <div><div class="k">When</div>{p.years}</div>
+      <div><div class="k">Where</div>{p.place}</div>
+      <div>
+        <div class="k">Authorship</div>
+        {p.notWithSame ? 'Vanessa Rosa and Wenqi Li' : 'Co-authored with Same Putumi'}
+      </div>
+      <div>
+        <div class="k">Part of</div>
+        <a href="/threads/same-putumi" style="border-bottom:1px solid rgba(13,33,54,.3)">The collaboration</a>
+      </div>
+    </div>
+
+    {!p.notWithSame && <p class="coauthor-line">{sp.coauthor}</p>}
+
+    <div class="narrow" style="margin-top:52px">
+      <p class="lede">{p.lede}</p>
+    </div>
+
+    <div class="narrow" style="margin-top:30px">
+      {p.body.map((par) => <p>{par}</p>)}
+    </div>
+
+    {p.video && (
+      <section class="sp-section">
+        <div class="vid">
+          {p.video.vimeo ? (
+            <iframe
+              src={`https://player.vimeo.com/video/${p.video.vimeo}?dnt=1`}
+              title={p.title}
+              loading="lazy"
+              allow="fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          ) : (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${p.video.youtube}?rel=0`}
+              title={p.title}
+              loading="lazy"
+              allow="fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          )}
+        </div>
+        {p.video.caption && <p class="vidcap">{p.video.caption}</p>}
+      </section>
+    )}
+
+    {p.sections.map((s) => (
+      <section class="sp-section">
+        {s.title && <h2>{s.title}</h2>}
+        {s.body && <p class="narrow">{s.body}</p>}
+        {s.images?.length > 1 && (
+          <div class="slides" data-slides>
+            <div class="sl-stage">
+              <button class="sl-prev sl-nav" type="button" aria-label="Previous">‹</button>
+              <div class="sl-track">
+                {s.images.map((src, i) => (
+                  <figure class="sl-item" hidden={i !== 0 ? true : undefined}>
+                    <img src={src} alt="" loading={i < 2 ? 'eager' : 'lazy'} />
+                  </figure>
+                ))}
+              </div>
+              <button class="sl-next sl-nav" type="button" aria-label="Next">›</button>
+            </div>
+            <div class="sl-bar">
+              <span class="sl-count">1 / {s.images.length}</span>
+              <button class="sl-all" type="button" aria-pressed="false">Show all {s.images.length}</button>
+            </div>
+            <div class="gallery sl-grid" hidden>
+              {s.images.map((src) => <figure><img src={src} alt="" loading="lazy" /></figure>)}
+            </div>
+          </div>
+        )}
+        {s.images?.length === 1 && (
+          <div class="gallery">
+            <figure><img src={s.images[0]} alt="" loading="lazy" /></figure>
+          </div>
+        )}
+      </section>
+    ))}
+
+    {p.credits && (
+      <>
+        <div class="kicker" style="margin:70px 0 20px">Credits</div>
+        <p style="font-size:14.5px; color:var(--ink-2); max-width:44em">{p.credits}</p>
+      </>
+    )}
+
+    <div class="rule" style="margin:70px 0 30px"></div>
+    <nav class="sp-nav">
+      <span>{prev && <a href={`/threads/same-putumi/${prev.slug}`}>← {prev.title}</a>}</span>
+      <a href="/threads/same-putumi">All six projects</a>
+      <span>{next && <a href={`/threads/same-putumi/${next.slug}`}>{next.title} →</a>}</span>
+    </nav>
+  </div>
+</Base>
+
+<script is:inline>
+  // One picture at a time, with a button that opens the whole set.
+  document.querySelectorAll('[data-slides]').forEach(function (box) {
+    var items = box.querySelectorAll('.sl-item');
+    var count = box.querySelector('.sl-count');
+    var grid = box.querySelector('.sl-grid');
+    var all = box.querySelector('.sl-all');
+    var stage = box.querySelector('.sl-stage');
+    var at = 0;
+    function show(i) {
+      at = (i + items.length) % items.length;
+      items.forEach(function (el, k) {
+        el.hidden = k !== at;
+        if (k === at) el.querySelector('img').loading = 'eager';
+      });
+      count.textContent = at + 1 + ' / ' + items.length;
+    }
+    box.querySelector('.sl-prev').addEventListener('click', function () { show(at - 1); });
+    box.querySelector('.sl-next').addEventListener('click', function () { show(at + 1); });
+    all.addEventListener('click', function () {
+      var open = grid.hidden;
+      grid.hidden = !open;
+      stage.hidden = open;
+      count.hidden = open;
+      all.setAttribute('aria-pressed', String(open));
+      all.textContent = open ? 'One at a time' : 'Show all ' + items.length;
+    });
+  });
+</script>

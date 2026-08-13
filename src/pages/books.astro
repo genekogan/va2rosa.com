@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import { books } from '../data/books.js';
+import BookReader from '../components/BookReader.astro';
+---
+
+<Base title={books.title} current="Art" description={books.lede} bodyClass="paper">
+  <div class="projhero">
+    <img src={books.hero} alt={books.heroAlt} fetchpriority="high" />
+    <div class="t">
+      <div class="kicker" style="color:#fff; opacity:.9">{books.kicker}</div>
+      <h1>{books.title}</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="meta">
+      {books.meta.map(([k, v]) => (
+        <div><div class="k">{k}</div>{v}</div>
+      ))}
+    </div>
+
+    <div class="narrow" style="margin-top:52px">
+      <p class="lede">{books.lede}</p>
+    </div>
+
+    <div class="narrow" style="margin-top:26px">
+      {books.story.map((p) => <p>{p}</p>)}
+    </div>
+
+    <section class="wsec">
+      <div class="kicker">The books</div>
+      <div class="bookset">
+        {books.titles.map((b) => (
+          <article class="bookrow">
+            {b.image ? (
+              <img src={b.image} alt={b.imageAlt ?? ''} loading="lazy" />
+            ) : (
+              <div class="bookrow-gap" aria-hidden="true"></div>
+            )}
+            <div>
+              <h3>{b.title}</h3>
+              {b.year && <div class="bookrow-yr">{b.year}</div>}
+              <p>{b.body}</p>
+              {b.read && <p class="bookrow-skim">Skim it below ↓</p>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {books.titles.filter((b) => b.read).map((b) => (
+      <section class="wsec">
+        <div class="kicker">Leaf through it</div>
+        <h2 class="sec" style="margin:10px 0 4px">{b.title}</h2>
+        <p style="font-size:14px; color:var(--ink-2); max-width:40em">
+          {b.read.note ?? 'Arrow keys, or swipe. Every page, as printed.'}
+        </p>
+        <BookReader book={{ ...b.read, title: b.title }} />
+      </section>
+    ))}
+
+    <p class="closing">{books.closing}</p>
+
+    <p style="margin:44px 0 90px">
+      {books.links.map((l) => (
+        <a
+          class="more"
+          style="margin-right:22px"
+          href={l.href}
+          target={l.external ? '_blank' : undefined}
+          rel={l.external ? 'noopener' : undefined}
+        >
+          {l.label} ⇢
+        </a>
+      ))}
+      <a class="more" href="/art">All the art ⇢</a>
+    </p>
+  </div>
+</Base>

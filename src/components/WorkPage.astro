@@ -1,0 +1,343 @@
+---
+// One layout for the project pages that hang off /shows: a plate at the top,
+// the argument, then sections of pictures. Everything comes from one data
+// object so adding a page is adding a data file.
+import Base from '../layouts/Base.astro';
+
+const { work } = Astro.props;
+---
+
+<Base title={work.title} description={work.lede} bodyClass="paper" current="Art">
+  <div class="projhero">
+    <img src={work.hero} alt={work.heroAlt} fetchpriority="high" />
+    <div class="t">
+      <div class="kicker" style="color:#fff; opacity:.9">{work.kicker}</div>
+      <h1>{work.title}</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    {work.meta && (
+      <div class="meta">
+        {work.meta.map(([k, v]) => (
+          <div><div class="k">{k}</div>{v}</div>
+        ))}
+      </div>
+    )}
+
+    <div class="narrow" style="margin-top:52px">
+      <p class="lede">{work.lede}</p>
+    </div>
+
+    <div class="narrow" style="margin-top:26px">
+      {work.intro.map((p) => <p>{p}</p>)}
+    </div>
+
+    {work.quote && (
+      <section class="wsec">
+        <blockquote class="wpoem">
+          {work.quote.lines.map((l) => <span>{l}</span>)}
+          <cite>{work.quote.by}</cite>
+        </blockquote>
+      </section>
+    )}
+
+    {work.statement && (
+      <div class="narrow wstatement">
+        {work.statement.map((p) => <p>{p}</p>)}
+        {work.statementBy && <p class="wstatement-by">{work.statementBy}</p>}
+      </div>
+    )}
+
+    {work.read && (
+      <aside class="readbox">
+        <div class="kicker">{work.read.kicker}</div>
+        <a class="readbox-t" href={work.read.href} target="_blank" rel="noopener">{work.read.title}</a>
+        <div class="readbox-m">{work.read.meta}</div>
+        {work.read.pull && <p class="readbox-q">{work.read.pull}</p>}
+        {work.read.body && work.read.body.map((p) => <p>{p}</p>)}
+        <a class="more" href={work.read.href} target="_blank" rel="noopener">
+          {work.read.linkText ?? 'Read it'} ⇢
+        </a>
+      </aside>
+    )}
+
+    {/* one video, from Vimeo, from YouTube, or a file served by this site */}
+    {(work.videos ?? (work.video ? [work.video] : [])).map((v) => (
+      <section class="wsec">
+        {v.title && <div class="kicker">{v.title}</div>}
+        <div class="vid">
+          {v.vimeo && (
+            <iframe
+              src={`https://player.vimeo.com/video/${v.vimeo}?dnt=1`}
+              title={v.alt ?? work.title}
+              loading="lazy"
+              allow="fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          )}
+          {v.youtube && (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${v.youtube}?rel=0`}
+              title={v.alt ?? work.title}
+              loading="lazy"
+              allow="fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          )}
+          {v.file && (
+            /* nothing downloads until it is asked for: the poster stands in */
+            <video
+              controls
+              playsinline
+              loop
+              preload="none"
+              poster={v.poster}
+              aria-label={v.alt ?? work.title}
+            >
+              <source src={v.file} type="video/mp4" />
+            </video>
+          )}
+        </div>
+        {v.caption && <p class="vidcap">{v.caption}</p>}
+      </section>
+    ))}
+
+    {work.terms && (
+      <section class="wsec">
+        <div class="kicker">{work.terms.title ?? 'The words'}</div>
+        <dl class="terms">
+          {work.terms.items.map(([term, body]) => (
+            <div>
+              <dt>{term}</dt>
+              <dd>{body}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    )}
+
+    {work.sections.map((sec) => (
+      <section class="wsec">
+        {sec.title && <div class="kicker">{sec.title}</div>}
+        {sec.body && (
+          <div class="narrow" style="margin-top:14px">
+            {sec.body.map((p) => <p>{p}</p>)}
+          </div>
+        )}
+        {sec.video && (
+          <>
+            <div class="vid" style="margin-bottom:6px">
+              {sec.video.file && (
+                <video
+                  controls playsinline loop preload="none"
+                  poster={sec.video.poster}
+                  aria-label={sec.video.alt ?? sec.title}
+                >
+                  <source src={sec.video.file} type="video/mp4" />
+                </video>
+              )}
+              {sec.video.youtube && (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${sec.video.youtube}?rel=0`}
+                  title={sec.video.alt ?? sec.title}
+                  loading="lazy"
+                  allow="fullscreen; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              )}
+            </div>
+            {sec.video.caption && <p class="vidcap">{sec.video.caption}</p>}
+          </>
+        )}
+
+        {/* the photograph a work was made from, set above the work itself */}
+        {sec.pairs && (
+          <div class="pairs">
+            {sec.pairs.map((p) => (
+              <div class="pair">
+                <figure>
+                  <img src={p.from} alt={p.fromCaption} loading="lazy" />
+                  <figcaption>{p.fromCaption}</figcaption>
+                </figure>
+                <figure>
+                  <img src={p.to} alt={p.toCaption} loading="lazy" />
+                  <figcaption>{p.toCaption}</figcaption>
+                </figure>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* `reference` pins one picture beside the slider, so the thing every
+            variation came from stays on screen while you page through them */}
+        <div class={sec.reference ? 'compare' : undefined}>
+        {sec.reference && (
+          <figure class="compare-ref">
+            <img src={sec.reference.src} alt={sec.reference.caption} loading="lazy" />
+            <figcaption>{sec.reference.caption}</figcaption>
+          </figure>
+        )}
+
+        {sec.images && sec.images.length > 0 && sec.gallery === 'slides' && (
+          <div class="slides" data-slides>
+            <div class="sl-stage">
+              <button class="sl-nav sl-prev" type="button" aria-label="Previous">‹</button>
+              <div class="sl-track">
+                {sec.images.map((im, i) => (
+                  <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
+                    <img src={im.src} alt={im.caption || ''} loading={i < 2 ? 'eager' : 'lazy'} />
+                    {im.caption && <figcaption>{im.caption}</figcaption>}
+                  </figure>
+                ))}
+              </div>
+              <button class="sl-nav sl-next" type="button" aria-label="Next">›</button>
+            </div>
+            <div class="sl-bar">
+              <span class="sl-count">1 / {sec.images.length}</span>
+              <button class="sl-all" type="button" aria-pressed="false">Show all {sec.images.length}</button>
+            </div>
+            <div class="wgrid sl-grid" hidden>
+              {sec.images.map((im) => (
+                <figure>
+                  <img src={im.src} alt={im.caption || ''} loading="lazy" />
+                  {im.caption && <figcaption>{im.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {sec.images && sec.images.length > 0 && sec.gallery !== 'slides' && (
+          <div class={sec.grid === 'tall' ? 'wgrid tall' : 'wgrid'}>
+            {sec.images.map((im) => (
+              <figure class={im.wide ? 'wide' : undefined}>
+                <img src={im.src} alt={im.caption || ''} loading="lazy" />
+                {im.caption && <figcaption>{im.caption}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        )}
+        </div>
+      </section>
+    ))}
+
+    {work.festivals && (
+      <section class="wsec">
+        <div class="kicker">{work.festivals.title}</div>
+        {work.festivals.note && (
+          <p style="font-size:14px; color:var(--ink-2); max-width:40em; margin-top:10px">
+            {work.festivals.note}
+          </p>
+        )}
+        <ul class="wlist">
+          {work.festivals.rows.map((f) => (
+            <li>
+              <span class="wl-y">{f.year}</span>
+              <div>
+                {f.href
+                  ? <a href={f.href} target="_blank" rel="noopener">{f.title}</a>
+                  : <span>{f.title}</span>}
+                <span class="wl-n">{[f.outcome, f.city].filter(Boolean).join('. ')}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {work.press && (
+      <section class="wsec">
+        <div class="kicker">{work.press.title}</div>
+        {work.press.groups.map((g) => (
+          <>
+            <h3 class="wl-group">{g.title}</h3>
+            <ul class="wlist">
+              {g.items.map((it) => (
+                <li>
+                  <span class="wl-y">{it.outlet}</span>
+                  <div>
+                    <a href={it.href} target="_blank" rel="noopener">{it.title}</a>
+                    {it.date && <span class="wl-n">{it.date}</span>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </>
+        ))}
+        {work.press.more && (
+          <p style="margin-top:20px">
+            <a class="more" href={work.press.more.href}>{work.press.more.label} ⇢</a>
+          </p>
+        )}
+      </section>
+    )}
+
+    {work.closing && <p class="closing">{work.closing}</p>}
+
+    {work.also && (
+      <div class="alsobox">
+        {work.also.image && (
+          <a href={work.also.links[0].href} class="also-plate" data-nozoom>
+            <img src={work.also.image} alt={work.also.imageAlt} loading="lazy" />
+          </a>
+        )}
+        <div class="kicker">{work.also.kicker}</div>
+        <h2 class="sec" style="margin:10px 0 10px">{work.also.title}</h2>
+        {work.also.body.map((p) => <p>{p}</p>)}
+        <p style="margin-top:18px">
+          {work.also.links.map((l) => (
+            <a
+              class="more"
+              style="margin-right:22px"
+              href={l.href}
+              target={l.external ? '_blank' : undefined}
+              rel={l.external ? 'noopener' : undefined}
+            >
+              {l.label} ⇢
+            </a>
+          ))}
+        </p>
+      </div>
+    )}
+
+    <p style="margin:60px 0 90px">
+      <a class="more" href="/art">All the art ⇢</a>
+    </p>
+  </div>
+</Base>
+
+<script is:inline>
+  // One picture at a time, with a button that opens the whole set.
+  document.querySelectorAll('[data-slides]').forEach(function (box) {
+    var items = box.querySelectorAll('.sl-item');
+    var count = box.querySelector('.sl-count');
+    var grid = box.querySelector('.sl-grid');
+    var all = box.querySelector('.sl-all');
+    var stage = box.querySelector('.sl-stage');
+    var bar = box.querySelector('.sl-bar');
+    var at = 0;
+
+    function show(i) {
+      at = (i + items.length) % items.length;
+      items.forEach(function (el, k) {
+        el.hidden = k !== at;
+        if (k === at) el.querySelector('img').loading = 'eager';
+      });
+      count.textContent = at + 1 + ' / ' + items.length;
+    }
+    box.querySelector('.sl-prev').addEventListener('click', function () { show(at - 1); });
+    box.querySelector('.sl-next').addEventListener('click', function () { show(at + 1); });
+
+    all.addEventListener('click', function () {
+      var open = grid.hidden;
+      grid.hidden = !open;
+      stage.hidden = open;
+      count.hidden = open;
+      all.setAttribute('aria-pressed', String(open));
+      all.textContent = open ? 'One at a time' : 'Show all ' + items.length;
+    });
+
+    if (items.length < 2) bar.hidden = true;
+  });
+</script>

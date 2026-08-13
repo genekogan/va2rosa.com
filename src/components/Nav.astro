@@ -1,0 +1,42 @@
+---
+import { site, nav } from '../data/site.js';
+const { current = '' } = Astro.props;
+---
+
+<nav class="nav" aria-label="Main">
+  <a class="name" href="/">{site.name}</a>
+
+  <ul>
+    {nav.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          aria-current={item.label.startsWith(current) && current ? 'page' : undefined}
+          {...(item.external ? { rel: 'noopener', target: '_blank' } : {})}
+        >
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script is:inline>
+  // On a hero page the bar is see-through until you leave the painting.
+  function ready(fn) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  }
+  ready(function () {
+    var nav = document.querySelector('.nav');
+    if (!nav || !document.body.classList.contains('hashero')) return;
+    var hero = document.querySelector('.hero');
+    function set() {
+      var past = window.scrollY > (hero ? hero.offsetHeight - 90 : 40);
+      nav.classList.toggle('solid', past);
+    }
+    set();
+    window.addEventListener('scroll', set, { passive: true });
+    window.addEventListener('resize', set);
+  });
+</script>

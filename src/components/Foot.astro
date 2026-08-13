@@ -1,0 +1,35 @@
+---
+import { site } from '../data/site.js';
+---
+
+<footer class="sitefoot">
+  <span>© {new Date().getFullYear()} {site.name}</span>
+
+  <a href={`mailto:${site.email}`}>{site.email}</a>
+
+  <span class="social">
+    <a href={site.instagram} rel="noopener" target="_blank" aria-label="Instagram" title="Instagram">
+      <!-- Instagram, outline -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+        <circle cx="12" cy="12" r="4.2" />
+        <circle cx="17.6" cy="6.4" r="1.05" fill="currentColor" stroke="none" />
+      </svg>
+    </a>
+
+    {site.substack && (
+      <a href={site.substack} rel="noopener" target="_blank" aria-label="Substack" title="Substack">
+        <!-- Substack, outline -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4.5h16" />
+          <path d="M4 9.2h16" />
+          <path d="M4 13.9v5.6l8-3.6 8 3.6v-5.6z" />
+        </svg>
+      </a>
+    )}
+  </span>
+
+  <a href={site.littleMartians} rel="noopener" target="_blank">Little Martians ⇢</a>
+</footer>

@@ -1,0 +1,60 @@
+# Every page the old cargo.site had, pointed at whatever replaced it, so links
+# already printed in a CV, a catalogue or a press article keep working.
+# Read by both Netlify and Cloudflare Pages. 301 = permanent.
+
+/About-Vanessa-Rosa                    /info                                       301
+/Artist-Statement                      /info                                       301
+/Press-and-Media                       /info                                       301
+/Research                              /research                                   301
+/Art-Shows                             /art                                        301
+/Shows                                 /art                                        301
+/Other-projects                        /art                                        301
+/MAD                                   /art                                        301
+
+/Little-Martians                       /threads/little-martians                    301
+/Mars-College                          /mars-college                               301
+/Pioneer-Works                         /pioneer-works                              301
+/Ethnocomputing-Experiments            /ethnocomputing-experiments                 301
+/Infinity-Game                         /infinity-game                              301
+/Imaginary-Tiles                       /imaginary-tiles                            301
+/Gerard                                /gerard-quenum                              301
+/Ver-a-cidade                          /ver-a-cidade                               301
+/Silk-Roads                            /threads/the-silk-roads                     301
+/Patterns-1                            /threads/ethnocomputing                     301
+/Diana-s-World                         /books                                      301
+/Drawings                              /sketchbooks                                301
+
+/Pedra-do-Sal-Visible-Memories         /threads/visible-memories                   301
+/O-Navio-da-Pedra-do-Sal               /threads/visible-memories                   301
+/Imaginary-Zone-from-the-Port-Zone     /mauricio-hora                              301
+
+/Same-Putumi                           /threads/same-putumi                        301
+/Same-first-immersion                  /threads/same-putumi/first-immersion        301
+/Same-Nhandepa-exhibit                 /threads/same-putumi/nhandepa               301
+/Same-Research-Education               /threads/same-putumi/research-and-education 301
+/Same-gravura                          /threads/same-putumi/prints                 301
+/Same-Video-Mapping                    /threads/same-putumi                        301
+
+/Street-Art1                           /street-art                                 301
+/Street-Painting                       /street-art                                 301
+/Imaginary-Tiles-street                /street-art                                 301
+/Chile-street-painting-Trip            /street-art                                 301
+/Eyes-on-walls                         /street-art                                 301
+/Caminhos-Paths                        /street-art                                 301
+
+# cargo kept duplicate "-copy" pages; send them to the same places
+/Gerard-copy                           /gerard-quenum                              301
+/Imaginary-Tiles-copy                  /imaginary-tiles                            301
+/Infinity-Game-copy                    /infinity-game                              301
+/Ethnocomputing-Experiments-copy       /ethnocomputing-experiments                 301
+/Pioneer-Works-copy                    /pioneer-works                              301
+/Ver-a-cidade-copy                     /ver-a-cidade                               301
+/Same-Putumi-copy                      /threads/same-putumi                        301
+/Same-first-immersion-copy             /threads/same-putumi/first-immersion        301
+/Same-Nhandepa-exhibit-copy            /threads/same-putumi/nhandepa               301
+/Same-Research-Education-copy          /threads/same-putumi/research-and-education 301
+/Same-gravura-copy                     /threads/same-putumi/prints                 301
+/Same-Video-Mapping-copy               /threads/same-putumi                        301
+/Shows-copy                            /art                                        301
+/Drawings-copy                         /sketchbooks                                301
+/Caminhos-Paths-copy                   /street-art                                 301

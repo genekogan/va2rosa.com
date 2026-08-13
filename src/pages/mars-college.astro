@@ -1,0 +1,158 @@
+---
+// Mars College, laid out the way mars.college lays itself out: a photograph
+// with the title over it, a dark strip of facts, then numbered sections —
+// hairline rule, one headline, a narrow column, photographs across the width.
+// The type is this site's own; only the colours change.
+import Base from '../layouts/Base.astro';
+import {
+  cover, opening, what, years, aspects, mine, contributions, note, facts, links,
+} from '../data/mars.js';
+---
+
+<Base
+  title="Mars College"
+  description="Mars College: an off-grid college in the Southern California desert, and what Vanessa Rosa does there — Little Martians, murals, rituals, the AI film festival, hosting."
+  current="Art"
+  palette="mars"
+  bodyClass="paper mars"
+>
+  <!-- THE PHOTOGRAPH ------------------------------------------------------- -->
+  <div class="projhero">
+    <img src={cover.image} alt={cover.imageAlt} fetchpriority="high" />
+    <div class="t">
+      <div class="kicker">{cover.kicker}</div>
+      <h1>{cover.title}</h1>
+      <p class="mars-hero-line">{cover.line}</p>
+    </div>
+  </div>
+
+  <!-- THE FACTS, on the dark strip ----------------------------------------- -->
+  <div class="mars-strip">
+    <div class="wrap">
+      <dl>
+        {facts.map(([k, v]) => (
+          <div><dt>{k}</dt><dd>{v}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </div>
+
+  <!-- 01 · WHY I AM THERE --------------------------------------------------- -->
+  <section class="wrap mars-sec">
+    <div class="mars-num"><span>01</span>Why I keep going back</div>
+    {/* no headline here: her opening line already says it */}
+    <div class="mars-body">
+      <p class="lede open">{opening.lede}</p>
+      {opening.body.map((p) => <p>{p}</p>)}
+    </div>
+  </section>
+
+  <!-- 02 · WHAT IT IS ------------------------------------------------------- -->
+  <section class="wrap mars-sec">
+    <div class="mars-num"><span>02</span>Seven years and counting</div>
+    <h2 class="sec mars-h">An off-grid college, built from scratch</h2>
+    <div class="mars-body">
+      {what.body.map((p) => <p>{p}</p>)}
+    </div>
+  </section>
+
+  <!-- the campus, year by year ---------------------------------------------- -->
+  <div class="mars-years">
+    {years.map((y) => (
+      <figure>
+        <img src={y.src} alt={`${y.year}. ${y.caption}`} loading="lazy" />
+        <figcaption><b>{y.year}</b>{y.caption}</figcaption>
+      </figure>
+    ))}
+  </div>
+  <p class="wrap mars-credit">The campus, year by year. Photographs from Mars College’s own record.</p>
+
+  <!-- 03 · HOW IT WORKS ----------------------------------------------------- -->
+  <section class="wrap mars-sec">
+    <div class="mars-num"><span>03</span>Life on Mars</div>
+    <h2 class="sec mars-h">Everyone teaches, everyone builds</h2>
+
+    <div class="mars-three">
+      {aspects.map((a) => (
+        <article>
+          <img src={a.image} alt={a.caption} loading="lazy" />
+          <h3>{a.title}</h3>
+          {a.body.map((p) => <p>{p}</p>)}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- 04 · HER PART --------------------------------------------------------- -->
+  <section class="wrap mars-sec">
+    <div class="mars-num"><span>04</span>{mine.kicker}</div>
+    <h2 class="sec mars-h">{mine.title}</h2>
+    <div class="mars-body">
+      <p class="lede">{mine.lede}</p>
+    </div>
+  </section>
+
+  {contributions.map((c) => (
+    <section class="mars-work">
+      <div class="wrap">
+        <div class="mars-work-head">
+          <div class="mars-work-n">{c.n}</div>
+          <div>
+            <h3>{c.title}</h3>
+            <div class="mars-work-yr">{c.years}</div>
+          </div>
+        </div>
+        <div class="mars-body">
+          {c.body.map((p) => <p>{p}</p>)}
+          {c.links && (
+            <p class="mars-links">
+              {c.links.map((l) => (
+                <a
+                  class="more"
+                  href={l.href}
+                  target={l.external ? '_blank' : undefined}
+                  rel={l.external ? 'noopener' : undefined}
+                >{l.label} ⇢</a>
+              ))}
+            </p>
+          )}
+        </div>
+      </div>
+
+      {c.images.length > 0 && (
+        <div class={c.images.length === 1 ? 'mars-shots one' : 'mars-shots'}>
+          {c.images.map((im) => (
+            <figure>
+              <img src={im.src} alt={im.caption} loading="lazy" />
+              <figcaption>{im.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
+    </section>
+  ))}
+
+  <!-- THE QUESTIONS --------------------------------------------------------- -->
+  <div class="mars-ask">
+    <div class="wrap">
+      {note.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+
+  <section class="wrap mars-sec">
+    <div class="mars-num"><span>05</span>Go there</div>
+    <p class="mars-links big">
+      {links.map((l) => (
+        <a
+          class="more"
+          href={l.href}
+          target={l.external ? '_blank' : undefined}
+          rel={l.external ? 'noopener' : undefined}
+        >{l.label} ⇢</a>
+      ))}
+    </p>
+    <p style="margin:44px 0 90px">
+      <a class="more" href="/art">All the art ⇢</a>
+    </p>
+  </section>
+</Base>

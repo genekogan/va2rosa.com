@@ -1,0 +1,152 @@
+---
+// The shelf: one continuous line, all the books on it, drifting forward until
+// you put the cursor on them. Drawn in pen, no colour.
+import { shelf } from '../data/shelf.js';
+
+// Deterministic pseudo-random, so the drawing is identical on every build.
+function rng(seed) {
+  let s = seed * 9301 + 49297;
+  return () => {
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  };
+}
+
+// One Steinberg pen line: a single stroke that wobbles and overruns its ends.
+function inkLine(seed, segments = 40) {
+  const r = rng(seed);
+  const W = 2000;
+  const mid = 11;
+  const pts = [];
+  for (let i = 0; i <= segments; i++) {
+    const x = (i / segments) * W;
+    pts.push([x, mid + Math.sin(i * 0.6 + seed) * 1.4 + (r() - 0.5) * 1.8]);
+  }
+  let d = `M -14 ${(mid + 2.6).toFixed(2)} Q -4 ${(mid - 0.7).toFixed(2)} ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
+  for (let i = 1; i < pts.length; i++) {
+    const [px, py] = pts[i - 1];
+    const [x, y] = pts[i];
+    d += ` Q ${((px + x) / 2).toFixed(2)} ${(py + (r() - 0.5) * 1.1).toFixed(2)} ${x.toFixed(2)} ${y.toFixed(2)}`;
+  }
+  const [lx, ly] = pts[pts.length - 1];
+  d += ` Q ${(lx + 12).toFixed(2)} ${(ly - 0.5).toFixed(2)} ${(lx + 24).toFixed(2)} ${(ly + 3.4).toFixed(2)}`;
+  return d;
+}
+
+// Paper-to-ink greys. Most spines are pale, a few are solid, for rhythm.
+const TONES = [
+  { bg: '#ffffff', ink: '#101820' },
+  { bg: '#f1f0ec', ink: '#101820' },
+  { bg: '#101820', ink: '#f4f4f0' },
+  { bg: '#e4e3de', ink: '#101820' },
+  { bg: '#ffffff', ink: '#101820' },
+  { bg: '#2e2e2e', ink: '#f4f4f0' },
+  { bg: '#eceae5', ink: '#101820' },
+];
+
+const groups = shelf.map((cat, ci) => {
+  const r = rng(ci * 41 + 7);
+  return {
+    title: cat.title,
+    spines: cat.books.map(([author, title, href], bi) => {
+      const needed = Math.round(title.length * 6.2) + 30;
+      const t = TONES[(ci * 2 + bi) % TONES.length];
+      return {
+        author,
+        title,
+        href,
+        h: Math.max(104, Math.min(214, needed + Math.round(r() * 22))),
+        w: 25 + Math.round(r() * 13),
+        bg: t.bg,
+        ink: t.ink,
+        // now and then one leans, and the next one props it up
+        lean: r() > 0.88 ? (r() > 0.5 ? 2.5 : -2) : 0,
+      };
+    }),
+  };
+});
+
+const line = inkLine(3);
+---
+
+<div class="shelf-lib">
+  <p class="sh-hint">
+    // the shelf · hover to pause · tap a spine to open · point at the right end to speed it up
+  </p>
+
+  <div class="sh-viewport">
+    <div class="sh-track">
+      {[0, 1].map((pass) =>
+        groups.map((g) => (
+          <div class="sh-group" aria-hidden={pass === 1 ? 'true' : undefined}>
+            <div class="sh-books">
+              {g.spines.map((s) => (
+                <a
+                  class="sh-spine"
+                  style={`background:${s.bg}; color:${s.ink}; height:${s.h}px; width:${s.w}px; transform:rotate(180deg) rotate(${s.lean}deg)`}
+                  title={`${s.title}, ${s.author}`}
+                  href={s.href ?? `https://www.google.com/search?q=${encodeURIComponent(s.title + ' ' + s.author)}`}
+                  rel={s.href ? 'noopener' : 'noopener nofollow'}
+                  target="_blank"
+                  tabindex={pass === 1 ? '-1' : undefined}
+                >
+                  <span class="sh-t">{s.title}</span>
+                  <span class="sh-a">{s.author}</span>
+                </a>
+              ))}
+            </div>
+            <p class="sh-label">{g.title}</p>
+          </div>
+        ))
+      )}
+    </div>
+
+    <svg class="sh-line" viewBox="0 0 2000 22" preserveAspectRatio="none" aria-hidden="true">
+      <path d={line} />
+    </svg>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var vp = document.querySelector('.sh-viewport');
+    var track = vp && vp.querySelector('.sh-track');
+    if (!vp || !track) return;
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var BASE = 20;   // px per second, the resting drift
+    var FAST = 230;  // px per second, when you point at the right end
+    var offset = 0;
+    var speed = BASE;
+    var last = null;
+    var half = 0;
+
+    function measure() { half = track.scrollWidth / 2; }
+    measure();
+    window.addEventListener('resize', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+
+    // pointing at a book stops it; pointing past the books speeds it up
+    vp.addEventListener('pointermove', function (e) {
+      var r = vp.getBoundingClientRect();
+      var atEnd = e.clientX > r.right - Math.min(180, r.width * 0.18);
+      if (atEnd) speed = FAST;
+      else if (e.target.closest('.sh-spine')) speed = 0;
+      else speed = BASE;
+    });
+    vp.addEventListener('pointerleave', function () { speed = BASE; });
+
+    function frame(now) {
+      if (last === null) last = now;
+      var dt = Math.min(now - last, 100) / 1000; // a tab left in the background must not lurch
+      last = now;
+      if (!reduce.matches && half > 0) {
+        offset += speed * dt;
+        if (offset >= half) offset -= half;   // seamless: the second copy is identical
+        track.style.transform = 'translateX(' + -offset.toFixed(2) + 'px)';
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+</script>

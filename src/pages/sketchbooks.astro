@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import { sketchbooks } from '../data/misc.js';
+import { g } from '../data/galleries.js';
+
+// Doubled so the marquee can loop seamlessly.
+const marquee = [...sketchbooks, ...sketchbooks];
+const scans = g.sk;
+---
+
+<Base title="Sketchbooks" current="Art" bodyClass="paper">
+  <section class="wrap" style="padding-top:70px">
+    <div class="kicker">Sketchbooks · 2009 to now</div>
+    <h1 class="sec" style="margin:12px 0 20px">Where everything is decided<br />before it is decided</h1>
+    <p class="lede">
+      Every thread on this site started as a page in one of these. The books are where the
+      arguments are lost: a pattern gets drawn forty times before it earns a wall, and most of
+      what is in here never becomes anything at all.
+    </p>
+  </section>
+
+  <div class="shelfwrap">
+    <div class="kicker" style="padding:0 var(--pad); margin-bottom:8px">
+      The shelf, hover to pause
+    </div>
+    <div class="shelf">
+      {marquee.map(([label, colour, height], i) => (
+        <div
+          class="spine"
+          style={`background:${colour}; height:${height}px`}
+          aria-hidden={i >= sketchbooks.length ? 'true' : undefined}
+        >
+          {label}
+        </div>
+      ))}
+    </div>
+    <div class="shelfbase"></div>
+  </div>
+
+  {scans.length > 0 && (
+    <section class="wrap" style="padding-top:50px">
+      <div class="kicker">Pages</div>
+      <div class="wgrid tall">
+        {scans.map((im) => (
+          <figure>
+            <img src={im.src} alt={im.caption || 'A sketchbook page.'} loading="lazy" />
+            {im.caption && <figcaption>{im.caption}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="wrap" style="padding-top:40px; padding-bottom:80px">
+    <p style="font-size:14px; color:var(--ink-2); max-width:40em">
+      {sketchbooks.length} books, 2009 to now: Rio, Berlin, Thailand, the desert. The spines
+      carry the real years and places. The scans go in next, book by book.
+    </p>
+    <p style="margin-top:26px">
+      <a class="more" href="/art">All the art ⇢</a>
+    </p>
+  </section>
+</Base>

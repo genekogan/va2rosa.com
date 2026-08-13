@@ -1,0 +1,138 @@
+---
+// Leaf through a book. The pages are rendered to WebP by scripts/render-book.py,
+// so nothing but images ships: no PDF reader, no worker, no CDN.
+//
+// One sheet at a time, always — in a printed booklet a single PDF page is
+// already a spread, so putting two of them side by side would show four pages
+// of the book at once. `spreads` is a chosen handful, not the whole file.
+const { book } = Astro.props;
+const { slug, spreads, title, download } = book;
+const n = (i) => `/images/books/${slug}/p-${String(i).padStart(3, '0')}.webp`;
+const t = (i) => `/images/books/${slug}/t-${String(i).padStart(3, '0')}.webp`;
+---
+
+<div class="reader" data-reader>
+  <div class="reader-stage">
+    <button class="reader-nav prev" type="button" aria-label="Previous page">‹</button>
+
+    <div class="reader-book" data-book>
+      {spreads.map((p, i) => (
+        <figure class="reader-page" data-i={i} hidden={i !== 0 ? true : undefined}>
+          <img
+            src={n(p)}
+            alt={`${title}, page ${p}`}
+            loading={i < 2 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+        </figure>
+      ))}
+      <div class="reader-turn" data-turn aria-hidden="true"></div>
+    </div>
+
+    <button class="reader-nav next" type="button" aria-label="Next page">›</button>
+  </div>
+
+  <div class="reader-bar">
+    <span class="reader-count" data-count>1 / {spreads.length}</span>
+    <button class="reader-thumbs-btn" type="button" aria-expanded="false" data-thumbs-btn>
+      All {spreads.length}
+    </button>
+    {download && (
+      <a class="reader-dl" href={download} target="_blank" rel="noopener">Download the PDF</a>
+    )}
+  </div>
+
+  <div class="reader-thumbs" data-thumbs hidden>
+    {spreads.map((p, i) => (
+      <button type="button" data-goto={i} aria-label={`Go to page ${i + 1}`}>
+        <img src={t(p)} alt="" loading="lazy" />
+      </button>
+    ))}
+  </div>
+</div>
+
+<script is:inline>
+  document.querySelectorAll('[data-reader]').forEach(function (box) {
+    var pages = box.querySelectorAll('.reader-page');
+    var count = box.querySelector('[data-count]');
+    var thumbs = box.querySelector('[data-thumbs]');
+    var thumbsBtn = box.querySelector('[data-thumbs-btn]');
+    var turn = box.querySelector('[data-turn]');
+    var prev = box.querySelector('.prev');
+    var next = box.querySelector('.next');
+    var at = 0;
+    var busy = false;
+
+    function paint() {
+      pages.forEach(function (el, k) {
+        el.hidden = k !== at;
+        if (Math.abs(k - at) <= 1) el.querySelector('img').loading = 'eager';
+      });
+      count.textContent = at + 1 + ' / ' + pages.length;
+      prev.disabled = at === 0;
+      next.disabled = at === pages.length - 1;
+    }
+
+    // The sheet you are leaving lifts and swings away on its spine, and the
+    // next one is already lying underneath it.
+    function go(to) {
+      if (busy || to === at || to < 0 || to > pages.length - 1) return;
+      var back = to < at;
+      var leaving = pages[back ? to : at].querySelector('img');
+
+      busy = true;
+      turn.innerHTML = '';
+      var sheet = document.createElement('img');
+      sheet.src = leaving.currentSrc || leaving.src;
+      turn.appendChild(sheet);
+      turn.className = 'reader-turn is-on ' + (back ? 'back' : 'fwd');
+
+      at = to;
+      paint();
+
+      window.setTimeout(function () {
+        turn.className = 'reader-turn';
+        turn.innerHTML = '';
+        busy = false;
+      }, 620);
+    }
+
+    prev.addEventListener('click', function () { go(at - 1); });
+    next.addEventListener('click', function () { go(at + 1); });
+
+    thumbsBtn.addEventListener('click', function () {
+      var open = thumbs.hidden;
+      thumbs.hidden = !open;
+      thumbsBtn.setAttribute('aria-expanded', String(open));
+      thumbsBtn.textContent = open ? 'Close' : 'All ' + pages.length;
+    });
+
+    thumbs.querySelectorAll('[data-goto]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var to = Number(b.dataset.goto);
+        thumbs.hidden = true;
+        thumbsBtn.setAttribute('aria-expanded', 'false');
+        thumbsBtn.textContent = 'All ' + pages.length;
+        if (to === at) { paint(); return; }
+        go(to);
+      });
+    });
+
+    box.tabIndex = 0;
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(at - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(at + 1); }
+    });
+
+    var x0 = null;
+    box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 45) go(at + (dx < 0 ? 1 : -1));
+      x0 = null;
+    }, { passive: true });
+
+    paint();
+  });
+</script>

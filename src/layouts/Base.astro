@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Foot from '../components/Foot.astro';
+import Lightbox from '../components/Lightbox.astro';
+import Portal from '../components/Portal.astro';
+import { site } from '../data/site.js';
+import { SITE_URL } from '../data/domain.js';
+
+const {
+  title,
+  description = site.bioShort,
+  current = '',
+  palette = '',
+  hasHero = false,
+  bodyClass = 'paper',
+} = Astro.props;
+
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · artist & art historian`;
+---
+
+<!doctype html>
+<html lang="en" data-palette={palette || undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, SITE_URL)} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <!-- For agents, not for readers: the machine-readable versions of this site.
+         There is no visible link to /for-ai anywhere. -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="alternate" type="text/markdown" href="/for-ai.txt" title="For AI agents" />
+    <link rel="alternate" type="application/json" href="/for-ai.json" title="For AI agents, JSON" />
+    <link rel="preload" href="/fonts/verdelis-latin.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+
+  <body class={hasHero ? 'hashero' : undefined}>
+    <Nav current={current} />
+    <div class={bodyClass}>
+      <slot />
+      <Foot />
+    </div>
+    <Lightbox />
+    <Portal />
+  </body>
+</html>

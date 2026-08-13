@@ -1,0 +1,226 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site.js';
+import { nowRows } from '../data/cv.js';
+import { lead, place, films, highlight, mainShows, workPages } from '../data/exhibitions.js';
+
+const upcoming = nowRows; // soonest first
+---
+
+<Base
+  title="Art"
+  current="Art"
+  description="The art of Vanessa Rosa: exhibitions, installations, public work, films and the bodies of work behind them."
+  bodyClass="paper"
+>
+  <!-- THE LEAD WORK -----------------------------------------------------
+       Full-bleed, one project, the way pdefilippi.com opens. -->
+  <section class="lead">
+    <img class="lead-img" src={lead.image} alt={lead.imageAlt} fetchpriority="high" />
+    <div class="lead-over">
+      <div class="kicker" style="color:#fff; opacity:.75">{lead.kicker}</div>
+      <h1>{lead.title}</h1>
+      <p class="lead-sub">{lead.subtitle}</p>
+      <div class="lead-lines">
+        {lead.lines.map((l) => <p>{l}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap lead-body">
+    <div class="lead-cols">
+      <div>{lead.body.map((p) => <p>{p}</p>)}</div>
+      <div class="lead-links">
+        {lead.links.map((l) => (
+          <a
+            class="more"
+            href={l.href}
+            target={l.external ? '_blank' : undefined}
+            rel={l.external ? 'noopener' : undefined}
+          >
+            {l.label} ⇢
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PLACE ---------------------------------------------------------- -->
+  {upcoming.length > 0 && (
+    <section class="wrap exh-block">
+      <div class="kicker">Currently &amp; upcoming</div>
+      <ul class="rows">
+        {upcoming.map((r) => (
+          <li>
+            <span>{r.year}{r.monthLabel ? ` · ${r.monthLabel}` : ''}</span>
+            <div>
+              {r.href ? (
+                <a
+                  class="pr-t"
+                  href={r.href}
+                  target={r.href.startsWith('http') ? '_blank' : undefined}
+                  rel={r.href.startsWith('http') ? 'noopener' : undefined}
+                >
+                  {r.title}
+                </a>
+              ) : (
+                r.title
+              )}
+              {(r.venue || r.city) && (
+                <div class="t">{[r.venue, r.city].filter(Boolean).join(', ')}</div>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="wrap exh-block place">
+    <div class="place-grid">
+      <img src={place.image} alt={place.imageAlt} loading="lazy" />
+      <div>
+        <div class="kicker">{place.kicker}</div>
+        <h2 class="sec" style="margin:10px 0 4px">{place.title}</h2>
+        <div class="place-yr">{place.years}</div>
+        {place.body.map((p) => <p>{p}</p>)}
+        <div class="lead-links" style="margin-top:20px">
+          {place.links.map((l) => (
+            <a
+              class="more"
+              href={l.href}
+              target={l.external ? '_blank' : undefined}
+              rel={l.external ? 'noopener' : undefined}
+            >
+              {l.label} ⇢
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE FILMS -----------------------------------------------------------
+       Third of the three highlighted blocks, reversed against Mars College. -->
+  <section class="wrap exh-block place">
+    <div class="place-grid flip">
+      <div>
+        <div class="kicker">{films.kicker}</div>
+        <h2 class="sec" style="margin:10px 0 4px">{films.title}</h2>
+        <div class="place-yr">{films.years}</div>
+        {films.body.map((p) => <p>{p}</p>)}
+        <div class="lead-links" style="margin-top:20px">
+          {films.links.map((l) => (
+            <a
+              class="more"
+              href={l.href}
+              target={l.external ? '_blank' : undefined}
+              rel={l.external ? 'noopener' : undefined}
+            >
+              {l.label} ⇢
+            </a>
+          ))}
+        </div>
+      </div>
+      <a href="/film-festivals" data-nozoom><img src={films.image} alt={films.imageAlt} loading="lazy" /></a>
+    </div>
+  </section>
+
+  <!-- THE WALL ------------------------------------------------------------
+       Picture on the left again, so the three blocks alternate down the page. -->
+  <section class="wrap exh-block place">
+    <div class="place-grid">
+      <a href="/pioneer-works" data-nozoom><img src={highlight.image} alt={highlight.imageAlt} loading="lazy" /></a>
+      <div>
+        <div class="kicker">{highlight.kicker}</div>
+        <h2 class="sec" style="margin:10px 0 4px">{highlight.title}</h2>
+        <div class="place-yr">{highlight.years}</div>
+        {highlight.body.map((p) => <p>{p}</p>)}
+        <div class="lead-links" style="margin-top:20px">
+          {highlight.links.map((l) => (
+            <a
+              class="more"
+              href={l.href}
+              target={l.external ? '_blank' : undefined}
+              rel={l.external ? 'noopener' : undefined}
+            >
+              {l.label} ⇢
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SHOWS ---------------------------------------------------------- -->
+  <section class="wrap exh-block">
+    <div class="shows-head">
+      <h2 class="sec">The shows</h2>
+      <span class="chev">ᐯ</span>
+    </div>
+    <p style="font-size:14.5px; color:var(--ink-2); max-width:40em; margin-top:6px">
+      Exhibitions, installations and the work made for them, newest first.
+    </p>
+
+    <div class="showcards">
+      {mainShows.map((sh) => (
+        <article class="showcard">
+          <img src={sh.image} alt={sh.imageAlt} loading="lazy" />
+          <h3>{sh.title}</h3>
+          <div class="sc-meta">{sh.year} · {sh.venue}</div>
+          <p>{sh.body}</p>
+          {sh.href && (
+            <a
+              class="sc-link"
+              href={sh.href}
+              target={sh.external ? '_blank' : undefined}
+              rel={sh.external ? 'noopener' : undefined}
+            >
+              View project →
+            </a>
+          )}
+          {sh.href2 && (
+            <a class="sc-link" href={sh.href2} target="_blank" rel="noopener">
+              {sh.href2Label ?? 'The record'} →
+            </a>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- THE BODIES OF WORK WITH THEIR OWN PAGES ---------------------------- -->
+  <section class="wrap exh-block">
+    <div class="shows-head">
+      <h2 class="sec">Bodies of work</h2>
+      <span class="chev">ᐨ</span>
+    </div>
+    <p style="font-size:14.5px; color:var(--ink-2); max-width:40em; margin-top:6px">
+      Longer projects, each with a page of its own.
+    </p>
+
+    <div class="showcards">
+      {workPages.map((w) => (
+        <article class="showcard">
+          <a href={w.href}><img src={w.image} alt={w.imageAlt} loading="lazy" /></a>
+          <h3>{w.title}</h3>
+          <div class="sc-meta">{w.years}</div>
+          <p>{w.body}</p>
+          <a class="sc-link" href={w.href}>Open the page →</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap exh-block" style="padding-bottom:90px">
+    <div class="kicker">For curators &amp; press</div>
+    <p style="font-size:14.5px; color:var(--ink-2); max-width:38em; margin-top:12px">
+      High-resolution images, installation shots, technical requirements, the full CV and a
+      press pack are available on request. Most works exist in more than one form. A mural can
+      travel as a projection, a ceramic piece as a film.
+    </p>
+    <p style="margin-top:14px">
+      <a class="more" href={`mailto:${site.email}`}>{site.email}</a>
+    </p>
+  </section>
+</Base>

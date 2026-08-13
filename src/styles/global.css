@@ -1,0 +1,2166 @@
+/* ===========================================================================
+   va2rosa.com — global styles
+   Colour tokens and the paper wash come from the structure brief.
+   Display face: Verdelis. Body: neo-grotesque (to be licensed — see notes).
+   =========================================================================== */
+
+@font-face {
+  font-family: 'Verdelis';
+  src: url('/fonts/verdelis-latin.woff2') format('woff2'),
+       url('/fonts/verdelis.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #0d2136;
+  --ink-2: #3d5670;
+  --ink-3: #6d8299;
+  --paper: #eef3f7;
+  --wash: #cfe0ec;
+  --blue: #1c4a86;
+  --red: #c8322c;
+  --purple: #5b3f8f;
+  --green: #33513a;
+  --lm-paper: #edf0dd;
+
+  --line: rgba(13, 33, 54, 0.15);
+  --line-2: rgba(13, 33, 54, 0.09);
+  --surface: rgba(255, 255, 255, 0.5);
+
+  /* the four washes layered into the paper */
+  --wash-1: #ffffff;
+  --wash-2: #dceaf4;
+  --wash-3: #e6eee6;
+  --wash-4: #f3efe4;
+
+  --sans: 'Helvetica Neue', Helvetica, Arial, system-ui, -apple-system, sans-serif;
+  --hand: 'Verdelis', 'Comic Sans MS', cursive;
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+
+  --max: 1180px;
+  --pad: 34px;
+  --navh: 62px;
+}
+
+/* Movement 05 refuses the site blue — jenipapo blacks and Envira greens, so
+   the Same Putumi thread is visibly not absorbed into the rest of the site. */
+[data-palette='envira'] {
+  --blue: #2f5d3a;
+  --ink: #14201a;
+  --ink-2: #3a5044;
+  --ink-3: #6a7f70;
+  --paper: #eceee3;
+  --wash: #cfd8c2;
+  --line: rgba(20, 32, 26, 0.16);
+  --line-2: rgba(20, 32, 26, 0.09);
+  --wash-1: #fdfdf7;
+  --wash-2: #dde5cf;
+  --wash-3: #e3e7d5;
+  --wash-4: #efeade;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+h1, h2, h3, h4 { font-weight: 400; line-height: 1.08; text-wrap: balance; }
+
+/* Verdelis ships word-ligatures ("the", "ing", "ation") that fire inside
+   words — Ethnoma·the·matics. The font subset drops them; this is the belt
+   and braces in case the full font is ever swapped back in. */
+.hand, .sec, .nav .name, .hero .topbar .name, .mv h3, .thesis,
+.lex dt, .strand h4, .projhero .t h1, .spine-foot {
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0, 'clig' 0, 'dlig' 0;
+}
+p { margin-bottom: 1.05em; max-width: 38em; }
+em { font-style: italic; }
+
+/* --- the paper, generated in CSS, never a raster file --------------------- */
+.paper {
+  position: relative;
+  background:
+    radial-gradient(120% 80% at 10% 0%, var(--wash-1) 0%, transparent 55%),
+    radial-gradient(90% 70% at 90% 20%, var(--wash-2) 0%, transparent 60%),
+    radial-gradient(100% 90% at 40% 100%, var(--wash-3) 0%, transparent 60%),
+    radial-gradient(70% 50% at 75% 78%, var(--wash-4) 0%, transparent 60%),
+    var(--paper);
+}
+.paper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+.paper > * { position: relative; z-index: 1; }
+
+/* --- shared bits ---------------------------------------------------------- */
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+.narrow { max-width: 660px; }
+.hand { font-family: var(--hand); }
+
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.sec { font-family: var(--hand); font-size: clamp(30px, 4.4vw, 54px); }
+.lede { font-size: 20px; line-height: 1.55; max-width: 34em; }
+.rule { height: 1px; background: var(--line); border: 0; }
+
+.more {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid;
+  padding-bottom: 2px;
+  display: inline-block;
+}
+
+/* --- nav ------------------------------------------------------------------ */
+.nav {
+  /* Fixed, not sticky: one bar, in the same place on every page and at every
+     scroll position. On pages with a hero it floats over the painting until
+     you scroll, then takes its frosted background (see .hashero below). */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: background 0.25s, border-color 0.25s;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  padding: 16px var(--pad);
+  backdrop-filter: blur(9px);
+  background: rgba(238, 243, 247, 0.72);
+  border-bottom: 1px solid var(--line);
+}
+.nav .name { font-family: var(--hand); font-size: 23px; letter-spacing: 0.02em; white-space: nowrap; }
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  font-size: 12.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+/* Same blue pills as the hero, so the nav is one object down the whole page. */
+.nav ul a {
+  display: inline-block;
+  background: rgba(13, 33, 54, 0.78);
+  border-radius: 20px;
+  padding: 7px 15px;
+  color: #fff;
+  transition: background 0.18s;
+}
+.nav ul a:hover,
+.nav ul a:focus-visible { background: var(--ink); }
+.nav ul a[aria-current='page'] { background: var(--blue); }
+
+
+/* --- footer --------------------------------------------------------------- */
+.sitefoot {
+  padding: 70px var(--pad) 90px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.sitefoot a:hover { color: var(--ink); }
+
+/* social icons — outlines only, no words */
+.sitefoot .social { display: flex; align-items: center; gap: 16px; }
+.sitefoot .social a { display: inline-flex; color: var(--ink-3); }
+.sitefoot .social a:hover { color: var(--ink); }
+.sitefoot .social svg { width: 21px; height: 21px; display: block; }
+
+/* --- hero ----------------------------------------------------------------- */
+.hero { height: 100vh; position: relative; overflow: hidden; background: #3b7ba6; }
+/* The loop supplies the backgrounds now; object-position is set per frame
+   in heroloop.js, so nothing important is cropped away. */
+.hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* An invisible box the exact size and offset of the painting as `cover`
+   renders it. Anything positioned inside it is positioned against the
+   PAINTING, not the window — so the motto stays in the archway at every
+   viewport size. The 28%/72% here must match object-position above. 72% vertically
+   keeps the archway centred when a short, wide window crops the painting. */
+.hero .frame {
+  position: absolute;
+  left: 28%;
+  top: 72%;
+  transform: translate(-28%, -72%);
+  width: max(100vw, calc(100vh * 16 / 9));
+  height: max(100vh, calc(100vw * 9 / 16));
+  pointer-events: none;
+}
+.hero .veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8, 30, 55, 0.5) 0%, rgba(8, 30, 55, 0.12) 18%, rgba(8, 30, 55, 0) 36%, rgba(8, 30, 55, 0) 68%, rgba(8, 30, 55, 0.4) 100%);
+}
+.hero .topbar {
+  position: absolute; top: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 20px;
+  padding: 26px var(--pad); color: #fff;
+}
+.hero .topbar .name { font-family: var(--hand); font-size: 24px; text-shadow: 0 1px 14px rgba(10, 40, 70, 0.5); }
+.hero .topbar ul {
+  list-style: none; display: flex; gap: 10px; flex-wrap: wrap;
+  font-size: 12.5px; letter-spacing: 0.13em; text-transform: uppercase;
+}
+/* Dark blue pills so the nav reads against the painting. */
+.hero .topbar ul a {
+  display: inline-block;
+  background: rgba(13, 33, 54, 0.78);
+  border-radius: 20px;
+  padding: 7px 15px;
+  color: #fff;
+  transition: background 0.18s;
+}
+.hero .topbar ul a:hover,
+.hero .topbar ul a:focus-visible { background: var(--ink); }
+.hero .topbar .name { opacity: 0.95; }
+/* Positioned inside .frame, so these are percentages OF THE PAINTING.
+   Measured from the file: the lit column runs x 0.285–0.425 and starts at
+   y 0.443, so its centre is x 35.5%, and the void's centre is y 72%. */
+.hero .motto {
+  position: absolute;
+  left: 35.5%;
+  top: 72%;
+  transform: translate(-50%, -50%);
+  width: 12.2%;
+  height: auto;
+  filter:
+    drop-shadow(0 0 18px rgba(255, 255, 255, 0.95))
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.9))
+    saturate(1.5) brightness(0.5);
+}
+.hero .scrollcue {
+  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+  color: #fff; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  text-shadow: 0 1px 12px rgba(10, 40, 70, 0.7);
+}
+.hero .caption {
+  position: absolute; bottom: 26px; right: var(--pad);
+  color: #fff; font-size: 11px; letter-spacing: 0.08em; text-align: right;
+  text-shadow: 0 1px 3px rgba(6, 24, 45, 0.95), 0 1px 14px rgba(6, 24, 45, 0.8);
+}
+
+/* --- movements ------------------------------------------------------------ */
+.mv {
+  display: grid;
+  grid-template-columns: 112px 1fr 1fr;
+  gap: 34px;
+  padding: 64px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+.mv .num { font-family: var(--hand); font-size: 34px; opacity: 0.4; line-height: 1; }
+.mv h3 { font-family: var(--hand); font-size: clamp(26px, 3.2vw, 40px); margin-bottom: 10px; }
+.mv .yr { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px; }
+.mv .coauth { font-size: 14px; letter-spacing: 0.04em; color: var(--purple); margin-bottom: 14px; max-width: 34em; }
+.mv p:last-of-type { opacity: 0.75; }
+.mv .plate {
+  background: rgba(13, 33, 54, 0.06);
+  border: 1px solid var(--line-2);
+  aspect-ratio: 4 / 3;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ink-3); overflow: hidden; text-align: center; padding: 12px;
+}
+.mv .plate img { width: 100%; height: 100%; object-fit: cover; }
+.mv.door h3 { color: var(--green); }
+.mv.door .plate { background: var(--lm-paper); border-color: rgba(51, 81, 58, 0.25); padding: 34px; }
+.mv.door .plate img { width: 62%; height: auto; object-fit: contain; opacity: 0.55; }
+.mv.door .more { border-color: var(--green); color: var(--green); }
+
+/* --- lexicon -------------------------------------------------------------- */
+.lex { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px 44px; margin-top: 34px; }
+.lex dt { font-family: var(--hand); font-size: 23px; margin-bottom: 4px; }
+.lex .pos { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
+.lex dd { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+
+/* --- row lists (Now, exhibited, research) --------------------------------- */
+.rows { list-style: none; margin-top: 26px; }
+.rows li {
+  display: grid; grid-template-columns: 190px 1fr; gap: 20px;
+  padding: 13px 0; border-bottom: 1px solid var(--line-2);
+}
+.rows li > span { font-size: 11.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3); padding-top: 4px; }
+.rows .t { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
+
+/* --- thread page ---------------------------------------------------------- */
+.projhero { position: relative; height: 66vh; min-height: 420px; overflow: hidden; background: var(--wash); }
+.projhero img { width: 100%; height: 100%; object-fit: cover; }
+/* Some of these pictures are pale, or bright exactly where the title sits.
+   A scrim across the bottom keeps white type readable on any of them without
+   darkening the picture itself. */
+.projhero::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 62%;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(6, 14, 26, 0.86) 0%,
+    rgba(6, 14, 26, 0.62) 24%,
+    rgba(6, 14, 26, 0.26) 54%,
+    rgba(6, 14, 26, 0) 100%
+  );
+}
+.projhero.plain::after { content: none; }
+.projhero .t {
+  position: absolute; left: var(--pad); right: var(--pad); bottom: 30px;
+  z-index: 2;
+  color: #fff; text-shadow: 0 2px 20px rgba(6, 14, 26, 0.7);
+}
+.projhero .t h1 { font-family: var(--hand); font-size: clamp(34px, 5.5vw, 68px); }
+.projhero .t .kicker { opacity: 1 !important; color: rgba(255, 255, 255, 0.88) !important; }
+.projhero.plain { background: var(--wash); display: flex; align-items: flex-end; height: 40vh; min-height: 280px; }
+.projhero.plain .t { color: var(--ink); text-shadow: none; position: static; padding: 0 var(--pad) 30px; }
+
+.meta {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 22px; padding: 26px 0; border-bottom: 1px solid var(--line); font-size: 13.5px;
+}
+.meta .k { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
+.coauthor-line {
+  border-left: 2px solid var(--purple);
+  padding: 12px 18px; margin: 40px 0 0; font-size: 15px; color: var(--ink-2); max-width: 44em;
+}
+[data-palette='envira'] .coauthor-line { border-color: var(--blue); }
+.thesis {
+  font-family: var(--hand); font-size: clamp(24px, 3.4vw, 40px); line-height: 1.22;
+  margin: 60px 0; max-width: 20em; color: var(--blue);
+}
+.strand { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; margin: 40px 0; }
+.strand h4 { font-family: var(--hand); font-size: 22px; margin-bottom: 8px; }
+.readlist { font-size: 14px; line-height: 1.75; color: var(--ink-2); columns: 2; column-gap: 44px; }
+.readlist p { max-width: none; margin-bottom: 0.7em; break-inside: avoid; }
+
+.spine-foot { font-size: 13.5px; color: var(--ink-2); margin-top: 12px; line-height: 1.9; }
+.spine-foot a:hover { color: var(--ink); }
+.spine-foot .cur { color: var(--ink); border-bottom: 1px solid; }
+
+/* --- info / cv ------------------------------------------------------------ */
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0 18px; }
+.filters button {
+  font: inherit; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
+  border: 1px solid rgba(13, 33, 54, 0.25); background: none; color: inherit;
+  padding: 5px 12px; border-radius: 20px; opacity: 0.6; cursor: pointer;
+}
+.filters button[aria-pressed='true'] { background: var(--ink); color: var(--paper); border-color: var(--ink); opacity: 1; }
+.cvline {
+  display: grid; grid-template-columns: 66px 1fr 110px; gap: 16px;
+  padding: 10px 0; border-bottom: 1px solid var(--line-2); font-size: 14.5px;
+}
+.cvline b { font-weight: 400; color: var(--ink-3); font-size: 12px; letter-spacing: 0.08em; padding-top: 3px; font-variant-numeric: tabular-nums; }
+.cvline .ty { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); text-align: right; padding-top: 4px; }
+
+/* --- about ---------------------------------------------------------------
+   The ground is the speculative-biology background colour, sampled from the
+   painting. The portrait is a cut-out PNG — never cropped, never stretched;
+   width is set and height stays auto so it cannot distort. --------------- */
+.about { background: #f0f0e4; }
+.about-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 56px var(--pad) 80px;
+}
+.about-art {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 440px;
+  margin: 0 auto;
+}
+/* the lettering sits above the head and overlaps the hair a little */
+.about-title {
+  width: 88%;
+  height: auto;
+  margin-bottom: -7%;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+.about-portrait { width: 100%; height: auto; display: block; }
+.about-text { font-size: 16.5px; color: var(--ink); }
+.about-text p { max-width: 34em; }
+
+/* --- sketchbook shelf ----------------------------------------------------- */
+.shelfwrap { overflow: hidden; padding: 60px 0 20px; background: linear-gradient(180deg, transparent, rgba(13, 33, 54, 0.05)); }
+.shelf { display: flex; gap: 5px; align-items: flex-end; animation: slide 42s linear infinite; width: max-content; padding: 0 var(--pad); }
+.shelfwrap:hover .shelf, .shelfwrap:focus-within .shelf { animation-play-state: paused; }
+@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.spine {
+  width: 38px; border-radius: 2px 2px 0 0; display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 12px; color: rgba(255, 255, 255, 0.9); font-size: 10px; letter-spacing: 0.1em;
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  box-shadow: inset -6px 0 12px rgba(0, 0, 0, 0.18); flex: none;
+}
+.shelfbase { height: 9px; background: rgba(13, 33, 54, 0.28); margin: 0 20px; }
+
+/* --- notes to self (visible only in dev) ---------------------------------- */
+.draftnote {
+  border-left: 2px solid var(--red);
+  background: rgba(200, 50, 44, 0.06);
+  padding: 12px 18px; margin: 26px 0; font-size: 13.5px; max-width: 44em; color: var(--ink-2);
+}
+.draftnote b { color: var(--red); }
+
+/* --- responsive ----------------------------------------------------------- */
+@media (max-width: 900px) {
+  .mv { grid-template-columns: 1fr; gap: 16px; }
+  .strand { grid-template-columns: 1fr; }
+  .about-inner { grid-template-columns: 1fr; gap: 30px; }
+  .readlist { columns: 1; }
+  .cvline { grid-template-columns: 56px 1fr; }
+  .cvline .ty { grid-column: 2; text-align: left; padding-top: 0; }
+  .rows li { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (max-width: 760px) {
+  :root { --pad: 20px; }
+  .nav { flex-wrap: wrap; gap: 10px; }
+  .nav ul { gap: 8px; font-size: 11px; order: 3; width: 100%; }
+  .nav ul a, .hero .topbar ul a { padding: 6px 11px; }
+  .hero .topbar { flex-wrap: wrap; gap: 14px; padding-top: 20px; }
+  .hero .topbar ul { gap: 8px; font-size: 11px; width: 100%; }
+  /* .motto needs no override — it is anchored to the painting, not the window. */
+}
+
+/* ===========================================================================
+   FOR MACHINES
+   /for-ai has no visible link anywhere on the site: agents reach it through
+   robots.txt, llms.txt and the <link rel="alternate"> tags in the head.
+   Deliberately a different register from the rest of the site: this one is
+   addressed to a reader that arrives without eyes.
+   =========================================================================== */
+
+/* --- the agents page ------------------------------------------------------ */
+body.agents {
+  background: #0a1826;
+  color: #cfe0ec;
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.agents-wrap { max-width: 760px; margin: 0 auto; padding: 54px var(--pad) 100px; }
+.agents a { color: #8fb9e8; text-decoration: underline; text-underline-offset: 3px; }
+.agents a:hover { color: #fff; }
+
+.agents-head .chan,
+.agents .lbl {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5f7d99;
+}
+.agents-head .human-link { margin: 6px 0 42px; font-size: 12.5px; }
+.agents-head h1 {
+  font-family: var(--sans);
+  font-size: clamp(24px, 3.4vw, 34px);
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.agents-head .intro { color: #a8c2d8; max-width: none; }
+
+.agents-points { list-style: none; margin: 50px 0 0; padding: 0; }
+.agents-points li {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 18px;
+  padding: 26px 0;
+  border-top: 1px solid rgba(143, 185, 232, 0.18);
+}
+.agents-points .n { color: #5f7d99; font-size: 13px; padding-top: 3px; }
+.agents-points h2 {
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.35;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.agents-points p { color: #a8c2d8; max-width: none; margin: 0; font-size: 14.5px; }
+
+.relay { margin-top: 54px; }
+.relay blockquote {
+  margin-top: 12px;
+  padding: 20px 22px;
+  border: 1px solid rgba(143, 185, 232, 0.3);
+  background: rgba(143, 185, 232, 0.06);
+  font-size: 14px;
+  color: #cfe0ec;
+}
+
+.record { margin-top: 54px; }
+.record dl { margin-top: 14px; }
+.record dl > div {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 16px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(143, 185, 232, 0.14);
+  font-size: 13.5px;
+}
+.record dt { color: #5f7d99; }
+.record dd { color: #cfe0ec; }
+.record .endpoints { margin-top: 18px; font-size: 13px; }
+
+.curious { margin-top: 54px; padding-top: 30px; border-top: 1px solid rgba(143, 185, 232, 0.18); }
+.curious p { color: #a8c2d8; max-width: none; font-size: 14.5px; }
+.curious .back { display: inline-block; margin-top: 10px; }
+
+@media (max-width: 640px) {
+  .agents-points li { grid-template-columns: 1fr; gap: 6px; }
+  .record dl > div { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* ===========================================================================
+   HOMEPAGE — timeline, collections, essay blocks
+   =========================================================================== */
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* --- duration & overlap --------------------------------------------------- */
+.tl-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.tl-chart { position: relative; margin-top: 18px; }
+
+/* The year lines are ruled by hand: a pale wash, pushed off true. */
+.tl-grid {
+  position: absolute; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(28, 74, 134, 0.02),
+    rgba(28, 74, 134, 0.14) 22%,
+    rgba(28, 74, 134, 0.06) 62%,
+    rgba(28, 74, 134, 0.13) 84%,
+    rgba(28, 74, 134, 0.02)
+  );
+  filter: url(#tl-rule);
+}
+
+.tl-row { position: relative; height: 36px; }
+
+/* --- the bars, as pigment rather than geometry ---------------------------
+   The colour lives in a pseudo-element so the filter can wobble the edges
+   without touching the label sitting on top of it.                       */
+.tl-bar {
+  position: absolute; top: 3px; bottom: 3px;
+  display: flex; align-items: center;
+  padding: 0 13px;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  white-space: nowrap; overflow: visible;
+  isolation: isolate;
+}
+.tl-bar > span { position: relative; z-index: 2; }
+
+/* the wash itself: pigment pooling in two places, thinning elsewhere.
+   Fades run to a transparent version of the same colour, never to
+   `transparent`, which would drag a grey halo through the middle. */
+.tl-bar::before {
+  content: '';
+  position: absolute; inset: 0;
+  z-index: 0;
+  transform: rotate(var(--wc-tilt, 0deg)) translateY(var(--wc-dy, 0));
+  background:
+    radial-gradient(58% 130% at var(--wc-px, 40%) var(--wc-py, 45%),
+      hsl(from var(--blue) calc(h + var(--wc-h, 0)) calc(s * var(--wc-s, 1)) calc(l * 0.72)) 0%,
+      hsl(from var(--blue) h s calc(l * 0.72) / 0) 70%),
+    radial-gradient(50% 120% at var(--wc-qx, 70%) var(--wc-qy, 55%),
+      hsl(from var(--blue) calc(h - var(--wc-h, 0)) s calc(l * 1.3) / 0.55) 0%,
+      hsl(from var(--blue) h s calc(l * 1.3) / 0) 72%),
+    linear-gradient(92deg,
+      hsl(from var(--blue) calc(h + var(--wc-h, 0)) s calc(l * 0.94)) 0%,
+      hsl(from var(--blue) h s calc(l * 1.06)) 58%,
+      hsl(from var(--blue) calc(h + var(--wc-h, 0)) s calc(l * 0.9)) 100%);
+  filter: url(#tl-wash);
+  border-radius: 3px 5px 4px 6px;
+  box-shadow:
+    inset 0 0 0 1.2px hsl(from var(--blue) h s calc(l * 0.55) / 0.4),
+    inset 0 -3px 6px -3px hsl(from var(--blue) h s calc(l * 0.5) / 0.5);
+}
+
+/* the grain that separates watercolour from a gradient */
+.tl-bar::after {
+  content: '';
+  position: absolute; inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.62;
+  mix-blend-mode: multiply;
+  border-radius: 3px 5px 4px 6px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='44'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55 .8' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='44' filter='url(%23g)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+.tl-bar:hover::before { filter: url(#tl-wash) brightness(1.12) saturate(1.15); }
+
+/* short periods carry their name beside the bar, not inside it */
+.tl-bar.narrow { padding: 0; }
+.tl-bar.narrow > span {
+  position: absolute; left: 100%; margin-left: 12px;
+  color: var(--ink-2);
+}
+.tl-bar.narrow:hover > span { color: var(--ink); }
+
+/* An ended period is a dry-brush outline rather than a filled one. */
+.tl-bar:not(.ongoing) { color: var(--blue); }
+.tl-bar:not(.ongoing)::before {
+  background:
+    linear-gradient(92deg,
+      hsl(from var(--blue) calc(h + var(--wc-h, 0)) s l / 0.09),
+      hsl(from var(--blue) h s l / 0.03) 48%,
+      hsl(from var(--blue) calc(h + var(--wc-h, 0)) s l / 0.08));
+  border: 1.5px solid hsl(from var(--blue) calc(h + var(--wc-h, 0)) s l / 0.62);
+  filter: url(#tl-edge);
+}
+.tl-bar:not(.ongoing)::after { opacity: 0.2; }
+
+/* one that became the next thing: the brush lifted on the way across */
+.tl-bar.transformed:not(.ongoing)::before {
+  border-style: dashed;
+  border-color: hsl(from var(--blue) calc(h + var(--wc-h, 0)) s l / 0.55);
+}
+
+/* still going: the wash runs out of water on the right */
+.tl-bar.ongoing::before {
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 46%, rgba(0, 0, 0, 0.72) 68%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 46%, rgba(0, 0, 0, 0.72) 68%, transparent 100%);
+}
+.tl-bar.ongoing::after {
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 46%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 46%, transparent 100%);
+}
+
+.tl-axis {
+  position: relative; height: 22px; margin-top: 8px;
+  border-top: 0;
+  background: linear-gradient(90deg,
+    rgba(28, 74, 134, 0.05), rgba(28, 74, 134, 0.22) 30%,
+    rgba(28, 74, 134, 0.1) 65%, rgba(28, 74, 134, 0.2) 88%, rgba(28, 74, 134, 0.04));
+  background-size: 100% 1.5px;
+  background-repeat: no-repeat;
+  filter: url(#tl-rule);
+}
+.tl-axis span {
+  position: absolute; top: 8px; transform: translateX(-50%);
+  font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums;
+}
+.tl-key {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 18px;
+  margin-top: 18px; font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.tl-key li { display: flex; align-items: center; gap: 7px; }
+.tl-key i {
+  width: 24px; height: 11px; display: block;
+  border-radius: 3px 5px 4px 6px;
+  filter: url(#tl-edge);
+}
+.tl-key .k-ended { border: 1.5px solid hsl(from var(--blue) h s l / 0.5); }
+.tl-key .k-transformed {
+  background: repeating-linear-gradient(90deg,
+    hsl(from var(--blue) h s l / 0.55) 0 4px, transparent 4px 8px);
+}
+.tl-key .k-ongoing {
+  background: linear-gradient(90deg, hsl(from var(--blue) h s calc(l * 0.9)), transparent);
+}
+
+/* a browser without relative colour syntax still gets a readable chart */
+@supports not (color: hsl(from red h s l)) {
+  .tl-bar::before { background: var(--blue); }
+  .tl-bar:not(.ongoing)::before { background: none; border: 1px solid var(--blue); mask: none; -webkit-mask: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-bar::before, .tl-grid, .tl-axis, .tl-key i { filter: none; }
+}
+
+.tl-table { display: none; }
+
+/* --- collections ---------------------------------------------------------- */
+.coll-block {
+  display: grid;
+  grid-template-columns: 260px 1fr 300px;
+  gap: 40px;
+  padding: 48px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+.coll-block:first-of-type { margin-top: 34px; }
+.coll-head h3 { font-family: var(--hand); font-size: clamp(24px, 2.8vw, 34px); }
+.coll-span {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-3); margin-top: 8px;
+}
+.coll-body p { margin-bottom: 14px; }
+.coll-media {
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.coll-list { list-style: none; margin-top: 18px; }
+.coll-list li {
+  /* Three fixed columns rather than a flex row, so the gloss and the years
+     line up down the list instead of landing wherever the title ends. */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr) 84px;
+  align-items: baseline; gap: 6px 16px;
+  padding: 8px 0; border-bottom: 1px solid var(--line-2); font-size: 14.5px;
+}
+.coll-list a { border-bottom: 1px solid rgba(13, 33, 54, 0.3); }
+.coll-list a:hover { border-color: var(--ink); }
+.coll-list .yr { color: var(--ink-3); font-size: 12px; white-space: nowrap; text-align: right; }
+.coll-plate {
+  background: rgba(13, 33, 54, 0.06);
+  border: 1px solid var(--line-2);
+  aspect-ratio: 4 / 3;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3);
+}
+.coll-plate img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- essay blocks on the homepage ---------------------------------------- */
+.essay {
+  margin-top: 80px;
+  padding-top: 56px;
+  border-top: 1px solid var(--line);
+}
+.essay p { max-width: 36em; }
+
+@media (max-width: 1000px) {
+  .coll-block { grid-template-columns: 1fr 300px; }
+  .coll-head { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .coll-block { grid-template-columns: 1fr; gap: 20px; }
+  /* the bars get unreadably thin — show the table instead */
+  .tl-chart, .tl-axis, .tl-key { display: none; }
+  .tl-table { display: table; width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+  .tl-table th {
+    text-align: left; font-weight: 400; font-size: 10.5px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-3); padding: 8px 10px 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .tl-table td { padding: 10px 10px 10px 0; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+  .tl-table .n { color: var(--ink-3); }
+  .tl-table .ti a { border-bottom: 1px solid rgba(13, 33, 54, 0.3); }
+  .tl-table .yr, .tl-table .st { color: var(--ink-3); font-size: 12.5px; }
+}
+
+/* --- timeline: rows that run underneath everything ------------------------ */
+.tl-bar.underlay::before {
+  background:
+    radial-gradient(60% 120% at var(--wc-px, 40%) var(--wc-py, 45%),
+      rgba(109, 130, 153, 0.9) 0%, transparent 72%),
+    linear-gradient(92deg, rgba(109, 130, 153, 0.85), rgba(122, 140, 160, 0.62) 60%, rgba(109, 130, 153, 0.8));
+}
+.tl-bar.underlay.narrow > span { color: var(--ink-3); }
+
+/* --- exhibitions ---------------------------------------------------------- */
+.exh-block { margin-top: 56px; padding-top: 30px; border-top: 1px solid var(--line); }
+.exh-list { list-style: none; margin-top: 14px; }
+.exh-list li {
+  display: grid;
+  grid-template-columns: 78px 1fr 110px;
+  gap: 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-2);
+  align-items: baseline;
+}
+.exh-list .yr {
+  font-size: 12px; letter-spacing: 0.1em; color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.exh-list .ti { font-size: 16px; }
+.exh-list .vn, .exh-list .ct { color: var(--ink-2); font-size: 15px; }
+.exh-list .nt { font-size: 13.5px; color: var(--ink-3); margin-top: 4px; max-width: 46em; }
+.exh-list .lk { text-align: right; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; }
+.exh-list .lk a { color: var(--ink-3); border-bottom: 1px solid var(--line); }
+.exh-list .lk a:hover { color: var(--ink); border-color: var(--ink); }
+a.ul { border-bottom: 1px solid rgba(13, 33, 54, 0.35); }
+
+@media (max-width: 760px) {
+  .exh-list li { grid-template-columns: 1fr; gap: 4px; }
+  .exh-list .lk { text-align: left; }
+}
+
+/* --- thread galleries ----------------------------------------------------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+  margin: 70px 0 0;
+}
+.gallery figure { margin: 0; overflow: hidden; background: rgba(13, 33, 54, 0.06); }
+.gallery img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; display: block; }
+/* the first image runs full width — it is usually the best one */
+.gallery figure:first-child { grid-column: 1 / -1; }
+.gallery figure:first-child img { aspect-ratio: 16 / 7; }
+
+/* a project with no page of its own is named but not linked */
+.coll-list .noline { color: var(--ink-2); }
+.tl-bar.nolink { cursor: default; }
+
+/* --- the homepage opening ------------------------------------------------- */
+.intro { padding-top: 96px; }
+.intro .greeting {
+  font-family: var(--hand);
+  font-size: clamp(20px, 2.2vw, 27px);
+  color: var(--ink-2);
+  margin-bottom: 6px;
+}
+.intro .welcome {
+  font-size: clamp(38px, 6vw, 76px);
+  line-height: 1.02;
+  margin: 0 0 30px;
+  color: var(--blue);
+}
+
+/* ===========================================================================
+   SAME PUTUMI — the collaboration pages
+   =========================================================================== */
+.sp-list { list-style: none; margin: 34px 0 0; }
+.sp-list li { border-top: 1px solid var(--line); }
+.sp-list a {
+  display: grid;
+  grid-template-columns: 54px 220px 1fr;
+  gap: 26px;
+  padding: 22px 0;
+  align-items: start;
+}
+.sp-list a:hover .ti { border-bottom-color: var(--ink); }
+.sp-list .n { font-family: var(--hand); font-size: 24px; color: var(--ink-3); }
+.sp-list .im { display: block; overflow: hidden; background: rgba(20, 32, 26, 0.06); }
+.sp-list .im img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.sp-list .tx { display: block; }
+.sp-list .ti {
+  display: inline-block; font-family: var(--hand); font-size: 26px;
+  border-bottom: 1px solid transparent; margin-bottom: 6px;
+}
+.sp-list .yr {
+  display: block; font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px;
+}
+.sp-list .ld { display: block; font-size: 15px; color: var(--ink-2); max-width: 46em; }
+.sp-list .nb {
+  display: inline-block; margin-top: 10px; font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-3);
+  border: 1px solid var(--line); border-radius: 20px; padding: 3px 10px;
+}
+
+.sp-section { margin-top: 70px; }
+.sp-section h2 { font-family: var(--hand); font-size: clamp(22px, 2.6vw, 30px); margin-bottom: 12px; }
+.sp-section .gallery { margin-top: 26px; }
+
+.report {
+  margin-top: 90px;
+  padding: 40px 0 44px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.report .rep-sub {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 18px;
+}
+.report .rep-sum { font-size: 18px; line-height: 1.55; max-width: 40em; }
+.rep-points { list-style: none; margin-top: 22px; max-width: 46em; }
+.rep-points li {
+  padding: 12px 0 12px 24px;
+  border-bottom: 1px solid var(--line-2);
+  font-size: 14.5px; color: var(--ink-2); position: relative;
+}
+.rep-points li::before { content: '·'; position: absolute; left: 0; color: var(--ink-3); }
+
+.sp-nav {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center;
+  padding-bottom: 40px;
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
+}
+.sp-nav > :last-child { text-align: right; }
+.sp-nav a:hover { color: var(--ink); }
+
+@media (max-width: 860px) {
+  .sp-list a { grid-template-columns: 40px 1fr; }
+  .sp-list .im { grid-column: 2; margin-bottom: 12px; }
+  .sp-nav { grid-template-columns: 1fr; gap: 10px; }
+  .sp-nav > :last-child { text-align: left; }
+}
+
+/* --- Visible Memories: the chronology ------------------------------------- */
+.phases { margin-top: 10px; }
+.phase {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 34px;
+  padding: 54px 0;
+  border-top: 1px solid var(--line);
+}
+.ph-year {
+  font-family: var(--hand);
+  font-size: clamp(30px, 3.6vw, 46px);
+  color: var(--ink-3);
+  line-height: 1;
+  position: sticky;
+  top: 90px;
+  align-self: start;
+}
+.ph-body h2 { font-family: var(--hand); font-size: clamp(24px, 3vw, 34px); margin-bottom: 14px; }
+.ph-body p { max-width: 40em; }
+.ph-note {
+  font-size: 13.5px; color: var(--ink-3);
+  border-left: 2px solid var(--line); padding-left: 14px; margin-top: 20px;
+}
+.ph-people { list-style: none; margin-top: 12px; max-width: 44em; }
+.ph-people li {
+  display: grid; grid-template-columns: 1fr auto; gap: 16px;
+  padding: 7px 0; border-bottom: 1px solid var(--line-2); font-size: 14px;
+}
+.ph-people b { font-weight: 400; }
+.ph-people span { color: var(--ink-3); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.ph-images {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 10px;
+  margin-top: 28px;
+}
+.ph-images figure { margin: 0; }
+.ph-images img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  background: rgba(13, 33, 54, 0.06);
+}
+.ph-images figure.wide { grid-column: 1 / -1; }
+.ph-images figure.wide img { aspect-ratio: 16 / 7; }
+.ph-images figcaption {
+  font-size: 11.5px; letter-spacing: 0.05em; color: var(--ink-3); margin-top: 6px;
+}
+
+.closing {
+  margin-top: 54px; padding-top: 30px; border-top: 1px solid var(--line);
+  font-family: var(--hand); font-size: clamp(20px, 2.4vw, 27px);
+  color: var(--blue); max-width: 26em;
+}
+
+@media (max-width: 860px) {
+  .phase { grid-template-columns: 1fr; gap: 14px; }
+  .ph-year { position: static; }
+  .ph-images { grid-column: 1; }
+}
+
+/* ===========================================================================
+   RESEARCH: the featured paper and the library
+   =========================================================================== */
+.paper-feature {
+  margin-top: 54px;
+  padding: 38px 0 42px;
+  border-top: 2px solid var(--blue);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 44px;
+  align-items: start;
+}
+.pf-tag {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--blue);
+}
+.pf-head h2 {
+  font-family: var(--hand);
+  font-size: clamp(26px, 3.4vw, 40px);
+  margin: 10px 0 12px;
+}
+.pf-meta { font-size: 15px; margin-bottom: 2px; }
+.pf-venue {
+  font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.pf-abstract { font-size: 17px; line-height: 1.55; max-width: 42em; }
+.pf-points { list-style: none; margin-top: 18px; }
+.pf-points li {
+  padding: 11px 0 11px 22px; position: relative;
+  border-bottom: 1px solid var(--line-2);
+  font-size: 14.5px; color: var(--ink-2); max-width: 46em;
+}
+.pf-points li::before { content: '·'; position: absolute; left: 4px; color: var(--ink-3); }
+.pf-links { margin-top: 20px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+.pf-links a, .ll a { border-bottom: 1px solid rgba(13, 33, 54, 0.35); }
+.pf-links a:hover, .ll a:hover { border-color: var(--ink); }
+.sep { color: var(--ink-3); margin: 0 10px; }
+
+.lib { margin-top: 66px; }
+.lib-blurb { font-size: 15px; color: var(--ink-2); max-width: 44em; margin-top: 10px; }
+.lib-list { list-style: none; margin-top: 22px; }
+.lib-list li {
+  display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 22px;
+  padding: 22px 0; border-top: 1px solid var(--line);
+}
+.lib-list .ly {
+  font-size: 12px; letter-spacing: 0.1em; color: var(--ink-3);
+  font-variant-numeric: tabular-nums; padding-top: 5px;
+}
+.lib-list h3 { font-size: 18.5px; line-height: 1.25; }
+.lib-list .lo { font-size: 14.5px; color: var(--ink-3); font-style: italic; margin: 4px 0 0; }
+.lib-list .lk {
+  font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink-3); margin: 8px 0 0;
+}
+.lib-list .ld { font-size: 14.5px; color: var(--ink-2); margin: 10px 0 0; max-width: 46em; }
+.lib-list .ln {
+  font-size: 13px; color: var(--ink-3); margin: 8px 0 0; max-width: 46em;
+  border-left: 2px solid var(--line); padding-left: 12px;
+}
+.lib-list .ll { margin: 12px 0 0; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; }
+.lib-pending {
+  margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line);
+  font-size: 13.5px; color: var(--ink-3);
+}
+
+@media (max-width: 900px) {
+  .paper-feature { grid-template-columns: 1fr; gap: 24px; }
+  .lib-list li { grid-template-columns: 1fr; gap: 6px; }
+}
+
+/* --- research: topics as cards -------------------------------------------- */
+/* Two columns, held to a measure and centred, so a short last row cannot leave
+   half the window empty. Two columns also fixes which topic sits under which. */
+.topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 400px));
+  justify-content: center;
+  gap: 30px 44px;
+  margin: 30px auto 0;
+  max-width: 844px;
+}
+.topicblock { text-align: center; }
+.topicblock .topics { text-align: left; }
+.topic { display: flex; flex-direction: column; }
+.tp-img { overflow: hidden; background: rgba(13, 33, 54, 0.06); margin-bottom: 14px; }
+.tp-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.topic h3 { font-family: var(--hand); font-size: 23px; margin-bottom: 4px; }
+.tp-note {
+  font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 8px;
+}
+.tp-body { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); margin: 0; }
+
+/* --- research: figures beside the featured paper -------------------------- */
+.pf-figs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 22px; }
+.pf-figs figure { margin: 0; }
+.pf-figs img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: rgba(13, 33, 54, 0.06); }
+.pf-figs figcaption { font-size: 10.5px; color: var(--ink-3); margin-top: 5px; line-height: 1.35; }
+
+/* --- research: thumbnails in the library ---------------------------------- */
+.lib-list li.has-img { grid-template-columns: 74px 190px minmax(0, 1fr); }
+.li-img { display: block; overflow: hidden; align-self: start; background: rgba(13, 33, 54, 0.06); }
+.li-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+
+@media (max-width: 900px) {
+  .lib-list li.has-img { grid-template-columns: 1fr; }
+  .li-img { max-width: 320px; margin: 6px 0 10px; }
+  .pf-figs { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ===========================================================================
+   THE SHELF
+   All the books on one pen line, drifting forward until something stops them.
+   No colour: paper and ink only.
+   =========================================================================== */
+:root { --sh-top: 226px; }
+
+.shelf-lib { margin-top: 26px; }
+.sh-hint {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+}
+
+.sh-viewport {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 34px;
+}
+
+.sh-track {
+  display: flex;
+  align-items: flex-end;
+  width: max-content;
+  will-change: transform;
+}
+
+/* each category is a run of books with its name written under the line */
+.sh-group { flex: none; padding-right: 74px; }
+
+.sh-books {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: var(--sh-top);
+}
+
+.sh-spine {
+  flex: none;
+  border: 1px solid var(--ink);
+  border-bottom: 0;
+  border-radius: 1px 2px 0 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 8px 0 7px;
+  writing-mode: vertical-rl;
+  overflow: hidden;
+  transition: background 0.16s, color 0.16s;
+}
+.sh-spine:hover { background: var(--blue) !important; color: #fff !important; }
+
+.sh-t {
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 100%;
+}
+.sh-a {
+  font-size: 8.5px;
+  letter-spacing: 0.04em;
+  opacity: 0.62;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 38%;
+}
+
+/* the line itself does not move; the books slide along it */
+.sh-line {
+  position: absolute;
+  left: 0;
+  top: var(--sh-top);
+  width: 100%;
+  height: 22px;
+  overflow: visible;
+  pointer-events: none;
+}
+.sh-line path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.sh-label {
+  margin: 12px 0 0;
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sh-viewport { overflow-x: auto; }
+}
+@media (max-width: 640px) {
+  :root { --sh-top: 190px; }
+  .sh-group { padding-right: 46px; }
+}
+
+/* --- research: the opening statement -------------------------------------- */
+.res-intro { max-width: 44em; }
+.res-intro .lede { max-width: none; margin-bottom: 20px; }
+.res-intro p { font-size: 16.5px; line-height: 1.68; max-width: none; margin-bottom: 16px; }
+.res-intro p:last-child { margin-bottom: 0; }
+
+/* --- homepage: the research block ----------------------------------------- */
+.res-topics {
+  font-family: var(--hand);
+  font-size: clamp(19px, 2.3vw, 26px);
+  line-height: 1.5;
+  max-width: none;
+  margin-bottom: 0;
+}
+.res-topics a { border-bottom: 1px solid transparent; }
+.res-topics a:hover { border-color: var(--ink); }
+.res-topics .sep { color: var(--ink-3); margin: 0 12px; }
+
+/* --- info: press list ----------------------------------------------------
+   Rides on .cvline, and only adds the outbound link styling.             */
+#cvlist .pr-t,
+#presslist .pr-t {
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+#cvlist .pr-t:hover,
+#presslist .pr-t:hover { border-color: var(--ink); }
+#presslist .cvline .ty { font-style: italic; text-transform: none; letter-spacing: 0.02em; font-size: 11.5px; }
+
+/* --- exhibitions: the lead work ------------------------------------------
+   A full-bleed plate with the title over it, then the argument in two
+   columns underneath. Sized in vh so it never eats a whole tall screen.  */
+.lead { position: relative; height: 76vh; min-height: 460px; overflow: hidden; }
+.lead-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 42%;
+}
+.lead::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,10,18,0.5) 0%, rgba(8,10,18,0.46) 45%, rgba(8,10,18,0.72) 100%);
+}
+.lead-over {
+  position: relative; z-index: 2;
+  height: 100%;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 0 24px;
+  color: #fff;
+}
+.lead-over h1 {
+  text-shadow: 0 2px 26px rgba(6, 10, 20, 0.55);
+  font-family: var(--hand);
+  font-size: clamp(40px, 7vw, 92px);
+  line-height: 1.02;
+  margin: 10px 0 0;
+  font-weight: 400;
+}
+.lead-sub {
+  font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase;
+  margin-top: 18px; opacity: 0.9;
+}
+.lead-lines { margin-top: clamp(30px, 7vh, 70px); }
+.lead-lines p {
+  font-size: clamp(16px, 2.2vw, 23px);
+  line-height: 1.5; margin: 0; opacity: 0.85;
+}
+.lead-lines p + p { opacity: 1; }
+
+.lead-body { padding-top: 46px; }
+.lead-cols {
+  display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 44px;
+  align-items: start;
+}
+.lead-cols p { max-width: 40em; }
+.lead-links { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+
+/* --- exhibitions: the place ---------------------------------------------- */
+.place-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 40px; align-items: start; }
+.place-grid img { width: 100%; height: auto; display: block; }
+.place-yr {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 16px;
+}
+
+/* --- exhibitions: the show cards ----------------------------------------- */
+.shows-head { display: flex; align-items: baseline; gap: 14px; }
+.shows-head .chev { color: var(--ink-3); font-size: 15px; }
+.showcards {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 46px 34px; margin-top: 38px;
+}
+.showcard img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  background: var(--line-2);
+}
+.showcard h3 {
+  font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 400; margin: 18px 0 0; line-height: 1.35;
+}
+.showcard .sc-meta {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-3); margin-top: 8px;
+}
+.showcard p { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); margin-top: 14px; }
+.showcard .sc-link {
+  display: inline-block; margin-top: 14px; margin-right: 18px;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line);
+}
+.showcard .sc-link:hover { border-color: var(--ink); }
+
+@media (max-width: 980px) {
+  .showcards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lead-cols, .place-grid { grid-template-columns: 1fr; gap: 26px; }
+  .lead-links { flex-direction: row; flex-wrap: wrap; gap: 18px; }
+}
+@media (max-width: 620px) {
+  .showcards { grid-template-columns: 1fr; gap: 40px; }
+  .lead { height: 66vh; }
+}
+
+/* --- the project pages that hang off /shows ------------------------------ */
+.wsec { margin-top: 62px; }
+.wgrid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px; margin-top: 20px;
+}
+.wgrid.tall { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.wgrid figure { margin: 0; }
+.wgrid figure.wide { grid-column: 1 / -1; }
+.wgrid img { width: 100%; height: auto; display: block; background: var(--line-2); }
+.wgrid figcaption {
+  font-size: 12.5px; color: var(--ink-3); margin-top: 8px; line-height: 1.45;
+}
+@media (max-width: 760px) {
+  .wgrid, .wgrid.tall { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+}
+
+/* --- the fixed nav, and what sits under it -------------------------------- */
+/* Pages without a hero start below the bar rather than behind it. */
+body:not(.hashero) > div { padding-top: 57px; }
+
+/* Over the painting the bar is invisible; the pills carry themselves. */
+.hashero .nav {
+  background: transparent;
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+.hashero .nav .name { color: #fff; text-shadow: 0 1px 14px rgba(10, 40, 70, 0.5); }
+.hashero .nav.solid {
+  background: rgba(238, 243, 247, 0.72);
+  border-bottom-color: var(--line);
+  backdrop-filter: blur(9px);
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.hashero .nav.solid .name { color: var(--ink); text-shadow: none; }
+
+/* --- lightbox -------------------------------------------------------------
+   Every picture on the site opens here. Click outside it, press Esc or use
+   the close button to come back.                                          */
+body.lb-open { overflow: hidden; }
+
+.paper img:not(.nav img):not(.lb-img),
+.about img,
+.hero .motto { cursor: zoom-in; }
+.nav img, a img, .lb-img, [data-nozoom] img { cursor: auto; }
+
+/* named .lightbox, not .lb: the research page uses .lb for its own blocks */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(8, 12, 20, 0.93);
+  display: flex; flex-direction: column;
+  animation: lb-in 0.16s ease-out;
+}
+.lightbox[hidden] { display: none; }
+@keyframes lb-in { from { opacity: 0 } to { opacity: 1 } }
+
+.lb-stage {
+  flex: 1 1 auto;
+  display: flex; align-items: center; justify-content: center;
+  padding: 58px 64px 12px;
+  overflow: auto;
+}
+.lb-img {
+  max-width: 100%; max-height: 100%;
+  width: auto; height: auto;
+  object-fit: contain;
+  cursor: zoom-in;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+}
+.lb-img.is-zoomed {
+  max-width: none; max-height: none;
+  width: auto; height: auto;
+  cursor: zoom-out;
+}
+
+.lb-bar {
+  flex: 0 0 auto;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 20px;
+  padding: 10px 22px 20px;
+  color: rgba(226, 236, 245, 0.82);
+  font-size: 13px; line-height: 1.45;
+}
+.lb-cap { max-width: 68em; }
+.lb-count {
+  font-size: 11px; letter-spacing: 0.14em;
+  color: rgba(226, 236, 245, 0.5); white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.lb-close, .lb-nav {
+  position: absolute; z-index: 2;
+  background: rgba(255, 255, 255, 0.09);
+  border: 0; color: #fff; cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.15s;
+}
+.lb-close:hover, .lb-nav:hover { background: rgba(255, 255, 255, 0.22); }
+.lb-close { top: 14px; right: 16px; width: 40px; height: 40px; font-size: 15px; }
+.lb-nav {
+  top: 50%; transform: translateY(-50%);
+  width: 46px; height: 64px; font-size: 30px; line-height: 1;
+  border-radius: 8px;
+}
+.lb-prev { left: 10px; }
+.lb-next { right: 10px; }
+.lb-nav[hidden] { display: none; }
+
+@media (max-width: 620px) {
+  .lb-stage { padding: 54px 10px 10px; }
+  .lb-nav { width: 38px; height: 54px; font-size: 24px; }
+}
+
+/* The second highlight block mirrors the first, picture on the other side. */
+.place-grid.flip { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+.place-grid.flip a { display: block; }
+@media (max-width: 980px) {
+  .place-grid.flip { grid-template-columns: 1fr; }
+  .place-grid.flip > a { order: -1; }
+}
+
+/* --- slide gallery --------------------------------------------------------
+   One picture at a time, with a button to open the whole set as a grid.    */
+.slides { margin-top: 20px; }
+.sl-stage { position: relative; display: flex; align-items: center; gap: 10px; }
+.sl-track { flex: 1 1 auto; min-width: 0; }
+.sl-item { margin: 0; }
+.sl-item img {
+  width: 100%; height: auto; display: block;
+  max-height: 74vh; object-fit: contain;
+  background: var(--line-2);
+}
+.sl-item figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 8px; line-height: 1.45; }
+.sl-nav {
+  flex: 0 0 auto;
+  width: 38px; height: 60px; border: 1px solid var(--line);
+  background: transparent; color: var(--ink-2);
+  font-size: 24px; line-height: 1; cursor: pointer; border-radius: 4px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.sl-nav:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.sl-bar {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 18px;
+  margin-top: 12px;
+}
+.sl-count {
+  font-size: 11px; letter-spacing: 0.14em; color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.sl-all {
+  background: transparent; border: 0; cursor: pointer; padding: 0;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink); border-bottom: 1px solid var(--line);
+}
+.sl-all:hover { border-color: var(--ink); }
+.sl-grid[hidden] { display: none; }
+.sl-grid { margin-top: 26px; }
+
+@media (max-width: 620px) {
+  .sl-nav { width: 30px; height: 48px; font-size: 20px; }
+  .sl-item img { max-height: 60vh; }
+}
+
+/* --- the "also" box at the foot of a project page ------------------------ */
+.alsobox {
+  margin-top: 70px; padding: 34px 0 0;
+  border-top: 1px solid var(--ink);
+}
+.alsobox p { max-width: 42em; }
+
+/* --- a film, and a short glossary ---------------------------------------- */
+.vid { position: relative; width: 100%; aspect-ratio: 16 / 9; margin-top: 18px; background: var(--ink); }
+.vid iframe, .vid video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: contain; background: var(--ink); }
+.vidcap { font-size: 12.5px; color: var(--ink-3); margin-top: 10px; }
+
+.terms { margin-top: 20px; display: grid; gap: 26px; }
+.terms > div {
+  display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 24px;
+  padding-top: 20px; border-top: 1px solid var(--line-2);
+}
+.terms dt { font-family: var(--hand); font-size: 23px; line-height: 1.1; }
+.terms dd { margin: 0; font-size: 15px; line-height: 1.65; color: var(--ink-2); max-width: 44em; }
+@media (max-width: 760px) {
+  .terms > div { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* The picture that opens the "also" box at the foot of a project page. */
+.also-plate { display: block; margin-bottom: 26px; }
+.also-plate img { width: 100%; height: auto; display: block; }
+
+/* --- the films, watchable on the page ------------------------------------ */
+.filmlist { margin-top: 30px; display: grid; gap: 54px; }
+.film { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 30px; align-items: start; }
+.film-play { position: relative; cursor: pointer; background: var(--ink); aspect-ratio: 16 / 9; }
+.film-play img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.film-play iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.film-play.is-live { cursor: auto; }
+.film-btn {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 62px; height: 62px; border-radius: 999px;
+  background: rgba(10, 20, 34, 0.72); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; padding-left: 4px;
+  transition: background 0.16s, transform 0.16s;
+}
+.film-play:hover .film-btn { background: var(--ink); transform: translate(-50%, -50%) scale(1.06); }
+.film-txt h3 { font-family: var(--hand); font-size: 26px; margin: 0 0 4px; line-height: 1.15; }
+.film-meta {
+  font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 12px;
+}
+.film-txt p { font-size: 14.5px; line-height: 1.62; color: var(--ink-2); max-width: 42em; }
+.film-txt .sc-link { display: inline-block; margin-top: 12px; }
+
+@media (max-width: 820px) {
+  .film { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* The now / upcoming lines link out like the curriculum rows do. */
+.rows .pr-t { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.rows .pr-t:hover { border-color: var(--ink); }
+
+/* --- a highlighted piece of writing on a project page --------------------- */
+.readbox {
+  margin-top: 56px; padding: 30px 34px 34px;
+  background: rgba(13, 33, 54, 0.045);
+  border-left: 2px solid var(--ink);
+}
+.readbox-t {
+  display: block; margin-top: 10px;
+  font-family: var(--hand); font-size: clamp(24px, 3vw, 34px); line-height: 1.15;
+  color: var(--ink); text-decoration: none;
+}
+.readbox-t:hover { text-decoration: underline; text-underline-offset: 4px; }
+.readbox-m {
+  font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink-3); margin-top: 10px;
+}
+.readbox-q {
+  font-size: 17px; line-height: 1.5; margin-top: 20px; max-width: 44em;
+  color: var(--ink);
+}
+.readbox p { max-width: 44em; font-size: 14.5px; }
+.readbox .more { margin-top: 18px; display: inline-block; }
+@media (max-width: 620px) { .readbox { padding: 24px 20px 26px; } }
+
+/* --- the homepage loop ----------------------------------------------------
+   Ten frames, blue to clay. Each one crossfades and drifts slowly while it
+   holds, so the entrance moves the way the work does: through arches, then
+   across a surface. The motto rides inside its own frame, so the lettering
+   and the painting travel together and the words stay in the archway.     */
+.hs { position: absolute; inset: 0; overflow: hidden; }
+.hs-slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  /* No crossfade. The cut is instant, so two frames are never on screen at
+     once and nothing flickers as one hands over to the next. */
+  will-change: transform;
+}
+.hs-slide.is-on { opacity: 1; }
+.hs-slide .bg { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* The drift runs only on the frame that is showing, for exactly as long as it
+   is up, and holds its end state until the cut. `both` matters: without it the
+   transform snaps back at the end and the picture jumps. */
+.hs-slide.is-on.mv-in    { animation: hs-in    3s linear both; }
+.hs-slide.is-on.mv-out   { animation: hs-out   3s linear both; }
+.hs-slide.is-on.mv-left  { animation: hs-left  3s linear both; }
+.hs-slide.is-on.mv-right { animation: hs-right 3s linear both; }
+
+@keyframes hs-in    { from { transform: scale(1.02) } to { transform: scale(1.30) } }
+@keyframes hs-out   { from { transform: scale(1.30) } to { transform: scale(1.02) } }
+@keyframes hs-left  { from { transform: scale(1.22) translateX(7%) }  to { transform: scale(1.22) translateX(-7%) } }
+@keyframes hs-right { from { transform: scale(1.22) translateX(-7%) } to { transform: scale(1.22) translateX(7%) } }
+
+/* Someone who has asked for less movement gets the pictures without it. */
+@media (prefers-reduced-motion: reduce) {
+  .hs-slide.is-on.mv-in,
+  .hs-slide.is-on.mv-out,
+  .hs-slide.is-on.mv-left,
+  .hs-slide.is-on.mv-right { animation: none; transform: none; }
+}
+
+/* A short gloss after a title in the homepage collection lists. */
+.coll-list .note { color: var(--ink-3); font-size: 13px; line-height: 1.35; }
+
+@media (max-width: 620px) {
+  .coll-list li { grid-template-columns: minmax(0, 1fr) 72px; }
+  .coll-list .note { grid-column: 1 / -1; }
+}
+
+/* --- the world, drawn nervously ------------------------------------------
+   Coastlines in one wobbling ink line, a pin per city, and a blue bubble
+   that opens on the pin when you tap it.                                  */
+.wmap { margin-top: 26px; }
+.wmap-frame { position: relative; width: 100%; }
+.wmap svg { display: block; width: 100%; height: auto; overflow: visible; }
+.wmap svg path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  opacity: 0.78;
+}
+/* The second, fainter pass: the same coast drawn again, disagreeing slightly. */
+.wmap svg path.w-ghost { stroke-width: 0.5; opacity: 0.3; }
+
+.wpin {
+  position: absolute;
+  width: 22px; height: 22px; margin: -11px 0 0 -11px;
+  padding: 0; border: 0; background: transparent; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+.wpin-dot {
+  width: 7px; height: 7px; border-radius: 999px;
+  background: var(--ink);
+  box-shadow: 0 0 0 3px rgba(238, 243, 247, 0.85);
+  transition: transform 0.14s, background 0.14s;
+}
+.wpin:hover .wpin-dot { transform: scale(1.55); }
+.wpin.is-on .wpin-dot { background: var(--blue); transform: scale(1.7); }
+
+.wpop {
+  position: absolute;
+  z-index: 5;
+  /* sits above the pin, so the pin it belongs to stays visible */
+  transform: translate(-50%, -112%);
+  width: max-content; max-width: 15rem;
+  border-radius: 14px;
+  /* the same blue as a selected nav pill */
+  background: var(--blue);
+  color: #eef4fb;
+  padding: 13px 17px 14px;
+  box-shadow: 0 12px 34px rgba(8, 20, 36, 0.32);
+  pointer-events: none;
+}
+.wpop[hidden] { display: none; }
+/* a small tail, so the bubble points at its pin */
+.wpop::after {
+  content: '';
+  position: absolute; left: calc(50% - var(--tail, 0px)); bottom: -6px; margin-left: -6px;
+  width: 12px; height: 12px; background: var(--blue);
+  transform: rotate(45deg); border-radius: 2px;
+}
+.wpop-in { text-align: left; }
+.wpop-city {
+  font-family: var(--hand); font-size: 17px; line-height: 1.1; margin-bottom: 7px;
+}
+.wpop ul { list-style: none; margin: 0; padding: 0; }
+.wpop li {
+  font-size: 11.5px; line-height: 1.4; color: rgba(238, 244, 251, 0.86);
+  margin-bottom: 2px;
+}
+.wmap-note { font-size: 12.5px; color: var(--ink-3); margin-top: 14px; }
+
+@media (max-width: 700px) {
+  .wpop { max-width: 12.5rem; padding: 11px 14px 12px; }
+  .wpop-city { font-size: 15px; }
+  .wpop li { font-size: 10.5px; }
+  .wpin { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
+}
+/* Islands, seas and the finer coast: a lighter hand than the continents. */
+.wmap svg path.w-fine { stroke-width: 0.55; opacity: 0.55; }
+
+/* --- the time portal ------------------------------------------------------
+   Rest the cursor and the space around it bends. Difference blending means
+   one ink reads dark on the paper and light over the painting.            */
+#portal {
+  position: fixed; inset: 0;
+  z-index: 60;              /* over the page, under the nav and the lightbox */
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+@media (prefers-reduced-motion: reduce) { #portal { display: none; } }
+
+/* --- the books page ------------------------------------------------------- */
+.bookset { margin-top: 26px; display: grid; gap: 42px; }
+.bookrow {
+  display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 32px;
+  align-items: start;
+  padding-top: 26px; border-top: 1px solid var(--line-2);
+}
+.bookrow img { width: 100%; height: auto; display: block; }
+.bookrow-gap { min-height: 1px; }
+.bookrow h3 { font-family: var(--hand); font-size: 27px; line-height: 1.1; margin: 0 0 4px; }
+.bookrow-yr {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 12px;
+}
+.bookrow p { font-size: 15px; line-height: 1.65; color: var(--ink-2); max-width: 44em; margin: 0; }
+@media (max-width: 760px) {
+  .bookrow { grid-template-columns: 1fr; gap: 14px; }
+  .bookrow-gap { display: none; }
+}
+
+/* --- the three essays that state the position ----------------------------- */
+.posset { margin-top: 28px; display: grid; gap: 34px; }
+.posrow {
+  display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 30px;
+  align-items: start; padding-top: 26px; border-top: 1px solid var(--line-2);
+}
+.posrow img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.posrow h3 { font-family: var(--hand); font-size: 26px; line-height: 1.12; margin: 0 0 4px; }
+.posrow h3 a { color: var(--ink); border-bottom: 1px solid var(--line); }
+.posrow h3 a:hover { border-color: var(--ink); }
+.posrow-meta {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 12px;
+}
+.posrow p { font-size: 14.5px; line-height: 1.62; color: var(--ink-2); max-width: 42em; margin: 0; }
+.posrow .sc-link { display: inline-block; margin-top: 12px; }
+@media (max-width: 760px) {
+  .posrow { grid-template-columns: 1fr; gap: 14px; }
+}
+
+/* the one video on /info, above the record */
+.infovid { margin-top: 26px; max-width: 780px; }
+
+/* --- Mars College ----------------------------------------------------------
+   The rhythm is mars.college's: a numbered rule, one headline, a narrow column
+   of text, then photographs across the full width. The type is this site's own
+   — Verdelis for the headings, the same sans underneath. Only the colours move:
+   the desert paper and the rust the college paints on everything.          */
+[data-palette='mars'] {
+  --ink: #1c1714;
+  --ink-2: #55493f;
+  --ink-3: #8a7d6c;
+  --blue: #b6442a;          /* the college's rust: links, focus, accents */
+  --paper: #f3ede1;
+  --wash: #e3d9c6;
+  --line: rgba(28, 23, 20, 0.16);
+  --line-2: rgba(28, 23, 20, 0.08);
+  --wash-1: #f9f4e9;
+  --wash-2: #efe7d7;
+  --wash-3: #f2ebdd;
+  --wash-4: #ece2ce;
+  --rust: #b6442a;
+}
+
+.mars .projhero .t { max-width: 720px; }
+.mars .mars-hero-line {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 17px;
+  max-width: 26em;
+}
+
+/* the dark band of facts under the picture */
+.mars-strip { background: var(--ink); color: var(--paper); }
+.mars-strip dl {
+  display: flex; flex-wrap: wrap; gap: 10px 46px;
+  padding: 16px 0;
+  margin: 0;
+}
+.mars-strip dt {
+  font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 2px;
+}
+.mars-strip dd { margin: 0; font-size: 14.5px; }
+
+.mars .mars-sec { margin-top: clamp(56px, 8vw, 108px); }
+
+/* 01 · the label, on its hairline */
+.mars .mars-num {
+  display: flex; align-items: baseline; gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-2);
+}
+.mars .mars-num span { color: var(--rust); font-weight: 700; }
+
+.mars .mars-h { margin: 22px 0 24px; max-width: 16em; }
+/* the opening section carries no headline, so its first line has to do the job */
+.mars .lede.open { font-size: clamp(20px, 2.3vw, 25px); margin: 26px 0 1.1em; }
+.mars .mars-body { max-width: 620px; }
+.mars .mars-body .lede { margin-bottom: 1.1em; }
+
+/* the campus, year by year: edge to edge, like the college's own strip */
+.mars-years {
+  margin-top: clamp(36px, 5vw, 62px);
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 2px;
+  padding: 0 var(--pad);
+}
+.mars-years figure { margin: 0; background: var(--wash); }
+.mars-years img { width: 100%; height: 220px; object-fit: cover; }
+.mars-years figcaption {
+  padding: 10px 12px 14px;
+  font-size: 11.5px; line-height: 1.4; color: var(--ink-2);
+}
+.mars-years figcaption b {
+  display: block; color: var(--rust);
+  font-size: 11px; letter-spacing: 0.2em; font-weight: 700;
+  margin-bottom: 3px;
+}
+.mars .mars-credit {
+  margin-top: 14px;
+  font-size: 12px; color: var(--ink-3);
+}
+
+/* three abreast, the way the college sets out how it works */
+.mars-three {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(26px, 3.4vw, 46px);
+  margin-top: 8px;
+}
+.mars-three img { width: 100%; height: 190px; object-fit: cover; margin-bottom: 16px; }
+.mars-three h3 {
+  font-family: var(--hand); font-size: 25px; margin-bottom: 8px;
+}
+.mars-three p { font-size: 14.5px; max-width: none; }
+
+/* --- her own work --------------------------------------------------------- */
+.mars-work { margin-top: clamp(46px, 6vw, 84px); }
+.mars-work-head {
+  display: flex; align-items: baseline; gap: 18px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  margin-bottom: 14px;
+}
+.mars-work-n {
+  font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
+  color: var(--rust);
+  min-width: 2.5em;
+}
+.mars-work h3 { font-family: var(--hand); font-size: clamp(26px, 3.2vw, 38px); }
+.mars-work-yr {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-3); margin-top: 4px;
+}
+
+.mars-shots {
+  margin-top: clamp(26px, 3.5vw, 44px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2px;
+  padding: 0 var(--pad);
+  align-items: end;
+}
+.mars-shots.one { grid-template-columns: minmax(0, 1fr); }
+.mars-shots figure { margin: 0; }
+.mars-shots img { width: 100%; height: 300px; object-fit: cover; }
+.mars-shots.one img { height: clamp(320px, 46vw, 560px); }
+.mars-shots figcaption {
+  padding: 9px 2px 0;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.mars .mars-links { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 20px; }
+.mars .mars-links.big { margin-top: 28px; gap: 14px 34px; font-size: 13px; }
+
+/* the two questions, on the dark */
+.mars-ask {
+  margin-top: clamp(56px, 8vw, 104px);
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(46px, 7vw, 90px) 0;
+}
+.mars-ask p {
+  font-family: var(--hand);
+  font-size: clamp(24px, 3.4vw, 40px);
+  line-height: 1.18;
+  max-width: 18em;
+  margin-bottom: 0.5em;
+}
+.mars-ask p:last-child { margin-bottom: 0; }
+/* only a follow-up question turns rust; a single one stays on the paper */
+.mars-ask p + p { color: var(--rust); }
+
+/* seven abreast needs room; below that the years become a filmstrip */
+@media (max-width: 1000px) {
+  .mars-years {
+    grid-template-columns: repeat(7, 230px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  .mars-years figure { scroll-snap-align: start; }
+}
+@media (max-width: 700px) {
+  .mars-years img { height: 170px; }
+  .mars-shots img { height: 230px; }
+}
+
+/* --- a photograph, and what was made from it ------------------------------
+   Used on the Maurício Hora page: his picture on top, the painting under it,
+   so the pair reads as one object rather than two entries in a gallery.   */
+.pairs {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(26px, 3.4vw, 48px);
+}
+.pair { display: grid; gap: 14px; align-content: start; }
+.pair figure { margin: 0; }
+.pair img { width: 100%; }
+.pair figcaption {
+  margin-top: 7px;
+  font-size: 11.5px; letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+
+/* --- a fixed reference beside a slider ------------------------------------
+   The source picture stays put while the variations are paged through, so
+   the transformation is readable without holding the original in your head. */
+.compare {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(22px, 3vw, 44px);
+  align-items: start;
+  margin-top: 22px;
+}
+.compare .compare-ref { margin: 0; position: sticky; top: calc(var(--navh) + 20px); }
+.compare .compare-ref img { width: 100%; }
+.compare .compare-ref figcaption {
+  margin-top: 8px;
+  font-size: 11.5px; color: var(--ink-3);
+}
+.compare .slides { margin-top: 0; }
+
+@media (max-width: 820px) {
+  .compare { grid-template-columns: minmax(0, 1fr); }
+  .compare .compare-ref { position: static; max-width: 420px; }
+}
+
+/* --- the book reader ------------------------------------------------------
+   One sheet at a time. A printed spread is a single image here, so the reader
+   never puts two of them side by side. Turning lifts the sheet you are on and
+   swings it away on its spine; the next one is already underneath.        */
+.reader { margin-top: 26px; }
+.reader:focus-visible { outline: 2px solid var(--blue); outline-offset: 8px; }
+
+.reader-stage {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 46px;
+  align-items: center;
+  gap: 12px;
+}
+.reader-book {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  perspective: 2400px;
+  background: rgba(13, 33, 54, 0.05);
+  padding: clamp(10px, 2vw, 24px);
+}
+.reader-page { margin: 0; min-width: 0; }
+.reader-page img,
+.reader-turn img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 72vh;
+  box-shadow: 0 3px 22px rgba(13, 33, 54, 0.2);
+  background: #fff;
+}
+
+/* the sheet in motion, laid over the one it is uncovering */
+.reader-turn {
+  position: absolute;
+  inset: clamp(10px, 2vw, 24px);
+  display: none;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+}
+.reader-turn.is-on { display: flex; }
+.reader-turn img { transform-origin: left center; backface-visibility: hidden; }
+.reader-turn.fwd img { animation: sheet-fwd 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.reader-turn.back img {
+  transform-origin: right center;
+  animation: sheet-back 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+@keyframes sheet-fwd {
+  0%   { transform: rotateY(0deg); filter: brightness(1); }
+  100% { transform: rotateY(-105deg); filter: brightness(0.72); opacity: 0.9; }
+}
+@keyframes sheet-back {
+  0%   { transform: rotateY(105deg); filter: brightness(0.72); opacity: 0.9; }
+  100% { transform: rotateY(0deg); filter: brightness(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reader-turn { display: none !important; }
+}
+
+.reader-nav {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  padding: 16px 0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.reader-nav:hover:not(:disabled) { background: var(--wash); }
+.reader-nav:disabled { opacity: 0.26; cursor: default; }
+
+.reader-bar {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 14px;
+  padding-left: 58px;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.reader-thumbs-btn,
+.reader-dl {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 0 0 2px;
+  font: inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.reader-dl { margin-left: auto; }
+
+/* `display: grid` would otherwise beat the hidden attribute */
+.reader-thumbs[hidden] { display: none; }
+.reader-thumbs {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+.reader-thumbs button {
+  appearance: none; border: 0; background: none; padding: 0; cursor: pointer;
+}
+.reader-thumbs img { width: 100%; border: 1px solid var(--line-2); background: #fff; }
+
+@media (max-width: 779px) {
+  .reader-stage { grid-template-columns: 34px minmax(0, 1fr) 34px; gap: 8px; }
+  .reader-page img, .reader-turn img { max-height: 52vh; }
+  .reader-bar { padding-left: 0; flex-wrap: wrap; gap: 14px 18px; }
+  .reader-dl { margin-left: 0; }
+}
+
+.bookrow-skim { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); }
+
+/* the research note on the homepage: the question in the display face, the
+   two paragraphs under it */
+.res-ask {
+  font-family: var(--hand);
+  font-size: clamp(26px, 3.6vw, 42px);
+  line-height: 1.12;
+  max-width: 15em;
+  margin: 16px 0 22px;
+  color: var(--blue);
+}
+.res-note { max-width: 640px; margin-bottom: 8px; }
+.res-note p:last-child { margin-bottom: 0; }
+
+/* the research note, held between two beings from Verdelis's Letter */
+.res-block {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 2fr) minmax(0, 0.7fr);
+  align-items: center;
+  gap: clamp(16px, 3vw, 48px);
+}
+.res-mid { text-align: center; }
+.res-fig { width: 100%; height: auto; max-height: 420px; object-fit: contain; }
+.res-block .res-ask { margin: 16px auto 22px; }
+.res-block .res-note { margin: 0 auto 8px; }
+.res-block .res-note p { margin-left: auto; margin-right: auto; }
+.res-block .res-topics { justify-content: center; }
+
+@media (max-width: 820px) {
+  .res-block { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .res-mid { grid-column: 1 / -1; order: -1; }
+  .res-fig { max-height: 240px; }
+}
+
+
+/* a poem and a borrowed statement, on the project pages */
+.wpoem {
+  margin-top: 20px;
+  display: grid; gap: 3px;
+  font-family: var(--hand);
+  font-size: clamp(19px, 2.2vw, 26px);
+  line-height: 1.25;
+  color: var(--blue);
+}
+.wpoem cite {
+  font-family: var(--sans); font-style: normal;
+  font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-3); margin-top: 12px;
+}
+.wstatement { margin-top: 34px; }
+.wstatement p { font-size: 17px; }
+.wstatement-by {
+  font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-3); margin-top: 6px;
+}
+
+/* plain records on a project page: festivals, press */
+.wlist { list-style: none; margin-top: 14px; }
+.wlist li {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 18px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line-2);
+  align-items: baseline;
+}
+.wl-y {
+  font-size: 12px; letter-spacing: 0.1em; color: var(--ink-3);
+  text-transform: uppercase;
+}
+.wlist a { border-bottom: 1px solid var(--line); }
+.wlist a:hover { border-color: var(--blue); color: var(--blue); }
+.wl-n { display: block; font-size: 13.5px; color: var(--ink-2); margin-top: 3px; }
+.wl-group {
+  font-family: var(--hand); font-size: 22px;
+  margin: 26px 0 0;
+}
+@media (max-width: 620px) {
+  .wlist li { grid-template-columns: minmax(0, 1fr); gap: 3px; }
+}

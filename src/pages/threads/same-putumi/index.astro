@@ -1,0 +1,107 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Spine from '../../../components/Spine.astro';
+import { samePutumi as sp } from '../../../data/same-putumi.js';
+import { cvForThread } from '../../../data/cv.js';
+
+const rows = cvForThread('same-putumi');
+---
+
+<Base
+  title={sp.title}
+  description={sp.lede}
+  palette="envira"
+  bodyClass="paper"
+>
+  <div class="projhero">
+    <img src={sp.hero} alt={sp.heroAlt} fetchpriority="high" />
+    <div class="t">
+      <div class="kicker" style="color:#fff; opacity:.9">Co-authored · {sp.years}</div>
+      <h1>{sp.title}</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="meta">
+      <div><div class="k">Status</div>{sp.status}</div>
+      <div><div class="k">Media</div>{sp.media}</div>
+      <div><div class="k">Places</div>{sp.places}</div>
+      <div><div class="k">Institute</div>Nhandepa</div>
+    </div>
+
+    <p class="coauthor-line">{sp.coauthor}</p>
+
+    <div class="narrow" style="margin-top:52px">
+      <p class="lede">{sp.lede}</p>
+    </div>
+
+    <p class="thesis">{sp.thesis}</p>
+
+    <div class="narrow">
+      {sp.intro.map((p) => <p>{p}</p>)}
+    </div>
+
+    <!-- THE PROJECTS ---------------------------------------------------- -->
+    <div class="kicker" style="margin:80px 0 6px">The projects</div>
+    <h2 class="sec" style="margin-bottom:8px">Each one led somewhere else</h2>
+    <p style="max-width:38em; color:var(--ink-2)">
+      Six pieces of work came out of the partnership. Each has its own page.
+    </p>
+
+    <ul class="sp-list">
+      {sp.projects.map((p, i) => (
+        <li>
+          <a href={`/threads/same-putumi/${p.slug}`}>
+            <span class="n">{String(i + 1).padStart(2, '0')}</span>
+            <span class="im"><img src={p.hero} alt="" loading="lazy" /></span>
+            <span class="tx">
+              <span class="ti">{p.title}</span>
+              <span class="yr">{p.years} · {p.place}</span>
+              <span class="ld">{p.lede}</span>
+              {p.notWithSame && <span class="nb">A related project, not co-authored with Same</span>}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- THE REPORT ------------------------------------------------------ -->
+    <section class="report">
+      <div class="kicker">The essay</div>
+      <h2 class="sec" style="margin:12px 0 6px">{sp.report.title}</h2>
+      <p class="rep-sub">{sp.report.subtitle} · {sp.report.date} · {sp.report.pages} pages</p>
+      <p class="rep-sum">{sp.report.summary}</p>
+
+      <ul class="rep-points">
+        {sp.report.points.map((pt) => <li>{pt}</li>)}
+      </ul>
+
+      <p style="margin-top:26px">
+        <a class="more" href={sp.report.href} download>Read the full essay (PDF) ⇢</a>
+      </p>
+    </section>
+
+    {rows.length > 0 && (
+      <>
+        <div class="kicker" style="margin:70px 0 0">Exhibited</div>
+        <ul class="rows">
+          {rows.map((r) => (
+            <li>
+              <span>{r.year}</span>
+              <div>{[r.title, r.venue, r.city].filter(Boolean).join(', ')}</div>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+
+    <div class="kicker" style="margin:70px 0 20px">Reading</div>
+    <div class="readlist">
+      <p>Gerdes, Paulus. <em>The Circle and the Square</em>.</p>
+      <p>Eglash, Ron. <em>African Fractals: Modern Computing and Indigenous Design</em>. Rutgers UP, 1999.</p>
+      <p>Gaskins, Nettrice. On techno-vernacular creativity and ethnocomputing.</p>
+    </div>
+
+    <Spine current="same-putumi" />
+  </div>
+</Base>
