@@ -8,252 +8,502 @@
   "redirects": [
     {
       "source": "/About-Vanessa-Rosa",
-      "destination": "/info",
+      "destination": "/info/",
+      "permanent": true
+    },
+    {
+      "source": "/About-Vanessa-Rosa/",
+      "destination": "/info/",
       "permanent": true
     },
     {
       "source": "/Artist-Statement",
-      "destination": "/info",
+      "destination": "/info/",
+      "permanent": true
+    },
+    {
+      "source": "/Artist-Statement/",
+      "destination": "/info/",
       "permanent": true
     },
     {
       "source": "/Press-and-Media",
-      "destination": "/info",
+      "destination": "/info/",
+      "permanent": true
+    },
+    {
+      "source": "/Press-and-Media/",
+      "destination": "/info/",
       "permanent": true
     },
     {
       "source": "/Research",
-      "destination": "/research",
+      "destination": "/research/",
+      "permanent": true
+    },
+    {
+      "source": "/Research/",
+      "destination": "/research/",
       "permanent": true
     },
     {
       "source": "/Art-Shows",
-      "destination": "/art",
+      "destination": "/art/",
+      "permanent": true
+    },
+    {
+      "source": "/Art-Shows/",
+      "destination": "/art/",
       "permanent": true
     },
     {
       "source": "/Shows",
-      "destination": "/art",
+      "destination": "/art/",
+      "permanent": true
+    },
+    {
+      "source": "/Shows/",
+      "destination": "/art/",
       "permanent": true
     },
     {
       "source": "/Other-projects",
-      "destination": "/art",
+      "destination": "/art/",
+      "permanent": true
+    },
+    {
+      "source": "/Other-projects/",
+      "destination": "/art/",
       "permanent": true
     },
     {
       "source": "/MAD",
-      "destination": "/art",
+      "destination": "/art/",
+      "permanent": true
+    },
+    {
+      "source": "/MAD/",
+      "destination": "/art/",
       "permanent": true
     },
     {
       "source": "/Little-Martians",
-      "destination": "/threads/little-martians",
+      "destination": "/threads/little-martians/",
+      "permanent": true
+    },
+    {
+      "source": "/Little-Martians/",
+      "destination": "/threads/little-martians/",
       "permanent": true
     },
     {
       "source": "/Mars-College",
-      "destination": "/mars-college",
+      "destination": "/mars-college/",
+      "permanent": true
+    },
+    {
+      "source": "/Mars-College/",
+      "destination": "/mars-college/",
       "permanent": true
     },
     {
       "source": "/Pioneer-Works",
-      "destination": "/pioneer-works",
+      "destination": "/pioneer-works/",
+      "permanent": true
+    },
+    {
+      "source": "/Pioneer-Works/",
+      "destination": "/pioneer-works/",
       "permanent": true
     },
     {
       "source": "/Ethnocomputing-Experiments",
-      "destination": "/ethnocomputing-experiments",
+      "destination": "/ethnocomputing-experiments/",
+      "permanent": true
+    },
+    {
+      "source": "/Ethnocomputing-Experiments/",
+      "destination": "/ethnocomputing-experiments/",
       "permanent": true
     },
     {
       "source": "/Infinity-Game",
-      "destination": "/infinity-game",
+      "destination": "/infinity-game/",
+      "permanent": true
+    },
+    {
+      "source": "/Infinity-Game/",
+      "destination": "/infinity-game/",
       "permanent": true
     },
     {
       "source": "/Imaginary-Tiles",
-      "destination": "/imaginary-tiles",
+      "destination": "/imaginary-tiles/",
+      "permanent": true
+    },
+    {
+      "source": "/Imaginary-Tiles/",
+      "destination": "/imaginary-tiles/",
       "permanent": true
     },
     {
       "source": "/Gerard",
-      "destination": "/gerard-quenum",
+      "destination": "/gerard-quenum/",
+      "permanent": true
+    },
+    {
+      "source": "/Gerard/",
+      "destination": "/gerard-quenum/",
       "permanent": true
     },
     {
       "source": "/Ver-a-cidade",
-      "destination": "/ver-a-cidade",
+      "destination": "/ver-a-cidade/",
+      "permanent": true
+    },
+    {
+      "source": "/Ver-a-cidade/",
+      "destination": "/ver-a-cidade/",
       "permanent": true
     },
     {
       "source": "/Silk-Roads",
-      "destination": "/threads/the-silk-roads",
+      "destination": "/threads/the-silk-roads/",
+      "permanent": true
+    },
+    {
+      "source": "/Silk-Roads/",
+      "destination": "/threads/the-silk-roads/",
       "permanent": true
     },
     {
       "source": "/Patterns-1",
-      "destination": "/threads/ethnocomputing",
+      "destination": "/threads/ethnocomputing/",
+      "permanent": true
+    },
+    {
+      "source": "/Patterns-1/",
+      "destination": "/threads/ethnocomputing/",
       "permanent": true
     },
     {
       "source": "/Diana-s-World",
-      "destination": "/books",
+      "destination": "/books/",
+      "permanent": true
+    },
+    {
+      "source": "/Diana-s-World/",
+      "destination": "/books/",
       "permanent": true
     },
     {
       "source": "/Drawings",
-      "destination": "/sketchbooks",
+      "destination": "/sketchbooks/",
+      "permanent": true
+    },
+    {
+      "source": "/Drawings/",
+      "destination": "/sketchbooks/",
       "permanent": true
     },
     {
       "source": "/Pedra-do-Sal-Visible-Memories",
-      "destination": "/threads/visible-memories",
+      "destination": "/threads/visible-memories/",
+      "permanent": true
+    },
+    {
+      "source": "/Pedra-do-Sal-Visible-Memories/",
+      "destination": "/threads/visible-memories/",
       "permanent": true
     },
     {
       "source": "/O-Navio-da-Pedra-do-Sal",
-      "destination": "/threads/visible-memories",
+      "destination": "/threads/visible-memories/",
+      "permanent": true
+    },
+    {
+      "source": "/O-Navio-da-Pedra-do-Sal/",
+      "destination": "/threads/visible-memories/",
       "permanent": true
     },
     {
       "source": "/Imaginary-Zone-from-the-Port-Zone",
-      "destination": "/mauricio-hora",
+      "destination": "/mauricio-hora/",
+      "permanent": true
+    },
+    {
+      "source": "/Imaginary-Zone-from-the-Port-Zone/",
+      "destination": "/mauricio-hora/",
       "permanent": true
     },
     {
       "source": "/Same-Putumi",
-      "destination": "/threads/same-putumi",
+      "destination": "/threads/same-putumi/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-Putumi/",
+      "destination": "/threads/same-putumi/",
       "permanent": true
     },
     {
       "source": "/Same-first-immersion",
-      "destination": "/threads/same-putumi/first-immersion",
+      "destination": "/threads/same-putumi/first-immersion/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-first-immersion/",
+      "destination": "/threads/same-putumi/first-immersion/",
       "permanent": true
     },
     {
       "source": "/Same-Nhandepa-exhibit",
-      "destination": "/threads/same-putumi/nhandepa",
+      "destination": "/threads/same-putumi/nhandepa/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-Nhandepa-exhibit/",
+      "destination": "/threads/same-putumi/nhandepa/",
       "permanent": true
     },
     {
       "source": "/Same-Research-Education",
-      "destination": "/threads/same-putumi/research-and-education",
+      "destination": "/threads/same-putumi/research-and-education/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-Research-Education/",
+      "destination": "/threads/same-putumi/research-and-education/",
       "permanent": true
     },
     {
       "source": "/Same-gravura",
-      "destination": "/threads/same-putumi/prints",
+      "destination": "/threads/same-putumi/prints/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-gravura/",
+      "destination": "/threads/same-putumi/prints/",
       "permanent": true
     },
     {
       "source": "/Same-Video-Mapping",
-      "destination": "/threads/same-putumi",
+      "destination": "/threads/same-putumi/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-Video-Mapping/",
+      "destination": "/threads/same-putumi/",
       "permanent": true
     },
     {
       "source": "/Street-Art1",
-      "destination": "/street-art",
+      "destination": "/street-art/",
+      "permanent": true
+    },
+    {
+      "source": "/Street-Art1/",
+      "destination": "/street-art/",
       "permanent": true
     },
     {
       "source": "/Street-Painting",
-      "destination": "/street-art",
+      "destination": "/street-art/",
+      "permanent": true
+    },
+    {
+      "source": "/Street-Painting/",
+      "destination": "/street-art/",
       "permanent": true
     },
     {
       "source": "/Imaginary-Tiles-street",
-      "destination": "/street-art",
+      "destination": "/street-art/",
+      "permanent": true
+    },
+    {
+      "source": "/Imaginary-Tiles-street/",
+      "destination": "/street-art/",
       "permanent": true
     },
     {
       "source": "/Chile-street-painting-Trip",
-      "destination": "/street-art",
+      "destination": "/street-art/",
+      "permanent": true
+    },
+    {
+      "source": "/Chile-street-painting-Trip/",
+      "destination": "/street-art/",
       "permanent": true
     },
     {
       "source": "/Eyes-on-walls",
-      "destination": "/street-art",
+      "destination": "/street-art/",
+      "permanent": true
+    },
+    {
+      "source": "/Eyes-on-walls/",
+      "destination": "/street-art/",
       "permanent": true
     },
     {
       "source": "/Caminhos-Paths",
-      "destination": "/street-art",
+      "destination": "/street-art/",
+      "permanent": true
+    },
+    {
+      "source": "/Caminhos-Paths/",
+      "destination": "/street-art/",
       "permanent": true
     },
     {
       "source": "/Gerard-copy",
-      "destination": "/gerard-quenum",
+      "destination": "/gerard-quenum/",
+      "permanent": true
+    },
+    {
+      "source": "/Gerard-copy/",
+      "destination": "/gerard-quenum/",
       "permanent": true
     },
     {
       "source": "/Imaginary-Tiles-copy",
-      "destination": "/imaginary-tiles",
+      "destination": "/imaginary-tiles/",
+      "permanent": true
+    },
+    {
+      "source": "/Imaginary-Tiles-copy/",
+      "destination": "/imaginary-tiles/",
       "permanent": true
     },
     {
       "source": "/Infinity-Game-copy",
-      "destination": "/infinity-game",
+      "destination": "/infinity-game/",
+      "permanent": true
+    },
+    {
+      "source": "/Infinity-Game-copy/",
+      "destination": "/infinity-game/",
       "permanent": true
     },
     {
       "source": "/Ethnocomputing-Experiments-copy",
-      "destination": "/ethnocomputing-experiments",
+      "destination": "/ethnocomputing-experiments/",
+      "permanent": true
+    },
+    {
+      "source": "/Ethnocomputing-Experiments-copy/",
+      "destination": "/ethnocomputing-experiments/",
       "permanent": true
     },
     {
       "source": "/Pioneer-Works-copy",
-      "destination": "/pioneer-works",
+      "destination": "/pioneer-works/",
+      "permanent": true
+    },
+    {
+      "source": "/Pioneer-Works-copy/",
+      "destination": "/pioneer-works/",
       "permanent": true
     },
     {
       "source": "/Ver-a-cidade-copy",
-      "destination": "/ver-a-cidade",
+      "destination": "/ver-a-cidade/",
+      "permanent": true
+    },
+    {
+      "source": "/Ver-a-cidade-copy/",
+      "destination": "/ver-a-cidade/",
       "permanent": true
     },
     {
       "source": "/Same-Putumi-copy",
-      "destination": "/threads/same-putumi",
+      "destination": "/threads/same-putumi/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-Putumi-copy/",
+      "destination": "/threads/same-putumi/",
       "permanent": true
     },
     {
       "source": "/Same-first-immersion-copy",
-      "destination": "/threads/same-putumi/first-immersion",
+      "destination": "/threads/same-putumi/first-immersion/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-first-immersion-copy/",
+      "destination": "/threads/same-putumi/first-immersion/",
       "permanent": true
     },
     {
       "source": "/Same-Nhandepa-exhibit-copy",
-      "destination": "/threads/same-putumi/nhandepa",
+      "destination": "/threads/same-putumi/nhandepa/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-Nhandepa-exhibit-copy/",
+      "destination": "/threads/same-putumi/nhandepa/",
       "permanent": true
     },
     {
       "source": "/Same-Research-Education-copy",
-      "destination": "/threads/same-putumi/research-and-education",
+      "destination": "/threads/same-putumi/research-and-education/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-Research-Education-copy/",
+      "destination": "/threads/same-putumi/research-and-education/",
       "permanent": true
     },
     {
       "source": "/Same-gravura-copy",
-      "destination": "/threads/same-putumi/prints",
+      "destination": "/threads/same-putumi/prints/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-gravura-copy/",
+      "destination": "/threads/same-putumi/prints/",
       "permanent": true
     },
     {
       "source": "/Same-Video-Mapping-copy",
-      "destination": "/threads/same-putumi",
+      "destination": "/threads/same-putumi/",
+      "permanent": true
+    },
+    {
+      "source": "/Same-Video-Mapping-copy/",
+      "destination": "/threads/same-putumi/",
       "permanent": true
     },
     {
       "source": "/Shows-copy",
-      "destination": "/art",
+      "destination": "/art/",
+      "permanent": true
+    },
+    {
+      "source": "/Shows-copy/",
+      "destination": "/art/",
       "permanent": true
     },
     {
       "source": "/Drawings-copy",
-      "destination": "/sketchbooks",
+      "destination": "/sketchbooks/",
+      "permanent": true
+    },
+    {
+      "source": "/Drawings-copy/",
+      "destination": "/sketchbooks/",
       "permanent": true
     },
     {
       "source": "/Caminhos-Paths-copy",
-      "destination": "/street-art",
+      "destination": "/street-art/",
+      "permanent": true
+    },
+    {
+      "source": "/Caminhos-Paths-copy/",
+      "destination": "/street-art/",
       "permanent": true
     }
   ],
