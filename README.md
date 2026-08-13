@@ -42,6 +42,16 @@ A few things worth knowing:
 
 ## Deploying
 
-Static output; any host will do. `netlify.toml` is set up for Netlify, and
-`public/_redirects` and `public/_headers` are read by both Netlify and
-Cloudflare Pages.
+Static output; any host will do. Config for three of them is committed, so
+switching is a matter of pointing DNS somewhere else:
+
+| Host | Reads | Notes |
+| --- | --- | --- |
+| Cloudflare Pages | `public/_redirects`, `public/_headers` | Unlimited bandwidth on the free plan |
+| Netlify | `public/_redirects`, `public/_headers`, `netlify.toml` | A drag-and-drop deploy ignores `netlify.toml` |
+| Vercel | `vercel.json` | Ignores `_redirects` and `_headers` entirely |
+
+Build command `npm run build`, output directory `dist`, on all three.
+
+`vercel.json` is generated from `public/_redirects` — if you add a redirect,
+add it there and regenerate, so the two cannot drift apart.
