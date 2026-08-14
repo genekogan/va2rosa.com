@@ -232,6 +232,20 @@ export const streetArt = {
     'This page is a portfolio rather than a chronology: Rio, Chile, Berlin, Lisbon, Cotonou, New York. Some of these walls are gone. Most of the good ones were painted with somebody else.',
   ],
   sections: [
+    {
+      title: 'Caminho',
+      body: [
+        'Using a photo by Angela Rolim, taken at Morro da Conceição in the port zone of Rio de Janeiro, I made a digital distortion of the image to enhance the perspective’s illusion. After pasting the photographic enlargement on a wall, I continued the work with spray paint and acrylics, creating characters who looked like the people who live there.',
+        'Intrigued by the illusive effect, I decided to reassemble it in other contexts. I always try to adapt the painting and collage to their new surroundings, making characters and painted architectures that refer to local specificities.',
+        'It was first made at Morro da Conceição during a feminist NGO mural event I coordinated, then shown at the 63rd Fortaleza Art Salon, and redone with Julia Suav at the II Kolirius International Festival in Macaé, Rio de Janeiro state.',
+      ],
+      images: [
+        { src: '/images/street/cam-01.webp', caption: 'Made in Rio de Janeiro. Photo by Paulo Barros' },
+        { src: '/images/street/cam-02.webp', caption: 'Made in Fortaleza. Photo by Danielle Travassos' },
+        { src: '/images/street/cam-03.webp', caption: 'Fortaleza, detail. Photo by Danielle Travassos' },
+        { src: '/images/street/cam-04.webp', caption: 'Fortaleza. Photo by Danielle Travassos' },
+      ],
+    },
     { title: 'Walls', images: take('street', 0, 12) },
     { title: 'More', images: slice('street', 12) },
   ],
@@ -256,6 +270,11 @@ export const haMuitasNoites = {
   intro: [
     'Gullar wrote Poema Sujo in Buenos Aires in 1975, in exile, believing he might be killed before he finished it. Tendler’s series follows that journey through testimony, music and readings, and it needed images for the parts of a life that were never filmed.',
     'I painted those parts and filmed myself painting them, so the image arrives the way a memory does: a mark at a time, in front of you, until it becomes a place. More than twenty of these time-lapse sequences were produced, alongside forty drawings.',
+  ],
+  videos: [
+    { title: 'Teaser', vimeo: '249747317', caption: 'Há muitas noites na noite — teaser.' },
+    { title: 'An episode', youtube: 'f1juvStUUQA', caption: 'One of the episodes. The whole series is on YouTube.' },
+    { title: 'Another episode', youtube: 'UHXVFcGnRTc' },
   ],
   sections: [
     {
@@ -808,4 +827,135 @@ export const imaginaryTiles = {
     ],
     links: [{ label: 'The thread', href: '/threads/the-silk-roads' }],
   },
+};
+
+// ---------------------------------------------------------------------------
+// MAD — Machine Aided Drawings, 2019 to 2021. Follows the original page: the
+// six vases, the frame experiments, and the two sets of references behind them.
+// ---------------------------------------------------------------------------
+export const mad = {
+  slug: 'mad',
+  kicker: 'Drawings with a machine · 2019 to 2021',
+  title: 'MAD — Machine Aided Drawings',
+  hero: '/images/mad/mad-01.webp',
+  heroAlt:
+    'A pen-plotted drawing of a Qing Chinese vase standing on a tiled floor, inside an illusionary frame.',
+  lede: 'Drawings and tiles created in collaboration with a drawing machine.',
+  meta: [
+    ['When', '2019 to 2021'],
+    ['Made with', 'An AxiDraw pen plotter'],
+    ['Media', 'Ink on paper'],
+    ['Subject', 'A Qing vase, a tiled floor, and the frame around them'],
+  ],
+  intro: [
+    'Six drawings of a Qing Chinese vase on a tiled floor with illusionary frames. They were all made with an AxiDraw, and each one came out different: while the machine worked I moved the paper, or the pen holder, under it.',
+    'So the plotter is not a printer here. It holds one half of the drawing and I hold the other, and what lands on the page is whatever the two of us do to each other.',
+  ],
+  videos: [
+    {
+      title: 'The machine drawing',
+      file: '/video/mad-drawing.mp4',
+      poster: '/video/mad-drawing.webp',
+      caption: 'The AxiDraw at work, with the paper moving under it.',
+      alt: 'A pen plotter drawing a vase while the paper is shifted beneath it.',
+    },
+  ],
+  sections: [
+    {
+      title: 'The six vases',
+      gallery: 'slides',
+      images: [
+        { src: '/images/mad/mad-01.webp' },
+        { src: '/images/mad/mad-02.webp' },
+        { src: '/images/mad/mad-03.webp' },
+        { src: '/images/mad/mad-05.webp' },
+        { src: '/images/mad/mad-06.webp' },
+      ],
+    },
+    {
+      title: 'Playing with the image frame and space',
+      images: [
+        { src: '/images/mad/mad-07.webp' },
+        { src: '/images/mad/mad-08.webp' },
+      ],
+    },
+    {
+      title: 'Inspired by M. C. Escher, Another World',
+      images: [
+        { src: '/images/mad/mad-09.webp' },
+        { src: '/images/mad/mad-10.webp' },
+        { src: '/images/mad/mad-11.webp' },
+      ],
+    },
+    {
+      title: 'Inspired by Sebastiano Serlio, Vredeman de Vries and Giovanni Bracelli',
+      body: [
+        'The mathematisation of visual representation: the moment European drawing decided space could be built out of rules, and the treatises that worked out how.',
+      ],
+      gallery: 'slides',
+      images: [
+        { src: '/images/mad/mad-12.webp' },
+        { src: '/images/mad/mad-13.webp' },
+        { src: '/images/mad/mad-14.webp' },
+        { src: '/images/mad/mad-15.webp' },
+        { src: '/images/mad/mad-16.webp' },
+        { src: '/images/mad/mad-17.webp' },
+        { src: '/images/mad/mad-18.webp' },
+        { src: '/images/mad/mad-19.webp' },
+      ],
+    },
+  ],
+  also: {
+    kicker: 'Where it belongs',
+    title: 'Ethnomathematics & Ethnocomputing',
+    body: [
+      'A machine following rules to make an image is the same argument as the Sona drawings and the perspective treatises: geometry as a way of thinking, not a way of measuring.',
+    ],
+    links: [{ label: 'The thread', href: '/threads/ethnocomputing' }],
+  },
+};
+
+
+// ---------------------------------------------------------------------------
+// More projects: the smaller pieces that lived on va2rosa.com/Other-projects.
+// ---------------------------------------------------------------------------
+export const moreProjects = {
+  slug: 'more-projects',
+  kicker: 'Other work · 2009 to 2012',
+  title: 'More projects',
+  hero: '/images/op2/samba.webp',
+  heroAlt: 'Flags made for the Embaixadores da Alegria samba school parade.',
+  lede: 'Smaller pieces, and the ones that do not belong to any of the threads.',
+  meta: [
+    ['When', '2009 to 2012'],
+    ['Where', 'Rio de Janeiro'],
+    ['Media', 'Flags · mural · sculpture'],
+  ],
+  intro: [],
+  sections: [
+    {
+      title: 'Samba Parade — Embaixadores da Alegria',
+      body: [
+        'Production of flags for a samba school parade, February 2012. Embaixadores da Alegria, the Ambassadors of Joy, is dedicated to promoting the rights of people with disabilities, and many of them parade with the group.',
+      ],
+      images: [{ src: '/images/op2/samba.webp' }],
+    },
+    {
+      title: 'Artur Fidalgo Gallery',
+      body: ['Mural exhibited at Artur Fidalgo Gallery, November 2012.'],
+      images: [
+        { src: '/images/op2/fidalgo-1.webp' },
+        { src: '/images/op2/fidalgo-2.webp' },
+        { src: '/images/op2/fidalgo-3.webp' },
+      ],
+    },
+    {
+      title: 'Frustrated attempt to escape dilution',
+      body: ['Sculpture, 2009.'],
+      images: [
+        { src: '/images/op2/dilution-1.webp' },
+        { src: '/images/op2/dilution-2.webp' },
+      ],
+    },
+  ],
 };

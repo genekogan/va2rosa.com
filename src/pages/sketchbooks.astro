@@ -1,67 +1,37 @@
 ---
+// Drawings. Vanessa's own two lines from the original page, and then the work.
+// No invented framing: the drawings do the talking.
 import Base from '../layouts/Base.astro';
-import { sketchbooks } from '../data/misc.js';
-import { g } from '../data/galleries.js';
 
-// Doubled so the marquee can loop seamlessly.
-const marquee = [...sketchbooks, ...sketchbooks];
-const scans = g.sk;
+const drawings = Array.from({ length: 17 }, (_, i) =>
+  `/images/sk/dr-${String(i + 1).padStart(2, '0')}.webp`
+);
 ---
 
 <Base
-  title="Sketchbooks"
+  title="Drawings"
   current="Art"
   bodyClass="paper"
-  description="Vanessa Rosa's sketchbooks: the drawings, studies and pattern research that come before the murals, the ceramics and the films. Kept since 2009."
+  description="Drawings by Vanessa Rosa: watercolour and ink sketches made on the streets and in life model sessions."
 >
   <section class="wrap" style="padding-top:70px">
-    <div class="kicker">Sketchbooks · 2009 to now</div>
-    <h1 class="sec" style="margin:12px 0 20px">Where everything is decided<br />before it is decided</h1>
+    <div class="kicker">Drawings</div>
+    <h1 class="sec" style="margin:12px 0 20px">What I love most is to draw wherever I am</h1>
     <p class="lede">
-      Every thread on this site started as a page in one of these. The books are where the
-      arguments are lost: a pattern gets drawn forty times before it earns a wall, and most of
-      what is in here never becomes anything at all.
+      Here some sketches done mostly on the streets or life model sessions.
     </p>
   </section>
 
-  <div class="shelfwrap">
-    <div class="kicker" style="padding:0 var(--pad); margin-bottom:8px">
-      The shelf, hover to pause
-    </div>
-    <div class="shelf">
-      {marquee.map(([label, colour, height], i) => (
-        <div
-          class="spine"
-          style={`background:${colour}; height:${height}px`}
-          aria-hidden={i >= sketchbooks.length ? 'true' : undefined}
-        >
-          {label}
-        </div>
+  <section class="wrap" style="padding-top:34px; padding-bottom:70px">
+    <div class="wgrid tall">
+      {drawings.map((src) => (
+        <figure>
+          <img src={src} alt="A drawing by Vanessa Rosa." loading="lazy" />
+        </figure>
       ))}
     </div>
-    <div class="shelfbase"></div>
-  </div>
 
-  {scans.length > 0 && (
-    <section class="wrap" style="padding-top:50px">
-      <div class="kicker">Pages</div>
-      <div class="wgrid tall">
-        {scans.map((im) => (
-          <figure>
-            <img src={im.src} alt={im.caption || 'A sketchbook page.'} loading="lazy" />
-            {im.caption && <figcaption>{im.caption}</figcaption>}
-          </figure>
-        ))}
-      </div>
-    </section>
-  )}
-
-  <section class="wrap" style="padding-top:40px; padding-bottom:80px">
-    <p style="font-size:14px; color:var(--ink-2); max-width:40em">
-      {sketchbooks.length} books, 2009 to now: Rio, Berlin, Thailand, the desert. The spines
-      carry the real years and places. The scans go in next, book by book.
-    </p>
-    <p style="margin-top:26px">
+    <p style="margin-top:50px">
       <a class="more" href="/art">All the art ⇢</a>
     </p>
   </section>

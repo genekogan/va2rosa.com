@@ -68,22 +68,22 @@
     },
     {
       "source": "/Other-projects",
-      "destination": "/art/",
+      "destination": "/more-projects/",
       "permanent": true
     },
     {
       "source": "/Other-projects/",
-      "destination": "/art/",
+      "destination": "/more-projects/",
       "permanent": true
     },
     {
       "source": "/MAD",
-      "destination": "/art/",
+      "destination": "/mad/",
       "permanent": true
     },
     {
       "source": "/MAD/",
-      "destination": "/art/",
+      "destination": "/mad/",
       "permanent": true
     },
     {
