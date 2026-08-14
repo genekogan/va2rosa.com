@@ -14,9 +14,50 @@ const {
   palette = '',
   hasHero = false,
   bodyClass = 'paper',
+  image,
 } = Astro.props;
 
 const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · artist & art historian`;
+
+const ogImage = new URL(image ?? '/images/og-card.jpg', SITE_URL).href;
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+
+// Told to search engines rather than inferred by them: who this is, what she
+// does, and the other places on the web that are the same person. `sameAs` is
+// what lets Google connect the profiles up instead of guessing.
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Vanessa Rosa',
+  alternateName: 'va2rosa',
+  url: SITE_URL,
+  image: new URL('/images/portrait-cutout.webp', SITE_URL).href,
+  jobTitle: 'Visual artist and art historian',
+  description: site.bioShort,
+  email: `mailto:${site.email}`,
+  nationality: { '@type': 'Country', name: 'Brazil' },
+  knowsAbout: [
+    'Contemporary art', 'Art history', 'Artificial intelligence art',
+    'Ethnomathematics', 'Ceramics', 'Mural painting', 'Public art',
+    'Generative art', 'Projection mapping',
+  ],
+  sameAs: [
+    site.instagram,
+    site.littleMartians,
+    'https://littlemartians.substack.com/',
+    'https://www.nvidia.com/en-us/research/ai-art-gallery/artists/vanessa-rosa/',
+    'https://onlineonly.christies.com/s/augmented-intelligence/vanessa-rosa-b-1990-31/250113',
+  ].filter(Boolean),
+};
+
+const siteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: SITE_URL,
+  inLanguage: 'en',
+  author: { '@type': 'Person', name: 'Vanessa Rosa' },
+};
 ---
 
 <!doctype html>
@@ -26,10 +67,24 @@ const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · artist &
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, SITE_URL)} />
+    <link rel="canonical" href={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="author" content={site.name} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
     <!-- For agents, not for readers: the machine-readable versions of this site.
          There is no visible link to /for-ai anywhere. -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
