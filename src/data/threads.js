@@ -296,6 +296,21 @@ export const threads = [
         more: { label: 'The ethnomathematics thread', href: '/threads/ethnocomputing' },
       },
       {
+        title: 'On canvas and on paper',
+        body: [
+          'The same stencils, off the wall: canvases, works on paper and prints, where the perspective can be built slowly instead of at the speed of the weather.',
+        ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/srcanvas/canvas-1.webp', caption: 'Shown at Context Art Fair, 2017' },
+          { src: '/images/srcanvas/canvas-2.webp', caption: 'An arch, built out of tiles' },
+          { src: '/images/srcanvas/canvas-3.webp', caption: 'Azulejos, entrance, 2015' },
+          { src: '/images/srcanvas/canvas-4.webp', caption: 'On paper' },
+          { src: '/images/srcanvas/canvas-5.webp', caption: 'The print made for Stroke, Munich' },
+          { src: '/images/srcanvas/studio-1.webp', caption: 'In the studio, 2017' },
+        ],
+      },
+      {
         title: 'Diana',
         body: [
           'The work is also very personal. I had had in mind painting tiles since 2011, but I only started doing it in 2015, after the most important person in my life, my sister, died suddenly. She was a programmer, but she also drew, sang, we learned to paint together, and my childhood dream was to develop a comic book series with her. I think much of my latest interest in new technologies is related to Diana’s life as a programmer, this strange world which I scorned and understood next to nothing.',
