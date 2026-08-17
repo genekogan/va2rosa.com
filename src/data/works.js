@@ -1026,6 +1026,10 @@ export const eyes = {
       ],
     },
     {
+      title: 'Morro da Formiga, Rio de Janeiro, 2013',
+      images: [{ src: '/images/eyes/formiga-1.webp' }],
+    },
+    {
       title: 'Galerio Project, north zone of Rio de Janeiro',
       images: [{ src: '/images/eyes/galerio-1.webp' }],
     },
