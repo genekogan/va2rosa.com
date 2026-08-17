@@ -239,6 +239,7 @@ export const streetArt = {
         'Intrigued by the illusive effect, I decided to reassemble it in other contexts. I always try to adapt the painting and collage to their new surroundings, making characters and painted architectures that refer to local specificities.',
         'It was first made at Morro da Conceição during a feminist NGO mural event I coordinated, then shown at the 63rd Fortaleza Art Salon, and redone with Julia Suav at the II Kolirius International Festival in Macaé, Rio de Janeiro state.',
       ],
+      gallery: 'slides',
       images: [
         { src: '/images/street/cam-01.webp', caption: 'Made in Rio de Janeiro. Photo by Paulo Barros' },
         { src: '/images/street/cam-02.webp', caption: 'Made in Fortaleza. Photo by Danielle Travassos' },
@@ -251,18 +252,39 @@ export const streetArt = {
       body: [
         'Eyes painted on walls in Rio, Brasília and Munich, between 2013 and 2016: with Thiago Haule for Zona Imaginária, a UN Women project on domestic violence, and Loomit’s eyes in Munich.',
       ],
+      gallery: 'slides',
       images: [
         { src: '/images/eyes/sesc-1.webp' },
         { src: '/images/eyes/loomit-1.webp' },
         { src: '/images/eyes/un-1.webp' },
+        { src: '/images/eyes/formiga-1.webp' },
       ],
       more: { label: 'The whole project', href: '/eyes-on-walls' },
     },
-    // the walls, by where they are: the captions already grouped this way
-    { title: 'Chile', body: ['Concepción and Valparaíso, 2013 and 2014.'], gallery: 'slides', images: take('street', 0, 8) },
-    { title: 'Rio de Janeiro', gallery: 'slides', images: take('street', 8, 8) },
-    { title: 'Lisbon', body: ['The Blue Wall Project for GAU, 2015.'], images: take('street', 16, 3) },
-    { title: 'New York', images: take('street', 19, 1) },
+    {
+      title: 'Chile',
+      body: ['Concepción and Valparaíso, 2013 and 2014.'],
+      gallery: 'slides',
+      images: take('street', 0, 8),
+    },
+    {
+      title: 'Rio de Janeiro',
+      body: ['The port zone, Morro da Conceição and the slave ship panel at Pedra do Sal.'],
+      gallery: 'slides',
+      images: take('street', 8, 8),
+    },
+    {
+      title: 'The Blue Wall Project, Lisbon',
+      body: ['For GAU and the Lisbon Municipality, 2015.'],
+      gallery: 'slides',
+      images: take('street', 16, 3),
+    },
+    {
+      title: 'New York',
+      body: ['The tiles carried indoors, onto a shopfront in Brooklyn, 2016.'],
+      gallery: 'slides',
+      images: take('street', 19, 1),
+    },
   ],
   closing:
     'More walls are being added: Berlin, Cotonou and the desert are still to come, along with the earliest work from 2009 and 2010 in Rio.',
