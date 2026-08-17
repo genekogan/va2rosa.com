@@ -209,7 +209,7 @@ export const threads = [
       {
         title: 'New York, 2015 and 2016',
         body: [
-          'The Dialogue Failure project. Painted at Arts Orgs and Local Projects Gallery in Queens, and at the Living Gallery and Little Skips coffee shop in Brooklyn.',
+          'Painted at Arts Orgs and Local Projects Gallery in Queens, and at the Living Gallery and Little Skips coffee shop in Brooklyn.',
         ],
         gallery: 'slides',
         images: [
@@ -219,6 +219,18 @@ export const threads = [
           { src: '/images/sr2/ny-4.webp' },
           { src: '/images/sr2/ny-5.webp' },
         ],
+      },
+      {
+        title: 'Falha de Diálogo — Choque Festival, São Paulo, 2016',
+        body: [
+          'In November 2016, the same week Trump won the American presidency, a project called Choque Festival brought street art to the headquarters of a São Paulo military police squad — the Tropa de Choque. I had been told it would be a politically engaged festival, raising police violence in Brazil, and I had worked with the producer before, so I went.',
+          'I first thought about making a work about violence and the need for empathy: maybe if our police had a bit more empathy for the people they are meant to protect, they would kill less. But when I understood how the event was actually being run, I stopped painting, urged other artists to drop out by telling them what I was seeing, and went back to the police headquarters to paint over my own work and film the process.',
+          'That erasure gave the piece a new meaning. Dialogue, however necessary, is not easy. At Choque Festival, whatever the original intent, there was not enough of it. Of the fifteen announced artists, six finished their murals.',
+        ],
+        more: {
+          label: 'What happened, written for Vandalog',
+          href: 'https://blog.vandalog.com/2016/12/21/choque-festival-street-art-or-just-marketing/',
+        },
       },
       {
         title: 'Muro Art Festival, Lisbon, 2016',
@@ -295,7 +307,8 @@ export const threads = [
       { years: '2015', text: 'The Blue Wall Project, GAU and the Lisbon Municipality' },
       { years: '2015', text: 'Paintings in Botafogo, Rio de Janeiro' },
       { years: '2015', text: 'Workshop at MAM Bahia, during a LIBRE gathering, Salvador' },
-      { years: '2015–2016', text: 'The Dialogue Failure project, Queens and Brooklyn, New York' },
+      { years: '2015–2016', text: 'Paintings in Queens and Brooklyn, New York' },
+      { years: '2016', text: 'Falha de Diálogo, Choque Festival, São Paulo. Participated, then withdrew and erased the work' },
       { years: '2016', text: 'Muro Art Festival, Lisbon, curated by Ana Vilar Bravo' },
       { years: '2016', text: 'Stroke Art Fair, Munich' },
       { years: '2017', text: 'Imaginary Tiles, solo exhibition at B[x]space, New York' },
