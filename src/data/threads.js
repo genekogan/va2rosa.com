@@ -129,59 +129,188 @@ export const threads = [
     start: 2015, end: 2020,
     state: 'transformed',
     collection: 'patterns',
-    places: 'Lisbon · Munich · New York · Red Hook · Cotonou · San Francisco',
+    places: 'Lisbon · Munich · New York · Red Hook · Rio · Porto · Salvador',
     status: 'Concluded, 2020',
     carrier: 'The pattern, and the route it travelled',
     media: 'Acrylic, spray, laser-cut stencil, projection',
     related: ['ethnocomputing', 'same-putumi'],
-    summary: [
-      'It began in 2015 as Imaginary Tiles: laser-cut stencils of azulejo, Adinkra and arabesque, distorted with Western one-point perspective until you could see the eye itself. Blue and white travelled from Jingdezhen to Isfahan to Lisbon to Rio, and every stop claimed it as its own. The Pioneer Works mural held that route on one wall, with a single non-blue element, the Adinkra Futunfunefu Denkyemfunefu: two crocodiles, one stomach, still fighting over food.',
-      'No pattern was ever pure. That is the whole argument, and it is also a portrait of Brazil.',
-    ],
     lede:
-      'Cobalt was mined in Persia, fired in Jingdezhen, carried by Portuguese ships, copied in Delft, re-copied in Lisbon, and arrived in Brazil as if it had always been ours. I paint the route, not the destination.',
+      'A personal account on the development of an artistic research.',
     thesis:
-      'No pattern was ever pure. The ones that pretend to be are the ones that were stolen most carefully.',
-    strands: [
+      'To talk about world history is to deal with this network: domination, reinvention, appropriation, destruction, resistance, combination, influence, creation.',
+
+    // The essay, as published on Medium, with the work set into it.
+    story: [
       {
-        title: 'I. Cobalt as a trade route',
-        body:
-          'Blue-and-white is the first global brand. Following it backwards is following the money, the ships and the enslaved labour that moved with them. The Pioneer Works wall in Red Hook, painted 2017 and up until 2020, held four claims to the same blue: Chinese, Islamic, Portuguese, Ghanaian.',
+        title: 'Azulejos…',
+        body: [
+          'In downtown Rio de Janeiro there are many blue and white tiles over old buildings, which we call Portuguese “azulejos”. For a long time, I thought all “azulejos” should be blue and white, or at least a little blue, because after all, “azulejos” has the Portuguese word for blue as part of its linguistic root. Like many of my fellow countrymen, I found most of the recent ordinary architecture terribly uglier than the ancient one, hence the tiles represented a certain nostalgia.',
+          'Painting on the streets in Rio de Janeiro, and in much of Latin America, have something really free to it. It can be extremely dangerous, public spaces often feel like nobody’s land, but more often than not, if you talk nicely and get to know the people around you, painting on the street means spending long hours during the day working in front of a small crowd of passers-by, with coffee served by the corner resident and probably a good conversation. Someone will stop to tell you about their own life while watching you paint. Unlikely encounters happen and there is beautiful potential for discoveries about the other worlds hidden within our city — if one is open to listen.',
+        ],
+        video: { vimeo: '195309979', caption: 'Azulejos Imaginários. The reel for the series.' },
       },
       {
-        title: 'II. The one thing that isn’t blue',
-        body:
-          'Futunfunefu Denkyemfunefu: two Siamese crocodiles who share a stomach and fight over food anyway. It is the only element in colour, and it is the sentence the mural is actually making.',
+        title: 'The stencils',
+        body: [
+          'Back in 2011, I saw an artist decorating the background of her mural with a small stencil that mimicked an azulejo. I began to imagine paintings made of stencil-like tiles, but distorted with volume because I never liked flat shapes. My paintings always used a slightly watery or sprinkled technique, I like dissolving forms, a rather ghostly dynamic reality, which hides something else, which could be something else. I wanted to create fake spaces, simply because I had always loved perspective drawings, as much as I love history. I felt that the tiles were a beautiful element of the city, something that could be reinterpreted over the dull generic contemporary architecture. But I never had the patience to cut stencils, and for the level of detail I wanted, doing it by hand would be crazy.',
+          'I discovered the laser cutting technique in 2013 in Berlin, but only started using it in 2015 in New York and Lisbon. Since I understood that I could not only work remotely but also pursue projects anywhere on the globe, I had a hard time maintaining a monogamous relationship with a city. The last few years, I have been jumping between art residencies and other alternative projects. I have often been to the US and Europe, but also to Acre, Chile, Paraguay, Benin, Thailand, China, always due to a network of artists, thinkers and organisations that liked my work, or those I admired and had the initiative of introducing myself. I love Rio but I’m not faithful, even if I could never stay away for a whole year. I always come back. I hope.',
+        ],
+        images: [
+          { src: '/images/sr2/laser-1.webp', caption: 'One of the first laser-cut stencils' },
+          { src: '/images/sr2/laser-2.webp' },
+          { src: '/images/sr2/porto-1.webp', caption: 'Porto, northern Portugal, 2015' },
+        ],
       },
       {
-        title: 'III. Stencil as a printing press',
-        body:
-          'Laser-cut stencils let a pattern repeat at architectural scale with a hand’s inconsistency. Every repetition is slightly wrong. That error is where the painting is.',
+        title: 'Where the blue comes from',
+        body: [
+          'People in New York looked at my tile-like paintings and asked me about Moorish art, about Morocco, if I was Muslim. And that made a lot of sense, because Portugal never ceased to be kinda Moorish. Researching the history of azulejos, we find that King Manuel fell in love with the ceramics and interior decorations of Islamic Spain in the late 15th century, so he decided to do something similar in his Sintra based palace. Ancient Portugal has a huge aesthetic affinity with the Islamic world. The word “azulejo” has its origin in the Arabic azzelij and meant small polished stone. Therefore, “azulejo” has nothing to do with the Portuguese word for blue, “azul”, though it looks so much like it does.',
+          'As for the blue and white, it comes from Chinese influence, and the Portuguese were not even the first to master this ceramics technique in Europe; the Germans and then the Dutch were. China imported cobalt oxide from Persia, a pigment known and used by many groups for different products since antiquity. Such material had far more accurate and intense colour results on ceramics than others. I always like to think about the evolution around the technique of doing things: often symbolism is created on material limitations. It was not necessarily the love for blue that spread this kind of production, at least in its beginning. From China, the taste for blue and white porcelain spread all over Asia — or maybe it didn’t really start with China. Sometimes it’s difficult to know who was who, who started what, why things moved in a certain direction.',
+        ],
       },
       {
-        title: 'IV. Perspective as a colonial instrument',
-        body:
-          'Applying one-point perspective to a non-Western tile makes the tile obey a European eye. Once you can see it happening, you cannot unsee where else it has happened.',
+        title: 'Funtunfunefu Denkyemfunefu',
+        body: [
+          'The most powerful symbol I have ever seen about humanity, about the relationship between groups, is the Adinkra pictogram from Ashanti culture, part of present-day Ghana, called Funtunfunefu Denkyemfunefu. It depicts two siamese crocodiles who share the same stomach and yet fight each other over food. A symbol about the difficulties of democracy, or the need for unity beyond our many borders.',
+          'These are not simple relationships, these cultural exchanges. They are not peaceful. To talk about world history is to deal with this network: domination, reinvention, appropriation, destruction, resistance, combination, influence, creation. And deal with our personal position in the midst of it all. Our innumerable internal contradictions. What is not missing at all in this process are doubts. It is really important to learn how to breathe.',
+        ],
+      },
+      {
+        title: 'The Blue Wall Project, Lisbon, 2015',
+        body: [
+          'My tiles paintings have turned into this series that I call “Silk Roads”, named after historian Peter Frankopan’s book on world history, which focuses on Central Asia. In the first painting of the series I paid a tribute to Dr. Nise da Silveira, because the organisation that invited me to paint a psychiatric hospital in Lisbon, the Urban Art Gallery, asked for a face in the composition — and Nise, a great Brazilian doctor who developed the art therapy field and fought for the recognition of schizophrenic artists, seemed to me clearly the best option.',
+          'From GAU, Galeria de Arte Urbana da Câmara Municipal de Lisboa. Most of the photographs are by José Vicente.',
+        ],
+        video: { youtube: 'O6a29zJ0Gu4', caption: 'The Blue Wall Project, Lisbon.' },
+        gallery: 'slides',
+        images: [
+          { src: '/images/sr2/blue-1.webp' },
+          { src: '/images/sr2/blue-2.webp' },
+          { src: '/images/sr2/blue-3.webp' },
+          { src: '/images/sr2/blue-4.webp' },
+          { src: '/images/sr2/blue-5.webp' },
+          { src: '/images/sr2/blue-6.webp' },
+          { src: '/images/sr2/blue-7.webp' },
+          { src: '/images/sr2/blue-8.webp' },
+        ],
+      },
+      {
+        title: 'Rio de Janeiro, Botafogo, 2015',
+        body: ['Back in Rio, I tried to mix the tiles with my paintings about the daily life of the city.'],
+        gallery: 'slides',
+        images: [
+          { src: '/images/sr2/rio-1.webp' },
+          { src: '/images/sr2/rio-2.webp' },
+          { src: '/images/sr2/rio-3.webp' },
+          { src: '/images/sr2/rio-4.webp' },
+          { src: '/images/sr2/rio-5.webp' },
+        ],
+      },
+      {
+        title: 'New York, 2015 and 2016',
+        body: [
+          'The Dialogue Failure project. Painted at Arts Orgs and Local Projects Gallery in Queens, and at the Living Gallery and Little Skips coffee shop in Brooklyn.',
+        ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/sr2/ny-1.webp' },
+          { src: '/images/sr2/ny-2.webp' },
+          { src: '/images/sr2/ny-3.webp' },
+          { src: '/images/sr2/ny-4.webp' },
+          { src: '/images/sr2/ny-5.webp' },
+        ],
+      },
+      {
+        title: 'Muro Art Festival, Lisbon, 2016',
+        body: [
+          'Invited by the curator Ana Vilar Bravo. Photographs by José Vicente and Bruno da Cunha, both of GAU — CAM Lisboa.',
+        ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/sr2/muro-1.webp' },
+          { src: '/images/sr2/muro-2.webp' },
+          { src: '/images/sr2/muro-3.webp' },
+          { src: '/images/sr2/muro-4.webp' },
+        ],
+      },
+      {
+        title: 'Stroke Art Fair, Munich, 2016',
+        gallery: 'slides',
+        images: [
+          { src: '/images/sr2/munich-1.webp' },
+          { src: '/images/sr2/munich-2.webp' },
+          { src: '/images/sr2/munich-3.webp' },
+        ],
+      },
+      {
+        title: 'A workshop at MAM Bahia, 2015',
+        body: ['Made during a LIBRE gathering, the independent publishers’ association of Brazil, at the Museum of Modern Art in Salvador.'],
+        images: [
+          { src: '/images/sr2/mam-1.webp' },
+          { src: '/images/sr2/mam-2.webp' },
+        ],
+      },
+      {
+        title: 'New York, 2017',
+        body: [
+          'In NYC 2017, during the AnnexB residency, with Islamophobia growing and people being barred from entering the US, I did a solo show in which I combined the tiles with Islamic art and invited an Iranian friend, Marjan Fadavi, to write the text for the exhibition.',
+        ],
+        more: { label: 'Imaginary Tiles, the solo show', href: '/imaginary-tiles' },
+      },
+      {
+        title: 'Then the machines',
+        body: [
+          'Then I applied for a scholarship at NYU’s Interactive Technology Program and started using projection mapping on paintings, as well as going deeper in my studies on algorithmic design and ethnomathematics. Such research became a show with an immersive interactive installation at Babycastles in Manhattan, so I invited Wenqi Li to develop the project with me, alongside Verônica Natividade, with whom I was already talking about algorithmic design pedagogical methodologies that included world references, especially fractal design in Africa.',
+          'In the midst of this whirlwind, I got invited to do a huge mural project for Pioneer Works — it was such a pleasure to be able to give my tiles paintings a much larger canvas.',
+        ],
+        more: { label: 'The Infinity Game', href: '/infinity-game' },
+      },
+      {
+        title: 'The technique itself',
+        body: [
+          'It’s also a pleasure to develop the technique itself. I always loved to draw, I spent years studying oil painting, live model, then muralism, but laser cutting brought other possibilities for painting. I started designing the stencils to give the impression of perspective, then I combined them in countless ways so that I could fool people’s eyes into creating perspectives that are much deeper and more dynamic than the stencil shapes. Another technique that helps with the depth effect is the shading: the many patterns are too much information to process, and this allows light and shadow to guide the composition.',
+          'I became fascinated with the possibilities of computer aided design. Working with patterns inspired me to study the history of algorithmic design. Which brings us to another whole debate about ethnomathematics and generative art: how art based on clear rules of composition, such as geometric patterns, has been produced by cultural groups around the world for millennia. For many in the Islamic world, and in some ways also for the Brazilian indigenous Huni Kuin I have known, figurative images are illusive, so to represent the harmony and beauty of the divine we must turn to patterns. It is striking to realise the complexity that these art practices have achieved — for example, the similarity between some Islamic compositions and the atomic structures of quasi-crystals.',
+        ],
+        more: { label: 'The ethnomathematics thread', href: '/threads/ethnocomputing' },
+      },
+      {
+        title: 'Diana',
+        body: [
+          'The work is also very personal. I had had in mind painting tiles since 2011, but I only started doing it in 2015, after the most important person in my life, my sister, died suddenly. She was a programmer, but she also drew, sang, we learned to paint together, and my childhood dream was to develop a comic book series with her. I think much of my latest interest in new technologies is related to Diana’s life as a programmer, this strange world which I scorned and understood next to nothing.',
+          'Painting in shades of blue, thinking of passages, portals, looking at temples around the world for inspiration, has also become part of my process of accepting our mortality, of restructuring when something so fundamental is simply no longer there. And the work also brought new paths by itself: when we paint on the street the paintings take a life far beyond what could be controlled, so the biggest work I did in this series, the one at Pioneer Works, was taken over by the garden plants. Life simply finds its way, bursts into the midst of this melancholic blue, a blue that thinks about the history of mankind, smiles and weeps.',
+        ],
+        more: { label: 'The Pioneer Works fence', href: '/pioneer-works' },
+      },
+      {
+        title: 'History as a kind of spirituality',
+        body: [
+          'For me, to think of history and philosophy is as close to spirituality as I have. It’s about being part of a process, history as human collective intelligence. Even if chaotic and to some extent cyclical. It’s about not creating alone. How we are a continuity of each other, a continuity of nature, of the world, even if we create barriers.',
+          'Trying to understand how things are built, to understand even the one that hurts me, gives me some relief from the distressing situation of the current moment. It helps me to have the lightness to think of alternatives — calm down, the world was once different and could change again — to think about human exchanges, their joys, pains and violence as part of a process that I can’t really understand, it is far too complex, but I can at least admire and try to contribute by creating images with what I was able to see. It is an internal need, it calms me and helps me to look with some distance, to have some hope. It is a pleasure to be able to be enchanted by the world, even with its pains, and to return something that I believe has a good energy, a good contribution for others.',
+        ],
       },
     ],
+
+    strands: [],
     exhibited: [
-      { years: '2017–2020', text: 'Mural, Pioneer Works, Red Hook, New York. Technology Residency' },
-      { years: '2017', text: 'Dialogue & Afro-Brésil, with Gérard Quenum, Le Centre, Cotonou, Benin' },
-      { years: '2022', text: 'This Mural is a Time-Traveling Portal, Xenoform Labs, San Francisco' },
+      { years: '2015', text: 'The Blue Wall Project, GAU and the Lisbon Municipality' },
+      { years: '2015', text: 'Paintings in Botafogo, Rio de Janeiro' },
+      { years: '2015', text: 'Workshop at MAM Bahia, during a LIBRE gathering, Salvador' },
+      { years: '2015–2016', text: 'The Dialogue Failure project, Queens and Brooklyn, New York' },
+      { years: '2016', text: 'Muro Art Festival, Lisbon, curated by Ana Vilar Bravo' },
+      { years: '2016', text: 'Stroke Art Fair, Munich' },
+      { years: '2017', text: 'Imaginary Tiles, solo exhibition at B[x]space, New York' },
+      { years: '2017', text: 'The Infinity Game, Babycastles, New York' },
+      { years: '2017', text: 'The perimeter mural at Pioneer Works, Red Hook, Brooklyn' },
     ],
     reading: [
-      'Gerdes, Paulus. <em>The Circle and the Square</em>.',
-      'Eglash, Ron. <em>African Fractals: Modern Computing and Indigenous Design</em>. Rutgers UP, 1999.',
       'Frankopan, Peter. <em>The Silk Roads: A New History of the World</em>. Bloomsbury, 2015.',
-      'Glissant, Édouard. <em>Poetics of Relation</em>. Michigan, 1997.',
-      'Necipoğlu, Gülru. <em>The Topkapı Scroll: Geometry and Ornament in Islamic Architecture</em>.',
-      'Gombrich, E. H. <em>The Sense of Order</em>. Phaidon, 1979.',
     ],
     credits:
-      'Photography: José Vicente, Bruno da Cunha (Lisbon); Walter Wlodarczyk (Red Hook). Curatorial text, Cotonou: Marion Hamard.',
-    gallery: ['/images/work/sr-1.webp', '/images/work/sr-2.webp', '/images/work/sr-3.webp', '/images/work/sr-4.webp', '/images/work/sr-5.webp', '/images/work/sr-6.webp'],
-    hero: '/images/work/silk-roads-hero.webp',
-    heroAlt: 'The Pioneer Works mural in Red Hook. A long blue-and-white painted wall of stencilled archways running beside the red brick building on Pioneer Street.',
+      'Photographs by José Vicente and Bruno da Cunha (GAU — CAM Lisboa). The Blue Wall Project for GAU, Galeria de Arte Urbana da Câmara Municipal de Lisboa. Muro Art Festival curated by Ana Vilar Bravo. The Infinity Game with Wenqi Li and Verônica Natividade.',
+    external: 'https://va2rosa.medium.com/the-silk-roads-bdc0618b9f8',
+    gallery: [],
+    hero: '/images/sr2/blue-3.webp',
+    heroAlt: 'A blue-and-white tiled wall painted with laser-cut stencils, Lisbon.',
   },
 
   {

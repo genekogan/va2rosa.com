@@ -71,11 +71,12 @@ const figs = essays.research.figures.filter((f) =>
         <div class="res-note">
           {essays.research.body.map((p) => <p>{p}</p>)}
         </div>
+        {/* the names only; the one link below carries everyone through */}
         <p class="res-topics">
           {topics.map((t, i) => (
             <>
               {i > 0 && <span class="sep">·</span>}
-              <a href="/research">{t.title}</a>
+              <span>{t.title}</span>
             </>
           ))}
         </p>

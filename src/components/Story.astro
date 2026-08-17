@@ -1,0 +1,126 @@
+---
+// A long text with its pictures and films set into it, section by section.
+// Used where a thread carries an essay rather than a thesis and four strands.
+// The markup matches WorkPage's, so the slide galleries behave the same way.
+const { story } = Astro.props;
+---
+
+{story.map((sec) => (
+  <section class="wsec">
+    {sec.title && <div class="kicker">{sec.title}</div>}
+
+    {sec.body && (
+      <div class="narrow" style="margin-top:14px">
+        {sec.body.map((p) => <p>{p}</p>)}
+      </div>
+    )}
+
+    {sec.video && (
+      <>
+        <div class="vid" style="margin-top:20px">
+          {sec.video.vimeo && (
+            <iframe
+              src={`https://player.vimeo.com/video/${sec.video.vimeo}?dnt=1`}
+              title={sec.video.caption ?? sec.title}
+              loading="lazy"
+              allow="fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          )}
+          {sec.video.youtube && (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${sec.video.youtube}?rel=0`}
+              title={sec.video.caption ?? sec.title}
+              loading="lazy"
+              allow="fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          )}
+        </div>
+        {sec.video.caption && <p class="vidcap">{sec.video.caption}</p>}
+      </>
+    )}
+
+    {sec.images?.length > 0 && sec.gallery === 'slides' && (
+      <div class="slides" data-slides>
+        <div class="sl-stage">
+          <button class="sl-nav sl-prev" type="button" aria-label="Previous">‹</button>
+          <div class="sl-track">
+            {sec.images.map((im, i) => (
+              <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
+                <img src={im.src} alt={im.caption || ''} loading={i < 2 ? 'eager' : 'lazy'} />
+                {im.caption && <figcaption>{im.caption}</figcaption>}
+              </figure>
+            ))}
+          </div>
+          <button class="sl-nav sl-next" type="button" aria-label="Next">›</button>
+        </div>
+        <div class="sl-bar">
+          <span class="sl-count">1 / {sec.images.length}</span>
+          <button class="sl-all" type="button" aria-pressed="false">Show all {sec.images.length}</button>
+        </div>
+        <div class="wgrid sl-grid" hidden>
+          {sec.images.map((im) => (
+            <figure>
+              <img src={im.src} alt={im.caption || ''} loading="lazy" />
+              {im.caption && <figcaption>{im.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {sec.images?.length > 0 && sec.gallery !== 'slides' && (
+      <div class="wgrid">
+        {sec.images.map((im) => (
+          <figure>
+            <img src={im.src} alt={im.caption || ''} loading="lazy" />
+            {im.caption && <figcaption>{im.caption}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    )}
+
+    {sec.more && (
+      <p style="margin-top:20px">
+        <a class="more" href={sec.more.href}>{sec.more.label} ⇢</a>
+      </p>
+    )}
+  </section>
+))}
+
+<script is:inline>
+  document.querySelectorAll('[data-slides]').forEach(function (box) {
+    if (box.dataset.wired) return;
+    box.dataset.wired = '1';
+    var items = box.querySelectorAll('.sl-item');
+    var count = box.querySelector('.sl-count');
+    var grid = box.querySelector('.sl-grid');
+    var all = box.querySelector('.sl-all');
+    var stage = box.querySelector('.sl-stage');
+    var bar = box.querySelector('.sl-bar');
+    var at = 0;
+
+    function show(i) {
+      at = (i + items.length) % items.length;
+      items.forEach(function (el, k) {
+        el.hidden = k !== at;
+        if (k === at) el.querySelector('img').loading = 'eager';
+      });
+      count.textContent = at + 1 + ' / ' + items.length;
+    }
+    box.querySelector('.sl-prev').addEventListener('click', function () { show(at - 1); });
+    box.querySelector('.sl-next').addEventListener('click', function () { show(at + 1); });
+
+    all.addEventListener('click', function () {
+      var open = grid.hidden;
+      grid.hidden = !open;
+      stage.hidden = open;
+      count.hidden = open;
+      all.setAttribute('aria-pressed', String(open));
+      all.textContent = open ? 'One at a time' : 'Show all ' + items.length;
+    });
+
+    if (items.length < 2) bar.hidden = true;
+  });
+</script>
