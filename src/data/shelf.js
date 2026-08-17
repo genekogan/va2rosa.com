@@ -183,7 +183,7 @@ export const shelf = [
       ['Neal Stephenson', 'Snow Crash'],
       ['Vernor Vinge', 'Rainbows End'],
       ['J. R. R. Tolkien', 'Roverandom'],
-      ['Sonia Rosa', 'Caio Zip, o Viajante do Tempo', 'https://viajantedotempo.com/serieviajantedotempo/'],
+      ['Regina Gonçalves', 'Caio Zip, o Viajante do Tempo', 'https://viajantedotempo.com/serieviajantedotempo/'],
       ['Cixin Liu', 'Remembrance of Earth’s Past'],
       ['Charles Stross', 'Accelerando'],
       ['Ken Liu', 'The Hidden Girl and Other Stories'],
