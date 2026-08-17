@@ -227,6 +227,16 @@ export const threads = [
           'I first thought about making a work about violence and the need for empathy: maybe if our police had a bit more empathy for the people they are meant to protect, they would kill less. But when I understood how the event was actually being run, I stopped painting, urged other artists to drop out by telling them what I was seeing, and went back to the police headquarters to paint over my own work and film the process.',
           'That erasure gave the piece a new meaning. Dialogue, however necessary, is not easy. At Choque Festival, whatever the original intent, there was not enough of it. Of the fifteen announced artists, six finished their murals.',
         ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/choque/choque-1.webp', caption: 'The corridor, painted' },
+          {
+            src: '/images/choque/choque-2.webp',
+            caption:
+              'Writing over it: “Este corredor já foi mosteiro, trincheira, prisão, escola de aperfeiçoamento, sede de tropa de elite.” This corridor has already been a monastery, a trench, a prison, a training school, and the headquarters of an elite squad.',
+          },
+          { src: '/images/choque/choque-3.webp', caption: 'And then painted out' },
+        ],
         more: {
           label: 'What happened, written for Vandalog',
           href: 'https://blog.vandalog.com/2016/12/21/choque-festival-street-art-or-just-marketing/',
