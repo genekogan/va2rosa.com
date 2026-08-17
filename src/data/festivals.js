@@ -14,7 +14,7 @@ export const FESTIVAL_SITES = {
   'AA29 Video Project': 'https://www.instagram.com/aa29_video_project_festival_/',
   'Beyond Filmfestival': 'https://www.beyond-filmfestival.com/en/',
   'Tianjin International Academic Film Festival': 'https://tiaff.my.canvasite.cn/',
-  'The Galactic Imaginarium Film Festival': 'https://filmfreeway.com/TheGalacticImaginariumFilmFestival',
+  'The Galactic Imaginarium Film Festival': 'https://festival.galactic.one',
   'Dubai City Film Festival': 'https://filmfreeway.com/DubaiCityFilmFestival',
   'AI International Film Festival': 'https://filmfreeway.com/AIInternationalFilmFestival',
   'Experimental Brasil': 'https://experimentalbrasiljournal.neocities.org/interviews#2026-2026-vanessa-rosa',
@@ -58,6 +58,8 @@ export const FESTIVAL_SITES = {
 // Keyed 'festival :: film', so one festival can point to different pages for
 // different films. Falls back to FESTIVAL_SITES when there is no entry here.
 export const FILM_PAGES = {
+  'The Galactic Imaginarium Film Festival :: Little Martians: Dear Human, My Muse':
+    'https://festival.galactic.one/movies/little-martians-dear-human-my-muse/',
   'FILE, Electronic Language International Festival :: Little Martians: Dear Human, My Muse':
     'https://file.org.br/file-sao-paulo-2026/',
   'BAIFF, Burano Artificial Intelligence Film Festival :: Little Martians: Dear Human, My Muse':
@@ -122,6 +124,7 @@ const r = (year, film, festival, outcome, city) => ({
 
 export const festivalRows = [
   // ——— Verdelis & Mycos ———
+  r(2026, VM, 'The Galactic Imaginarium Film Festival', 'Official selection, 18 to 27 September 2026', 'Timiș and Dumbrăvița, Romania'),
   r(2026, VM, 'Experimental Brasil', 'Best Experimental Film Made with AI', 'Campos dos Goytacazes, Brazil'),
   r(2026, VM, 'AI Artist', 'Official selection', 'Beijing and Shanghai, China'),
   r(2026, VM, 'BAIFF, Burano Artificial Intelligence Film Festival', 'Official selection', 'Venice, Italy'),
