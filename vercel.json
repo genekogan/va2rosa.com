@@ -338,12 +338,12 @@
     },
     {
       "source": "/Eyes-on-walls",
-      "destination": "/street-art/",
+      "destination": "/eyes-on-walls/",
       "permanent": true
     },
     {
       "source": "/Eyes-on-walls/",
-      "destination": "/street-art/",
+      "destination": "/eyes-on-walls/",
       "permanent": true
     },
     {

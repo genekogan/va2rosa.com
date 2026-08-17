@@ -246,8 +246,23 @@ export const streetArt = {
         { src: '/images/street/cam-04.webp', caption: 'Fortaleza. Photo by Danielle Travassos' },
       ],
     },
-    { title: 'Walls', images: take('street', 0, 12) },
-    { title: 'More', images: slice('street', 12) },
+    {
+      title: 'Eyes on Walls',
+      body: [
+        'Eyes painted on walls in Rio, Brasília and Munich, between 2013 and 2016: with Thiago Haule for Zona Imaginária, a UN Women project on domestic violence, and Loomit’s eyes in Munich.',
+      ],
+      images: [
+        { src: '/images/eyes/sesc-1.webp' },
+        { src: '/images/eyes/loomit-1.webp' },
+        { src: '/images/eyes/un-1.webp' },
+      ],
+      more: { label: 'The whole project', href: '/eyes-on-walls' },
+    },
+    // the walls, by where they are: the captions already grouped this way
+    { title: 'Chile', body: ['Concepción and Valparaíso, 2013 and 2014.'], gallery: 'slides', images: take('street', 0, 8) },
+    { title: 'Rio de Janeiro', gallery: 'slides', images: take('street', 8, 8) },
+    { title: 'Lisbon', body: ['The Blue Wall Project for GAU, 2015.'], images: take('street', 16, 3) },
+    { title: 'New York', images: take('street', 19, 1) },
   ],
   closing:
     'More walls are being added: Berlin, Cotonou and the desert are still to come, along with the earliest work from 2009 and 2010 in Rio.',
@@ -958,4 +973,72 @@ export const moreProjects = {
       ],
     },
   ],
+};
+
+// ---------------------------------------------------------------------------
+// Eyes on Walls. Follows the original page; the section captions are hers.
+// ---------------------------------------------------------------------------
+export const eyes = {
+  slug: 'eyes-on-walls',
+  kicker: 'Public work · 2013 to 2016',
+  title: 'Eyes on Walls',
+  hero: '/images/eyes/sesc-1.webp',
+  heroAlt: 'A large painted eye on a wall in Rio de Janeiro.',
+  lede: 'Eyes painted on walls, in Rio, Brasília and Munich.',
+  meta: [
+    ['When', '2013 to 2016'],
+    ['Where', 'Rio de Janeiro · Brasília · Munich'],
+    ['Media', 'Spray paint · acrylic'],
+    ['With', 'Thiago Haule, for Zona Imaginária'],
+  ],
+  intro: [],
+  sections: [
+    {
+      title: 'Munich, 2016. Loomit’s eyes',
+      images: [
+        { src: '/images/eyes/loomit-1.webp' },
+        { src: '/images/eyes/loomit-2.webp' },
+      ],
+    },
+    {
+      title: 'UN Women',
+      body: [
+        'A project done in Brasília about domestic violence, later reproduced in several publications on the fight against domestic violence.',
+      ],
+      images: [
+        { src: '/images/eyes/un-1.webp' },
+        { src: '/images/eyes/un-2.webp' },
+      ],
+    },
+    {
+      title: 'Sesc Cultural Center, Cinelândia, Rio de Janeiro',
+      body: [
+        'An exhibition in Rio de Janeiro. Vanessa Rosa and Thiago Haule, representing the Zona Imaginária project.',
+      ],
+      gallery: 'slides',
+      images: [
+        { src: '/images/eyes/sesc-1.webp' },
+        { src: '/images/eyes/sesc-2.webp' },
+        { src: '/images/eyes/sesc-3.webp' },
+        { src: '/images/eyes/sesc-4.webp' },
+        { src: '/images/eyes/sesc-5.webp' },
+        { src: '/images/eyes/sesc-6.webp' },
+      ],
+    },
+    {
+      title: 'Galerio Project, north zone of Rio de Janeiro',
+      images: [{ src: '/images/eyes/galerio-1.webp' }],
+    },
+    {
+      title: 'About Amarildo',
+      body: ['A man who was murdered by police in the favela da Rocinha.'],
+      images: [{ src: '/images/eyes/amarildo-1.webp' }],
+    },
+  ],
+  also: {
+    kicker: 'Where it belongs',
+    title: 'Street art over the years',
+    body: ['The walls this came out of, from 2009 onwards.'],
+    links: [{ label: 'The whole thing', href: '/street-art' }],
+  },
 };

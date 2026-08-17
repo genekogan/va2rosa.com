@@ -219,6 +219,11 @@ const { work } = Astro.props;
           </div>
         )}
         </div>
+        {sec.more && (
+          <p style="margin-top:20px">
+            <a class="more" href={sec.more.href}>{sec.more.label} ⇢</a>
+          </p>
+        )}
       </section>
     ))}
 
