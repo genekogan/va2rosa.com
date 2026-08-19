@@ -18,8 +18,8 @@ export const site = {
   motto: "I'm devoted to the art of time-traveling through imagination.",
 
   // The homepage opening.
-  greeting: 'dear visitor,',
-  statementTitle: 'I am devoted to the art of time traveling through imagination.',
+  greeting: 'dear human,',
+  statementTitle: 'I am devoted to the art of time traveling.',
   statement: ['Let me share my story with you.'],
 
   // Bios: the corrected text. The old site still carries the version with
