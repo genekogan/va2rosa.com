@@ -15,7 +15,7 @@ export const site = {
   cvLabel: 'Download CV (artist / educator)',
   littleMartians: 'https://littlemartians.world',
 
-  motto: "I'm devoted to the art of time-traveling through imagination.",
+  motto: 'I am devoted to the art of time traveling.',
 
   // The homepage opening.
   greeting: 'dear human,',
