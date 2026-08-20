@@ -25,12 +25,12 @@ export const books = {
       images: [
         {
           src: '/images/caio/caio-1.webp',
-          caption: 'Caio Zip em: Matemática — Que bicho é esse? By Regina Gonçalves. Rio de Janeiro, 2001.',
+          caption: 'Caio Zip em: Matemática — Que bicho é esse? By Regina Gonçalves. Rio de Janeiro, 2001. Cover illustration by Vanessa Rosa.',
         },
         {
           src: '/images/caio/caio-2.webp',
           caption:
-            'Illustrated by Diana Gonçalves de Almeida Rosa, 14 years old, and Vanessa Gonçalves de Almeida Rosa, 11.',
+            'Illustrated by Diana Gonçalves de Almeida Rosa, 14 years old, and Vanessa Gonçalves de Almeida Rosa, 11, who also made the cover illustration.',
         },
       ],
     },
@@ -42,19 +42,39 @@ export const books = {
     'And I simply love books. Yet, after my sister’s passing, I came to see working for the company as my way of staying connected to my parents, of supporting their efforts, while my art practice was my space of personal freedom. I used to distinguish between the brilliance of children and the sacred affairs of grown-ups, like the high art I saw at contemporary art museums. But eventually I realized, as Italo Calvino argued in Italian Folktales, that ancient fairy tales, aka kids’ stories, are works of genius, with captivating cadence, metaphors for the meaning of life and cosmological theories.',
     'Only recently have I started fully integrating making books with my art practice, and I must confess I am very excited to create more.',
   ],
+  // pictures that sit inside the story, keyed to the paragraph they follow
+  inline: {
+    2: [
+      {
+        images: [
+          {
+            src: '/images/vbooks/bienal.webp',
+            caption:
+              'Viajante do Tempo stand in Rio de Janeiro Book Biennial 2025, featuring Vanessa Rosa’s character Kweku',
+          },
+        ],
+      },
+    ],
+  },
   titles: [
     {
       title: 'Diana’s World',
+      image: '/images/vbooks/diana.webp',
+      imageAlt: 'Os Mundos de Diana: a girl drawing under a tree, with a dragon and knights around her.',
       year: '2020',
       body: 'A girl who loves to draw travels into paintings, the Italian Renaissance, Song China, Japan around 1700, accompanied by her dog Alice and a narrator who opens the doors and then lets her take her chances. I co-wrote it with my friend Claire Parizel and did the illustrations myself, with her advice. The protagonist is my sister Diana. Much of what became the Little Martians started here: the art history, the travelling between worlds, the simulation.',
     },
     {
       title: 'Verdelis’s Letter',
+      image: '/images/vbooks/verdelis.webp',
+      imageAlt: 'Verdelis’ Letter: a glazed ceramic face in a wreath, over Mars from orbit.',
       year: 'Viajante do Tempo',
       body: 'The first Little Martians book. A letter arrives from a far future in which Mars has gardens, written by Verdelis, a curious being who is part plant, part AI, part human. It is a book about biodomes, symbiosis and genetic adaptation, but mostly it is a message of hope sent backwards in time to children who have every reason to be frightened. All the illustrations come from AI models trained on my ceramic sculptures.',
     },
     {
       title: 'Kweku’s Secret',
+      image: '/images/vbooks/kweku.webp',
+      imageAlt: 'O Segredo de Kweku: a black glazed head patterned in white, in a tunnel of colour.',
       year: 'Viajante do Tempo',
       body: 'Kweku, the trickster, broadcasting from the lava caves with an urgent revelation: patterns. African sand drawings, Indian kolams, ocean waves, neural networks; the same language everywhere. The book is largely a catastrophe involving an ancient pattern that turns things into broccoli, including Verdelis’s garden. Underneath the chaos it is the ethnomathematics I have been studying for years.',
     },
@@ -76,6 +96,8 @@ export const books = {
     },
     {
       title: 'The Book of Abraham.ai',
+      image: '/images/vbooks/abraham.webp',
+      imageAlt: 'Abraham.ai: a mosaic of a flame split down the middle, circuitry running through it.',
       body: 'My reading of the state of the art in Abraham, the autonomous artist project started by my love, Gene Kogan. Part history, part argument about what it means for an AI to have a practice of its own.',
     },
   ],

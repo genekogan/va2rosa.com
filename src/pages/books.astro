@@ -27,8 +27,13 @@ import Story from '../components/Story.astro';
 
     {books.opening && <Story story={books.opening} />}
 
-    <div class="narrow" style="margin-top:26px">
-      {books.story.map((p) => <p>{p}</p>)}
+    <div style="margin-top:26px">
+      {books.story.map((p, i) => (
+        <>
+          <div class="narrow"><p>{p}</p></div>
+          {books.inline?.[i] && <Story story={books.inline[i]} />}
+        </>
+      ))}
     </div>
 
     <section class="wsec">
