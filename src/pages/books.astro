@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { books } from '../data/books.js';
 import BookReader from '../components/BookReader.astro';
+import Story from '../components/Story.astro';
 ---
 
 <Base title={books.title} current="Art" description={books.lede} bodyClass="paper">
@@ -23,6 +24,8 @@ import BookReader from '../components/BookReader.astro';
     <div class="narrow" style="margin-top:52px">
       <p class="lede">{books.lede}</p>
     </div>
+
+    {books.opening && <Story story={books.opening} />}
 
     <div class="narrow" style="margin-top:26px">
       {books.story.map((p) => <p>{p}</p>)}
