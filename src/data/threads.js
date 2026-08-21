@@ -25,7 +25,7 @@ export const threads = [
     collection: 'public',
     places: 'Pedra do Sal · Port zone, Rio de Janeiro',
     status: 'Ended, 2016',
-    carrier: 'The face, at human scale',
+    carrier: 'The painted bodies, human scale',
     media: 'Acrylic, spray paint, parametric stencil, wall',
     related: ['mauricio-hora', 'the-silk-roads'],
     summary: [
@@ -88,7 +88,7 @@ export const threads = [
     collection: 'public',
     places: 'Port zone, Rio de Janeiro',
     status: 'Ongoing',
-    carrier: 'A shared studio, and the person who held the ground',
+    carrier: 'A shared studio, learning about favelas and community',
     media: 'Studio · photography · public art · community organising',
     related: ['visible-memories'],
     coauthor:
@@ -131,7 +131,7 @@ export const threads = [
     collection: 'patterns',
     places: 'Lisbon · Munich · New York · Red Hook · Rio · Porto · Salvador',
     status: 'Concluded, 2020',
-    carrier: 'The pattern, and the route it travelled',
+    carrier: 'Following the blue and white tiles',
     media: 'Acrylic, spray, laser-cut stencil, projection',
     related: ['ethnocomputing', 'same-putumi'],
     lede:
@@ -362,7 +362,7 @@ export const threads = [
     collection: 'patterns',
     places: 'New York · Lisbon · Bombay Beach',
     status: 'Ongoing',
-    carrier: 'The algorithm, and its uncredited author',
+    carrier: 'Everything is made out of patterns',
     media: 'Grasshopper, laser cutting, games, writing, talks',
     related: ['the-silk-roads', 'same-putumi'],
     summary: [
@@ -417,7 +417,7 @@ export const threads = [
     collection: 'public',
     places: 'Upper Envira, Acre · São Paulo',
     status: 'Complete · co-authored',
-    carrier: 'The collaboration itself',
+    carrier: 'Life in the Amazon rainforest',
     media: 'Jenipapo, airbrush, laser-cut stencil, photography, projection mapping',
     related: ['ethnocomputing'],
     coauthor:
@@ -471,7 +471,7 @@ export const threads = [
     collection: 'public',
     places: 'Bombay Beach, California',
     status: 'Ongoing',
-    carrier: 'The community, and what it builds',
+    carrier: 'Building a community, from scratch, every year',
     media: 'Murals, shrines, projection mapping, body painting, workshops',
     related: ['little-martians'],
     summary: [
@@ -521,7 +521,7 @@ export const threads = [
     collection: 'worlds',
     places: 'Bombay Beach · São Paulo · elsewhere',
     status: 'Ongoing',
-    carrier: 'An invented species',
+    carrier: 'Future species communicates with our present',
     media: 'Ceramics · 3-D scanning · film · projection · generative models',
     related: ['ethnocomputing'],
     // the world has its own site; this page is the way in from here
@@ -593,7 +593,7 @@ export const timelineExtra = [
     start: 2009,
     end: null,
     state: 'ongoing',
-    carrier: 'The thinking, before it is anything else',
+    carrier: 'Learning to see and to be present',
     underlay: true,
   },
   {
@@ -604,7 +604,7 @@ export const timelineExtra = [
     start: 2010,
     end: null,
     state: 'ongoing',
-    carrier: 'The argument, bound so it needs no battery',
+    carrier: 'Magical objects',
     underlay: true,
   },
 ];
