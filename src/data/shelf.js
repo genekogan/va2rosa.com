@@ -54,6 +54,24 @@ export const shelf = [
     ],
   },
   {
+    title: 'Art history',
+    books: [
+      ['E. H. Gombrich', 'The Story of Art'],
+      ['H. W. Janson', 'History of Art'],
+      ['Erwin Panofsky', 'Meaning in the Visual Arts'],
+      ['Heinrich Wölfflin', 'Principles of Art History'],
+      ['Giorgio Vasari', 'Lives of the Most Excellent Painters, Sculptors and Architects'],
+      ['Pliny the Elder', 'Natural History'],
+      ['Arnold Hauser', 'The Social History of Art'],
+      ['Aby Warburg', 'The Renewal of Pagan Antiquity'],
+      ['Giulio Carlo Argan', 'The History of Art as the History of the City'],
+      ['Umberto Eco (ed.)', 'History of Beauty'],
+      ['Wassily Kandinsky', 'Concerning the Spiritual in Art'],
+      ['Vincent van Gogh', 'The Letters of Vincent van Gogh'],
+      ['Eric Hobsbawm', 'The Age of Extremes: The Short Twentieth Century, 1914–1991'],
+    ],
+  },
+  {
     title: 'Images, media and design',
     books: [
       ['Douglas Crimp', 'On the Museum’s Ruins'],
@@ -65,6 +83,12 @@ export const shelf = [
       ['Aby Warburg', 'Le Rituel du Serpent'],
       ['Rafael Cardoso', 'Uma introdução à história do design'],
       ['Neil Gershenfeld', 'Fab: The Coming Revolution on Your Desktop'],
+      ['Walter Benjamin', 'The Work of Art in the Age of Mechanical Reproduction'],
+      ['Roland Barthes', 'Camera Lucida'],
+      ['Rosalind Krauss', 'Sculpture in the Expanded Field'],
+      ['Andrea Fraser', 'Museum Highlights: The Writings of Andrea Fraser'],
+      ['Oliver Grau', 'Virtual Art: From Illusion to Immersion'],
+      ['Johanna Drucker', 'Visualization and Interpretation'],
     ],
   },
   {
@@ -124,6 +148,7 @@ export const shelf = [
       ['Ailton Krenak', 'Ideas to Postpone the End of the World'],
       ['Davi Kopenawa & Bruce Albert', 'The Falling Sky'],
       ['Oswald de Andrade', 'Manifesto Antropófago'],
+      ['Els Lagrou', 'A fluidez da forma: arte, alteridade e agência em uma sociedade amazônica (Kaxinawa, Acre)'],
     ],
   },
   {
@@ -161,6 +186,8 @@ export const shelf = [
       ['Neil Gaiman', 'The Sandman: Brief Lives'],
       ['Brecht Evens', 'The City of Belgium'],
       ['Caitlin Haskell (ed.)', 'Remedios Varo: Science Fictions'],
+      ['Leonora Carrington', 'Down Below'],
+      ['Mário de Andrade', 'Macunaíma'],
     ],
   },
   {
