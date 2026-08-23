@@ -149,6 +149,9 @@ export const shelf = [
       ['Davi Kopenawa & Bruce Albert', 'The Falling Sky'],
       ['Oswald de Andrade', 'Manifesto Antropófago'],
       ['Els Lagrou', 'A fluidez da forma: arte, alteridade e agência em uma sociedade amazônica (Kaxinawa, Acre)'],
+      ['Anonymous', 'Bhagavad Gita'],
+      ['Laozi', 'Tao Te Ching'],
+      ['Fred B. Eiseman Jr.', 'Bali: Sekala & Niskala, Vol. II — Essays on Society, Tradition and Craft'],
     ],
   },
   {
