@@ -168,7 +168,10 @@ export const shelf = [
       ['Italo Calvino', 'If on a Winter’s Night a Traveler'],
       ['Italo Calvino', 'Our Ancestors'],
       ['Roberto Bolaño', '2666'],
+      ['Roberto Bolaño', 'Los detectives salvajes'],
       ['Gabriel García Márquez', 'Cien años de soledad'],
+      ['Gabriel García Márquez', 'El amor en los tiempos del cólera'],
+      ['Gabriel García Márquez', 'Doce cuentos peregrinos'],
       ['Isabel Allende', 'La casa de los espíritus'],
       ['Clarice Lispector', 'A hora da estrela'],
       ['Jorge Luis Borges', 'Ficciones'],
@@ -188,6 +191,7 @@ export const shelf = [
       ['Caitlin Haskell (ed.)', 'Remedios Varo: Science Fictions'],
       ['Leonora Carrington', 'Down Below'],
       ['Mário de Andrade', 'Macunaíma'],
+      ['Chinua Achebe', 'Things Fall Apart'],
     ],
   },
   {
