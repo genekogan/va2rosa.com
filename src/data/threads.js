@@ -653,8 +653,6 @@ export const threads = [
     ],
     lede:
       'A species descended from all of Earth’s life, tending the extreme worlds and keeping our memory in the Imaginarium. It begins as a lump of clay and ends as something with a voice.',
-    thesis:
-      'The safest place to put an argument about memory, extinction and machine intelligence is inside a species that does not exist yet.',
     strands: [
       {
         title: 'I. Clay first',
