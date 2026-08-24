@@ -57,6 +57,7 @@ const KIND = {
   exhibition: 'show',
   solo: 'show',
   talk: 'talk',
+  teaching: 'talk',
   publication: 'publication',
 };
 
@@ -71,7 +72,7 @@ const record = [
     title: r.title,
     sub: [r.venue, r.city].filter(Boolean).join(', '),
     href: r.href,
-    featured: r.featured || r.now,
+    featured: !!r.lmSelected,
     tag: isWin(r.outcome) ? r.outcome : '',
   })),
   ...prs.map((p) => ({
@@ -80,16 +81,10 @@ const record = [
     title: p.title,
     sub: [p.outlet, p.note].filter(Boolean).join(' — '),
     href: p.href,
-    featured: p.featured,
+    featured: !!p.lmSelected,
     tag: '',
   })),
 ].sort((a, b) => b.year - a.year);
-
-// Prizes open the record alongside the rows Vanessa has already flagged as
-// selected. A selection at a festival is not itself a selection here.
-record.forEach((r) => {
-  if (r.kind === 'award') r.featured = true;
-});
 
 const counts = (k) => record.filter((r) => r.kind === k).length;
 const tabs = [
@@ -97,7 +92,7 @@ const tabs = [
   { key: 'screening', label: `Screenings (${counts('screening')})` },
   { key: 'award', label: `Awards (${counts('award')})` },
   { key: 'show', label: `Shows (${counts('show')})` },
-  { key: 'talk', label: `Talks (${counts('talk')})` },
+  { key: 'talk', label: `Talks & workshops (${counts('talk')})` },
   { key: 'press', label: `Press (${counts('press')})` },
   { key: 'all', label: `Everything (${record.length})` },
 ].filter((tb) => tb.key === 'selected' || tb.key === 'all' || !/\(0\)/.test(tb.label));

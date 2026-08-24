@@ -290,6 +290,8 @@ export const press = [
     href: 'https://www.youtube.com/watch?v=SVcsDDABEkM',
     kinds: ['series', 'online'],
     featured: true,
+    thread: 'little-martians',
+    lmSelected: true,
   },
   {
     year: 2022,
@@ -298,6 +300,8 @@ export const press = [
     note: 'Second of two Vox videos on text-to-image models.',
     href: 'https://www.youtube.com/watch?v=sFBfrZ-N3G4',
     kinds: ['series', 'online'],
+    thread: 'little-martians',
+    lmSelected: true,
   },
   {
     year: 2022,
