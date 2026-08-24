@@ -514,7 +514,7 @@ export const threads = [
     credits:
       'Ethnocomputing Experiments and The Infinity Game with Wenqi Li; The Infinity Game also with Verônica Natividade. The Sankofa Project with Damião Braga, Felipe Carvalho and Verônica Natividade. Same Putumi, co-author of everything on the Envira.',
     gallery: [],
-    hero: '/images/work/ethnocomputing-hero-cover.webp',
+    hero: '/images/work/ethnocomputing-hero-symbol.webp',
     heroAlt: 'Layered stencilled patterns in red and grey with a black Adinkra symbol at the centre: the cover of the dissertation.',
   },
 
