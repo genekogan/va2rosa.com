@@ -109,7 +109,7 @@ export const visibleMemories = {
       videos: [
         {
           youtube: '2kS57onacbM',
-          caption: 'The Sankofa Project, filmed by Pajé Produções.',
+          caption: 'The Sankofa Project, filmed by eNCA, South Africa.',
         },
         {
           facebook: '782413491900160',

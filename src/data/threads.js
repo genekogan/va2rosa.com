@@ -68,7 +68,7 @@ export const threads = [
       'Campbell, Bolaji. On Yoruba traditional religious painting.',
     ],
     credits:
-      'Sankofa Project. Damião Braga, Quilombo leader. Coordination and research: Vanessa Rosa, Felipe Carvalho. Architecture: Verônica Natividade (PUC). Artists: Joyce Oliveira, Pedro Carneiro, Diego Deus, Thiago Haule, Vitor Vanes. Architecture students: Camila Rodriguez, Eduardo Romano, Marcos Chaves, Rafael Magioli. Producer: Monica Combatente. Film: Pajé Produções. Production support: Zona Imaginária.',
+      'Sankofa Project. Damião Braga, Quilombo leader. Coordination and research: Vanessa Rosa, Felipe Carvalho. Architecture: Verônica Natividade (PUC). Artists: Joyce Oliveira, Pedro Carneiro, Diego Deus, Thiago Haule, Vitor Vanes. Architecture students: Camila Rodriguez, Eduardo Romano, Marcos Chaves, Rafael Magioli. Producer: Monica Combatente. Filming and documentation: Pajé Produções. Production support: Zona Imaginária.',
     gallery: ['/images/work/vm-1.webp', '/images/work/vm-2.webp', '/images/work/vm-3.webp', '/images/work/vm-4.webp', '/images/work/vm-5.webp', '/images/work/vm-6.webp', '/images/work/vm-7.webp'],
     hero: '/images/work/visible-memories-hero.webp',
     heroAlt: 'The slave ship painted at Pedra do Sal, 2014. A large mural of a ship crowded with figures.',
@@ -386,7 +386,7 @@ export const threads = [
         body: [
           'I have written quite a bit about that experience, including a report presented at an academic conference during my master’s at Anhembi Morumbi.',
         ],
-        video: { youtube: '2kS57onacbM', caption: 'The Sankofa Project, filmed by Pajé Produções.' },
+        video: { youtube: '2kS57onacbM', caption: 'The Sankofa Project, filmed by eNCA, South Africa.' },
         gallery: 'slides',
         images: [
           { src: '/images/vm/p2016-wall.webp', caption: 'The finished wall, Pedra do Sal, 2016' },
