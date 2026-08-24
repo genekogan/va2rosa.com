@@ -1,0 +1,419 @@
+---
+import Base from '../../layouts/Base.astro';
+import Spine from '../../components/Spine.astro';
+import BookReader from '../../components/BookReader.astro';
+import { threadBySlug } from '../../data/threads.js';
+import { lm } from '../../data/little-martians.js';
+import { films } from '../../data/films.js';
+import { books } from '../../data/books.js';
+import { mainShows } from '../../data/exhibitions.js';
+import { cvForThread } from '../../data/cv.js';
+import { press } from '../../data/press.js';
+
+const t = threadBySlug('little-martians');
+const codex = books.titles.find((b) => b.read?.slug === 'codex');
+
+// The three films that open the page, in the order Vanessa chose.
+const featured = lm.films.featured.map((id) => films.find((f) => f.id === id)).filter(Boolean);
+
+// The shows that already have their own page or a picture, minus the three
+// written out in full above, so nothing appears twice.
+const written = new Set(['/christies', '/foresight-buckeburg', '/immersive-sao-paulo']);
+const LM_SHOWS = new Set([
+  'Uncanny Nova Phenomenon',
+  'Saturn’s Theater of Minds',
+  'Little Martians at Saturn',
+  'Little Martians pop-up',
+  'Simulated Worlds',
+]);
+const otherShows = mainShows.filter((s) => LM_SHOWS.has(s.title) && !written.has(s.href));
+
+// ---------------------------------------------------------------------------
+// The record. One list, several views, built from the same two datasets that
+// feed /info — so this page can never drift from the curriculum.
+// ---------------------------------------------------------------------------
+const all = cvForThread('little-martians');
+const prs = press.filter((p) => p.thread === 'little-martians');
+
+// The upcoming rows in cv.js are written by hand and some of them describe a
+// festival that the festival dataset already carries. On /info those live in
+// different sections; merged into one list here they would read as doubles.
+// Keep the festival row, and let it inherit the "upcoming" flag.
+const city = (c = '') => c.toLowerCase().split(',').map((x) => x.trim()).slice(-2).join(', ');
+const drop = new Set();
+for (const n of all) {
+  if (!n.now) continue;
+  const twin = all.find(
+    (r) => r !== n && r.film && r.year === n.year &&
+      r.film.toLowerCase() === n.title.toLowerCase() && city(r.city) === city(n.city),
+  );
+  if (twin) { twin.now = true; drop.add(n); }
+}
+const rows = all.filter((r) => !drop.has(r));
+
+const KIND = {
+  film: 'screening',
+  award: 'award',
+  exhibition: 'show',
+  solo: 'show',
+  talk: 'talk',
+  publication: 'publication',
+};
+
+// A festival's own wording. Everything that is not one of these is a win.
+const isWin = (o) =>
+  o && !/^(official selection|finalist|semi-finalist|quarter-finalist|nominee|honorable mention)/i.test(o);
+
+const record = [
+  ...rows.map((r) => ({
+    year: r.year,
+    kind: KIND[r.type] ?? r.type,
+    title: r.title,
+    sub: [r.venue, r.city].filter(Boolean).join(', '),
+    href: r.href,
+    featured: r.featured || r.now,
+    tag: isWin(r.outcome) ? r.outcome : '',
+  })),
+  ...prs.map((p) => ({
+    year: p.year,
+    kind: 'press',
+    title: p.title,
+    sub: [p.outlet, p.note].filter(Boolean).join(' — '),
+    href: p.href,
+    featured: p.featured,
+    tag: '',
+  })),
+].sort((a, b) => b.year - a.year);
+
+// Prizes open the record alongside the rows Vanessa has already flagged as
+// selected. A selection at a festival is not itself a selection here.
+record.forEach((r) => {
+  if (r.kind === 'award') r.featured = true;
+});
+
+const counts = (k) => record.filter((r) => r.kind === k).length;
+const tabs = [
+  { key: 'selected', label: 'Selected' },
+  { key: 'screening', label: `Screenings (${counts('screening')})` },
+  { key: 'award', label: `Awards (${counts('award')})` },
+  { key: 'show', label: `Shows (${counts('show')})` },
+  { key: 'talk', label: `Talks (${counts('talk')})` },
+  { key: 'press', label: `Press (${counts('press')})` },
+  { key: 'all', label: `Everything (${record.length})` },
+].filter((tb) => tb.key === 'selected' || tb.key === 'all' || !/\(0\)/.test(tb.label));
+---
+
+<Base
+  title={t.title}
+  description={t.lede}
+  image={t.hero}
+  bodyClass="paper"
+>
+  <div class="projhero">
+    <img src={t.hero} alt={t.heroAlt} fetchpriority="high" />
+    <div class="t">
+      <div class="kicker" style="color:#fff; opacity:.9">Thread {t.number} · {t.years}</div>
+      <h1>{t.title}</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="meta">
+      <div><div class="k">Status</div>{t.status}</div>
+      <div><div class="k">Media</div>{t.media}</div>
+      <div><div class="k">Places</div>{t.places}</div>
+      <div>
+        <div class="k">Its own world</div>
+        <a href="https://littlemartians.world" target="_blank" rel="noopener" style="border-bottom:1px solid rgba(13,33,54,.3)">littlemartians.world</a>
+      </div>
+    </div>
+
+    <div class="narrow" style="margin-top:52px">
+      <p class="lede">{t.lede}</p>
+    </div>
+
+    <p class="thesis">{t.thesis}</p>
+
+    <div class="narrow" style="margin-top:30px">
+      {lm.intro.map((p) => <p>{p}</p>)}
+    </div>
+
+    <p class="story-links" style="margin-top:26px">
+      {lm.links.map((l) => (
+        <a class="more" href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined}>
+          {l.label} ⇢
+        </a>
+      ))}
+    </p>
+
+    <!-- THE FILMS ------------------------------------------------------------ -->
+    <section class="wsec lm-films">
+      <div class="kicker">{lm.films.kicker}</div>
+      <h2 class="sec" style="margin:10px 0 6px">{lm.films.title}</h2>
+      <div class="narrow">
+        {lm.films.body.map((p) => <p>{p}</p>)}
+      </div>
+
+      <div class="filmlist" style="margin-top:30px">
+        {featured.map((f) => (
+          <article class="film">
+            <div class="film-play" data-yt={f.id} role="button" tabindex="0" aria-label={`Play ${f.title}`}>
+              <img src={`/images/films/${f.id}.webp`} alt="" loading="lazy" data-nozoom />
+              <span class="film-btn" aria-hidden="true">▶</span>
+            </div>
+            <div class="film-txt">
+              <h3>{f.title}</h3>
+              <div class="film-meta">
+                {f.year}{f.lang ? `, ${f.lang}` : ''}{f.note ? `. ${f.note}` : ''}
+              </div>
+              <p>{f.blurb}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="lm-big">
+        <a href={lm.films.href}>{lm.films.hrefLabel} ⇢</a>
+      </p>
+    </section>
+
+    <!-- THE CODEX ------------------------------------------------------------ -->
+    {codex && (
+      <section class="wsec">
+        <div class="kicker">The book at the centre</div>
+        <h2 class="sec" style="margin:10px 0 6px">{codex.title}</h2>
+        <div class="narrow"><p>{codex.body}</p></div>
+        <p style="font-size:14px; color:var(--ink-2); max-width:40em; margin-top:18px">
+          {codex.read.note}
+        </p>
+        <BookReader book={{ ...codex.read, title: codex.title }} />
+        <p class="story-links">
+          <a class="more" href="/books">All the books ⇢</a>
+          <a class="more" href="https://littlemartians.substack.com/p/the-little-martians-codex" target="_blank" rel="noopener">
+            How the Codex was made ⇢
+          </a>
+        </p>
+      </section>
+    )}
+
+    <!-- THE SHOWS ------------------------------------------------------------ -->
+    <section class="wsec">
+      <div class="kicker">Shown</div>
+      <h2 class="sec" style="margin:10px 0 6px">Three rooms</h2>
+    </section>
+
+    {lm.shows.map((s) => (
+      <section class="wsec lm-show">
+        <h3 class="lm-show-t">{s.title}</h3>
+        <div class="lm-show-w">{s.where}</div>
+        <div class="narrow" style="margin-top:14px">
+          {s.body.map((p) => <p>{p}</p>)}
+        </div>
+
+        {s.video && (
+          <>
+            <div class="vid" style="margin-top:20px">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${s.video.youtube}?rel=0`}
+                title={s.video.caption ?? s.title}
+                loading="lazy"
+                allow="fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            {s.video.caption && <p class="vidcap">{s.video.caption}</p>}
+          </>
+        )}
+
+        <div class="slides" data-slides>
+          <div class="sl-stage">
+            <button class="sl-nav sl-prev" type="button" aria-label="Previous">‹</button>
+            <div class="sl-track">
+              {s.images.map((im, i) => (
+                <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
+                  <img src={im.src} alt={im.caption || s.title} loading={i < 2 ? 'eager' : 'lazy'} />
+                  {im.caption && <figcaption>{im.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+            <button class="sl-nav sl-next" type="button" aria-label="Next">›</button>
+          </div>
+          <div class="sl-bar">
+            <span class="sl-count">1 / {s.images.length}</span>
+            <button class="sl-all" type="button" aria-pressed="false">Show all {s.images.length}</button>
+          </div>
+          <div class="wgrid sl-grid" hidden>
+            {s.images.map((im) => (
+              <figure>
+                <img src={im.src} alt={im.caption || s.title} loading="lazy" />
+                {im.caption && <figcaption>{im.caption}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        <p style="margin-top:18px">
+          <a class="more" href={s.href}>The whole show ⇢</a>
+        </p>
+      </section>
+    ))}
+
+    {otherShows.length > 0 && (
+      <section class="wsec">
+        <div class="kicker">And elsewhere</div>
+        <div class="showcards" style="margin-top:26px">
+          {otherShows.map((s) => (
+            <article class="showcard">
+              <img src={s.image} alt={s.imageAlt ?? ''} loading="lazy" />
+              <h3>{s.title}</h3>
+              <div class="sc-meta">{s.year} · {s.venue}</div>
+              <p>{s.body}</p>
+              {s.href && (
+                <a
+                  class="sc-link"
+                  href={s.href}
+                  target={s.external ? '_blank' : undefined}
+                  rel={s.external ? 'noopener' : undefined}
+                >View project →</a>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- ON CHAIN ------------------------------------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">{lm.onchain.kicker}</div>
+      <h2 class="sec" style="margin:10px 0 6px">{lm.onchain.title}</h2>
+      <div class="narrow">
+        {lm.onchain.body.map((p) => <p>{p}</p>)}
+      </div>
+      <p class="story-links">
+        {lm.onchain.links.map((l) => (
+          <a class="more" href={l.href} target="_blank" rel="noopener">{l.label} ⇢</a>
+        ))}
+      </p>
+    </section>
+
+    <!-- THE RECORD ----------------------------------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">The record</div>
+      <h2 class="sec" style="margin:10px 0 6px">Little Martians, everywhere it has been</h2>
+      <p style="font-size:14px; color:var(--ink-2); max-width:42em">{lm.record.note}</p>
+
+      <div class="filters" role="group" aria-label="Filter the record">
+        {tabs.map((tb) => (
+          <button type="button" data-lmfilter={tb.key} aria-pressed={tb.key === 'selected' ? 'true' : 'false'}>
+            {tb.label}
+          </button>
+        ))}
+      </div>
+
+      <div id="lmrecord">
+        {record.map((r) => (
+          <div class="cvline" data-kind={r.kind} data-featured={r.featured ? 'yes' : 'no'}>
+            <b>{r.year}</b>
+            <div>
+              {r.href ? (
+                <a class="pr-t" href={r.href} target={r.href.startsWith('http') ? '_blank' : undefined} rel={r.href.startsWith('http') ? 'noopener' : undefined}>{r.title}</a>
+              ) : (
+                r.title
+              )}
+              <div class="t">{r.sub}</div>
+            </div>
+            <div class="ty">{r.tag || r.kind}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <p style="margin:56px 0 0">
+      <a class="more" href="/art">All the art ⇢</a>
+      <span style="display:inline-block; width:22px"></span>
+      <a class="more" href="/info">The full curriculum ⇢</a>
+    </p>
+
+    <Spine current="little-martians" />
+  </div>
+
+  <script is:inline>
+    // One picture at a time, with a button that opens the whole set.
+    document.querySelectorAll('[data-slides]').forEach(function (box) {
+      if (box.dataset.wired) return;
+      box.dataset.wired = '1';
+      var items = box.querySelectorAll('.sl-item');
+      var count = box.querySelector('.sl-count');
+      var grid = box.querySelector('.sl-grid');
+      var all = box.querySelector('.sl-all');
+      var stage = box.querySelector('.sl-stage');
+      var bar = box.querySelector('.sl-bar');
+      var at = 0;
+      function show(i) {
+        at = (i + items.length) % items.length;
+        items.forEach(function (el, k) {
+          el.hidden = k !== at;
+          if (k === at) el.querySelector('img').loading = 'eager';
+        });
+        count.textContent = at + 1 + ' / ' + items.length;
+      }
+      box.querySelector('.sl-prev').addEventListener('click', function () { show(at - 1); });
+      box.querySelector('.sl-next').addEventListener('click', function () { show(at + 1); });
+      all.addEventListener('click', function () {
+        var open = grid.hidden;
+        grid.hidden = !open;
+        stage.hidden = open;
+        count.hidden = open;
+        all.setAttribute('aria-pressed', String(open));
+        all.textContent = open ? 'One at a time' : 'Show all ' + items.length;
+      });
+      if (items.length < 2) bar.hidden = true;
+    });
+
+    // The player arrives only when someone asks for it.
+    (function () {
+      function play(box) {
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') + '?autoplay=1&rel=0';
+        f.title = 'Film';
+        f.allow = 'autoplay; fullscreen; picture-in-picture';
+        f.setAttribute('allowfullscreen', '');
+        box.replaceChildren(f);
+        box.classList.add('is-live');
+        box.removeAttribute('role');
+        box.removeAttribute('tabindex');
+      }
+      document.querySelectorAll('.film-play').forEach(function (box) {
+        box.addEventListener('click', function () { play(box); });
+        box.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(box); }
+        });
+      });
+    })();
+
+    // The record: Selected first, then whichever slice is asked for.
+    (function () {
+      var list = document.getElementById('lmrecord');
+      if (!list) return;
+      var lines = list.querySelectorAll('.cvline');
+      function apply(key) {
+        lines.forEach(function (el) {
+          var ok =
+            key === 'all' ? true :
+            key === 'selected' ? el.dataset.featured === 'yes' :
+            el.dataset.kind === key;
+          el.hidden = !ok;
+        });
+      }
+      document.querySelectorAll('[data-lmfilter]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          document.querySelectorAll('[data-lmfilter]').forEach(function (o) {
+            o.setAttribute('aria-pressed', String(o === b));
+          });
+          apply(b.getAttribute('data-lmfilter'));
+        });
+      });
+      apply('selected');
+    })();
+  </script>
+</Base>

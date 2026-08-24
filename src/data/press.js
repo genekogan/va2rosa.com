@@ -50,6 +50,7 @@ export const press = [
     href: 'https://experimentalbrasiljournal.neocities.org/interviews#2026-2026-vanessa-rosa',
     kinds: ['interview', 'br', 'online'],
     featured: true,
+    thread: 'little-martians',
   },
   {
     year: 2026,
@@ -77,6 +78,7 @@ export const press = [
     href: 'https://www.euronews.com/video/2025/02/22/christies-ai-art-auction-sparks-controversy-amid-artist-protests',
     kinds: ['tv', 'online'],
     featured: true,
+    thread: 'little-martians',
   },
   {
     year: 2025,
@@ -87,6 +89,7 @@ export const press = [
     kinds: ['br', 'online'],
     lang: 'Portuguese',
     featured: true,
+    thread: 'little-martians',
   },
   {
     year: 2025,
@@ -105,6 +108,7 @@ export const press = [
     href: 'https://veja.abril.com.br/coluna/veja-gente/artista-brasileira-inova-com-obra-de-ia-em-leilao-de-nova-york/',
     kinds: ['br', 'online'],
     lang: 'Portuguese',
+    thread: 'little-martians',
   },
   {
     year: 2025,
@@ -113,6 +117,7 @@ export const press = [
     href: 'https://veja.abril.com.br/coluna/radar/artista-visual-lanca-livro-infantil-na-bienal-do-rio-em-junho/',
     kinds: ['br', 'online'],
     lang: 'Portuguese',
+    thread: 'little-martians',
   },
   {
     year: 2025,
@@ -122,6 +127,7 @@ export const press = [
     href: 'https://www.correiodamanha.com.br/cultura/artes-plasticas/2025/06/206055-ceramica-encontra-inteligencia-artificial-na-obra-de-vanessa-rosa.html',
     kinds: ['br', 'online'],
     lang: 'Portuguese',
+    thread: 'little-martians',
   },
   {
     year: 2025,
@@ -132,6 +138,7 @@ export const press = [
     kinds: ['podcast', 'br', 'mars'],
     lang: 'Portuguese',
     featured: true,
+    thread: 'little-martians',
   },
   {
     year: 2025,
@@ -140,6 +147,7 @@ export const press = [
     note: 'Podcast interview.',
     href: 'https://cultureandcode.podbean.com/e/from-clay-to-code-building-worlds-with-ancient-art-and-ai/',
     kinds: ['podcast'],
+    thread: 'little-martians',
   },
 
   // ——— 2024 ———
@@ -163,6 +171,7 @@ export const press = [
     kinds: ['br', 'online'],
     lang: 'Portuguese',
     featured: true,
+    thread: 'little-martians',
   },
   {
     year: 2024,
@@ -171,6 +180,7 @@ export const press = [
     href: 'https://www.publishnews.com.br/materias/2024/10/04/artista-brasileira-que-mistura-arte-tradicional-e-inteligencia-artificial',
     kinds: ['br', 'online'],
     lang: 'Portuguese',
+    thread: 'little-martians',
   },
   {
     year: 2024,
@@ -180,6 +190,7 @@ export const press = [
     href: 'https://revistaconexaoliteratura.com.br/artista-brasileira-que-mistura-arte-tradicional-e-inteligencia-artificial-apresenta-seu-livro-infantil-a-carta-de-verdelis/',
     kinds: ['br', 'online'],
     lang: 'Portuguese',
+    thread: 'little-martians',
   },
   {
     year: 2024,
@@ -189,6 +200,7 @@ export const press = [
     href: 'https://www.terra.com.br/diversao/4-livros-infantis-para-conhecer-na-bienal-do-livro-de-sao-paulo,4d14375f39a6f105bd8b0eb781f0b505eo1gjip5.html',
     kinds: ['br', 'online'],
     lang: 'Portuguese',
+    thread: 'little-martians',
   },
   {
     year: 2024,
@@ -196,6 +208,7 @@ export const press = [
     title: 'Interview with Vanessa Rosa',
     href: 'https://www.schoolofma.org/news/vanessa-rosa-interview',
     kinds: ['interview', 'online'],
+    thread: 'little-martians',
   },
   {
     year: 2024,
@@ -203,6 +216,7 @@ export const press = [
     title: 'Interview: Best Art Direction, Little Martians',
     href: 'https://iagfilmawards.com/best-art-direction-2024-little-martians',
     kinds: ['interview', 'online'],
+    thread: 'little-martians',
   },
   {
     year: 2024,
@@ -210,6 +224,7 @@ export const press = [
     title: 'Visual artist Vanessa Rosa: Dear Human, My Muse',
     href: 'https://aiartistfestival.com/ai-artist-1/f/visual-artist-vanessa-rosa-%E2%80%9Cdear-human-my-muse%E2%80%9D',
     kinds: ['interview', 'online'],
+    thread: 'little-martians',
   },
   {
     year: 2024,
@@ -218,6 +233,7 @@ export const press = [
       'Unveiling the universe of Little Martians: Vanessa Rosa’s AI-enhanced storytelling',
     href: 'https://www.reel-intelligence.org/news/unveiling-the-universe-of-little-martians-vanessa-rosas-ai-enhanced-storytelling',
     kinds: ['online'],
+    thread: 'little-martians',
   },
   {
     year: 2024,
@@ -225,6 +241,7 @@ export const press = [
     title: 'Vanessa Rosa’s Little Martians',
     href: 'https://kojii.substack.com/p/vanessa-rosas-little-martians',
     kinds: ['online'],
+    thread: 'little-martians',
   },
 
   // ——— 2023 ———
@@ -235,6 +252,7 @@ export const press = [
     note: 'E-book released at SIGGRAPH 2023.',
     href: 'https://resources.nvidia.com/en-us-omniverse-usd/ov-openusd-allstars',
     kinds: ['online'],
+    thread: 'little-martians',
   },
   {
     year: 2023,
@@ -243,6 +261,7 @@ export const press = [
     href: 'https://www.nvidia.com/en-us/research/ai-art-gallery/artists/vanessa-rosa/',
     kinds: ['online'],
     featured: true,
+    thread: 'little-martians',
   },
   {
     year: 2023,
@@ -250,6 +269,7 @@ export const press = [
     title: 'Meet the artist: Vanessa Rosa',
     href: 'https://chromaartfilmfestival.org/23-selected-films/meet-the-artist-vanessa-rosa/',
     kinds: ['interview', 'online'],
+    thread: 'little-martians',
   },
 
   // ——— 2022 ———
@@ -260,6 +280,7 @@ export const press = [
     href: 'https://blogs.nvidia.com/blog/2022/08/29/omniverse-creator-vanessa-rosa/',
     kinds: ['online'],
     featured: true,
+    thread: 'little-martians',
   },
   {
     year: 2022,
@@ -293,6 +314,7 @@ export const press = [
     title: 'Crafting the on-chain SVG Little Martians',
     href: 'https://www.untitledfrontier.studio/blog/crafting-the-on-chain-svg-little-martians',
     kinds: ['online'],
+    thread: 'little-martians',
   },
   {
     year: 2022,

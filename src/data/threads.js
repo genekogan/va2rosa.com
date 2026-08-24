@@ -626,7 +626,8 @@ export const threads = [
   {
     number: '07',
     slug: 'little-martians',
-    hasPage: true,
+    hasPage: false,
+    href: '/threads/little-martians', // its own page
     title: 'Little Martians',
     years: '2020–present',
     start: 2020, end: null,
