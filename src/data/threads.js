@@ -417,6 +417,22 @@ export const threads = [
         },
       },
       {
+        title: 'Dialogues, with Gérard Quenum, 2017',
+        body: [
+          'A month at Le Centre in Cotonou, Benin, working with the sculptor Gérard Quenum. What came out of it was a series of nine paintings in which his portraits are overrun by pattern: azulejo motifs of Portuguese descent that I had been collecting off Brazilian walls, and Adinkra symbols from Ghana, laid over the same face again and again. The portrait repeats, the eyes meet, only the cloth changes. Is it the same person?',
+          'It was the first time I put the research to work on somebody else’s images rather than my own, and the first time the patterns crossed the Atlantic in the direction they had originally come from.',
+        ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/gq/gq-dial-1.webp', caption: 'From the Dialogues series, 2017' },
+          { src: '/images/gq/gq-dial-3.webp' },
+          { src: '/images/gq/gq-dial-5.webp' },
+          { src: '/images/gq/gq-dial-7.webp' },
+          { src: '/images/gq/gq-afro-1.webp', caption: 'Afro-Brésil, painted in the sculpture garden at Le Centre' },
+        ],
+        more: { label: 'The whole exhibition', href: '/gerard-quenum' },
+      },
+      {
         title: 'Ethnocomputing Experiments, with Wenqi Li',
         body: [
           'Chokwe sona patterns redrawn in Processing along the heritage algorithm that produced them, projected over a painting built from Vredeman de Vries’ seventeenth-century treatise on linear perspective. Two mathematical ways of handling a line, put in one room.',
@@ -466,10 +482,7 @@ export const threads = [
           'Linear perspective is about six hundred years old. Computer-aided design is about sixty. Latent space is barely ten, and it belongs to the same family. A diffusion model holds a space of relations where every image is a position. It is fascinating to try to understand how these models encode reality, how they connect structures of meaning beneath every human language and beyond, changing our understanding of ourselves.',
         ],
         video: { youtube: 'fw0CK_r0B9k', caption: 'StyleGAN2 Sacred Spaces.' },
-        links: [
-          { label: 'Copyright Storm: authorship in the age of AI', href: 'https://va2rosa.medium.com/copyright-storm-authorship-in-the-age-of-ai-baba554aa617' },
-          { label: 'On the biology of a large language model', href: 'https://transformer-circuits.pub/2025/attribution-graphs/biology.html' },
-        ],
+        more: { label: 'Copyright Storm: authorship in the age of AI', href: 'https://va2rosa.medium.com/copyright-storm-authorship-in-the-age-of-ai-baba554aa617' },
       },
       {
         title: 'Kweku',
@@ -501,8 +514,8 @@ export const threads = [
     credits:
       'Ethnocomputing Experiments and The Infinity Game with Wenqi Li; The Infinity Game also with Verônica Natividade. The Sankofa Project with Damião Braga, Felipe Carvalho and Verônica Natividade. Same Putumi, co-author of everything on the Envira.',
     gallery: [],
-    hero: '/images/work/ethnocomputing-hero.webp',
-    heroAlt: 'Three bands of blue stencilled pattern sprayed side by side on a white wall.',
+    hero: '/images/work/ethnocomputing-hero-cover.webp',
+    heroAlt: 'Layered stencilled patterns in red and grey with a black Adinkra symbol at the centre: the cover of the dissertation.',
   },
 
   {
