@@ -463,6 +463,12 @@ export const threads = [
           'First, we try to understand the specificity of algorithmic images within the history of representation, why they mean a paradigm shift in relation to previous representational models, their place within the congruence of art history, or rather history of images, with the history of science. Second, it is assumed that it is essential to discuss trends in imagery and technology development through an approach that focuses on cultural diversity, considering such an approach a political necessity to comment on and, as far as possible, influence the changes that are occurring globally.',
           'Therefore a combination of several fields of knowledge, articulated around concepts such as representational models, algorithms, the mathematization of the world and cultural diversity, are presented. The research is also based on empirical experience, narrated in the second section of the last chapter with a case study. This research hopes to contribute to the expansion of studies on design and on algorithmic processes of image and object creation that are based on a broad and multicultural view of mathematics. This is an ethical and historical contribution to such studies.',
         ],
+        images: [
+          {
+            src: '/images/work/dissertation-cover.webp',
+            caption: 'Arte, Design e Matemática: Imagens, Algoritmos e Diversidade Cultural. Universidade Anhembi Morumbi, São Paulo, 2018.',
+          },
+        ],
         links: [
           { label: 'English translation (PDF)', href: 'https://drive.google.com/file/d/1JBe3nzAK2dq1o9Wzw5iDniZyysNzjDyU/view' },
           { label: 'Portuguese original (PDF)', href: 'https://drive.google.com/file/d/1Ec1ShXBwnn4YG547WjyV5j6YPMXKOX_D/view' },
@@ -502,6 +508,7 @@ export const threads = [
     exhibited: [
       { years: '2016', text: 'The Sankofa Project, Quilombo of Pedra do Sal, during the Olympic Games' },
       { years: '2017', text: 'The Infinity Game, Babycastles, New York, with Wenqi Li and Verônica Natividade' },
+      { years: '2017', text: 'Dialogues, two-person exhibition with Gérard Quenum, Le Centre, Cotonou, Benin' },
       { years: '2018', text: 'Ethnocomputing Experiments, Pioneer Works, Brooklyn, with Wenqi Li' },
       { years: '2018', text: 'Master’s dissertation, Universidade Anhembi Morumbi, São Paulo' },
       { years: '2018–2019', text: 'The collaboration with Same Putumi, upper Envira river, Acre' },
@@ -512,7 +519,7 @@ export const threads = [
       'Gerdes, Paulus. <em>Geometry from Africa</em>, and <em>Da etnomatemática a arte-design e matrizes cíclicas</em>.',
     ],
     credits:
-      'Ethnocomputing Experiments and The Infinity Game with Wenqi Li; The Infinity Game also with Verônica Natividade. The Sankofa Project with Damião Braga, Felipe Carvalho and Verônica Natividade. Same Putumi, co-author of everything on the Envira.',
+      'Dialogues with Gérard Quenum. Ethnocomputing Experiments and The Infinity Game with Wenqi Li; The Infinity Game also with Verônica Natividade. The Sankofa Project with Damião Braga, Felipe Carvalho and Verônica Natividade. Same Putumi, co-author of everything on the Envira.',
     gallery: [],
     hero: '/images/work/ethnocomputing-hero-symbol.webp',
     heroAlt: 'Layered stencilled patterns in red and grey with a black Adinkra symbol at the centre: the cover of the dissertation.',
