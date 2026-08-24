@@ -360,49 +360,149 @@ export const threads = [
     start: 2016, end: null,
     state: 'ongoing',
     collection: 'patterns',
-    places: 'New York · Lisbon · Bombay Beach',
+    places: 'Rio de Janeiro · São Paulo · New York · Upper Envira · Mars',
     status: 'Ongoing',
-    carrier: 'Everything is made out of patterns',
-    media: 'Grasshopper, laser cutting, games, writing, talks',
-    related: ['the-silk-roads', 'same-putumi'],
+    carrier: 'The pattern, and the rule that makes it',
+    media: 'Laser-cut stencil · parametric design · painting · installation · writing',
+    related: ['the-silk-roads', 'same-putumi', 'little-martians'],
     summary: [
-      'Ornament is not decoration. It is an algorithm with an author, and the author usually goes uncredited. Reading Paulus Gerdes and Ron Eglash changed what I thought I was looking at: a braid, a weave, a body paint, a sand drawing. Each one is a program, with a grammar, a compiler, and a lineage of engineers nobody ever called engineers.',
-      'Infinity Game, Babycastles, 2017, with Verônica Natividade and Wenqi Li · Art, Parametric Design and Public Spaces, Penn State, 2017 · Grasshopper studies · Penrose-tile stencils, Mars College, 2022.',
+      'A weave is a program. It has a grammar, a compiler and a lineage of engineers, and almost none of them appear in any history of computing.',
+      'The research runs from Islamic sacred geometry and African fractals through a master’s dissertation to a Little Martian who is a pattern rather than a body.',
     ],
-    lede:
-      'A weave is a program. It has a grammar, a compiler and a lineage of engineers. Almost none of them appear in any history of computing.', // DRAFT
-    thesis:
-      'Ornament is an algorithm with an author. Which authors we agree to call engineers is a political decision, not a technical one.', // DRAFT
-    strands: [
+    lede: 'From the Silk Roads tiles to a trickster living in the lava tubes of Mars.',
+    thesis: 'In love with patterns.',
+
+    story: [
       {
-        title: 'I. What Gerdes and Eglash changed',
-        body:
-          'Paulus Gerdes on sona sand drawings and Ron Eglash on African fractals do the same thing from two directions: they show that the mathematics was never implicit or accidental. It was taught, refined and transmitted, by people who knew exactly what they were doing.',
+        title: 'Where it started',
+        body: [
+          'This research evolved while I was creating the Silk Roads paintings. I was designing stencils for computer aided design and manufacture, spending my time with laser cutters in hackerspaces, discussing poetic computation and algorithmic art. As a historian, I was intrigued to realise that the generative art my coder friends loved had a long lineage in art history, a lineage barely mentioned in mainstream art history.',
+          'Starting from tiles and Islamic sacred geometry, I eventually learned about Ron Eglash’s research on African Fractals. This was my opening into the world of ethnomathematics, and the core inspiration for the research sustaining the Sankofa Project during the Rio de Janeiro 2016 Olympic Games.',
+        ],
+        more: { label: 'The Silk Roads', href: '/threads/the-silk-roads' },
       },
       {
-        title: 'II. Building the tools back',
-        body:
-          'Grasshopper studies and parametric stencils are a way of reading these systems by re-implementing them. If it can be written as a program, the claim stops being poetic and starts being checkable.',
+        title: 'The Sankofa Project, 2016',
+        body: [
+          'I have written quite a bit about that experience, including a report presented at an academic conference during my master’s at Anhembi Morumbi.',
+        ],
+        video: { youtube: '2kS57onacbM', caption: 'The Sankofa Project, filmed by Pajé Produções.' },
+        gallery: 'slides',
+        images: [
+          { src: '/images/vm/p2016-wall.webp', caption: 'The finished wall, Pedra do Sal, 2016' },
+          { src: '/images/vm/p2016-panels.webp', caption: 'Adinkra symbols and parametric stencil patterns' },
+          { src: '/images/vm/p2016-grasshopper.webp', caption: 'Yoruba and Adinkra patterns described as parametric code in Grasshopper, and cut as stencils' },
+          { src: '/images/vm/p2016-stencil.webp', caption: 'Spraying through a laser-cut stencil' },
+          { src: '/images/vm/p2016-panel-joyce.webp', caption: 'One of the painted panels' },
+          { src: '/images/vm/p2016-stencils.webp', caption: 'The stencil making process' },
+        ],
+        links: [
+          { label: 'The report', href: 'https://drive.google.com/file/d/195pFG3AxN8oD_IBrDUfwdBE56oC81tzm/view?usp=sharing' },
+          { label: 'The whole project', href: '/threads/visible-memories' },
+        ],
       },
       {
-        title: 'III. Games as arguments',
-        body:
-          'Infinity Game (Babycastles, 2017, with Verônica Natividade and Wenqi Li) puts a pattern grammar in a player’s hands. Playing it is faster than being told what a generative system is.',
+        title: 'Paulus Gerdes',
+        body: [
+          'Later on I discovered Paulus Gerdes’ research, and he became another main influence. A Dutch mathematician who became Mozambican, he took up ethnomathematics because after independence nobody wanted to teach maths: it felt like the coloniser’s property. He went looking for it in markets and basket weaves and in the Cokwe sona, the monolinear sand drawings from Angola.',
+          'One of them tells the story of a chicken escaping a hunter by zigzagging at changing frequencies, drawn as a single continuous line. By the end of Gerdes’s explanation it is a matrix system, and then a set of circulant matrices he built himself from the same logic.',
+          'A weave is a program. It has a grammar, a compiler and a lineage of engineers, and none of them appear in any history of computing.',
+        ],
+        images: [
+          { src: '/images/ecx/sona.webp', caption: 'A Cokwe sona: the chicken and the hunter, drawn as one continuous line' },
+        ],
+        more: {
+          label: 'An article written after Gerdes',
+          href: 'https://va2rosa.medium.com/art-ethnomathematics-and-the-digital-era-4bc30b0bf634',
+        },
       },
-    ], // DRAFT
+      {
+        title: 'Ethnocomputing Experiments, with Wenqi Li',
+        body: [
+          'Chokwe sona patterns redrawn in Processing along the heritage algorithm that produced them, projected over a painting built from Vredeman de Vries’ seventeenth-century treatise on linear perspective. Two mathematical ways of handling a line, put in one room.',
+        ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/ecx/night-1.webp', caption: 'Ethnocomputing Experiments, Pioneer Works, Brooklyn, 2018' },
+          { src: '/images/ecx/night-2.webp' },
+          { src: '/images/ecx/night-3.webp' },
+          { src: '/images/ecx/night-4.webp' },
+          { src: '/images/ecx/vries.webp', caption: 'The painting is built from Vredeman de Vries’ 1604 treatise on linear perspective' },
+          { src: '/images/ecx/detail-1.webp', caption: 'The sona line, drawn in Processing along the algorithm that produced it' },
+          { src: '/images/ecx/detail-2.webp' },
+          { src: '/images/ecx/detail-3.webp' },
+          { src: '/images/ecx/day-1.webp', caption: 'The same room in daylight' },
+          { src: '/images/ecx/open-1.webp', caption: 'Opening night' },
+          { src: '/images/ecx/open-2.webp' },
+          { src: '/images/ecx/open-3.webp' },
+          { src: '/images/ecx/artists.webp', caption: 'With Wenqi Li' },
+        ],
+        more: { label: 'The whole project', href: '/ethnocomputing-experiments' },
+      },
+      {
+        title: 'The dissertation, 2018',
+        body: [
+          'Art, Design and Mathematics: Images, Algorithms and Cultural Diversity. Arte, Design e Matemática: Imagens, Algoritmos e Diversidade Cultural. Master’s dissertation, Universidade Anhembi Morumbi, Master’s in Design, Art and Technology, São Paulo. Advisor: Prof. Gilbertto Prado. Examining board: Prof. Hermes Renato Hildebrand (PUC-SP) and Prof. Priscila Almeida Cunha Arantes (UAM). 152 pages, 58 figures.',
+          'This dissertation discusses the issue of algorithms mainly from their characteristics as a representational model: in other words, as a tool to create images. It is an artist-oriented approach, how it is possible to express oneself through algorithms, but also designer-oriented, how one can project with them.',
+          'First, we try to understand the specificity of algorithmic images within the history of representation, why they mean a paradigm shift in relation to previous representational models, their place within the congruence of art history, or rather history of images, with the history of science. Second, it is assumed that it is essential to discuss trends in imagery and technology development through an approach that focuses on cultural diversity, considering such an approach a political necessity to comment on and, as far as possible, influence the changes that are occurring globally.',
+          'Therefore a combination of several fields of knowledge, articulated around concepts such as representational models, algorithms, the mathematization of the world and cultural diversity, are presented. The research is also based on empirical experience, narrated in the second section of the last chapter with a case study. This research hopes to contribute to the expansion of studies on design and on algorithmic processes of image and object creation that are based on a broad and multicultural view of mathematics. This is an ethical and historical contribution to such studies.',
+        ],
+        links: [
+          { label: 'English translation (PDF)', href: 'https://drive.google.com/file/d/1JBe3nzAK2dq1o9Wzw5iDniZyysNzjDyU/view' },
+          { label: 'Portuguese original (PDF)', href: 'https://drive.google.com/file/d/1Ec1ShXBwnn4YG547WjyV5j6YPMXKOX_D/view' },
+        ],
+      },
+      {
+        title: 'Same Putumi',
+        body: [
+          'In 2018 I spent a month with Same Putumi on the upper Envira river in Acre. What brought us together was a love of patterns. For the Huni Kuin, geometric design is sacred and completely ordinary at once; they love to add patterns to everything they can.',
+        ],
+        images: [{ src: '/images/same/hero.webp', caption: 'A Huni Kuin pattern cast by sunlight through a laser-cut stencil' }],
+        more: { label: 'The collaboration', href: '/threads/same-putumi' },
+      },
+      {
+        title: 'Then latent space',
+        body: [
+          'Linear perspective is about six hundred years old. Computer-aided design is about sixty. Latent space is barely ten, and it belongs to the same family. A diffusion model holds a space of relations where every image is a position. It is fascinating to try to understand how these models encode reality, how they connect structures of meaning beneath every human language and beyond, changing our understanding of ourselves.',
+        ],
+        video: { youtube: 'fw0CK_r0B9k', caption: 'StyleGAN2 Sacred Spaces.' },
+        links: [
+          { label: 'Copyright Storm: authorship in the age of AI', href: 'https://va2rosa.medium.com/copyright-storm-authorship-in-the-age-of-ai-baba554aa617' },
+          { label: 'On the biology of a large language model', href: 'https://transformer-circuits.pub/2025/attribution-graphs/biology.html' },
+        ],
+      },
+      {
+        title: 'Kweku',
+        body: [
+          'For years this lived in a dissertation, some murals and an installation. Then Kweku showed up. One of my characters, a Little Martian, is distributed as a fractal pattern of bacterial mats and AI substrate through eight hundred kilometres of lava tubes under Tharsis. Any single stretch of tunnel is a fragment of Kweku. The face they project when talking to a human dissolves when the conversation ends.',
+          'Kweku is the pattern, not the matter, and Kweku is a trickster with a bugbot companion called Data, whom they once taught a single pattern without a stop condition, which is how Verdelis’s irises turned into broccoli.',
+          '“Step right up, humans! I am Kweku, the Little Martian, live from the lava caves of Mars, on a mission of cosmic importance, to share a secret that could totally save your planet!”',
+          'Kweku doesn’t explain themself. They are happy to be misunderstood for a while, because they know the listener will catch up if the pattern is good enough.',
+          'Kweku is still a character in development. I have been feeding him my ethnomathematics research, and I plan to make more pattern based art and educational projects with him.',
+        ],
+        video: { youtube: 'JJ_Ug1mwCXw', caption: 'The immersive show.' },
+        images: [{ src: '/images/vbooks/kweku.webp', caption: 'O Segredo de Kweku' }],
+      },
+    ],
+
+    strands: [],
     exhibited: [
-      { years: '2017', text: 'Infinity Game, Babycastles, New York' },
-      { years: '2017', text: 'Art, Parametric Design and Public Spaces, Penn State' },
-      { years: '2022', text: 'Penrose-tile stencils, Mars College, Bombay Beach' },
+      { years: '2016', text: 'The Sankofa Project, Quilombo of Pedra do Sal, during the Olympic Games' },
+      { years: '2017', text: 'The Infinity Game, Babycastles, New York, with Wenqi Li and Verônica Natividade' },
+      { years: '2018', text: 'Ethnocomputing Experiments, Pioneer Works, Brooklyn, with Wenqi Li' },
+      { years: '2018', text: 'Master’s dissertation, Universidade Anhembi Morumbi, São Paulo' },
+      { years: '2018–2019', text: 'The collaboration with Same Putumi, upper Envira river, Acre' },
+      { years: '2025–present', text: 'Kweku, a Little Martian made of pattern' },
     ],
     reading: [
-      'Gerdes, Paulus. <em>Geometry from Africa: Mathematical and Educational Explorations</em>. MAA, 1999.',
       'Eglash, Ron. <em>African Fractals: Modern Computing and Indigenous Design</em>. Rutgers UP, 1999.',
+      'Gerdes, Paulus. <em>Geometry from Africa</em>, and <em>Da etnomatemática a arte-design e matrizes cíclicas</em>.',
     ],
-    credits: 'Infinity Game with Verônica Natividade and Wenqi Li.',
-    gallery: ['/images/work/ec-1.webp', '/images/work/ec-2.webp', '/images/work/ec-3.webp', '/images/work/ec-4.webp', '/images/work/ec-5.webp'],
+    credits:
+      'Ethnocomputing Experiments and The Infinity Game with Wenqi Li; The Infinity Game also with Verônica Natividade. The Sankofa Project with Damião Braga, Felipe Carvalho and Verônica Natividade. Same Putumi, co-author of everything on the Envira.',
+    gallery: [],
     hero: '/images/work/ethnocomputing-hero.webp',
-    heroAlt: 'Blue pattern studies on paper, stencilled tile motifs repeated in rows.',
+    heroAlt: 'Three bands of blue stencilled pattern sprayed side by side on a white wall.',
   },
 
   {

@@ -86,6 +86,19 @@ const { story } = Astro.props;
         <a class="more" href={sec.more.href}>{sec.more.label} ⇢</a>
       </p>
     )}
+
+    {sec.links && (
+      <p class="story-links">
+        {sec.links.map((l) => (
+          <a
+            class="more"
+            href={l.href}
+            target={l.href.startsWith('http') ? '_blank' : undefined}
+            rel={l.href.startsWith('http') ? 'noopener' : undefined}
+          >{l.label} ⇢</a>
+        ))}
+      </p>
+    )}
   </section>
 ))}
 
