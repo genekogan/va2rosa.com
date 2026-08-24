@@ -78,13 +78,28 @@ export const samePutumi = {
           title: 'Photographs with laser-cut stencils and sunlight',
           body:
             'I brought stencils cut from patterns Same had chosen. Laid against skin in direct sun, the stencil stops being a tool for painting and becomes a way of letting the place itself expose the image. The pattern is not applied. It is cast.',
-          images: ['/images/same/imm-2.webp', '/images/same/imm-3.webp', '/images/same/imm-4.webp'],
+          images: [
+            '/images/same/imm-sun-1.webp',
+            '/images/same/imm-sun-2.webp',
+            '/images/same/imm-sun-3.webp',
+            '/images/same/imm-sun-4.webp',
+            '/images/same/imm-sun-5.webp',
+            '/images/same/imm-sun-6.webp',
+            '/images/same/imm-sun-7.webp',
+            '/images/same/imm-sun-8.webp',
+            '/images/same/imm-sun-9.webp',
+          ],
         },
         {
           title: 'Body painting with jenipapo, stencils and airbrush',
           body:
             'Jenipapo is the traditional fruit pigment; the airbrush and the laser-cut stencil are not. Put together they paint the same patterns faster and at a scale the hand would take days to reach, which is exactly the kind of exchange both of us were interested in.',
-          images: ['/images/same/imm-5.webp', '/images/same/imm-6.webp', '/images/same/imm-7.webp'],
+          images: [
+            '/images/same/imm-jen-1.webp',
+            '/images/same/imm-jen-2.webp',
+            '/images/same/imm-jen-3.webp',
+            '/images/same/imm-jen-4.webp',
+          ],
         },
         {
           title: 'The river and the region',
