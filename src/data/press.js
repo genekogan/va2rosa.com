@@ -16,6 +16,14 @@ export const press = [
   // ——— 2026 ———
   {
     year: 2026,
+    outlet: 'Good Standing',
+    title: 'Mars College Mainstays Vanessa Rosa and Gene Kogan on AI Adaptation and Off-Grid Living',
+    note: 'Podcast interview with Ashley and Kurt, 12 August 2026. Building a college from the ground up each winter on a dry lake bed by the Salton Sea.',
+    href: 'https://www.youtube.com/watch?v=3h7yE_mkcRk',
+    kinds: ['podcast', 'mars', 'online'],
+  },
+  {
+    year: 2026,
     outlet: 'The Guardian',
     title:
       'No tuition, no grades, no power grid: why are people flocking to a “college” in the middle of the desert?',
