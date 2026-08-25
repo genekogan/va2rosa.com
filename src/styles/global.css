@@ -385,6 +385,7 @@ em { font-style: italic; }
   display: grid; grid-template-columns: 66px 1fr 110px; gap: 16px;
   padding: 10px 0; border-bottom: 1px solid var(--line-2); font-size: 14.5px;
 }
+.cvline[hidden] { display: none; }
 .cvline b { font-weight: 400; color: var(--ink-3); font-size: 12px; letter-spacing: 0.08em; padding-top: 3px; font-variant-numeric: tabular-nums; }
 .cvline .ty { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); text-align: right; padding-top: 4px; }
 
