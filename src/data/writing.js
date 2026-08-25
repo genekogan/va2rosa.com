@@ -85,8 +85,8 @@ export const groups = [
       {
         year: 2018,
         title: 'Art, Design and Mathematics: Images, Algorithms and Cultural Diversity',
-        image: '/images/work/ethnocomputing-hero.webp',
-        imageAlt: 'Blue pattern studies on paper.',
+        image: '/images/work/dissertation-cover.webp',
+        imageAlt: 'The dissertation cover: layered stencilled patterns in red and grey with a black Adinkra symbol at the centre.',
         original: 'Arte, Design e Matemática: Imagens, Algoritmos e Diversidade Cultural',
         kind: 'Master’s dissertation',
         venue: 'Universidade Anhembi Morumbi, Master’s in Design, Art and Technology, São Paulo',
