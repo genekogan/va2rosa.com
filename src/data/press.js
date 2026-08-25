@@ -277,7 +277,7 @@ export const press = [
     year: 2022,
     outlet: 'NVIDIA',
     title: 'Artist fires up NVIDIA Omniverse to glaze animated ceramics',
-    href: 'https://blogs.nvidia.com/blog/2022/08/29/omniverse-creator-vanessa-rosa/',
+    href: 'https://blogs.nvidia.com/blog/omniverse-creator-vanessa-rosa/',
     kinds: ['online'],
     featured: true,
     thread: 'little-martians',
