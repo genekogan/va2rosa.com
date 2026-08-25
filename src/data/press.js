@@ -243,6 +243,15 @@ export const press = [
     kinds: ['online'],
     thread: 'little-martians',
   },
+  {
+    year: 2024,
+    outlet: 'MOCA LIVE, Museum of Crypto Art',
+    title: 'Taming the AI Beast, Magnified AI Education, Open-Source Models, Martians, and More',
+    note: 'Podcast interview with Max Cohen, 15 February 2024, with Gene Kogan. Fifty minutes on AI education, open models, and where the artist’s hand sits in an AI artwork.',
+    href: 'https://podbay.fm/p/moca-live/e/1708039318',
+    kinds: ['podcast', 'online'],
+    thread: 'little-martians',
+  },
 
   // ——— 2023 ———
   {
