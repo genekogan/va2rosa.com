@@ -325,6 +325,15 @@ export const press = [
     href: 'https://nftnow.com/features/the-best-way-for-writers-to-join-the-nft-space-digital-merchandise/',
     kinds: ['online'],
   },
+  {
+    year: 2022,
+    outlet: 'Bankless Brasil',
+    title: 'Inteligência Artificial ameaça as pessoas? Como vamos lidar com isso?',
+    note: 'Podcast interview, 6 October 2022, on how AI is already changing the world and what happens when it meets the crypto universe.',
+    href: 'https://www.youtube.com/watch?v=vtXzV8nJKH4',
+    kinds: ['podcast', 'br', 'online'],
+    lang: 'Portuguese',
+  },
 
   // ——— 2021 ———
   {
