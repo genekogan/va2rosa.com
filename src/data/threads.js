@@ -483,6 +483,25 @@ export const threads = [
         more: { label: 'The collaboration', href: '/threads/same-putumi' },
       },
       {
+        title: 'MAD — Machine Aided Drawings, 2019–2021',
+        body: [
+          'Six drawings of a Qing vase on a tiled floor, inside illusionary frames, all made with an AxiDraw pen plotter. The plotter is not a printer here: while it worked I moved the paper, or the pen holder, under it. It holds one half of the drawing and I hold the other, and what lands on the page is whatever the two of us do to each other.',
+          'The later ones go straight back into the perspective treatises: Sebastiano Serlio, Giovanni Bracelli, and Vredeman de Vries, the same 1604 book the painting at Pioneer Works was built from. A machine following rules to make an image is the same argument as the sona and the treatises. Geometry as a way of thinking, not a way of measuring.',
+        ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/mad/mad-01.webp', caption: 'A Qing vase on a tiled floor, drawn with an AxiDraw' },
+          { src: '/images/mad/mad-02.webp' },
+          { src: '/images/mad/mad-05.webp' },
+          { src: '/images/mad/mad-07.webp', caption: 'Playing with the frame and the space it encloses' },
+          { src: '/images/mad/mad-09.webp', caption: 'After M. C. Escher, Another World' },
+          { src: '/images/mad/mad-12.webp', caption: 'After Serlio, Vredeman de Vries and Bracelli' },
+          { src: '/images/mad/mad-14.webp' },
+          { src: '/images/mad/mad-17.webp' },
+        ],
+        more: { label: 'The whole project', href: '/mad' },
+      },
+      {
         title: 'Then latent space',
         body: [
           'Linear perspective is about six hundred years old. Computer-aided design is about sixty. Latent space is barely ten, and it belongs to the same family. A diffusion model holds a space of relations where every image is a position. It is fascinating to try to understand how these models encode reality, how they connect structures of meaning beneath every human language and beyond, changing our understanding of ourselves.',
@@ -512,6 +531,7 @@ export const threads = [
       { years: '2018', text: 'Ethnocomputing Experiments, Pioneer Works, Brooklyn, with Wenqi Li' },
       { years: '2018', text: 'Master’s dissertation, Universidade Anhembi Morumbi, São Paulo' },
       { years: '2018–2019', text: 'The collaboration with Same Putumi, upper Envira river, Acre' },
+      { years: '2019–2021', text: 'MAD — Machine Aided Drawings, made with an AxiDraw pen plotter' },
       { years: '2025–present', text: 'Kweku, a Little Martian made of pattern' },
     ],
     reading: [
