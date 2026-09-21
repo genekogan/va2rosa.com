@@ -83,6 +83,16 @@ export const lm = {
     },
   ],
 
+  // Two shows that had no physical room at all.
+  metaverse: {
+    kicker: 'And two worlds with no room',
+    title: 'The Arium metaverses',
+    body: [
+      'Twice I built the Little Martians a world to be visited rather than a wall to be hung on, both on the Arium platform. The first went up in 2022. The second, in 2023, was made for Pupila Dilatada 3, a metaverse art show I had also taken part in back in 2021.',
+      'A browser, a set of coordinates, and other visitors moving around the same space at the same time. For a species that keeps Earth’s memory inside a network of simulations, a room you walk into through a URL is not a gimmick. It is the closest thing to the Imaginarium I can actually build.',
+    ],
+  },
+
   // The on-chain collection, which is a publication rather than a show.
   onchain: {
     kicker: 'And on chain',

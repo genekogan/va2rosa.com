@@ -16,6 +16,14 @@ export const press = [
   // ——— 2026 ———
   {
     year: 2026,
+    outlet: 'Good Standing',
+    title: 'Mars College Mainstays Vanessa Rosa and Gene Kogan on AI Adaptation and Off-Grid Living',
+    note: 'Podcast interview with Ashley and Kurt, 12 August 2026. Building a college from the ground up each winter on a dry lake bed by the Salton Sea.',
+    href: 'https://www.youtube.com/watch?v=3h7yE_mkcRk',
+    kinds: ['podcast', 'mars', 'online'],
+  },
+  {
+    year: 2026,
     outlet: 'The Guardian',
     title:
       'No tuition, no grades, no power grid: why are people flocking to a “college” in the middle of the desert?',
@@ -243,6 +251,15 @@ export const press = [
     kinds: ['online'],
     thread: 'little-martians',
   },
+  {
+    year: 2024,
+    outlet: 'MOCA LIVE, Museum of Crypto Art',
+    title: 'Taming the AI Beast, Magnified AI Education, Open-Source Models, Martians, and More',
+    note: 'Podcast interview with Max Cohen, 15 February 2024, with Gene Kogan. Fifty minutes on AI education, open models, and where the artist’s hand sits in an AI artwork.',
+    href: 'https://podbay.fm/p/moca-live/e/1708039318',
+    kinds: ['podcast', 'online'],
+    thread: 'little-martians',
+  },
 
   // ——— 2023 ———
   {
@@ -277,7 +294,7 @@ export const press = [
     year: 2022,
     outlet: 'NVIDIA',
     title: 'Artist fires up NVIDIA Omniverse to glaze animated ceramics',
-    href: 'https://blogs.nvidia.com/blog/2022/08/29/omniverse-creator-vanessa-rosa/',
+    href: 'https://blogs.nvidia.com/blog/omniverse-creator-vanessa-rosa/',
     kinds: ['online'],
     featured: true,
     thread: 'little-martians',
@@ -324,6 +341,15 @@ export const press = [
     title: 'The best way for writers to join the NFT space: digital merchandise',
     href: 'https://nftnow.com/features/the-best-way-for-writers-to-join-the-nft-space-digital-merchandise/',
     kinds: ['online'],
+  },
+  {
+    year: 2022,
+    outlet: 'Bankless Brasil',
+    title: 'Inteligência Artificial ameaça as pessoas? Como vamos lidar com isso?',
+    note: 'Podcast interview, 6 October 2022, on how AI is already changing the world and what happens when it meets the crypto universe.',
+    href: 'https://www.youtube.com/watch?v=vtXzV8nJKH4',
+    kinds: ['podcast', 'br', 'online'],
+    lang: 'Portuguese',
   },
 
   // ——— 2021 ———

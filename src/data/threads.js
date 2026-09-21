@@ -227,6 +227,7 @@ export const threads = [
           'I first thought about making a work about violence and the need for empathy: maybe if our police had a bit more empathy for the people they are meant to protect, they would kill less. But when I understood how the event was actually being run, I stopped painting, urged other artists to drop out by telling them what I was seeing, and went back to the police headquarters to paint over my own work and film the process.',
           'That erasure gave the piece a new meaning. Dialogue, however necessary, is not easy. At Choque Festival, whatever the original intent, there was not enough of it. Of the fifteen announced artists, six finished their murals.',
         ],
+        video: { vimeo: '195303290', caption: 'Falha de Diálogo. Painting the corridor, and painting it out.' },
         gallery: 'slides',
         images: [
           { src: '/images/choque/choque-1.webp', caption: 'The corridor, painted' },
@@ -315,6 +316,24 @@ export const threads = [
         body: [
           'The work is also very personal. I had had in mind painting tiles since 2011, but I only started doing it in 2015, after the most important person in my life, my sister, died suddenly. She was a programmer, but she also drew, sang, we learned to paint together, and my childhood dream was to develop a comic book series with her. I think much of my latest interest in new technologies is related to Diana’s life as a programmer, this strange world which I scorned and understood next to nothing.',
           'Painting in shades of blue, thinking of passages, portals, looking at temples around the world for inspiration, has also become part of my process of accepting our mortality, of restructuring when something so fundamental is simply no longer there. And the work also brought new paths by itself: when we paint on the street the paintings take a life far beyond what could be controlled, so the biggest work I did in this series, the one at Pioneer Works, was taken over by the garden plants. Life simply finds its way, bursts into the midst of this melancholic blue, a blue that thinks about the history of mankind, smiles and weeps.',
+        ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/pw/pw-corner.webp', caption: 'The fence turning the corner onto Pioneer Street, 2017' },
+          { src: '/images/pw/pw-000.webp' },
+          { src: '/images/pw/pw-001.webp' },
+          { src: '/images/pw/pw-002.webp' },
+          { src: '/images/pw/pw-003.webp' },
+          { src: '/images/pw/pw-004.webp' },
+          { src: '/images/pw/pw-005.webp' },
+          { src: '/images/pw/pw-006.webp' },
+          { src: '/images/pw/pw-007.webp' },
+          { src: '/images/pw/pw-008.webp' },
+          { src: '/images/pw/pw-010.webp' },
+          { src: '/images/pw/pw-011.webp' },
+          { src: '/images/pw/pw-012.webp' },
+          { src: '/images/pw/pw-013.webp' },
+          { src: '/images/pw/pw-014.webp' },
         ],
         more: { label: 'The Pioneer Works fence', href: '/pioneer-works' },
       },
@@ -483,6 +502,25 @@ export const threads = [
         more: { label: 'The collaboration', href: '/threads/same-putumi' },
       },
       {
+        title: 'MAD — Machine Aided Drawings, 2019–2021',
+        body: [
+          'Six drawings of a Qing vase on a tiled floor, inside illusionary frames, all made with an AxiDraw pen plotter. The plotter is not a printer here: while it worked I moved the paper, or the pen holder, under it. It holds one half of the drawing and I hold the other, and what lands on the page is whatever the two of us do to each other.',
+          'The later ones go straight back into the perspective treatises: Sebastiano Serlio, Giovanni Bracelli, and Vredeman de Vries, the same 1604 book the painting at Pioneer Works was built from. A machine following rules to make an image is the same argument as the sona and the treatises. Geometry as a way of thinking, not a way of measuring.',
+        ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/mad/mad-01.webp', caption: 'A Qing vase on a tiled floor, drawn with an AxiDraw' },
+          { src: '/images/mad/mad-02.webp' },
+          { src: '/images/mad/mad-05.webp' },
+          { src: '/images/mad/mad-07.webp', caption: 'Playing with the frame and the space it encloses' },
+          { src: '/images/mad/mad-09.webp', caption: 'After M. C. Escher, Another World' },
+          { src: '/images/mad/mad-12.webp', caption: 'After Serlio, Vredeman de Vries and Bracelli' },
+          { src: '/images/mad/mad-14.webp' },
+          { src: '/images/mad/mad-17.webp' },
+        ],
+        more: { label: 'The whole project', href: '/mad' },
+      },
+      {
         title: 'Then latent space',
         body: [
           'Linear perspective is about six hundred years old. Computer-aided design is about sixty. Latent space is barely ten, and it belongs to the same family. A diffusion model holds a space of relations where every image is a position. It is fascinating to try to understand how these models encode reality, how they connect structures of meaning beneath every human language and beyond, changing our understanding of ourselves.',
@@ -512,7 +550,7 @@ export const threads = [
       { years: '2018', text: 'Ethnocomputing Experiments, Pioneer Works, Brooklyn, with Wenqi Li' },
       { years: '2018', text: 'Master’s dissertation, Universidade Anhembi Morumbi, São Paulo' },
       { years: '2018–2019', text: 'The collaboration with Same Putumi, upper Envira river, Acre' },
-      { years: '2019', text: 'MAD — Machine Aided Drawings, begun on an AxiDraw pen plotter' },
+      { years: '2019–2021', text: 'MAD — Machine Aided Drawings, made with an AxiDraw pen plotter' },
       { years: '2025–present', text: 'Kweku, a Little Martian made of pattern' },
     ],
     reading: [
