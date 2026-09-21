@@ -72,6 +72,24 @@ export const press = [
   // ——— 2025 ———
   {
     year: 2025,
+    outlet: 'Academia de Curadoria',
+    title: 'MIN - Museu em Suspensão: Vanessa Rosa',
+    note: 'Video interview, 2 December 2025.',
+    href: 'https://www.youtube.com/watch?v=hnbUMEviqfs',
+    kinds: ['podcast', 'br', 'online'],
+    lang: 'Portuguese',
+  },
+  {
+    year: 2025,
+    outlet: 'GeralPod',
+    title: '#167 Vanessa Rosa, artista multimídia internacional dá aula de Inteligência Artificial',
+    note: 'Podcast interview recorded in Rio de Janeiro, 3 July 2025, on artificial intelligence and her practice.',
+    href: 'https://www.youtube.com/watch?v=uGEZ2D58ZGc',
+    kinds: ['podcast', 'br', 'online'],
+    lang: 'Portuguese',
+  },
+  {
+    year: 2025,
     outlet: 'Ygor Marotta',
     title: 'Painted Canyons',
     note: 'Light, art and ceremony inside the desert of California, 12 June 2025.',
