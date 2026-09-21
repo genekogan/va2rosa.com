@@ -39,7 +39,7 @@ export const books = {
     'As with many long stories, none of us really knows how it started. Books have always been magical and important in my family. My sister Diana and I liked to make little physical copies of special books for our dolls, back when she was 7 and I was 4. Later on, my mom started writing down the stories she was inventing for her elementary school students, and we became her commenters and editors. When she finally printed proper copies, we were the illustrators. Her stories, of course, were about time travelling. Filled with art, enigmas, military strategy and mathematics.',
     'In the 2000s there was a revolution in the book industry called the digital turn. Digital software, online retail and print on demand as an international service changed how books could be produced and distributed worldwide. Which meant that a middle-class Brazilian family could start selling books through the early years of social media. We stacked inventory in our living room, built a publishing company on our own, scaled it across the country through specialized government sales, worked with many authors and illustrators, eventually sold over a million books, and licensed international rights to mainland China and elsewhere. So I grew up making books with my family, all of us learning the job as we went.',
     'As it had to be the case, our company’s name is Viajante do Tempo, or Time Traveller in Portuguese.',
-    'And I simply love books. Yet, after my sister’s passing, I came to see working for the company as my way of staying connected to my parents, of supporting their efforts, while my art practice was my space of personal freedom. I used to distinguish between the brilliance of children and the sacred affairs of grown-ups, like the high art I saw at contemporary art museums. But eventually I realized, as Italo Calvino argued in Italian Folktales, that ancient fairy tales, aka kids’ stories, are works of genius, with captivating cadence, metaphors for the meaning of life and cosmological theories.',
+    'And I simply love books. Yet, after my sister’s passing in 2014, I came to see working for the company as my way of staying connected to my parents, of supporting their efforts, while my art practice was my space of personal freedom. I used to distinguish between the brilliance of children and the sacred affairs of grown-ups, like the high art I saw at contemporary art museums. But eventually I realized, as Italo Calvino argued in Italian Folktales, that ancient fairy tales, aka kids’ stories, are works of genius, with captivating cadence, metaphors for the meaning of life and cosmological theories.',
     'Only recently have I started fully integrating making books with my art practice, and I must confess I am very excited to create more.',
   ],
   // pictures that sit inside the story, keyed to the paragraph they follow
@@ -48,7 +48,8 @@ export const books = {
       {
         images: [
           {
-            src: '/images/vbooks/bienal.webp',
+            src: '/images/vbooks/bienal-stand.webp',
+            wide: true,
             caption:
               'Viajante do Tempo stand in Rio de Janeiro Book Biennial 2025, featuring Vanessa Rosa’s character Kweku',
           },
@@ -61,6 +62,7 @@ export const books = {
       title: 'Diana’s World',
       image: '/images/vbooks/diana.webp',
       imageAlt: 'Os Mundos de Diana: a girl drawing under a tree, with a dragon and knights around her.',
+      read: { slug: 'diana', spread: false, aspect: 1, pages: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], note: 'The opening pages, in English.' },
       year: '2020',
       body: 'A girl who loves to draw travels into paintings, the Italian Renaissance, Song China, Japan around 1700, accompanied by her dog Alice and a narrator who opens the doors and then lets her take her chances. I co-wrote it with my friend Claire Parizel and did the illustrations myself, with her advice. The protagonist is my sister Diana. Much of what became the Little Martians started here: the art history, the travelling between worlds, the simulation.',
     },
@@ -68,6 +70,7 @@ export const books = {
       title: 'Verdelis’s Letter',
       image: '/images/vbooks/verdelis.webp',
       imageAlt: 'Verdelis’ Letter: a glazed ceramic face in a wreath, over Mars from orbit.',
+      read: { slug: 'verdelis', spread: true, aspect: 0.7715, pages: [1, 2, 3, 4, 5, 6], note: 'The opening pages, in English.' },
       year: 'Viajante do Tempo',
       body: 'The first Little Martians book. A letter arrives from a far future in which Mars has gardens, written by Verdelis, a curious being who is part plant, part AI, part human. It is a book about biodomes, symbiosis and genetic adaptation, but mostly it is a message of hope sent backwards in time to children who have every reason to be frightened. All the illustrations come from AI models trained on my ceramic sculptures.',
     },
@@ -75,6 +78,7 @@ export const books = {
       title: 'Kweku’s Secret',
       image: '/images/vbooks/kweku.webp',
       imageAlt: 'O Segredo de Kweku: a black glazed head patterned in white, in a tunnel of colour.',
+      read: { slug: 'kweku', spread: false, aspect: 1, pages: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], note: 'The opening pages, in English.' },
       year: 'Viajante do Tempo',
       body: 'Kweku, the trickster, broadcasting from the lava caves with an urgent revelation: patterns. African sand drawings, Indian kolams, ocean waves, neural networks; the same language everywhere. The book is largely a catastrophe involving an ancient pattern that turns things into broccoli, including Verdelis’s garden. Underneath the chaos it is the ethnomathematics I have been studying for years.',
     },
@@ -83,15 +87,17 @@ export const books = {
       body: 'A spine for the universe, written in the voice of Verdelia, the librarian of the moon. It explains how the Little Martians are put together, what happened to Earth, who their goddess is, and why the distinction between organic and inorganic does not hold where they live. I printed the first copy and bound it by hand, Coptic stitch, painted boards, under the supervision of my friend Matt Melnicki. It is the first book I made as an art object and I would like to go much further into that.',
       image: '/images/work/books-plate.webp',
       imageAlt: 'The Codex, hand-bound, held up against grass.',
-      // Pages rendered to images by scripts/render-book.py, so the reader
-      // below the list is a gallery rather than a PDF viewer.
+      // Pages rendered by scripts/render-book.py. The file is a booklet of
+      // spreads, so the reader cuts each one at the spine.
       read: {
         slug: 'codex',
+        spread: true,
+        aspect: 0.647,
         // a chosen handful, not the whole book: the cover, who the characters
         // are, the two spreads that carry the argument, the geometry, the
         // Imaginarium, Nyx, and Verdelia signing off
-        spreads: [1, 2, 3, 5, 10, 11, 12, 16, 19, 23, 25, 30, 31],
-        note: 'Thirteen spreads out of the book. Arrow keys, or swipe.',
+        pages: [1, 2, 3, 5, 10, 11, 12, 16, 19, 23, 25, 30, 31],
+        note: 'A selection of openings from the book. Tap a page, swipe, or use the arrow keys.',
       },
     },
     {

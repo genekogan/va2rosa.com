@@ -1965,123 +1965,169 @@ body.lb-open { overflow: hidden; }
 }
 
 /* --- the book reader ------------------------------------------------------
-   One sheet at a time. A printed spread is a single image here, so the reader
-   never puts two of them side by side. Turning lifts the sheet you are on and
-   swings it away on its spine; the next one is already underneath.        */
-.reader { margin-top: 26px; }
-.reader:focus-visible { outline: 2px solid var(--blue); outline-offset: 8px; }
+   Two pages open, as in the hand. The stage is exactly two pages wide, so a
+   square book is 2:1 and a portrait one is narrower. A turn lifts the leaf on
+   the right, pivots it on the spine and lays it down on the left; the page
+   underneath is already the next one, so nothing ever pops in.
 
-.reader-stage {
-  display: grid;
-  grid-template-columns: 46px minmax(0, 1fr) 46px;
-  align-items: center;
-  gap: 12px;
+   --page is the width/height of ONE page. Every size below derives from it. */
+.bk {
+  --bk-pad: clamp(14px, 3vw, 34px);
+  margin: 26px 0 0;
+  padding: var(--bk-pad) var(--bk-pad) 0;
+  background: rgba(13, 33, 54, 0.045);
+  outline: none;
 }
-.reader-book {
+.bk:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+
+.bk-stage {
   position: relative;
-  display: flex;
-  justify-content: center;
-  perspective: 2400px;
-  background: rgba(13, 33, 54, 0.05);
-  padding: clamp(10px, 2vw, 24px);
-}
-.reader-page { margin: 0; min-width: 0; }
-.reader-page img,
-.reader-turn img {
-  display: block;
-  width: auto;
-  max-width: 100%;
-  max-height: 72vh;
-  box-shadow: 0 3px 22px rgba(13, 33, 54, 0.2);
-  background: #fff;
+  /* as wide as the column allows, but never taller than most of the screen */
+  width: min(100%, calc(74vh * 2 * var(--page)));
+  width: min(100%, calc(74svh * 2 * var(--page)));
+  aspect-ratio: calc(2 * var(--page));
+  margin: 0 auto;
+  perspective: 2600px;
 }
 
-/* the sheet in motion, laid over the one it is uncovering */
-.reader-turn {
+.bk-book {
   position: absolute;
-  inset: clamp(10px, 2vw, 24px);
-  display: none;
-  justify-content: center;
+  inset: 0;
+  transition: transform 0.8s cubic-bezier(0.45, 0.05, 0.3, 1);
+}
+/* a closed book sits on its cover in the middle, not off to one side */
+.bk-book.at-cover { transform: translateX(-25%); }
+.bk-book.at-end { transform: translateX(25%); }
+
+.bk-page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.bk-page[data-part='l'] { background-size: 200% 100%; background-position: 0 0; }
+.bk-page[data-part='r'] { background-size: 200% 100%; background-position: 100% 0; }
+.bk-page.empty { background: none; box-shadow: none; }
+.bk-l { left: 0; }
+.bk-r { right: 0; }
+
+/* paper lies flat but curves into the gutter: a soft shadow at the spine */
+.bk-l:not(.empty) { box-shadow: -6px 8px 26px rgba(13, 33, 54, 0.18); }
+.bk-r:not(.empty) { box-shadow: 6px 8px 26px rgba(13, 33, 54, 0.18); }
+.bk-l:not(.empty)::after,
+.bk-r:not(.empty)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12%;
   pointer-events: none;
-  z-index: 2;
 }
-.reader-turn.is-on { display: flex; }
-.reader-turn img { transform-origin: left center; backface-visibility: hidden; }
-.reader-turn.fwd img { animation: sheet-fwd 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
-.reader-turn.back img {
-  transform-origin: right center;
-  animation: sheet-back 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+.bk-l:not(.empty)::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.04) 40%, transparent);
 }
-@keyframes sheet-fwd {
-  0%   { transform: rotateY(0deg); filter: brightness(1); }
-  100% { transform: rotateY(-105deg); filter: brightness(0.72); opacity: 0.9; }
-}
-@keyframes sheet-back {
-  0%   { transform: rotateY(105deg); filter: brightness(0.72); opacity: 0.9; }
-  100% { transform: rotateY(0deg); filter: brightness(1); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .reader-turn { display: none !important; }
+.bk-r:not(.empty)::after {
+  left: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.03) 40%, transparent);
 }
 
-.reader-nav {
+/* the leaf in motion — only shown while it turns */
+.bk-leaf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  display: none;
+  transform-style: preserve-3d;
+  z-index: 3;
+}
+.bk-leaf.fwd { display: block; left: 50%; transform-origin: 0 50%; animation: bk-fwd 0.9s cubic-bezier(0.45, 0.05, 0.3, 1) both; }
+.bk-leaf.back { display: block; left: 0; transform-origin: 100% 50%; animation: bk-back 0.9s cubic-bezier(0.45, 0.05, 0.3, 1) both; }
+
+.bk-face { width: 100%; left: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.bk-back { transform: rotateY(180deg); }
+
+/* light falls off as the leaf stands up, and comes back as it lies down */
+.bk-face::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.bk-leaf.fwd .bk-front::before { background: linear-gradient(to left, rgba(0,0,0,.34), rgba(0,0,0,.06)); animation: bk-shade 0.9s both; }
+.bk-leaf.fwd .bk-back::before  { background: linear-gradient(to right, rgba(0,0,0,.34), rgba(0,0,0,.06)); animation: bk-shade-in 0.9s both; }
+.bk-leaf.back .bk-front::before { background: linear-gradient(to right, rgba(0,0,0,.34), rgba(0,0,0,.06)); animation: bk-shade 0.9s both; }
+.bk-leaf.back .bk-back::before  { background: linear-gradient(to left, rgba(0,0,0,.34), rgba(0,0,0,.06)); animation: bk-shade-in 0.9s both; }
+
+@keyframes bk-fwd {
+  0%   { transform: rotateY(0deg); }
+  100% { transform: rotateY(-180deg); }
+}
+@keyframes bk-back {
+  0%   { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+@keyframes bk-shade    { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 1; } }
+@keyframes bk-shade-in { 0% { opacity: 1; } 50% { opacity: 1; } 100% { opacity: 0; } }
+
+/* each half of the stage is also a button: tap the right page to turn it */
+.bk-hit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
   appearance: none;
+  border: 0;
+  padding: 0;
+  background: none;
+  z-index: 4;
+  cursor: pointer;
+}
+.bk-hit:disabled { cursor: default; }
+.bk-hit-prev { left: 0; }
+.bk-hit-next { right: 0; }
+
+.bk-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 16px 0 14px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.bk-btn {
+  appearance: none;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--line);
+  border-radius: 50%;
   background: var(--surface);
   color: var(--ink);
   font-size: 22px;
   line-height: 1;
-  padding: 16px 0;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, opacity 0.15s;
 }
-.reader-nav:hover:not(:disabled) { background: var(--wash); }
-.reader-nav:disabled { opacity: 0.26; cursor: default; }
+.bk-btn:hover:not(:disabled) { background: var(--wash); }
+.bk-btn:disabled { opacity: 0.25; cursor: default; }
 
-.reader-bar {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  margin-top: 14px;
-  padding-left: 58px;
-  font-size: 11.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-3);
+@media (prefers-reduced-motion: reduce) {
+  .bk-book { transition: none; }
 }
-.reader-thumbs-btn,
-.reader-dl {
-  appearance: none;
-  background: none;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  padding: 0 0 2px;
-  font: inherit;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-  cursor: pointer;
-}
-.reader-dl { margin-left: auto; }
 
-/* `display: grid` would otherwise beat the hidden attribute */
-.reader-thumbs[hidden] { display: none; }
-.reader-thumbs {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 12px;
-}
-.reader-thumbs button {
-  appearance: none; border: 0; background: none; padding: 0; cursor: pointer;
-}
-.reader-thumbs img { width: 100%; border: 1px solid var(--line-2); background: #fff; }
-
-@media (max-width: 779px) {
-  .reader-stage { grid-template-columns: 34px minmax(0, 1fr) 34px; gap: 8px; }
-  .reader-page img, .reader-turn img { max-height: 52vh; }
-  .reader-bar { padding-left: 0; flex-wrap: wrap; gap: 14px 18px; }
-  .reader-dl { margin-left: 0; }
+/* On a phone the book uses the whole width of the screen, edge to edge:
+   two pages side by side need every pixel they can get. */
+@media (max-width: 560px) {
+  .wrap .bk { margin-inline: calc(-1 * var(--pad)); padding: 16px 8px 0; }
 }
 
 .bookrow-skim { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); }
@@ -2292,9 +2338,12 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
    Two columns still read well at 900px; they just need less air between
    them, and the page needs less air at its edges.                        */
 @media (max-width: 900px) {
-  :root { --pad: 26px; }
   .wgrid, .gallery { gap: 18px; }
   .strand { gap: 30px; }
+}
+/* only tablets: phones keep the 20px gutter set further up */
+@media (min-width: 761px) and (max-width: 900px) {
+  :root { --pad: 26px; }
 }
 
 /* --- 7. The last few, by name ---------------------------------------------
@@ -2303,7 +2352,7 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
    and no picture small enough that its caption is wider than it is.      */
 @media (max-width: 820px) {
   .pf-figs figcaption { font-size: 13px; }
-  .exh-list .lk, .lib-list .ll, .lib-list .lk, .rows .t, .wpop li { font-size: 12.5px; }
+  .exh-list .lk, .lib-list .ll, .lib-list .lk, .rows .t, .wpop li, .bookread-note { font-size: 12.5px; }
   .mars-years figcaption, .compare .compare-ref figcaption, .mars .mars-credit,
   .mars figcaption, .report .rep-sub {
     font-size: 13px; line-height: 1.45;
@@ -2340,4 +2389,17 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   .tl-table .ti a { display: block; padding-block: 9px; }
   .sl-all, .reader-thumbs-btn, .filters button { min-height: 44px; padding-inline: 14px; }
   .sitefoot a { padding-block: 8px; }
+}
+
+/* --- books: a picture set inside the story, and each book's pages ---------- */
+.books-inline { margin: 12px 0 46px; }
+.books-inline .wsec { margin-top: 30px; }
+.books-inline figure.wide img { width: 100%; height: auto; }
+
+/* each book already draws its own rule; readers just need more air between entries */
+.bookset:has(.bookread) { gap: 60px; }
+.bookread { margin-top: 26px; }
+.bookread-note {
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-3); margin: 0;
 }

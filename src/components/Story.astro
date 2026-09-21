@@ -73,7 +73,7 @@ const { story } = Astro.props;
     {sec.images?.length > 0 && sec.gallery !== 'slides' && (
       <div class="wgrid">
         {sec.images.map((im) => (
-          <figure>
+          <figure class={im.wide ? 'wide' : undefined}>
             <img src={im.src} alt={im.caption || ''} loading="lazy" />
             {im.caption && <figcaption>{im.caption}</figcaption>}
           </figure>
