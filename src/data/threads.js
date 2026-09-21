@@ -512,6 +512,7 @@ export const threads = [
       { years: '2018', text: 'Ethnocomputing Experiments, Pioneer Works, Brooklyn, with Wenqi Li' },
       { years: '2018', text: 'Master’s dissertation, Universidade Anhembi Morumbi, São Paulo' },
       { years: '2018–2019', text: 'The collaboration with Same Putumi, upper Envira river, Acre' },
+      { years: '2019', text: 'MAD — Machine Aided Drawings, begun on an AxiDraw pen plotter' },
       { years: '2025–present', text: 'Kweku, a Little Martian made of pattern' },
     ],
     reading: [
