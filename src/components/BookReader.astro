@@ -45,7 +45,7 @@ const first = openings[0];
   style={`--page:${aspect}`}
   role="group"
   aria-roledescription="book"
-  aria-label={title ? `${title}, a few pages to leaf through` : 'A book to leaf through'}
+  aria-label={title ? `${title}, to read` : 'A book to read'}
   tabindex="0"
 >
   <div class="bk-stage">
@@ -67,7 +67,20 @@ const first = openings[0];
     <button class="bk-btn" type="button" data-prev disabled aria-label="Previous pages">‹</button>
     <span class="bk-count" aria-live="polite">1 / {openings.length}</span>
     <button class="bk-btn" type="button" data-next aria-label="Next pages">›</button>
+    <button class="bk-full" type="button" data-full aria-pressed="false">Read full screen</button>
   </div>
+
+  {openings.length > 6 && (
+    <input
+      class="bk-scrub"
+      type="range"
+      min="1"
+      max={openings.length}
+      value="1"
+      step="1"
+      aria-label="Go to page"
+    />
+  )}
 </div>
 
 <script is:inline>
@@ -86,6 +99,8 @@ const first = openings[0];
       var front = bk.querySelector('.bk-front');
       var back = bk.querySelector('.bk-back');
       var count = bk.querySelector('.bk-count');
+      var scrub = bk.querySelector('.bk-scrub');
+      var fullBtn = bk.querySelector('[data-full]');
       var prevs = bk.querySelectorAll('[data-prev], .bk-hit-prev');
       var nexts = bk.querySelectorAll('[data-next], .bk-hit-next');
       var at = 0;
@@ -118,6 +133,7 @@ const first = openings[0];
 
       function controls() {
         count.textContent = at + 1 + ' / ' + O.length;
+        if (scrub) scrub.value = String(at + 1);
         prevs.forEach(function (b) { b.disabled = at === 0; });
         nexts.forEach(function (b) { b.disabled = at === O.length - 1; });
       }
@@ -163,12 +179,57 @@ const first = openings[0];
         setTimeout(end, 1100);                 // in case the event never fires
       }
 
+      // Dragging the scrubber previews the number; letting go turns to it.
+      if (scrub) {
+        scrub.addEventListener('input', function () {
+          count.textContent = scrub.value + ' / ' + O.length;
+        });
+        scrub.addEventListener('change', function () { go(Number(scrub.value) - 1); });
+      }
+
+      // Full screen: the real Fullscreen API where there is one, and a fixed
+      // overlay everywhere (iPhone Safari only lets video go full screen).
+      // While full screen the reader is moved to the end of <body>. Inside the
+      // page it sits in a stacking context under the site navigation, and no
+      // z-index can get it out; moved, it is on top of everything. A marker
+      // holds its place so it goes back exactly where it was.
+      var mark = document.createComment('book');
+      function setFull(on) {
+        if (on && !mark.parentNode) { bk.before(mark); document.body.appendChild(bk); }
+        if (!on && mark.parentNode) { mark.replaceWith(bk); }
+        bk.classList.toggle('is-full', on);
+        document.documentElement.classList.toggle('bk-lock', on);
+        fullBtn.setAttribute('aria-pressed', String(on));
+        fullBtn.textContent = on ? 'Close' : 'Read full screen';
+        if (on) bk.focus({ preventScroll: true });
+        [-2, -1, 1, 2].forEach(function (d) { preload(at + d); });
+      }
+      // Move first, then ask for full screen: an element that is moved after
+      // the request would lose it again.
+      fullBtn.addEventListener('click', function () {
+        var on = !bk.classList.contains('is-full');
+        if (on) {
+          setFull(true);
+          if (bk.requestFullscreen) bk.requestFullscreen().catch(function () {});
+        } else {
+          if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+          setFull(false);
+        }
+      });
+      document.addEventListener('fullscreenchange', function () {
+        if (!document.fullscreenElement && bk.classList.contains('is-full')) setFull(false);
+      });
+
       prevs.forEach(function (b) { b.addEventListener('click', function () { go(at - 1); }); });
       nexts.forEach(function (b) { b.addEventListener('click', function () { go(at + 1); }); });
 
       bk.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowRight') { e.preventDefault(); go(at + 1); }
         if (e.key === 'ArrowLeft') { e.preventDefault(); go(at - 1); }
+        if (e.key === 'Escape' && bk.classList.contains('is-full')) {
+          if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+          setFull(false);
+        }
       });
 
       var x0 = null, y0 = null;

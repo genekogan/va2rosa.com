@@ -2124,6 +2124,79 @@ body.lb-open { overflow: hidden; }
   .bk-book { transition: none; }
 }
 
+/* the bar gains a way into full screen, set apart from the page controls */
+.bk-bar { flex-wrap: wrap; }
+.bk-full {
+  appearance: none;
+  margin-left: 12px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font: inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.bk-full:hover { background: var(--wash); color: var(--ink); }
+
+/* a scrubber for books too long to click through */
+.bk-scrub {
+  display: block;
+  width: min(100%, 520px);
+  margin: 0 auto 18px;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+
+/* --- full screen: the book fills the window, on a dark ground ------------- */
+html.bk-lock, html.bk-lock body { overflow: hidden; }
+.bk.is-full {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;          /* above the sticky navigation and the lightbox */
+  margin: 0 !important;
+  padding: 18px 18px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #10151d;
+  color: #c9d2dc;
+}
+.bk.is-full .bk-stage {
+  width: min(100%, calc((100vh - 150px) * 2 * var(--page)));
+  width: min(100%, calc((100svh - 150px) * 2 * var(--page)));
+}
+.bk.is-full .bk-bar { color: #9aa6b2; }
+.bk.is-full .bk-btn,
+.bk.is-full .bk-full {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #e8edf2;
+}
+.bk.is-full .bk-btn:hover:not(:disabled),
+.bk.is-full .bk-full:hover { background: rgba(255, 255, 255, 0.16); }
+.bk.is-full .bk-l:not(.empty) { box-shadow: -8px 10px 40px rgba(0, 0, 0, 0.5); }
+.bk.is-full .bk-r:not(.empty) { box-shadow: 8px 10px 40px rgba(0, 0, 0, 0.5); }
+
+/* A phone held upright gives a two-page spread almost no height. In full
+   screen, turn it sideways and the book gets the whole screen. */
+@media (max-width: 560px) and (orientation: portrait) {
+  .bk.is-full .bk-stage::after {
+    content: 'Turn your phone sideways for a bigger book';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 8px);
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: #8792a0;
+  }
+  .bk.is-full .bk-bar { margin-top: 26px; }
+}
+
 /* On a phone the book uses the whole width of the screen, edge to edge:
    two pages side by side need every pixel they can get. */
 @media (max-width: 560px) {
