@@ -125,6 +125,7 @@ const { work } = Astro.props;
             {sec.body.map((p) => <p>{p}</p>)}
           </div>
         )}
+        {sec.note && <p class="wnote">{sec.note}</p>}
         {sec.video && (
           <>
             <div class="vid" style="margin-bottom:6px">

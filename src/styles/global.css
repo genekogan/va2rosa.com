@@ -2699,3 +2699,6 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 @media (max-width: 620px) {
   .vw-steps, .vw-reels, .vw-fails { grid-template-columns: 1fr; }
 }
+
+/* a materials line under a section's text */
+.wnote { margin-top: 12px; font-size: 12.5px; letter-spacing: 0.02em; color: var(--ink-3); }
