@@ -2727,9 +2727,9 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .doors { margin-top: 90px; }
 .door { position: relative; display: block; overflow: hidden; background: #0b1416; }
 .door img {
-  /* a wide view of the picture, not a letterbox slot cut out of it */
-  width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; display: block;
-  max-height: 88vh;
+  /* the photograph as it was taken: 4:3, the shape of both files, so nothing
+     is cut away on a wide screen */
+  width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; display: block;
   transition: transform 1.2s ease;
 }
 .door:hover img { transform: scale(1.03); }
@@ -2748,13 +2748,12 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 /* the head sits above the text, the mural fills the frame */
 .door img[src$="door-martians.webp"] { object-position: 50% 40%; }
 .door img[src$="door-mars.webp"] { object-position: 50% 50%; }
+.door img[src$="door-martians.webp"], .door img[src$="door-mars.webp"] { max-height: none; }
 .door-t .more { margin-top: 16px; display: inline-block; color: #9fe3c8; border-color: #9fe3c8; }
 .door + .door { margin-top: 4px; }
-@media (max-width: 900px) {
-  .door img { aspect-ratio: 4 / 3; }
-}
 @media (max-width: 620px) {
-  .door img { aspect-ratio: 2 / 3; }
+  /* upright on a phone, anchored high, so the picture is not just a strip */
+  .door img { aspect-ratio: 3 / 4; object-position: 50% 22%; }
   .door-t { padding-bottom: 32px; padding-top: 90px; }
 }
 
