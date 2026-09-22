@@ -114,7 +114,7 @@ export const essays = {
     highlight: 'How can we train our imagination to reach other dimensions?',
     body: [
       'Every generation rewrites history in order to understand itself. With AI arriving and our environments collapsing, the past I need to question is much older than the human one. And it turns out our brains were never the center of intelligence.',
-      'Here I share what I am working on, and how the thinking got here.',
+      'Here I share what I am working on, and how the thinking came to be.',
     ],
     // two beings from Verdelis's Letter, one on each side of the text
     figures: [
