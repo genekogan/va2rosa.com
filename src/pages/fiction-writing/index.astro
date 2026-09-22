@@ -1,6 +1,5 @@
 ---
 import Base from '../../layouts/Base.astro';
-import BookReader from '../../components/BookReader.astro';
 import { fiction as f } from '../../data/fiction.js';
 
 const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
@@ -48,7 +47,7 @@ const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
       <p class="narrow" style="margin-top:12px">{f.books.body}</p>
       <div class="fx-books">
         {f.books.items.map((b) => (
-          <a href={f.books.href}>
+          <a href={b.href ?? f.books.href}>
             <img src={b.image} alt="" loading="lazy" />
             <span>{b.title}</span>
           </a>
@@ -83,12 +82,11 @@ const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
               <h3 class="fx-h3">{c.title}</h3>
               <p class="fx-kojii-p">{c.body}</p>
               <p class="story-links">
+                <a class="more" href={`/books/${c.book.read.slug}`}>Read the whole book ⇢</a>
                 {c.links.map((l) => <a class="more" href={l.href} {...ext(l)}>{l.label} ⇢</a>)}
               </p>
             </div>
           </div>
-          <p class="bookread-note" style="margin-top:30px">{c.book.title} · the whole book, as printed</p>
-          <BookReader book={{ ...c.book.read, title: c.book.title }} />
         </article>
       ))}
     </section>

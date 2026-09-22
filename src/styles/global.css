@@ -2702,3 +2702,15 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 
 /* a materials line under a section's text */
 .wnote { margin-top: 12px; font-size: 12.5px; letter-spacing: 0.02em; color: var(--ink-3); }
+
+/* one book, its own page */
+.bookpage-head { margin-top: 26px; max-width: 42em; }
+.bookpage-head h1 { font-family: var(--hand); font-size: clamp(28px, 4.2vw, 46px); margin-bottom: 6px; }
+.bookpage-head p { font-size: 16px; margin-top: 12px; }
+.bookpage-buy, .bk-buy {
+  margin-top: 16px; padding: 12px 0 0; border-top: 1px solid var(--line);
+  font-size: 13.5px; color: var(--ink-2); max-width: 44em;
+}
+.bk-buy { margin-bottom: 8px; }
+.bookpage .bookread-note { margin-top: 34px; }
+.bookrow .more { display: inline-block; margin-top: 10px; }

@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import { books } from '../data/books.js';
+import { books, availability } from '../data/books.js';
 import BookReader from '../components/BookReader.astro';
 import Story from '../components/Story.astro';
+import { site } from '../data/site.js';
 ---
 
 <Base title={books.title} current="Art" description={books.lede} bodyClass="paper">
@@ -38,6 +39,9 @@ import Story from '../components/Story.astro';
 
     <section class="wsec">
       <div class="kicker">Selection of my best books</div>
+      <p class="bk-buy">
+        {availability} <a class="ul" href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
       <div class="bookset">
         {books.titles.map((b) => (
           <div class="bookentry">
@@ -51,6 +55,7 @@ import Story from '../components/Story.astro';
                 <h3>{b.title}</h3>
                 {b.year && <div class="bookrow-yr">{b.year}</div>}
                 <p>{b.body}</p>
+                {b.read && <a class="more" href={`/books/${b.read.slug}`}>The book on its own page ⇢</a>}
               </div>
             </article>
             {b.read && (

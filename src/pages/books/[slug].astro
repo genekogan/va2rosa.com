@@ -1,0 +1,47 @@
+---
+// One page per book: the cover, a few lines, how to get a copy, and the whole
+// book to leaf through. Everything comes from the entries on the books page,
+// so a book gets a page as soon as it has pages rendered.
+import Base from '../../layouts/Base.astro';
+import BookReader from '../../components/BookReader.astro';
+import { books, availability } from '../../data/books.js';
+import { site } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return books.titles
+    .filter((b) => b.read)
+    .map((b) => ({ params: { slug: b.read.slug }, props: { book: b } }));
+}
+
+const { book } = Astro.props;
+---
+
+<Base
+  title={book.title}
+  current="Art"
+  description={book.body}
+  image={book.image}
+  bodyClass="paper"
+>
+  <div class="wrap bookpage">
+    <p class="fx-back" style="margin-top:28px"><a href="/books">← The love of making books</a></p>
+
+    <header class="bookpage-head">
+      <h1>{book.title}</h1>
+      {book.year && <div class="bookrow-yr">{book.year}</div>}
+      <p>{book.body}</p>
+      <p class="bookpage-buy">
+        {availability} <a class="ul" href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </header>
+
+    {book.read.note && <p class="bookread-note">{book.read.note}</p>}
+    <BookReader book={{ ...book.read, title: book.title }} />
+
+    <p style="margin:52px 0 90px">
+      <a class="more" href="/books">All the books ⇢</a>
+      <span style="display:inline-block; width:22px"></span>
+      <a class="more" href="/fiction-writing">Fiction writing ⇢</a>
+    </p>
+  </div>
+</Base>

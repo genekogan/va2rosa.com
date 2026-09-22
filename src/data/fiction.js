@@ -41,12 +41,12 @@ export const fiction = {
 
   books: {
     kicker: 'Books',
-    body: 'Adult and children’s books, in Portuguese and English. All of them can be read in full on the books page.',
+    body: 'Adult and children’s books, in Portuguese and English. Each one has a page where it can be read from cover to cover.',
     items: [
-      { title: 'The Little Martians Codex', image: '/images/work/books-plate.webp' },
-      { title: 'Verdelis’ Letter', image: '/images/vbooks/verdelis.webp' },
-      { title: 'Kweku’s Secret', image: '/images/vbooks/kweku.webp' },
-      { title: 'Diana’s World', image: '/images/vbooks/diana.webp' },
+      { href: '/books/codex', title: 'The Little Martians Codex', image: '/images/work/books-plate.webp' },
+      { href: '/books/verdelis', title: 'Verdelis’ Letter', image: '/images/vbooks/verdelis.webp' },
+      { href: '/books/kweku', title: 'Kweku’s Secret', image: '/images/vbooks/kweku.webp' },
+      { href: '/books/diana', title: 'Diana’s World', image: '/images/vbooks/diana.webp' },
     ],
     href: '/books',
   },

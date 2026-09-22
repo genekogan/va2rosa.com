@@ -5,6 +5,11 @@
 // page simply leaves the space out until then.
 // ---------------------------------------------------------------------------
 
+// Every book here is printed in small runs. The same line appears on the books
+// page and on each book's own page.
+export const availability =
+  'These books will soon be available for international purchase. For now they are made to commission: write to me if you would like a copy.';
+
 export const books = {
   kicker: 'Ongoing · since the 1990s',
   title: 'The love of making books',
