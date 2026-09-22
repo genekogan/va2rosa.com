@@ -2727,7 +2727,9 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .doors { margin-top: 90px; }
 .door { position: relative; display: block; overflow: hidden; background: #0b1416; }
 .door img {
-  width: 100%; height: clamp(360px, 62vh, 620px); object-fit: cover; display: block;
+  /* a wide view of the picture, not a letterbox slot cut out of it */
+  width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; display: block;
+  max-height: 88vh;
   transition: transform 1.2s ease;
 }
 .door:hover img { transform: scale(1.03); }
@@ -2744,13 +2746,16 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .door-t p { max-width: 36em; font-size: 15.5px; color: rgba(255, 255, 255, 0.92); }
 .door-t h2, .door-t p, .door-t .kicker { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45); }
 /* the head sits above the text, the mural fills the frame */
-.door img[src$="door-martians.webp"] { object-position: 50% 36%; }
-.door img[src$="door-mars.webp"] { object-position: 50% 58%; }
+.door img[src$="door-martians.webp"] { object-position: 50% 40%; }
+.door img[src$="door-mars.webp"] { object-position: 50% 50%; }
 .door-t .more { margin-top: 16px; display: inline-block; color: #9fe3c8; border-color: #9fe3c8; }
 .door + .door { margin-top: 4px; }
+@media (max-width: 900px) {
+  .door img { aspect-ratio: 4 / 3; }
+}
 @media (max-width: 620px) {
-  .door img { height: 74vh; }
-  .door-t { padding-bottom: 32px; }
+  .door img { aspect-ratio: 2 / 3; }
+  .door-t { padding-bottom: 32px; padding-top: 90px; }
 }
 
 /* a topic name has to fit its line on a phone too */
