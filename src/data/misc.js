@@ -40,7 +40,7 @@ export const research = [
     title: 'Artists Exploring Creativity and Language with Generative AI',
     venue: 'NVIDIA GTC',
   },
-  { kind: 'talk', year: 2023, title: 'NVIDIA GTC', venue: 'NVIDIA' },
+  { kind: 'talk', year: 2023, title: 'Custom World Building with AI Avatars: The Little Martians Sci-Fi Project', venue: 'NVIDIA GTC' },
   {
     kind: 'talk',
     year: 2017,
