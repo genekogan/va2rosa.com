@@ -2602,3 +2602,12 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   .fx-turn { grid-template-columns: 1fr; gap: 2px; }
   .fx-block { padding: 18px 16px 6px; }
 }
+
+/* the song page: the film first, then the lyrics in the hand of the book */
+.fx-film { margin-top: 30px; }
+.fx-lyrics { font-family: var(--hand); font-size: 19px; line-height: 1.6; padding-bottom: 14px; }
+.fx-lyrics p { margin-bottom: 1.1em; }
+.fx-lyrics .fx-label { font-family: var(--sans); }
+/* the draft is the same hand, a little quieter: it is the earlier state */
+.fx-draft { color: var(--ink-2); background: transparent; }
+@media (max-width: 560px) { .fx-lyrics { font-size: 17.5px; } }

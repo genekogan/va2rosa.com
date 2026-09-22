@@ -33,6 +33,46 @@ const isHead = (p) => p.length < 64 && !/[.:,;!?…"”]$/.test(p) && !p.startsW
       {page.context.map((p) => <p>{p}</p>)}
     </div>
 
+    {page.film && (
+      <div class="vid fx-film">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${page.film.youtube}?rel=0`}
+          title={page.film.title}
+          loading="lazy"
+          allow="fullscreen; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    )}
+
+    {/* ================================================================== */}
+    {slug === 'dear-human' && (
+      <>
+        <section class="fx-part">
+          <h2 class="fx-part-h">The song</h2>
+          <div class="fx-block fx-mine fx-lyrics">
+            <div class="fx-label">Final version · reworked with ChatGPT and Suno, 2024</div>
+            {page.song.map((st) => <p>{st.map((l, i) => <>{i > 0 && <br />}{l}</>)}</p>)}
+          </div>
+        </section>
+
+        <section class="fx-part">
+          <h2 class="fx-part-h">The first version, with no AI</h2>
+          <div class="fx-block fx-mine fx-lyrics fx-draft">
+            <div class="fx-label">Written by Vanessa Rosa, before any AI</div>
+            {page.firstVersion.map((st) => <p>{st.map((l, i) => <>{i > 0 && <br />}{l}</>)}</p>)}
+          </div>
+        </section>
+
+        <section class="fx-part">
+          <h2 class="fx-part-h">How it changed</h2>
+          <div class="narrow">
+            {page.process.map((p) => <p>{p}</p>)}
+          </div>
+        </section>
+      </>
+    )}
+
     {/* ================================================================== */}
     {slug === 'memories-of-mars' && (
       <>
@@ -134,11 +174,6 @@ const isHead = (p) => p.length < 64 && !/[.:,;!?…"”]$/.test(p) && !p.startsW
           ))}
           {duet.afterIntro.length > 0 && duet.afterIntro.map((l) => <p class="fx-dir">{l}</p>)}
         </div>
-        {page.film && (
-          <p style="margin-top:34px">
-            <a class="more" href={`https://www.youtube.com/watch?v=${page.film.youtube}`} target="_blank" rel="noopener">{page.film.label} ⇢</a>
-          </p>
-        )}
       </>
     )}
 
