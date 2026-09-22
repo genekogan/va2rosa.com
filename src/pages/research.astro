@@ -142,7 +142,8 @@ const isExternal = (h) => h.startsWith('http');
       {g.blurb && <p class="lib-blurb">{g.blurb}</p>}
 
       <ul class="lib-list">
-        {g.items.map((it) => (
+        {/* newest first, whatever order the data happens to be in */}
+        {[...g.items].sort((a, b) => b.year - a.year).map((it) => (
           <li class={it.image ? 'has-img' : undefined}>
             <span class="ly">{it.year ?? '·'}</span>
 
