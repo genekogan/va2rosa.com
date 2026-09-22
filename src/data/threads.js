@@ -416,7 +416,7 @@ export const threads = [
           { src: '/images/vm/p2016-stencils.webp', caption: 'The stencil making process' },
         ],
         links: [
-          { label: 'The report', href: 'https://drive.google.com/file/d/195pFG3AxN8oD_IBrDUfwdBE56oC81tzm/view?usp=sharing' },
+          { label: 'The report', href: '/downloads/sankofa-report-2016.pdf' },
           { label: 'The whole project', href: '/threads/visible-memories' },
         ],
       },
@@ -489,8 +489,8 @@ export const threads = [
           },
         ],
         links: [
-          { label: 'English translation (PDF)', href: 'https://drive.google.com/file/d/1JBe3nzAK2dq1o9Wzw5iDniZyysNzjDyU/view' },
-          { label: 'Portuguese original (PDF)', href: 'https://drive.google.com/file/d/1Ec1ShXBwnn4YG547WjyV5j6YPMXKOX_D/view' },
+          { label: 'English translation (PDF)', href: '/downloads/vanessa-rosa-dissertation-2018-english.pdf' },
+          { label: 'Portuguese original (PDF)', href: '/downloads/vanessa-rosa-dissertation-2018-portugues.pdf' },
         ],
       },
       {

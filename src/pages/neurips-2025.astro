@@ -1,0 +1,71 @@
+---
+// The NeurIPS 2025 paper, hosted here: the PDF is on this site, not on someone
+// else's drive, and the four pages can be read without downloading anything.
+import Base from '../layouts/Base.astro';
+import BookReader from '../components/BookReader.astro';
+import { neuripsPaper as p } from '../data/verdelis-world.js';
+
+const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
+---
+
+<Base
+  title={p.title}
+  current="Research"
+  description={p.abstract}
+  image={p.poster.image}
+  bodyClass="paper"
+>
+  <div class="wrap np-page">
+    <p class="fx-back" style="margin-top:28px"><a href="/research">← Research</a></p>
+
+    <header class="np-head">
+      <span class="pf-tag">{p.kicker}</span>
+      <h1>{p.title}</h1>
+      <p class="pf-meta">{p.authors}</p>
+      <p class="pf-venue">{p.venue} · {p.extra}</p>
+    </header>
+
+    <figure class="np-poster">
+      <img src={p.poster.image} alt={p.poster.alt} />
+      <figcaption>{p.poster.caption}</figcaption>
+    </figure>
+
+    <div class="np-body">
+      <p class="pf-abstract">{p.abstract}</p>
+      <ul class="pf-points">
+        {p.points.map((t) => <li>{t}</li>)}
+      </ul>
+      <p class="pf-links">
+        {p.links.map((l, i) => (
+          <>
+            {i > 0 && <span class="sep">·</span>}
+            <a href={l.href} {...ext(l)}>{l.label}</a>
+          </>
+        ))}
+      </p>
+    </div>
+
+    <section class="np-read">
+      <div class="kicker">The paper, four pages</div>
+      <BookReader book={p.read} />
+    </section>
+
+    <section class="np-photos">
+      <div class="kicker">At the conference</div>
+      <div class="np-grid">
+        {p.photos.map((ph) => (
+          <figure>
+            <img src={ph.src} alt={ph.caption} loading="lazy" />
+            <figcaption>{ph.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <p style="margin:56px 0 90px">
+      <a class="more" href="/fiction-writing/verdelis-world">Verdelis.world, the project ⇢</a>
+      <span style="display:inline-block; width:22px"></span>
+      <a class="more" href="/research">All the research ⇢</a>
+    </p>
+  </div>
+</Base>

@@ -68,8 +68,9 @@ export const featured = {
     { src: '/images/writing/paper-agent.webp', caption: 'The character as a generative agent' },
   ],
   links: [
-    { label: 'Read the paper (PDF)', href: 'https://www.dropbox.com/scl/fi/t9eyphfamlxpawlfw21n1/Little_Martians-2.pdf?rlkey=7y1y6mk9gzfjakmypnoirh93j&dl=0' },
-    { label: 'The poster (PDF)', href: 'https://www.dropbox.com/scl/fi/u7yc069qkai59xq58upf7/poster_neurips2025_print.pdf?rlkey=72s2v6i68prplw1rrekqc501g&dl=0' },
+    { label: 'The paper on this site', href: '/neurips-2025' },
+    { label: 'Read the paper (PDF)', href: '/downloads/little-martians-neurips-2025-paper.pdf' },
+    { label: 'The poster (PDF)', href: '/downloads/little-martians-neurips-2025-poster.pdf' },
     { label: 'Project page', href: 'https://www.littlemartians.world/neurips-2025' },
     { label: 'Companion essay on Substack', href: 'https://littlemartians.substack.com/p/agentic-storytelling' },
   ],
@@ -94,8 +95,8 @@ export const groups = [
           'Advisor: Prof. Gilbertto Prado. Examining board: Prof. Hermes Renato Hildebrand (PUC-SP) and Prof. Priscila Almeida Cunha Arantes (UAM). 152 pages, 58 figures.',
         note: 'English translation, 2026, by Claude Fable.',
         links: [
-          { label: 'English translation (PDF)', href: 'https://drive.google.com/file/d/1JBe3nzAK2dq1o9Wzw5iDniZyysNzjDyU/view' },
-          { label: 'Portuguese original (PDF)', href: 'https://drive.google.com/file/d/1Ec1ShXBwnn4YG547WjyV5j6YPMXKOX_D/view' },
+          { label: 'English translation (PDF)', href: '/downloads/vanessa-rosa-dissertation-2018-english.pdf' },
+          { label: 'Portuguese original (PDF)', href: '/downloads/vanessa-rosa-dissertation-2018-portugues.pdf' },
         ],
       },
       {
@@ -144,7 +145,7 @@ export const groups = [
           'Advisor: Prof. Roberto Luis Torres Conduru. Critical reader: Prof. Rafael Cardoso. On Banksy and Blu, and on what happens to a street work once its photograph travels further than the wall ever will. The title is a pun that does not survive translation: veracidade (truthfulness), ver a cidade (to see the city), and cidade (the city).',
         note: 'English translation, 2026, by Claude Fable. The opening pages describe Urban Images: Looking at Morro da Conceição, the undergraduate fellowship project that became Visible Memories.',
         links: [
-          { label: 'English translation (PDF)', href: 'https://drive.google.com/file/d/1S2m9iH4jP0zqn8r5r7BT2cfvDdRd0eMh/view' },
+          { label: 'English translation (PDF)', href: '/downloads/vanessa-rosa-monograph-2012-english.pdf' },
         ],
       },
       {

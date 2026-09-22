@@ -213,39 +213,40 @@ const isHead = (p) => p.length < 64 && !/[.:,;!?…"”]$/.test(p) && !p.startsW
           ))}
         </section>
 
-        {page.membrane && (
-          <section class="fx-part fx-membrane">
-            <h2 class="fx-part-h">III. Afterlife: The Outer Membrane, 2026</h2>
-            <div class="narrow">
-              {page.membrane.intro.map((p) => <p>{p}</p>)}
-            </div>
+      </>
+    )}
 
-            <h3 class="fx-mem-h">{page.membrane.letters.title}</h3>
-            <div class="narrow">
-              {page.membrane.letters.body.map((p) => <p>{p}</p>)}
-            </div>
-            <div class="fx-letters">
-              {page.membrane.letters.images.map((im) => (
-                <figure>
-                  <img src={im.src} alt={`${im.title}: a letter from Verdelis as an etched page, made with AI on Eden.`} loading="lazy" />
-                  <figcaption>{im.title}</figcaption>
-                </figure>
-              ))}
-            </div>
+    {/* ================================================================== */}
+    {slug === 'outer-membrane' && (
+      <>
+        
+      <section class="fx-part fx-membrane" style="margin-top:34px">
+        <h3 class="fx-mem-h">{page.membrane.letters.title}</h3>
+        <div class="narrow">
+          {page.membrane.letters.body.map((p) => <p>{p}</p>)}
+        </div>
+        <div class="fx-letters">
+          {page.membrane.letters.images.map((im) => (
+            <figure>
+              <img src={im.src} alt={`${im.title}: a letter from Verdelis as an etched page, made with AI on Eden.`} loading="lazy" />
+              <figcaption>{im.title}</figcaption>
+            </figure>
+          ))}
+        </div>
 
-            <h3 class="fx-mem-h">{page.membrane.codex.title}</h3>
-            <div class="narrow">
-              {page.membrane.codex.body.map((p) => <p>{p}</p>)}
-            </div>
-            <BookReader book={page.membrane.codex.read} />
+        <h3 class="fx-mem-h">{page.membrane.codex.title}</h3>
+        <div class="narrow">
+          {page.membrane.codex.body.map((p) => <p>{p}</p>)}
+        </div>
+        <BookReader book={page.membrane.codex.read} />
 
-            <h3 class="fx-mem-h">{page.membrane.design.title}</h3>
-            <div class="narrow">
-              {page.membrane.design.body.map((p) => <p>{p}</p>)}
-            </div>
-            <p class="fx-note">Images made with AI on Eden, 9 February 2026, for The Outer Membrane.</p>
-          </section>
-        )}
+        <h3 class="fx-mem-h">{page.membrane.design.title}</h3>
+        <div class="narrow">
+          {page.membrane.design.body.map((p) => <p>{p}</p>)}
+        </div>
+        <p class="fx-note">Images made with AI on Eden, 9 February 2026, for The Outer Membrane.</p>
+      </section>
+    
       </>
     )}
 

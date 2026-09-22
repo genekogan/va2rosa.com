@@ -1,0 +1,112 @@
+---
+// Verdelis.world: the agent that published a film a day. A page of its own,
+// darker than the rest of the site, because most of what it shows is film.
+import Base from '../../layouts/Base.astro';
+import { verdelisWorld as v } from '../../data/verdelis-world.js';
+
+const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
+---
+
+<Base title={v.title} current="Art" description={v.lede} image={v.hero} bodyClass="paper">
+  <div class="vw-top">
+    <img class="vw-top-img" src={v.hero} alt={v.heroAlt} fetchpriority="high" />
+    <div class="vw-top-t">
+      <div class="kicker" style="color:#8fd3c1">{v.kicker}</div>
+      <h1>{v.title}</h1>
+      <p>{v.sub}</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="fx-back" style="margin-top:22px"><a href="/fiction-writing">← Fiction writing</a></p>
+
+    <div class="narrow" style="margin-top:26px">
+      <p class="lede">{v.lede}</p>
+      {v.intro.map((p) => <p>{p}</p>)}
+    </div>
+
+    <figure class="vw-film">
+      <video controls playsinline loop preload="none" poster={v.film.poster} aria-label={v.film.caption}>
+        <source src={v.film.file} type="video/mp4" />
+      </video>
+      <figcaption>{v.film.caption}</figcaption>
+    </figure>
+
+    <!-- THE PIPELINE ------------------------------------------------------ -->
+    <section class="vw-sec">
+      <h2 class="vw-h">{v.pipeline.title}</h2>
+      <p class="vw-note">{v.pipeline.note}</p>
+      <ol class="vw-steps">
+        {v.pipeline.steps.map((s) => (
+          <li>
+            <span class="vw-n">{s.n}</span>
+            <h3>{s.name}</h3>
+            <p>{s.body}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- THE DAILY FILMS --------------------------------------------------- -->
+    <section class="vw-sec">
+      <h2 class="vw-h">{v.daily.title}</h2>
+      <p class="narrow" style="margin-top:8px">{v.daily.body}</p>
+      <div class="vw-reels">
+        {v.daily.items.map((r) => (
+          <figure>
+            <video controls playsinline loop preload="none" poster={r.poster} aria-label={`A Verdelis film, ${r.caption}`}>
+              <source src={r.file} type="video/mp4" />
+            </video>
+            <figcaption>{r.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <!-- WHAT FAILED ------------------------------------------------------- -->
+    <section class="vw-sec">
+      <h2 class="vw-h">{v.failures.title}</h2>
+      <div class="narrow" style="margin-top:8px">
+        {v.failures.body.map((p) => <p>{p}</p>)}
+      </div>
+      <div class="vw-fails">
+        {v.failures.items.map((f) => (
+          <article>
+            <h3>{f.name}</h3>
+            <p>{f.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="vw-sec">
+      <h2 class="vw-h">{v.pivot.title}</h2>
+      <div class="narrow" style="margin-top:8px">
+        {v.pivot.body.map((p) => <p>{p}</p>)}
+      </div>
+    </section>
+
+    <!-- THE PAPER --------------------------------------------------------- -->
+    <a class="vw-paper" href={v.paperCard.href}>
+      <img src={v.paperCard.image} alt="" loading="lazy" data-nozoom />
+      <div>
+        <div class="kicker">{v.paperCard.kicker}</div>
+        <h3>{v.paperCard.title}</h3>
+        <p class="vw-paper-meta">{v.paperCard.meta}</p>
+        <p>{v.paperCard.body}</p>
+        <span class="more">Open the paper ⇢</span>
+      </div>
+    </a>
+
+    <p class="vw-links">
+      {v.links.map((l, i) => (
+        <>
+          {i > 0 && <span class="sep">·</span>}
+          <a href={l.href} {...ext(l)}>{l.label}</a>
+        </>
+      ))}
+    </p>
+
+    <p style="margin:40px 0 90px"><a class="more" href="/fiction-writing">All the fiction ⇢</a></p>
+  </div>
+</Base>

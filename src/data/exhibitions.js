@@ -268,11 +268,27 @@ export const workPages = [
     body: 'Six drawings of a Qing vase made with an AxiDraw pen plotter, each one different because I moved the paper or the pen while the machine worked. With the Escher and the perspective treatises behind them.',
   },
   {
+    title: 'Fiction writing',
+    years: '2020 to now',
+    href: '/fiction-writing',
+    image: '/images/writing/fiction-books.webp',
+    imageAlt: 'Three Little Martians books in print on a wrought-iron table.',
+    body: 'Stories, songs, scripts and books, most of them set in one world: the Little Martians and their Imaginarium. With the experiments in writing alongside language models, marked so you can see who wrote what.',
+  },
+  {
     title: 'Drawings',
     years: '2009 to now',
     href: '/sketchbooks',
     image: '/images/sk/dr-03.webp',
     imageAlt: 'A watercolour portrait, eyes closed, in blues and reds.',
     body: 'What I love most is to draw wherever I am. Sketches made on the streets and in life model sessions.',
+  },
+  {
+    title: 'More projects',
+    years: '2009 to 2012',
+    href: '/more-projects',
+    image: '/images/op2/samba.webp',
+    imageAlt: 'Flags made for the Embaixadores da Alegria samba school parade.',
+    body: 'The smaller pieces: flags made for the Embaixadores da Alegria samba parade in 2012, the mural at Artur Fidalgo the same year, and a sculpture from 2009.',
   },
 ];

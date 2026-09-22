@@ -118,6 +118,15 @@ export const fiction = {
         cta: 'Read the duet',
       },
       {
+        year: '2024–2025',
+        title: 'Verdelis.world',
+        tool: 'An agent on Eden, with Gene Kogan',
+        body: 'The biggest of these experiments: Verdelis given her own site, her own voice and a film published every morning, written and made by the system itself. With the pipeline, three of the daily films, and what went wrong when nobody was disturbing it.',
+        image: '/video/verdelis-film.webp',
+        href: '/fiction-writing/verdelis-world',
+        cta: 'The whole experiment',
+      },
+      {
         year: 2025,
         title: 'Verdelis’s Stories',
         tool: 'Claude, most likely Sonnet 4.5',
@@ -125,6 +134,15 @@ export const fiction = {
         image: '/images/vbooks/verdelis.webp',
         href: '/fiction-writing/verdelis-stories',
         cta: 'Read the engine and the stories',
+      },
+      {
+        year: 2026,
+        title: 'The Outer Membrane',
+        tool: 'An image model on Eden',
+        body: 'Verdelis’s stories rewritten as engraved letters, and a first version of Verdelia’s codex, for Marzipan’s fictional Mars College journal. Each page is one generated image: border, emblems and lettering together.',
+        image: '/images/writing/outer-membrane/clay-woman.webp',
+        href: '/fiction-writing/outer-membrane',
+        cta: 'See the pages',
       },
     ],
   },
@@ -247,19 +265,14 @@ export const fictionPages = {
     ],
     film: { youtube: 'WmdZ04y0ufI', title: 'Verdelis & Mycos' },
   },
-  'verdelis-stories': {
-    title: 'Verdelis’s Stories',
-    kicker: 'A story engine and thirty-six stories · November 2025',
+  'outer-membrane': {
+    title: 'The Outer Membrane',
+    kicker: 'Letters and a codex, drawn by an image model · February 2026',
     context: [
-      'An experiment from November 2025, made with Claude. The model version was not noted at the time; the most likely is Claude Sonnet 4.5, the default model that autumn.',
-      'A system prompt for generating one-minute animation stories narrated by Verdelis. It describes her mind as a dodecahedron — twelve faces of consciousness grouped in four triads: being, knowing, doing and connecting — and sets the rules every story follows: a sensory opening, the parliament of voices inside her, the siblings, the closing line of wisdom, and the things a story must never do.',
-      'The thirty-six stories collected in the prompt follow, grouped by triad. At the end, what happened to some of them three months later.',
+      'The Outer Membrane is Marzipan’s fictional journal of Mars College, made with AI. Its 2026 issue carried many Martian projects, and Verdelis’s stories were among them. They went in as text and came out as illustrated letters.',
+      'Every page is a single image, made on Eden on the evening of 9 February 2026. The lettering, the layout, the engraved borders and the small emblems in the margins all came from the prompt, which asked for a portrait page in pure black-and-white etching. These are the images as they came out; nothing was typeset over them.',
     ],
     membrane: {
-      intro: [
-        'The Outer Membrane is Marzipan’s fictional journal of Mars College, made with AI. Its 2026 issue carried many Martian projects, and Verdelis’s stories were among them. They went in as text and came out as illustrated letters.',
-        'Every page is a single image, made on Eden on the evening of 9 February 2026. The lettering, the layout, the engraved borders and the small emblems in the margins all came from the prompt, which asked for a portrait page in pure black-and-white etching. These are the images as they came out; nothing was typeset over them.',
-      ],
       letters: {
         title: 'The stories, rewritten as letters',
         body: [
@@ -280,13 +293,21 @@ export const fictionPages = {
         read: { slug: 'verdelia-letter', spread: false, aspect: 0.6709, pages: [1, 2, 3, 4, 5], title: 'A Letter from Verdelia' },
       },
       design: {
-        title: 'What the design experiment showed',
+        title: 'The design experiment',
         body: [
-          'I wanted to know how much of a page an image model could now carry by itself: not an illustration waiting for its text, but the whole page, words included, in one pass. The letters read cleanly almost everywhere, and the style holds from page to page without any layout software.',
-          'The failures are small and telling. In The Clay Woman a stray “ts” and a doubled “sky” slipped into the text. On the deep-time page the model ran out of new words and repeated its own lines at the foot of the columns, and the labels on its geological column are invented. The ornament never fails; the words, now and then, do. It is the reverse of the image models of 2022, which drew beautifully and could not spell.',
-          'From the engine to the stories to these pages, the same material passed through three hands: mine, a language model’s and an image model’s. Each one changed it.',
+          'The point was to see how much of a page an image model could carry by itself: not an illustration waiting for its text, but the whole page, words included, in one pass. The lettering reads cleanly almost everywhere, and the style holds from page to page without any layout software.',
+          'The glitches are the interesting part. In The Clay Woman a stray “ts” and a doubled “sky” slipped into the text. On the deep-time page the model ran out of words and repeated its own lines at the foot of the columns, and the labels on its geological column are invented.',
         ],
       },
     },
+  },
+  'verdelis-stories': {
+    title: 'Verdelis’s Stories',
+    kicker: 'A story engine and thirty-six stories · November 2025',
+    context: [
+      'An experiment from November 2025, made with Claude. The model version was not noted at the time; the most likely is Claude Sonnet 4.5, the default model that autumn.',
+      'A system prompt for generating one-minute animation stories narrated by Verdelis. It describes her mind as a dodecahedron — twelve faces of consciousness grouped in four triads: being, knowing, doing and connecting — and sets the rules every story follows: a sensory opening, the parliament of voices inside her, the siblings, the closing line of wisdom, and the things a story must never do.',
+      'The thirty-six stories collected in the prompt follow, grouped by triad.',
+    ],
   },
 };
