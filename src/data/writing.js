@@ -106,11 +106,14 @@ export const groups = [
         imageAlt: 'A drawing built with one-point perspective over tile pattern.',
         original: 'Pensando a perspectiva linear para além da narrativa eurocêntrica',
         kind: 'Journal article',
-        venue: 'Revista do Departamento de Arquitetura e Urbanismo, PUC-Rio, Year I, No. I. ISSN 2446-7340',
+        venue: 'Revista PRUMO, Department of Architecture and Urbanism, PUC-Rio, v. 3, n. 5, 2018: Perspectivas — a representação em arquitetura. ISSN 2446-7340',
         detail:
           'Sets Erwin Panofsky’s essay on perspective against Hans Belting and George Saliba, for whom Arab optics were essential to the Italian Renaissance. The argument is that mathematical principles from one culture can be reinterpreted in another and produce something new to both, and that art history needs the history of science to see it.',
         note: 'Published in Portuguese.',
-        links: [],
+        links: [
+          { label: 'Read it in the journal', href: 'https://periodicos.puc-rio.br/revistaprumo/article/view/829' },
+          { label: 'PDF', href: 'https://periodicos.puc-rio.br/revistaprumo/article/view/829/530' },
+        ],
       },
       {
         year: 2016,
