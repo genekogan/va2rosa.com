@@ -2509,6 +2509,11 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .fx-books a { display: block; }
 .fx-books img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; box-shadow: 0 4px 18px rgba(13, 33, 54, 0.15); }
 .fx-books span { display: block; margin-top: 10px; font-size: 14px; }
+.fx-books .fx-book-read {
+  margin-top: 4px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--blue);
+}
+.fx-books a:hover .fx-book-read { border-bottom: 0; text-decoration: underline; }
 
 .fx-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px; margin-top: 22px; }
 .fx-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; margin-bottom: 14px; }

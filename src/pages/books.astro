@@ -55,7 +55,6 @@ import { site } from '../data/site.js';
                 <h3>{b.title}</h3>
                 {b.year && <div class="bookrow-yr">{b.year}</div>}
                 <p>{b.body}</p>
-                {b.read && <a class="more" href={`/books/${b.read.slug}`}>The book on its own page ⇢</a>}
               </div>
             </article>
             {b.read && (

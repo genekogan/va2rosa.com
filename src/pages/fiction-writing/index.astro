@@ -50,6 +50,7 @@ const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
           <a href={b.href ?? f.books.href}>
             <img src={b.image} alt="" loading="lazy" />
             <span>{b.title}</span>
+            <span class="fx-book-read">Read the whole book ⇢</span>
           </a>
         ))}
       </div>
