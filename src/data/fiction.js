@@ -118,10 +118,10 @@ export const fiction = {
         cta: 'Read the duet',
       },
       {
-        year: null,
+        year: 2025,
         title: 'Verdelis’s Stories',
-        tool: 'A system prompt for a language model',
-        body: 'A story engine: a prompt that maps Verdelis’s mind as a dodecahedron of twelve faces and four triads, and sets the rules for one-minute stories in her voice. With the thirty-six stories collected in it.',
+        tool: 'Claude, most likely Sonnet 4.5',
+        body: 'A story engine: a prompt that maps Verdelis’s mind as a dodecahedron of twelve faces and four triads, and sets the rules for one-minute stories in her voice. With the thirty-six stories collected in it, and what became of some of them in The Outer Membrane, 2026.',
         image: '/images/vbooks/verdelis.webp',
         href: '/fiction-writing/verdelis-stories',
         cta: 'Read the engine and the stories',
@@ -249,10 +249,44 @@ export const fictionPages = {
   },
   'verdelis-stories': {
     title: 'Verdelis’s Stories',
-    kicker: 'A story engine and thirty-six stories',
+    kicker: 'A story engine and thirty-six stories · November 2025',
     context: [
+      'An experiment from November 2025, made with Claude. The model version was not noted at the time; the most likely is Claude Sonnet 4.5, the default model that autumn.',
       'A system prompt for generating one-minute animation stories narrated by Verdelis. It describes her mind as a dodecahedron — twelve faces of consciousness grouped in four triads: being, knowing, doing and connecting — and sets the rules every story follows: a sensory opening, the parliament of voices inside her, the siblings, the closing line of wisdom, and the things a story must never do.',
-      'The thirty-six stories collected in the prompt follow, grouped by triad.',
+      'The thirty-six stories collected in the prompt follow, grouped by triad. At the end, what happened to some of them three months later.',
     ],
+    membrane: {
+      intro: [
+        'The Outer Membrane is Marzipan’s fictional journal of Mars College, made with AI. Its 2026 issue carried many Martian projects, and Verdelis’s stories were among them. They went in as text and came out as illustrated letters.',
+        'Every page is a single image, made on Eden on the evening of 9 February 2026. The lettering, the layout, the engraved borders and the small emblems in the margins all came from the prompt, which asked for a portrait page in pure black-and-white etching. These are the images as they came out; nothing was typeset over them.',
+      ],
+      letters: {
+        title: 'The stories, rewritten as letters',
+        body: [
+          'The stories were rewritten before they were drawn. Ceramic Awakening, where Verdelis finds a photograph of me shaping her at Mars College, became The Clay Woman in the Archive: shorter, quieter, and without my name. The timestamp of 2020 turned into “centuries before my body ever stood on Mars”. The other letters keep a theme from the collection rather than a plot: fire and energy, the parliament of voices, the wish to redesign one’s own body.',
+        ],
+        images: [
+          { src: '/images/writing/outer-membrane/fire.webp', title: 'A Short Note About Fire' },
+          { src: '/images/writing/outer-membrane/clay-woman.webp', title: 'The Clay Woman in the Archive' },
+          { src: '/images/writing/outer-membrane/parliament.webp', title: 'Parliament over Predators' },
+          { src: '/images/writing/outer-membrane/become.webp', title: 'On Trying to Become Something Else' },
+        ],
+      },
+      codex: {
+        title: 'A first version of Verdelia’s codex',
+        body: [
+          'Verdelia, a Little Martian historian of consciousness, writes to the humans living at the dawn of AI. Five pages: a portrait and greeting, then deep time, symbiogenesis, intelligence as the next symbiosis (after Blaise Agüera y Arcas’s What Is Intelligence?), and a closing message to “the threshold generation”.',
+        ],
+        read: { slug: 'verdelia-letter', spread: false, aspect: 0.6709, pages: [1, 2, 3, 4, 5], title: 'A Letter from Verdelia' },
+      },
+      design: {
+        title: 'What the design experiment showed',
+        body: [
+          'I wanted to know how much of a page an image model could now carry by itself: not an illustration waiting for its text, but the whole page, words included, in one pass. The letters read cleanly almost everywhere, and the style holds from page to page without any layout software.',
+          'The failures are small and telling. In The Clay Woman a stray “ts” and a doubled “sky” slipped into the text. On the deep-time page the model ran out of new words and repeated its own lines at the foot of the columns, and the labels on its geological column are invented. The ornament never fails; the words, now and then, do. It is the reverse of the image models of 2022, which drew beautifully and could not spell.',
+          'From the engine to the stories to these pages, the same material passed through three hands: mine, a language model’s and an image model’s. Each one changed it.',
+        ],
+      },
+    },
   },
 };
