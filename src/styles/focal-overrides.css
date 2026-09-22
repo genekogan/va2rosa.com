@@ -9,7 +9,7 @@
 
 /* Silvio Tendler: the bay with the town on the hill. The town sits a little
    below centre, and the scrim covers the bottom, so anchor just under the middle. */
-.projhero img[src$="/images/tendler/tendler-00.webp"] {
+.projhero img[src$="/images/tendler/tv-00.webp"] {
   object-position: 50% 55%;
 }
 .projhero img[src$="/images/writing/fiction-books.webp"] { object-position: 50% 38%; }

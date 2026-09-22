@@ -653,31 +653,31 @@ export const g = {
  ],
  "tendler": [
   {
-   "src": "/images/tendler/tendler-00.webp",
+   "src": "/images/tendler/tv-00.webp",
    "caption": "Teaser, 1:34. The bay and the town, painted for the title sequence."
   },
   {
-   "src": "/images/tendler/tendler-01.webp",
-   "caption": "Teaser, 1:56. A woman, alone, painted in a few strokes of ochre."
+   "src": "/images/tendler/tv-01.webp",
+   "caption": "Teaser, 1:58. Two figures in ochre and red."
   },
   {
-   "src": "/images/tendler/tendler-02.webp",
+   "src": "/images/tendler/tv-02.webp",
    "caption": "Teaser, 2:00. The couple, from the same sequence."
   },
   {
-   "src": "/images/tendler/tendler-03.webp",
+   "src": "/images/tendler/tv-03.webp",
    "caption": "Teaser, 2:07. The couple by the window."
   },
   {
-   "src": "/images/tendler/tendler-04.webp",
-   "caption": "Teaser, 3:23. Blue and yellow running down the paper before the picture appears."
+   "src": "/images/tendler/tv-04.webp",
+   "caption": "Teaser, 3:23. Blue and violet running down the paper before the picture appears."
   },
   {
-   "src": "/images/tendler/tendler-05.webp",
+   "src": "/images/tendler/tv-05.webp",
    "caption": "Teaser, 3:33. Eyes over the rooftops."
   },
   {
-   "src": "/images/tendler/tendler-06.webp",
+   "src": "/images/tendler/tv-06.webp",
    "caption": "Teaser, 3:41. The house watched by the eyes in the sky."
   },
   {
@@ -705,12 +705,12 @@ export const g = {
    "caption": "Episode 4, Poema Sujo 1, 27:38. “Em pleno coração de Buenos Aires, às quatro horas desta tarde.”"
   },
   {
-   "src": "/images/tendler/tendler-13.webp",
-   "caption": "Episode 5, Poema Sujo 2, 19:00. The bird."
+   "src": "/images/tendler/tv-13.webp",
+   "caption": "Episode 5, Poema Sujo 2, 19:00. The bird in the undergrowth."
   },
   {
-   "src": "/images/tendler/tendler-14.webp",
-   "caption": "Episode 5, Poema Sujo 2, 19:21. The bird in its cage."
+   "src": "/images/tendler/tv-14.webp",
+   "caption": "Episode 5, Poema Sujo 2, 19:21. The urubu, with the lines of the poem."
   },
   {
    "src": "/images/tendler/tendler-15.webp",

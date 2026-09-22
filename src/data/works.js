@@ -303,7 +303,7 @@ export const haMuitasNoites = {
   slug: 'ha-muitas-noites',
   kicker: 'Animation for television · 2014 to 2015',
   title: 'Há muitas noites na noite',
-  hero: '/images/tendler/tendler-00.webp',
+  hero: '/images/tendler/tv-00.webp',
   heroAlt: 'The bay and the town, painted for the title sequence of the series.',
   lede:
     'A seven-part documentary series by Silvio Tendler on Ferreira Gullar’s exile, built around his Poema Sujo. I made the time-lapse animations that run through it.',

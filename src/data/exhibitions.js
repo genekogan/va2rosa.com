@@ -247,7 +247,7 @@ export const workPages = [
     title: 'Há muitas noites na noite',
     years: '2014 to 2015',
     href: '/ha-muitas-noites',
-    image: '/images/tendler/tendler-00.webp',
+    image: '/images/tendler/tv-00.webp',
     imageAlt: 'The bay and the town, painted for the title sequence of the series.',
     body: 'Silvio Tendler’s seven-part series on Ferreira Gullar’s exile. More than twenty time-lapse painting animations and forty drawings, broadcast on TV Brasil.',
   },
