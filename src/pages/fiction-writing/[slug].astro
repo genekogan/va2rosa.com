@@ -59,7 +59,7 @@ const isHead = (p) => p.length < 64 && !/[.:,;!?…"”]$/.test(p) && !p.startsW
         <section class="fx-part">
           <h2 class="fx-part-h">The first version, with no AI</h2>
           <div class="fx-block fx-mine fx-lyrics fx-draft">
-            <div class="fx-label">Written by Vanessa Rosa, before any AI</div>
+            <div class="fx-label">Written by Vanessa Rosa</div>
             {page.firstVersion.map((st) => <p>{st.map((l, i) => <>{i > 0 && <br />}{l}</>)}</p>)}
           </div>
         </section>

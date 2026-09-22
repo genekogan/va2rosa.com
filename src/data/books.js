@@ -98,6 +98,23 @@ export const books = {
       },
     },
     {
+      title: 'Little Martians: Interactive Storytelling Experiment',
+      image: '/images/vbooks/kojii-book.webp',
+      imageAlt: 'The printed book on a rug: Little Martians, Interactive Storytelling Experiment, by Vanessa Rosa. Black cover with white arches, bound in maroon cloth.',
+      year: 'The experiment, 2024 · first print, 2026',
+      body: 'In 2024 six Little Martians met the public as an interactive AI model. You picked a character, a setting and a genre, typed a prompt, and the model answered with an image and a caption in that Martian’s voice. The platform it was made for, kojii.ai, shut down before launch; Eden.art took the model in, and some three hundred images were made there, many by people I had never met. This book is a selection of those moments, each paired with the prompt that summoned it. It was also the experiment that showed me the universe needed a stronger spine, which is how the Codex came to be written.',
+      // The reader opens it as it was bound: the cover alone, an endpaper
+      // facing the title page, the 74 pages, and the closing endpaper.
+      // p-077 is the front board, p-075 and p-076 the endpapers.
+      read: {
+        slug: 'kojii',
+        spread: false,
+        aspect: 0.7502,
+        pages: [77, 75, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 76],
+        note: 'The whole book, as printed: cover, endpapers and all.',
+      },
+    },
+    {
       title: 'The Book of Abraham.ai',
       image: '/images/vbooks/abraham.webp',
       imageAlt: 'Abraham.ai: a mosaic of a flame split down the middle, circuitry running through it.',
