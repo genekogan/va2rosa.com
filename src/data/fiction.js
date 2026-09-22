@@ -64,11 +64,11 @@ export const fiction = {
       {
         year: 2024,
         title: 'Little Martians on Kojii.ai',
-        body: 'Interactive generative storytelling. Six characters, each from a real ceramic sculpture, made into image models and given language-model personalities. I set the world, its context and its rules; visitors prompt a character and the story goes where they take it.',
+        body: 'Interactive generative storytelling. Six characters, each from a real ceramic sculpture, made into image models and given language-model personalities. I set the world, its context and its rules; visitors prompt a character and the story goes where they take it. The project was shortlisted for the CVPR AI Art Gallery in 2024.',
         image: '/images/writing/lm-imaginarium.webp',
         links: [
           { label: 'The project', href: 'https://www.littlemartians.world/kojii/', external: true },
-          { label: 'Kojii.ai', href: 'https://kojii.ai', external: true },
+          { label: 'CVPR AI Art Gallery, 2024', href: 'https://www.thecvf-art.com/project.php?year=2024&artist=vanessa-rosa&id=682', external: true },
         ],
       },
     ],
