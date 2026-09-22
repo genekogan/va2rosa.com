@@ -1,0 +1,123 @@
+---
+import Base from '../../layouts/Base.astro';
+import { fiction as f } from '../../data/fiction.js';
+
+const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
+---
+
+<Base title={f.title} current="Art" description={f.lede} image={f.hero} bodyClass="paper">
+  <div class="projhero">
+    <img src={f.hero} alt={f.heroAlt} fetchpriority="high" />
+    <div class="t">
+      <div class="kicker" style="color:#fff; opacity:.9">{f.kicker}</div>
+      <h1>{f.title}</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="narrow" style="margin-top:52px">
+      <p class="lede">{f.lede}</p>
+      {f.intro.map((p) => <p>{p}</p>)}
+    </div>
+
+    <!-- STORIES ----------------------------------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">{f.stories.kicker}</div>
+      {f.stories.items.map((s) => (
+        <article class="fx-feature">
+          <img src={s.image} alt={s.imageAlt} loading="lazy" />
+          <div>
+            <div class="fx-year">{s.year}</div>
+            <h2 class="fx-h">{s.title}</h2>
+            <p class="fx-where">{s.where}</p>
+            <div class="fx-excerpt">
+              {s.excerpt.map((p) => <p>{p}</p>)}
+            </div>
+            <p class="story-links">
+              {s.links.map((l) => <a class="more" href={l.href} {...ext(l)}>{l.label} ⇢</a>)}
+            </p>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <!-- BOOKS ------------------------------------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">{f.books.kicker}</div>
+      <p class="narrow" style="margin-top:12px">{f.books.body}</p>
+      <div class="fx-books">
+        {f.books.items.map((b) => (
+          <a href={f.books.href}>
+            <img src={b.image} alt="" loading="lazy" />
+            <span>{b.title}</span>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top:18px"><a class="more" href={f.books.href}>Read them on the books page ⇢</a></p>
+    </section>
+
+    <!-- WITH OTHER PEOPLE ------------------------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">{f.together.kicker}</div>
+      <div class="fx-cards">
+        {f.together.items.map((c) => (
+          <article class="fx-card">
+            <img src={c.image} alt="" loading="lazy" />
+            <div class="fx-year">{c.year}</div>
+            <h3 class="fx-h3">{c.title}</h3>
+            <p>{c.body}</p>
+            <p class="story-links">
+              {c.links.map((l) => <a class="more" href={l.href} {...ext(l)}>{l.label} ⇢</a>)}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- AI-ASSISTED WRITING ----------------------------------------------- -->
+    <section class="wsec fx-ai-sec">
+      <div class="kicker">{f.ai.kicker}</div>
+      <div class="narrow" style="margin-top:12px">
+        {f.ai.body.map((p) => <p>{p}</p>)}
+      </div>
+
+      {f.ai.items.map((it) => (
+        <article class={it.song ? 'fx-exp fx-exp-song' : 'fx-exp'}>
+          <div class="fx-exp-head">
+            <img src={it.image} alt="" loading="lazy" />
+            <div>
+              <div class="fx-year">{it.year ?? ''}</div>
+              <h3 class="fx-h3">{it.title}</h3>
+              <div class="fx-tool">{it.tool}</div>
+              <p>{it.body}</p>
+              {it.href && <p><a class="more" href={it.href}>{it.cta} ⇢</a></p>}
+            </div>
+          </div>
+
+          {it.song && (
+            <div class="fx-song">
+              {it.song.map((stanza) => (
+                <p>{stanza.map((line, i) => <>{i > 0 && <br />}{line}</>)}</p>
+              ))}
+              {it.film && (
+                <p style="margin-top:22px">
+                  <a class="more" href={`https://www.youtube.com/watch?v=${it.film.youtube}`} target="_blank" rel="noopener">
+                    {it.film.label} ⇢
+                  </a>
+                </p>
+              )}
+            </div>
+          )}
+        </article>
+      ))}
+    </section>
+
+    <p style="margin:60px 0 90px">
+      <a class="more" href="/books">The books ⇢</a>
+      <span style="display:inline-block; width:22px"></span>
+      <a class="more" href="/threads/little-martians">Little Martians ⇢</a>
+      <span style="display:inline-block; width:22px"></span>
+      <a class="more" href="https://www.littlemartians.world/fiction/" target="_blank" rel="noopener">littlemartians.world ⇢</a>
+    </p>
+  </div>
+</Base>

@@ -98,7 +98,7 @@ export const collections = [
     items: [
       { label: 'The art of making books', years: '1990s–present', href: '/books' },
       { label: 'Sketchbooks', years: '2009–present', href: '/sketchbooks' },
-      { label: 'Fiction writing' },
+      { label: 'Fiction writing', years: '2020–present', href: '/fiction-writing' },
     ],
   },
 ];

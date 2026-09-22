@@ -2476,3 +2476,129 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--ink-3); margin: 0;
 }
+
+/* ===========================================================================
+   FICTION WRITING
+   The AI-writing pages mark every block by author. Four kinds, each with its
+   own left rule and ground, so the difference reads at a glance and again in
+   a label for anyone who can't tell the colours apart.
+   =========================================================================== */
+:root {
+  --fx-mine: var(--ink);
+  --fx-prompt: #b7791f;       /* amber: instructions to a machine */
+  --fx-prompt-bg: #f6efe0;
+  --fx-ai: #2b62b5;           /* blue: what the machine returned */
+  --fx-ai-bg: #e5eef9;
+}
+
+.fx-feature {
+  display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 34px;
+  margin-top: 22px; align-items: start;
+}
+.fx-feature img { width: 100%; height: auto; display: block; }
+.fx-year { font-size: 12px; letter-spacing: 0.14em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.fx-h { font-family: var(--hand); font-size: clamp(24px, 2.8vw, 32px); line-height: 1.15; margin: 4px 0 8px; }
+.fx-h3 { font-family: var(--hand); font-size: 24px; line-height: 1.15; margin: 4px 0 8px; }
+.fx-where { font-size: 14px; color: var(--ink-2); }
+.fx-excerpt {
+  margin-top: 18px; padding-left: 18px; border-left: 2px solid var(--line);
+  font-style: italic; color: var(--ink-2); max-width: 38em;
+}
+
+.fx-books { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 22px; }
+.fx-books a { display: block; }
+.fx-books img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; box-shadow: 0 4px 18px rgba(13, 33, 54, 0.15); }
+.fx-books span { display: block; margin-top: 10px; font-size: 14px; }
+
+.fx-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px; margin-top: 22px; }
+.fx-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; margin-bottom: 14px; }
+.fx-card p { font-size: 15px; color: var(--ink-2); }
+
+.fx-exp { margin-top: 44px; padding-top: 34px; border-top: 1px solid var(--line); }
+.fx-exp-head { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 30px; align-items: start; }
+.fx-exp-head img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.fx-tool {
+  display: inline-block; margin-bottom: 12px; padding: 3px 10px; border-radius: 12px;
+  background: var(--fx-ai-bg); color: var(--fx-ai); font-size: 12px; letter-spacing: 0.04em;
+}
+.fx-exp-head p { font-size: 15.5px; color: var(--ink-2); max-width: 40em; }
+
+.fx-song {
+  margin: 26px 0 0 290px; padding: 26px 30px; max-width: 34em;
+  background: var(--surface); border-left: 3px solid var(--fx-mine);
+  font-family: var(--hand); font-size: 19px; line-height: 1.55;
+}
+.fx-song p { margin-bottom: 1.1em; max-width: none; }
+.fx-song .more { font-family: var(--sans); }
+
+/* --- the text pages ------------------------------------------------------- */
+.fx-page { max-width: 900px; }
+.fx-back { margin-top: 34px; font-size: 13px; letter-spacing: 0.08em; }
+.fx-back a { color: var(--ink-3); }
+.fx-back a:hover { color: var(--ink); }
+.fx-title { font-family: var(--hand); font-size: clamp(32px, 5vw, 54px); line-height: 1.1; margin: 8px 0 18px; }
+.fx-context p { color: var(--ink-2); }
+
+.fx-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 30px 0 10px; padding: 14px 16px; background: var(--surface); font-size: 13px; }
+.fx-legend li { display: flex; align-items: center; gap: 8px; }
+.fx-sw { display: inline-block; width: 22px; height: 14px; border-left: 3px solid; }
+.fx-sw.fx-mine { border-color: var(--fx-mine); background: #fff; }
+.fx-sw.fx-prompt { border-color: var(--fx-prompt); background: var(--fx-prompt-bg); }
+.fx-sw.fx-ai { border-color: var(--fx-ai); background: var(--fx-ai-bg); }
+.fx-sw.fx-unmarked { border: 1px dashed var(--ink-3); }
+
+.fx-part { margin-top: 54px; }
+.fx-part-h { font-family: var(--hand); font-size: clamp(22px, 2.6vw, 28px); margin-bottom: 14px; }
+
+.fx-block { margin-top: 16px; padding: 22px 26px 8px; border-left: 3px solid; }
+.fx-block p { max-width: 42em; }
+.fx-mine { border-color: var(--fx-mine); background: rgba(255, 255, 255, 0.55); }
+.fx-prompt { border-color: var(--fx-prompt); background: var(--fx-prompt-bg); }
+.fx-ai { border-color: var(--fx-ai); background: var(--fx-ai-bg); }
+.fx-unmarked { border: 1px dashed var(--ink-3); border-left-width: 3px; background: transparent; }
+.fx-label {
+  margin-bottom: 14px; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.fx-prompt .fx-label { color: var(--fx-prompt); }
+.fx-ai .fx-label { color: var(--fx-ai); }
+.fx-block-h { font-family: var(--hand); font-size: 22px; margin-bottom: 12px; }
+.fx-prompt-line { font-family: var(--mono); font-size: 14px; }
+.fx-char { margin-top: 14px; }
+.fx-char-h { font-size: 13px; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 4px; }
+.fx-dir { color: var(--ink-3); font-size: 0.86em; font-style: italic; font-weight: 400; }
+.fx-note { margin-top: 12px; font-size: 13.5px; color: var(--ink-3); }
+
+/* the duet reads as a script: speaker in the margin, words beside */
+.fx-script { margin-top: 26px; }
+.fx-turn { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 20px; padding: 12px 0; border-top: 1px solid var(--line-2); }
+.fx-who { font-family: var(--hand); font-size: 20px; padding-top: 2px; }
+.fx-who-verdelis { color: #3c7a3a; }
+.fx-who-mycos { color: #8a4fb0; }
+.fx-who-kalama { color: #c2491d; }
+.fx-lines p { margin-bottom: 0.35em; }
+.fx-gap { height: 0.8em; }
+
+/* the story engine keeps the look of a working document */
+.fx-engine p { font-size: 14.5px; }
+.fx-engine-h { margin: 18px 0 6px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+.fx-bullet { padding-left: 16px; position: relative; margin-bottom: 0.3em; }
+.fx-bullet::before { content: '·'; position: absolute; left: 4px; color: var(--fx-prompt); }
+
+.fx-triad { margin-top: 40px; }
+.fx-triad-h { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.fx-story { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--line-2); }
+.fx-story-n { font-family: var(--hand); font-size: 22px; color: var(--ink-3); }
+.fx-story-h { font-family: var(--hand); font-size: 22px; margin-bottom: 8px; }
+.fx-open { font-style: italic; color: var(--ink-2); }
+.fx-close { font-style: italic; }
+
+@media (max-width: 760px) {
+  .fx-feature, .fx-exp-head { grid-template-columns: 1fr; gap: 16px; }
+  .fx-feature img { max-width: 320px; }
+  .fx-song { margin-left: 0; padding: 20px 18px; font-size: 18px; }
+  .fx-books { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fx-cards { grid-template-columns: 1fr; }
+  .fx-turn { grid-template-columns: 1fr; gap: 2px; }
+  .fx-block { padding: 18px 16px 6px; }
+}
