@@ -176,31 +176,39 @@ const figs = essays.research.figures.filter((f) =>
       <p style="margin-top:34px"><a class="more" href="/info">Full record ⇢</a></p>
     </section>
 
-    <!-- THE DOOR -------------------------------------------------------- -->
-    <section style="margin-top:90px; background:var(--lm-paper); padding:70px 0 80px" id="door">
-      <div class="wrap">
-        <div class="kicker" style="color:var(--green)">The door</div>
-        <h2 class="sec" style="margin:12px 0 18px; color:var(--green)">Little Martians</h2>
-        <p style="max-width:36em">
-          Imagining the future with my hands. I create a sci-fi world based on my ceramic
-          characters. They’re Little Martians: a species descended from all of Earth’s life,
-          tending life in extreme worlds and keeping our memory in the Imaginarium.
-        </p>
-        <a class="more" style="border-color:var(--green); color:var(--green)"
-           href={site.littleMartians} rel="noopener" target="_blank">
-          Enter littlemartians.world ⇢
-        </a>
+    <!-- THE DOOR --------------------------------------------------------
+         The two worlds the work lives in, each one a picture you walk into. -->
+    <section class="doors" id="door">
+      <a class="door" href={site.littleMartians} rel="noopener" target="_blank">
+        <img src="/images/home/door-martians.webp" alt="A ceramic Little Martian head lying on cracked desert ground." loading="lazy" />
+        <div class="door-t">
+          <div class="wrap">
+            <div class="kicker">The door</div>
+            <h2>Little Martians</h2>
+            <p>
+              Imagining the future with my hands. I create a sci-fi world based on my ceramic
+              characters. They’re Little Martians: a species descended from all of Earth’s life,
+              tending life in extreme worlds and keeping our memory in the Imaginarium.
+            </p>
+            <span class="more">Enter littlemartians.world ⇢</span>
+          </div>
+        </div>
+      </a>
 
-        <h2 class="sec" style="margin:56px 0 18px; color:var(--green)">Mars College</h2>
-        <p style="max-width:36em">
-          Mars College is an annual off-grid pop-up college built literally from the ground up
-          every winter in the California desert.
-        </p>
-        <a class="more" style="border-color:var(--green); color:var(--green)"
-           href="https://mars.college" rel="noopener" target="_blank">
-          mars.college ⇢
-        </a>
-      </div>
+      <a class="door" href="https://mars.college" rel="noopener" target="_blank">
+        <img src="/images/home/door-mars.webp" alt="Painted arches on the walls of a solar-powered structure in the California desert, Mars College." loading="lazy" />
+        <div class="door-t">
+          <div class="wrap">
+            <div class="kicker">The desert</div>
+            <h2>Mars College</h2>
+            <p>
+              Mars College is an annual off-grid pop-up college built literally from the ground up
+              every winter in the California desert.
+            </p>
+            <span class="more">mars.college ⇢</span>
+          </div>
+        </div>
+      </a>
     </section>
 
   </div>
