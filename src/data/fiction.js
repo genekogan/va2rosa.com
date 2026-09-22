@@ -10,8 +10,8 @@
 export const fiction = {
   kicker: 'Writing · since 2020',
   title: 'Fiction writing',
-  hero: '/images/writing/fiction-hero.webp',
-  heroAlt: 'A spread from the Little Martians Codex: Kalama in a river of lava on the left, Mycos among mushrooms on the right, with handwritten notes around them.',
+  hero: '/images/writing/fiction-books.webp',
+  heroAlt: 'Three Little Martians books in print on a wrought-iron table: O Segredo de Kweku, Verdelis Letter, and Dear Human, Welcome to the Little Martians World.',
   lede: 'Most of my fiction happens inside one world: the Little Martians, future beings descended from all of Earth’s life, who keep our memory in a vast simulation called the Imaginarium.',
   intro: [
     'The world began as clay in 2020 and grew into letters, songs, scripts, books and characters that people can talk to. Some of it I wrote alone, some with friends at Mars College, and some in conversation with language models. The last group has its own section below, with every text marked for what I wrote, what I asked the machine, and what it answered.',
