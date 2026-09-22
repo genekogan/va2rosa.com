@@ -5,39 +5,45 @@
 export const verdelisWorld = {
   kicker: 'Agentic storytelling · 2024 to 2025',
   title: 'Verdelis.world',
-  sub: 'A Little Martian with her own website, who wrote and published a film a day',
+  sub: 'A Little Martian who publishes her own films',
   hero: '/images/writing/verdelis/hero.webp',
   heroAlt: 'Verdelis as a mossy ceramic head beside a stream, a still from one of her films.',
 
   lede:
-    'Verdelis began as a clay head I sculpted in the desert at Mars College. In 2025 she became something else: an agent with a voice, a face, a site of her own and a film published every morning, made with Gene Kogan on Eden.',
+    'Gene Kogan and I have been experimenting with agentic storytelling for years. The phrase can sound grand, but the simplest entry point is familiar: you give a language model a character, a context and a voice, and you ask it to speak as that character.',
 
   intro: [
-    'The question was whether a character can keep telling her own stories once I step back. Not a chatbot answering questions, and not a film I direct shot by shot, but a system with enough of a world inside it to keep going, and enough of a self to stay recognisable while it does.',
-    'Everything the agent uses comes from something physical. The sculpture was photographed; fifteen to twenty-five of those photographs trained a LoRA, a small adapter that holds her sculptural identity — the glaze, the leaves, the cracks — and pulls every image generation back towards her. Her voice, her lore and her way of speaking come from the books and letters already written for her.',
+    'If you have ever typed “talk like Shakespeare” into ChatGPT or Claude, you have touched the surface. That is impersonation, and it is deceptively shallow. A character voice is not the same thing as a character with continuity, a world with rules, and a narrative engine that can keep generating new stories without collapsing into clichés.',
+    'What I care about is harder: building a world with enough internal structure — several characters, an evolutionary history, an implied physics, a philosophical underground — that it can continue beyond me. Ideally it becomes a simulation that can surprise its creator while still feeling true to itself.',
+    'My process begins with sculpture. I find it essential to be grounded in physical reality while working with AIs. I start with handmade ceramic heads because I trust what my hands discover before my intellect has words for it. Then AI helps me expand the world outward with images, text, music and film, each medium adding corpus and constraints.',
+    'Verdelis began as one of those clay heads, made in the desert at Mars College. Fired, photographed and distilled into a LoRA — a compact personality adapter that teaches an image model her textures, her cracks, her material signature — she became a character an automated system could keep drawing. We built all of this on Eden.art, the platform Gene co-founded with Xander Steenbrugge.',
   ],
 
   film: {
     file: '/video/verdelis-film.mp4',
     poster: '/video/verdelis-film.webp',
-    caption: 'One of the films, 2025. Script, voice, music and images all generated; the character held by her LoRA.',
+    caption: 'One of the films. Script, voice, music and images all generated; the character held steady by her LoRA.',
   },
 
   pipeline: {
-    title: 'How a film was made, every day',
-    note: 'Five stages, run automatically each morning on Eden.',
+    title: 'How the daily story generator works',
+    note: 'Every day the system generates a short film end to end — script, voice, music, visuals, publishing.',
     steps: [
-      { n: '01', name: 'Seed', body: 'A prompt generator samples values along conceptual axes — curiosity, cooperation, resilience — from the geometric consciousness model: twelve faces of a dodecahedron, grouped in the four triads of being, knowing, doing and connecting.' },
-      { n: '02', name: 'Narrative', body: 'A language model, holding her lore as a system prompt, turns the seed into a script of 150 to 250 words with a clear three-act arc.' },
-      { n: '03', name: 'Audio', body: 'A voice model, fine-tuned on readings of her books, narrates the script. Ambient music is composed for it.' },
-      { n: '04', name: 'Visual', body: 'Shot descriptions go to the image model with her LoRA attached, then to a generative video model. Matching keyframes per scene keep the film visually coherent.' },
-      { n: '05', name: 'Publish', body: 'The one-minute film is posted to verdelis.world with its transcript and metadata.' },
+      { n: '01', name: 'Seed', body: 'We sample a small set of conceptual coordinates: curiosity, cooperation, resilience, and so on.' },
+      { n: '02', name: 'Narrative', body: 'A language model turns those coordinates into a short script with a clear arc, around 150 to 250 words.' },
+      { n: '03', name: 'Audio', body: 'A voice model narrates it; a generative audio model composes the music and ambience.' },
+      { n: '04', name: 'Visual', body: 'Shot descriptions go to an image model with the Verdelis LoRA attached, and the keyframes are animated into a film.' },
+      { n: '05', name: 'Publish', body: 'The system posts to the site by itself, with transcript and metadata.' },
+    ],
+    after: [
+      'The design principle is simple: the LoRA enforces visual continuity, and the seeds are supposed to enforce narrative diversity. That “supposed to” is where the real research begins.',
+      'In the paper we also described a geometric consciousness scaffold: a twelve-faced dodecahedron grouped into four triads — being, knowing, doing, connecting — used to generate those creative coordinates and append them to the lore prompt at runtime. It was my attempt to make identity manipulable as structure. Could we describe identity as a pattern? And if so, would a geometric shape help?',
     ],
   },
 
   daily: {
     title: 'Three of the daily films',
-    body: 'Around seventy were made between July and October 2025. The archive on her site holds a selection, because many of them are too alike to show.',
+    body: 'Around seventy were made between July and October 2025. Her archive holds a selection; many of the others are too alike to show.',
     items: [
       { file: '/video/verdelis-2025-10-05.mp4', poster: '/video/verdelis-2025-10-05.webp', caption: '5 October 2025' },
       { file: '/video/verdelis-2025-10-03.mp4', poster: '/video/verdelis-2025-10-03.webp', caption: '3 October 2025' },
@@ -46,21 +52,26 @@ export const verdelisWorld = {
   },
 
   failures: {
-    title: 'Where it failed',
+    title: 'What we learned the hard way: repetition',
     body: [
-      'Left entirely to itself, the system drifts towards blandness. Two failures showed up again and again.',
+      'The most honest summary of our findings is that fully automated storytelling breaks down fast, because language models tend towards degeneration: blandness, repetition, formula. In Verdelis.world it showed up in two ways.',
     ],
     items: [
-      { name: 'Prompt echoing', body: 'The character repeats phrases from her own system prompt, as if quoting her instructions back at the viewer.' },
-      { name: 'Narrative sameness', body: 'Different seeds, same shape. Whole runs of films circle one image or one motif, and every story resolves safely, in the same beats, at the same pace.' },
+      { name: 'Prompt echoing', body: 'The character repeats key phrases and ideas from her own lore. Ironically, the more carefully you define a character, the more you risk trapping her in a loop of self-quotation.' },
+      { name: 'Narrative sameness', body: 'Even when the output is not literally repeating, it rhymes too much: the same beats, the same moral arcs, the same safe story shapes.' },
+    ],
+    after: [
+      'You can fight this with sampling, with structured randomness, with layered prompts and remixed seeds — we tried all of it, including my dodecahedron. Some variants did improve diversity, but usually at the cost of world consistency. How do you open enough entropy to stay alive, without snapping the spine of the world?',
     ],
   },
 
   pivot: {
-    title: 'What I changed',
+    title: 'From autonomy to nurturing',
     body: [
-      'Rather than push for full automation, the project turned towards a feedback system: storytelling as a conversation between the agent and me. I talk with her, she proposes directions, I choose and disturb, and only then does the film get rendered.',
-      'The human part is not supervision. It is entropy and desire — the thing that keeps the system from settling into its own formula.',
+      'Eventually we made a decision that changed the direction of the whole project. Instead of chasing fully automated stories, we moved towards feedback systems: storytelling as a dialogue between me and the agent.',
+      'I am building a world while Gene is building the system. I talk with the agent and we develop a storyboard together; I choose among candidate directions, which is human taste as selection pressure; then the system renders the film. In this model the human becomes a source of entropy and desire, an intentional disturbance that keeps the simulation from converging into formula.',
+      'I still very much prefer the films I make myself, but I see a lot of potential in this hybrid.',
+      'Agentic storytelling, to me, is about building conditions where stories can keep happening: where characters can continue, worlds can evolve, and people can step into a living narrative ecosystem instead of consuming a finished product. Personally, I would like to create a world in which parts of my mind could live beyond me, and become something else.',
     ],
   },
 
@@ -68,14 +79,14 @@ export const verdelisWorld = {
     { label: 'Visit verdelis.world', href: 'https://www.verdelis.world/', external: true },
     { label: 'Talk to Verdelis on Eden', href: 'https://app.eden.art/chat?agent=verdelis', external: true },
     { label: 'The archive of films', href: 'https://www.verdelis.world/archive', external: true },
-    { label: 'Agentic Storytelling, the essay', href: 'https://littlemartians.substack.com/p/agentic-storytelling', external: true },
+    { label: 'Agentic Storytelling, the whole essay', href: 'https://littlemartians.substack.com/p/agentic-storytelling', external: true },
   ],
 
   paperCard: {
     kicker: 'The paper',
     title: 'Little Martians: From Desert Clay to Generative Agents',
     meta: 'Vanessa Rosa and Gene Kogan · NeurIPS 2025, Creative AI track',
-    body: 'Verdelis.world was presented at NeurIPS 2025 in San Diego, as a paper, a poster and a panel.',
+    body: 'We presented Verdelis.world at NeurIPS 2025 as a paper and a poster, and took part in a panel curated by Luba Elliott on stories that emerge between actors.',
     href: '/neurips-2025',
     image: '/images/writing/neurips/poster.webp',
   },

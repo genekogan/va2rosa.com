@@ -45,6 +45,11 @@ const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
           </li>
         ))}
       </ol>
+      {v.pipeline.after && (
+        <div class="narrow" style="margin-top:28px">
+          {v.pipeline.after.map((p) => <p>{p}</p>)}
+        </div>
+      )}
     </section>
 
     <!-- THE DAILY FILMS --------------------------------------------------- -->
@@ -77,6 +82,11 @@ const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
           </article>
         ))}
       </div>
+      {v.failures.after && (
+        <div class="narrow" style="margin-top:26px">
+          {v.failures.after.map((p) => <p>{p}</p>)}
+        </div>
+      )}
     </section>
 
     <section class="vw-sec">
