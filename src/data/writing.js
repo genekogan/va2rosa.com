@@ -267,7 +267,7 @@ export const groups = [
         image: '/images/writing/talk-foresight.webp',
         imageAlt: 'Still from the talk at Edge Esmeralda.',
         kind: 'Talk',
-        venue: 'Foresight Institute and Protocol Labs, Edge Esmeralda',
+        venue: 'Foresight Institute and Protocol Labs, Edge Esmeralda · Raven Theater, Healdsburg, California',
         detail:
           'I walked through the Little Martians world, and Gene Kogan introduced Abraham.ai in the same session.',
         links: [{ label: 'Watch it', href: 'https://www.youtube.com/watch?v=JV10RDZuu14' }],

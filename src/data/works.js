@@ -19,10 +19,10 @@ export const pioneerWorks = {
   heroAlt:
     'The painted fence turning the corner at Pioneer Works, with the red brick building and the street behind it.',
   lede:
-    'Two hundred and fifty square metres of painting wrapped around the Center for Art and Innovation in Red Hook, Brooklyn. It stood for four years, and then it did what a painted fence does.',
+    'Two hundred and fifty square metres of painting wrapped around the Center for Art and Innovation in Red Hook, Brooklyn. Most of it stood until the end of 2020, one stretch longer than that, and then it did what a painted fence does.',
   meta: [
     ['Where', 'Pioneer Works, Red Hook, Brooklyn'],
-    ['When', 'Painted 2017, stood until 2021'],
+    ['When', 'Painted July 2017; up until December 2020, one stretch of it longer'],
     ['Scale', 'About 250 m² of fence'],
     ['Made during', 'The technology residency'],
   ],
@@ -61,7 +61,7 @@ export const pioneerWorks = {
     {
       title: 'Four years later, 2021',
       body: [
-        'By September 2021 the sun, the salt air and four Red Hook winters had done their work. I went back and photographed the fence panel by panel: the blue gone chalky, the stencils half eaten, rust coming up through the pattern, paint lifting off in sheets, and a surveillance notice bolted straight through the painting.',
+        'By September 2021 the sun, the salt air and four Red Hook winters had done their work on the stretch that was still standing. I went back and photographed it panel by panel: the blue gone chalky, the stencils half eaten, rust coming up through the pattern, paint lifting off in sheets, and a surveillance notice bolted straight through the painting.',
         'A mural outdoors is a slow performance and this is its last act. It is not a failure. It is the thing behaving exactly as a painted fence in Red Hook behaves.',
       ],
       gallery: 'slides',
@@ -434,7 +434,7 @@ export const ethnocomputingExperiments = {
     image: '/images/pw/pw-corner.webp',
     imageAlt: 'The painted blue fence wrapping the corner of Pioneer Works.',
     body: [
-      'The same building, from the outside. Two hundred and fifty square metres of painting around the perimeter, made during the technology residency in 2017 and standing until 2021.',
+      'The same building, from the outside. Two hundred and fifty square metres of painting around the perimeter, made during the technology residency in July 2017. It was up until December 2020, and one stretch of it stood longer.',
     ],
     links: [
       { label: 'The Pioneer Works fence', href: '/pioneer-works' },

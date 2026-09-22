@@ -31,7 +31,7 @@ export const shows = [
   { kind: 'group', year: null, title: 'Drawings', venue: '', city: '', note: 'Year and venue to confirm.' },
 
   // --- installations & public commissions ---------------------------------
-  { kind: 'installation', year: 2022, title: 'This Mural is a Time-Traveling Portal', venue: 'Xenoform Labs', city: 'San Francisco', thread: 'the-silk-roads' },
+  { kind: 'installation', year: 2022, title: 'This Mural is a Time-Traveling Portal', venue: 'Gray Area, with Xenoform Labs as partner', city: 'San Francisco', thread: 'the-silk-roads' },
   { kind: 'installation', year: 2017, title: 'Mural, Pioneer Works, up until 2020', venue: 'Pioneer Works, Technology Residency', city: 'Red Hook, New York', thread: 'the-silk-roads' },
   { kind: 'installation', year: 2016, title: 'The Sankofa Project', venue: 'Quilombo of Pedra do Sal, during the Olympic Games', city: 'Rio de Janeiro', thread: 'visible-memories' },
   { kind: 'installation', year: 2014, title: 'The slave ship, Pedra do Sal', venue: 'With Felipe Carvalho, Diego Deus, Douglas Oliveiras', city: 'Rio de Janeiro', thread: 'visible-memories' },
