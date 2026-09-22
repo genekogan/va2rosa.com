@@ -123,8 +123,11 @@ export const groups = [
         venue: 'USO IMPRÓPRIO: Seminars in Contemporary Studies of the Arts, PPGCA',
         detail:
           'Written in the first person on purpose. Uses Jonathan Crary’s Techniques of the Observer against the standard account of modernism, and argues that the concept of art inherited from Renaissance Europe is too narrow to hold what images now do.',
-        note: 'Published in Portuguese.',
-        links: [],
+        note: 'Published in Portuguese. English translation, 2026, by Claude.',
+        links: [
+          { label: 'English translation (PDF)', href: '/downloads/vanessa-rosa-valor-simbolico-2016-english.pdf' },
+          { label: 'Portuguese original (PDF)', href: '/downloads/vanessa-rosa-valor-simbolico-2016-portugues.pdf' },
+        ],
       },
       {
         year: 2016,
@@ -134,8 +137,11 @@ export const groups = [
         venue: 'P&D Design, Universidade Anhembi Morumbi',
         detail:
           'Follows Lev Manovich’s database as symbolic form back through Panofsky to Ernst Cassirer, and asks what it means that the dominant cultural form of the computer age does not connect to any physical space.',
-        note: 'Published in Portuguese.',
-        links: [],
+        note: 'Published in Portuguese. English translation, 2026, by Claude.',
+        links: [
+          { label: 'English translation (PDF)', href: '/downloads/vanessa-rosa-database-2016-english.pdf' },
+          { label: 'Portuguese original (PDF)', href: '/downloads/vanessa-rosa-database-2016-portugues.pdf' },
+        ],
       },
       {
         year: 2012,
