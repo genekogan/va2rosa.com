@@ -303,10 +303,10 @@ export const haMuitasNoites = {
   slug: 'ha-muitas-noites',
   kicker: 'Animation for television · 2014 to 2015',
   title: 'Há muitas noites na noite',
-  hero: g.tendler[0]?.src,
-  heroAlt: 'A painted landscape from the title sequence, with a line of the poem across it.',
+  hero: '/images/tendler/tendler-00.webp',
+  heroAlt: 'The bay and the town, painted for the title sequence of the series.',
   lede:
-    'A seven-part documentary series by Silvio Tendler on Ferreira Gullar’s exile, built around his Poema Sujo. I made the painted animation that runs through it.',
+    'A seven-part documentary series by Silvio Tendler on Ferreira Gullar’s exile, built around his Poema Sujo. I made the time-lapse animations that run through it.',
   meta: [
     ['Directed by', 'Silvio Tendler'],
     ['Produced by', 'Caliban'],
@@ -314,8 +314,8 @@ export const haMuitasNoites = {
     ['My part', 'More than 20 time-lapse painting animations, and 40 drawings'],
   ],
   intro: [
-    'Gullar wrote Poema Sujo in Buenos Aires in 1975, in exile, believing he might be killed before he finished it. Tendler’s series follows that journey through testimony, music and readings, and it needed images for the parts of a life that were never filmed.',
-    'I painted those parts and filmed myself painting them, so the image arrives the way a memory does: a mark at a time, in front of you, until it becomes a place. More than twenty of these time-lapse sequences were produced, alongside forty drawings.',
+    'Gullar wrote Poema Sujo in Buenos Aires in 1975, in exile, believing he might be killed before he finished it. Tendler’s series follows that journey through testimony, music and readings, and it needed images for the parts of a life that were never filmed. Many Brazilian star artists took part in the project, especially in the teaser, among them Maria Bethânia, Alcione, Zeca Baleiro, Edu Lobo and Letícia Sabatella.',
+    'More than twenty of these time-lapse sequences were produced, alongside forty drawings that were animated in After Effects by Caliban studios.',
   ],
   videos: [
     { title: 'Teaser', vimeo: '249747317', caption: 'Há muitas noites na noite — teaser.' },
@@ -326,13 +326,12 @@ export const haMuitasNoites = {
     {
       title: 'Frames',
       body: [
-        'Stills from the teaser and from episode five, Poema Sujo 2. The whole series is on television archives and on YouTube.',
+        'Stills from the teaser and from episodes four and five, Poema Sujo 1 and 2. Everything in colour in the series is mine, painted on paper and filmed as it was made; the black-and-white material is archive. The whole series is on television archives and on YouTube.',
       ],
-      images: take('tendler', 0, 8),
+      gallery: 'slides',
+      images: g.tendler,
     },
   ],
-  closing:
-    'This was the first time my painting had to serve somebody else’s argument, on a schedule, at broadcast length. It taught me most of what I know about editing.',
 };
 
 // ---------------------------------------------------------------------------

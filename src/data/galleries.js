@@ -259,6 +259,22 @@ export const g = {
  ],
  "street": [
   {
+   "src": "/images/street/cam-01.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/street/cam-02.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/street/cam-03.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/street/cam-04.webp",
+   "caption": ""
+  },
+  {
    "src": "/images/street/street-000.webp",
    "caption": "Concepción, Chile, 2013. Swimmers along a river wall, painted over several days with a borrowed ladder."
   },
@@ -339,7 +355,76 @@ export const g = {
    "caption": "New York, 2016. Tiles carried indoors, onto a shopfront in Brooklyn."
   }
  ],
- "sk": [],
+ "sk": [
+  {
+   "src": "/images/sk/dr-01.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-02.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-03.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-04.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-05.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-06.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-07.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-08.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-09.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-10.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-11.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-12.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-13.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-14.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-15.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-16.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/sk/dr-17.webp",
+   "caption": ""
+  }
+ ],
  "vc": [
   {
    "src": "/images/vc/vc-000.webp",
@@ -391,6 +476,62 @@ export const g = {
   },
   {
    "src": "/images/vc/vc-012.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-mou-1.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-mou-2.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-mou-3.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-mou-4.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-mou-5.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-mou-6.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-mou-7.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-mou-8.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-pai-1.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-pai-2.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-pai-3.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-rab-1.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-rab-2.webp",
+   "caption": ""
+  },
+  {
+   "src": "/images/vc/vc-rab-3.webp",
    "caption": ""
   }
  ],
@@ -512,20 +653,68 @@ export const g = {
  ],
  "tendler": [
   {
-   "src": "/images/tendler/tendler-000.webp",
-   "caption": "A painted landscape from the series, with a line of the poem across it."
+   "src": "/images/tendler/tendler-00.webp",
+   "caption": "Teaser, 1:34. The bay and the town, painted for the title sequence."
   },
   {
-   "src": "/images/tendler/tendler-001.webp",
-   "caption": "“A solidão do poeta, a vida ameaçada, a dor e a doença dos filhos.”"
+   "src": "/images/tendler/tendler-01.webp",
+   "caption": "Teaser, 1:56. A woman, alone, painted in a few strokes of ochre."
   },
   {
-   "src": "/images/tendler/tendler-002.webp",
-   "caption": "“O exílio do poeta, década de 1970.”"
+   "src": "/images/tendler/tendler-02.webp",
+   "caption": "Teaser, 2:00. The couple, from the same sequence."
   },
   {
-   "src": "/images/tendler/tendler-003.webp",
-   "caption": "Ferreira Gullar, filmed for the series."
+   "src": "/images/tendler/tendler-03.webp",
+   "caption": "Teaser, 2:07. The couple by the window."
+  },
+  {
+   "src": "/images/tendler/tendler-04.webp",
+   "caption": "Teaser, 3:23. Blue and yellow running down the paper before the picture appears."
+  },
+  {
+   "src": "/images/tendler/tendler-05.webp",
+   "caption": "Teaser, 3:33. Eyes over the rooftops."
+  },
+  {
+   "src": "/images/tendler/tendler-06.webp",
+   "caption": "Teaser, 3:41. The house watched by the eyes in the sky."
+  },
+  {
+   "src": "/images/tendler/tendler-07.webp",
+   "caption": "Episode 4, Poema Sujo 1, 21:03. The ladder, before the sugar cane."
+  },
+  {
+   "src": "/images/tendler/tendler-08.webp",
+   "caption": "Episode 4, Poema Sujo 1, 21:14. The road through the palms of Remédios."
+  },
+  {
+   "src": "/images/tendler/tendler-09.webp",
+   "caption": "Episode 4, Poema Sujo 1, 21:25. The rails arrive, with the lines of the poem."
+  },
+  {
+   "src": "/images/tendler/tendler-10.webp",
+   "caption": "Episode 4, Poema Sujo 1, 21:29. The locomotive, “um paquiderme de aço”."
+  },
+  {
+   "src": "/images/tendler/tendler-11.webp",
+   "caption": "Episode 4, Poema Sujo 1, 27:12. Gullar at the window in Buenos Aires."
+  },
+  {
+   "src": "/images/tendler/tendler-12.webp",
+   "caption": "Episode 4, Poema Sujo 1, 27:38. “Em pleno coração de Buenos Aires, às quatro horas desta tarde.”"
+  },
+  {
+   "src": "/images/tendler/tendler-13.webp",
+   "caption": "Episode 5, Poema Sujo 2, 19:00. The bird."
+  },
+  {
+   "src": "/images/tendler/tendler-14.webp",
+   "caption": "Episode 5, Poema Sujo 2, 19:21. The bird in its cage."
+  },
+  {
+   "src": "/images/tendler/tendler-15.webp",
+   "caption": "The title card of the series, with a line of the poem across the painting."
   }
  ]
 };

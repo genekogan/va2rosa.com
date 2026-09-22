@@ -7,9 +7,9 @@
   object-position: 50% 50%;
 }
 
-/* Silvio Tendler's title card reads "nenhum rio apodre". Anchoring left eats
-   the first word, which changes what the sentence says. */
-.projhero img[src$="/images/tendler/tendler-000.webp"] {
-  object-position: 50% 50%;
+/* Silvio Tendler: the bay with the town on the hill. The town sits a little
+   below centre, and the scrim covers the bottom, so anchor just under the middle. */
+.projhero img[src$="/images/tendler/tendler-00.webp"] {
+  object-position: 50% 55%;
 }
 .projhero img[src$="/images/writing/fiction-books.webp"] { object-position: 50% 38%; }
