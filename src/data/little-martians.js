@@ -65,7 +65,7 @@ export const lm = {
         { src: '/images/fb/fb-09.webp' },
         { src: '/images/fb/fb-13.webp' },
         { src: '/images/fb/fb-15.webp', caption: 'Painting faces during the cyberfuture dinner' },
-        { src: '/images/fb/fb-17.webp' },
+        { src: '/images/fb/fb-17.webp', caption: 'Anders Sandberg, painted at the cyberfuture dinner' },
       ],
     },
     {

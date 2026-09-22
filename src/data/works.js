@@ -753,7 +753,7 @@ export const foresight = {
         { src: '/images/fb/fb-14.webp', caption: 'Painting a face' },
         { src: '/images/fb/fb-15.webp', caption: 'Working' },
         { src: '/images/fb/fb-16.webp', caption: 'Finished' },
-        { src: '/images/fb/fb-17.webp', caption: 'Finished' },
+        { src: '/images/fb/fb-17.webp', caption: 'Anders Sandberg, painted at the cyberfuture dinner' },
         { src: '/images/fb/fb-18.webp', caption: 'Finished' },
         { src: '/images/fb/fb-19.webp', caption: 'At the dinner' },
       ],
