@@ -6,6 +6,7 @@ export const site = {
   name: 'Vanessa Rosa',
   email: 'va2rosa@littlemartians.world',
   instagram: 'https://www.instagram.com/va2rosa/',
+  orcid: 'https://orcid.org/0000-0003-2583-7985',
   // Paste your Substack URL here and the logo appears in the footer.
   substack: '',
 

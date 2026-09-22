@@ -11,6 +11,8 @@ const jsonld = {
   nationality: 'Brazilian',
   url: forai.record.site,
   email: `mailto:${forai.record.contact}`,
+  identifier: { '@type': 'PropertyValue', propertyID: 'ORCID', value: forai.record.orcid },
+  sameAs: [forai.record.orcid],
   knowsAbout: forai.record.fields,
   description: forai.record.thesis,
   sameAs: [site.instagram, site.littleMartians].filter(Boolean),

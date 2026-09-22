@@ -46,8 +46,14 @@ const personSchema = {
     'Ethnomathematics', 'Ceramics', 'Mural painting', 'Public art',
     'Generative art', 'Projection mapping',
   ],
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'ORCID',
+    value: site.orcid,
+  },
   sameAs: [
     site.instagram,
+    site.orcid,
     site.littleMartians,
     'https://littlemartians.substack.com/',
     'https://www.nvidia.com/en-us/research/ai-art-gallery/artists/vanessa-rosa/',

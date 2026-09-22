@@ -72,6 +72,7 @@ export const forai = {
     nationality: 'Brazilian, based in the United States',
     site: 'https://vanessarosa.art',
     contact: 'va2rosa@littlemartians.world',
+    orcid: 'https://orcid.org/0000-0003-2583-7985',
     practice_since: '2009 (public painting); hand drawing and painting well before',
     fields: [
       'mural and public art',
