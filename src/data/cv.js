@@ -18,6 +18,7 @@ import { festivalRows } from './festivals.js';
 export const cv = [
   ...festivalRows,
   // ——— Now and upcoming ———
+  { year: 2026, month: 10, monthLabel: 'Ongoing', type: 'teaching', title: 'Spray painting workshop series', venue: 'SESC Rio', city: 'Rio de Janeiro, Brazil', now: true },
   { year: 2027, month: 12, monthLabel: 'December–April', type: 'teaching', title: 'Preparing the new edition of Mars College', venue: 'Mars College', city: 'Bombay Beach, California', now: true, thread: 'mars-college' , href: 'https://mars.college/' },
   { year: 2026, month: 12, monthLabel: 'From 2 December', type: 'exhibition', title: 'Arte Generativa', venue: 'Fundação Itaú, invited artist. Little Martians: Dear Human, My Muse', city: 'São Paulo, Brazil', now: true, featured: true, thread: 'little-martians' , href: 'https://www.itaucultural.org.br/' },
   { year: 2026, month: 9, monthLabel: '18–27 September', type: 'film', title: 'Verdelis & Mycos', venue: 'The Galactic Imaginarium Film Festival. An annual hybrid event dedicated strictly to science fiction and fantasy films', city: 'Timiș and Dumbrăvița, Romania', now: true, thread: 'little-martians', href: 'https://festival.galactic.one' },
