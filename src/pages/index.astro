@@ -62,21 +62,7 @@ const figs = essays.research.figures.filter((f) =>
     <!-- RESEARCH -------------------------------------------------------- -->
     <section class="wrap essay res-block" id="research-note">
       {figs[0] && (
-        figs[0].video ? (
-          <video
-            class="res-fig left"
-            src={figs[0].video}
-            poster={figs[0].src}
-            aria-label={figs[0].alt}
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="none"
-          ></video>
-        ) : (
-          <img class="res-fig left" src={figs[0].src} alt={figs[0].alt} loading="lazy" />
-        )
+        <img class="res-fig left" src={figs[0].src} alt={figs[0].alt} loading="lazy" />
       )}
 
       <div class="res-mid">
@@ -98,21 +84,7 @@ const figs = essays.research.figures.filter((f) =>
       </div>
 
       {figs[1] && (
-        figs[1].video ? (
-          <video
-            class="res-fig right"
-            src={figs[1].video}
-            poster={figs[1].src}
-            aria-label={figs[1].alt}
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="none"
-          ></video>
-        ) : (
-          <img class="res-fig right" src={figs[1].src} alt={figs[1].alt} loading="lazy" />
-        )
+        <img class="res-fig right" src={figs[1].src} alt={figs[1].alt} loading="lazy" />
       )}
     </section>
 

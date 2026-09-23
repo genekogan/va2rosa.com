@@ -2774,12 +2774,6 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   .topic h3 { font-size: 18px; }
 }
 
-/* the creature in the research block, when it is a film rather than a still */
-video.res-fig { background: none; }
-@media (prefers-reduced-motion: reduce) {
-  /* the poster stays; nothing moves for a reader who asked for stillness */
-  video.res-fig { animation: none; }
-}
 
 /* the two ways in, under each picture on the homepage */
 .door-links { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px 26px; }
