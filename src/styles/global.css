@@ -1350,8 +1350,14 @@ a.ul { border-bottom: 1px solid rgba(13, 33, 54, 0.35); }
 }
 
 /* --- the fixed nav, and what sits under it -------------------------------- */
-/* Pages without a hero start below the bar rather than behind it. */
-body:not(.hashero) > div { padding-top: 57px; }
+/* Pages without a hero start below the bar rather than behind it. The bar
+   wraps to two or three rows on a narrow screen, so its real height is
+   measured and published as --navh (see Base.astro); the values here are the
+   fallback if that script has not run yet. */
+body:not(.hashero) > div { padding-top: calc(var(--navh, 57px) + 14px); }
+@media (max-width: 620px) {
+  body:not(.hashero) > div { padding-top: calc(var(--navh, 150px) + 18px); }
+}
 
 /* Over the painting the bar is invisible; the pills carry themselves. */
 .hashero .nav {
@@ -2794,4 +2800,37 @@ video.res-fig { background: none; }
 }
 @media (max-width: 380px) {
   .res-block .res-ask { font-size: 28px; }
+}
+
+/* --- the bar on a phone ---------------------------------------------------
+   Three rows of pills took a third of the screen, so on a narrow window the
+   bar is one line — the name and a button — and the links come down only when
+   the button is pressed. */
+.nav-more { display: none; }
+@media (max-width: 620px) {
+  .nav { align-items: center; padding-top: 12px; padding-bottom: 12px; }
+  .nav-more {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 32px; padding: 0 0 8px;
+    border: 0; border-radius: 20px;
+    background: rgba(13, 33, 54, 0.78); color: #fff;
+    font-size: 20px; line-height: 1; cursor: pointer;
+  }
+  .nav.open .nav-more { background: var(--blue); }
+  .nav { position: fixed; }
+  .nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    gap: 8px;
+    padding: 14px var(--pad) 16px;
+    background: rgba(233, 238, 243, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav.open ul { display: flex; }
+  .hashero .nav.open ul { background: rgba(10, 26, 40, 0.86); border-bottom-color: transparent; }
+  .hashero .nav-more { background: rgba(13, 33, 54, 0.78); }
 }

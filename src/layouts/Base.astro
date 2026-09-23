@@ -112,5 +112,21 @@ const siteSchema = {
     </div>
     <Lightbox />
     <Portal />
+    <script is:inline>
+      // The bar is fixed, and on a narrow screen it wraps to more than one
+      // row. Publish its real height so a page without a hero starts under it
+      // instead of behind it.
+      (function () {
+        var nav = document.querySelector('.nav');
+        if (!nav) return;
+        var set = function () {
+          document.documentElement.style.setProperty('--navh', nav.offsetHeight + 'px');
+        };
+        set();
+        addEventListener('resize', set, { passive: true });
+        addEventListener('orientationchange', set);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
+      })();
+    </script>
   </body>
 </html>

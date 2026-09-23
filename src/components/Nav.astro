@@ -6,7 +6,13 @@ const { current = '' } = Astro.props;
 <nav class="nav" aria-label="Main">
   <a class="name" href="/">{site.name}</a>
 
-  <ul>
+  <!-- On a phone the bar is one line: the name, and this button to open the
+       links. On anything wider the button is not shown at all. -->
+  <button class="nav-more" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Show the links">
+    <span aria-hidden="true">…</span>
+  </button>
+
+  <ul id="nav-links">
     {nav.map((item) => (
       <li>
         <a
@@ -22,6 +28,28 @@ const { current = '' } = Astro.props;
 </nav>
 
 <script is:inline>
+  // The phone bar: one line until the button opens it.
+  (function () {
+    function start() {
+      var nav = document.querySelector('.nav');
+      var btn = nav && nav.querySelector('.nav-more');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Hide the links' : 'Show the links');
+      });
+      // a tap anywhere else closes it again
+      document.addEventListener('click', function (e) {
+        if (!nav.classList.contains('open') || nav.contains(e.target)) return;
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+    else start();
+  })();
+
   // On a hero page the bar is see-through until you leave the painting.
   function ready(fn) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
