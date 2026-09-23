@@ -127,11 +127,20 @@ export const contributions = [
   {
     n: 'III',
     title: 'Rituals',
-    years: 'Since 2021',
+    years: '',
     body: [
-      'My signature is the chocolate head eating ceremony, which I started in 2021 and have run every season since. Little Martian heads, cast in chocolate, handed around and eaten by everyone.',
+      'It started as a fun unpretentious project during our Midterms project presentation back in 2021. I created a series of eatable sculptures. Sofy Yuditskaya, the Mars Midterms original organizer, loved the work and pushed me to serve the chocolate heads the following year as part of her wedding celebration. Since then, it evolved as a Martian annual ritual. Eventually we realized it was a kind of cacao ceremony and it became a moment for expressing gratitude towards the community.',
     ],
-    images: [],
+    gallery: 'slides',
+    images: [
+      { src: '/images/mars/ritual/r-01.webp', caption: '2021. The first eatable sculptures.' },
+      { src: '/images/mars/ritual/r-02.webp', caption: '2021. Martian chocolate.' },
+      { src: '/images/mars/ritual/r-03.webp', caption: '2024. Eating a small chocolate head. Photograph by Chebel, who was the one who noticed the likeness to a cacao ritual.' },
+      { src: '/images/mars/ritual/r-04.webp', caption: '2026. The Midterms ritual with Ria Rajan. Photograph by Xiaocheng.' },
+      { src: '/images/mars/ritual/r-05.webp', caption: '2026. The Midterms ritual with Ria Rajan. Photograph by Xiaocheng.' },
+      { src: '/images/mars/ritual/r-06.webp', caption: '2026. The Midterms ritual with Ria Rajan. Photograph by Xiaocheng.' },
+      { src: '/images/mars/ritual/r-07.webp', caption: '2026. Martians watch the sunset in silence. Photograph by Xiaocheng.' },
+    ],
   },
   {
     n: 'IV',
