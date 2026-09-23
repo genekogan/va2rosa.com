@@ -2828,3 +2828,108 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   .hashero .nav.open ul { background: rgba(10, 26, 40, 0.86); border-bottom-color: transparent; }
   .hashero .nav-more { background: rgba(13, 33, 54, 0.78); }
 }
+
+/* ===========================================================================
+   LITTLE MARTIANS: Vanessa's own hand, cut as a typeface, and the page that
+   uses it. The face carries no em dash, so those lines use hyphens.
+   =========================================================================== */
+@font-face {
+  font-family: 'Verdelis';
+  src: url('/fonts/verdelis.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+.verdelis { font-family: 'Verdelis', var(--hand), serif; }
+
+/* the research, one picture next to the other */
+.lmposts {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+.lmpost img {
+  width: 100%; aspect-ratio: 1; object-fit: cover; display: block;
+  background: rgba(13, 33, 54, 0.06);
+}
+.lmpost h3 { font-size: 13px; line-height: 1.3; margin-top: 8px; font-weight: 400; }
+.lmpost-d {
+  font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3); margin-top: 4px;
+}
+.lmpost:hover h3 { text-decoration: underline; }
+
+/* a line of hers beside the hands that make the work */
+.lmquote { margin-top: 74px; }
+.lmquote-in {
+  display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 34px; align-items: center;
+}
+.lmquote-t { text-align: right; }
+.lmquote-big { font-size: clamp(30px, 4.6vw, 58px); line-height: 1.08; color: var(--blue); }
+.lmquote-sub { font-size: clamp(17px, 2vw, 24px); color: var(--ink-2); margin-top: 10px; }
+.lmquote img { width: 100%; display: block; }
+
+/* the picture that fades in and out of the page, with a line over it */
+.lmfeather { position: relative; margin-top: 70px; }
+.lmfeather img { width: 100%; height: clamp(320px, 56vh, 620px); object-fit: cover; display: block; }
+.lmfeather::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, var(--paper, #eef3f7) 0%, rgba(238, 243, 247, 0) 26%,
+              rgba(238, 243, 247, 0) 74%, var(--paper, #eef3f7) 100%);
+}
+.lmfeather-t { position: absolute; inset: 0; display: flex; align-items: center; z-index: 1; }
+.lmfeather-t .wrap { width: 100%; }
+.lmfeather-t p {
+  margin-left: auto; max-width: 11em; text-align: right;
+  font-size: clamp(28px, 4.2vw, 54px); line-height: 1.06; color: #fff;
+  text-shadow: 0 2px 22px rgba(4, 18, 20, 0.6);
+}
+
+.lmreality { margin: 72px 0 10px; text-align: center; }
+.lmreality .lmquote-big { color: var(--blue); }
+.lmreality-sub { margin-top: 14px; font-size: 17px; max-width: 30em; margin-left: auto; margin-right: auto; }
+
+/* from clay to agent */
+.lmpipe { list-style: none; counter-reset: none; max-width: 52em; }
+.lmpipe li {
+  display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px;
+  padding: 11px 0; border-bottom: 1px solid var(--line-2);
+  font-size: 14.5px; color: var(--ink-2);
+}
+.lmpipe li span { font-family: var(--hand); font-size: 17px; color: var(--blue); }
+
+/* the other books */
+.lmbooks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 34px; }
+.lmbook img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; box-shadow: 0 4px 18px rgba(13, 33, 54, 0.15); }
+.lmbook h3 { font-size: 14.5px; margin-top: 10px; font-weight: 400; }
+.lmbook .more { margin-top: 6px; display: inline-block; }
+
+/* the marks, and the agents behind them */
+.lmchars { margin-top: 76px; padding-top: 34px; border-top: 1px solid var(--line); }
+.lmchar-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px 20px; margin-top: 26px; }
+.lmchar img { width: 100%; max-width: 190px; display: block; margin: 0 auto; }
+.lmchar p { font-size: 13.5px; color: var(--ink-2); margin-top: 10px; }
+.lmchar .more { margin-top: 6px; display: inline-block; font-size: 11px; }
+
+.lmground { width: 100%; display: block; margin-top: 30px; }
+
+@media (max-width: 900px) {
+  .lmposts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .lmchar-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lmquote-in { grid-template-columns: 1fr; gap: 18px; }
+  .lmquote-t { text-align: left; }
+}
+@media (max-width: 620px) {
+  .lmposts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lmchar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lmbooks { grid-template-columns: 1fr; }
+  .lmfeather-t p { max-width: 100%; text-align: left; }
+}
+
+/* the two walks through the metaverse */
+.lmarium { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
+.lmarium figure { margin: 0; }
+.lmarium video { width: 100%; display: block; background: #0b1416; }
+.lmarium figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 8px; }
+@media (max-width: 620px) { .lmarium { grid-template-columns: 1fr; } }

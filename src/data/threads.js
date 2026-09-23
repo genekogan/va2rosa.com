@@ -679,7 +679,7 @@ export const threads = [
     start: 2020, end: null,
     state: 'ongoing',
     collection: 'worlds',
-    places: 'Bombay Beach · São Paulo · elsewhere',
+    places: 'Mars College & planet Earth',
     status: 'Ongoing',
     carrier: 'Future species communicates with our present',
     media: 'Ceramics · 3-D scanning · film · projection · generative models',

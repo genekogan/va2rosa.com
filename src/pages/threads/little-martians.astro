@@ -3,7 +3,8 @@ import Base from '../../layouts/Base.astro';
 import Spine from '../../components/Spine.astro';
 import BookReader from '../../components/BookReader.astro';
 import { threadBySlug } from '../../data/threads.js';
-import { lm } from '../../data/little-martians.js';
+import { lm, lmPage } from '../../data/little-martians.js';
+import { groups as writingGroups } from '../../data/writing.js';
 import { films } from '../../data/films.js';
 import { books } from '../../data/books.js';
 import { mainShows } from '../../data/exhibitions.js';
@@ -12,6 +13,19 @@ import { press } from '../../data/press.js';
 
 const t = threadBySlug('little-martians');
 const codex = books.titles.find((b) => b.read?.slug === 'codex');
+
+// The other Little Martians books, each with a page of its own.
+const otherBooks = ['kojii', 'verdelis', 'kweku']
+  .map((slug) => books.titles.find((bk) => bk.read?.slug === slug))
+  .filter(Boolean);
+
+// The research row: the posts Vanessa named, in the order she named them,
+// taken from the same list the research page uses.
+const lmEssays = writingGroups.find((g) => g.key === 'lm')?.items ?? [];
+const posts = lmPage.posts.titles
+  .map((t) => lmEssays.find((e) => e.title === t))
+  .filter(Boolean)
+  .map((e) => ({ ...e, when: lmPage.posts.dates[e.title] ?? e.year }));
 
 // The three films that open the page, in the order Vanessa chose.
 const featured = lm.films.featured.map((id) => films.find((f) => f.id === id)).filter(Boolean);
@@ -128,7 +142,16 @@ const tabs = [
     </div>
 
     <div class="narrow" style="margin-top:26px">
-      {lm.intro.map((p) => <p>{p}</p>)}
+      <p>
+        When the 2020 pandemic hit I was already in Mars. Not so far as the planet Mars, but in a
+        little part of the California Sonoran desert where some friends and I created an art
+        community and R&amp;D lab we call <a class="ul" href={lmPage.marsHref} target="_blank" rel="noopener">Mars</a>.
+        After all, if our technology could one day take some humans to Mars, we could just as well
+        use it to try to inhabit the harsh parts of nowadays Earth. A high-tech, low-cost approach.
+        It is an exercise in resilience and sustainability, with a lot of space for artistic madness
+        and fun.
+      </p>
+      <p>{lmPage.opening[1]}</p>
     </div>
 
     <p class="story-links" style="margin-top:26px">
@@ -138,6 +161,78 @@ const tabs = [
         </a>
       ))}
     </p>
+
+    <!-- WATCH FIRST ----------------------------------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">{lmPage.watchFirst.kicker}</div>
+      <h2 class="sec" style="margin:10px 0 6px">{lmPage.watchFirst.title}</h2>
+      <p class="narrow" style="margin-bottom:18px">{lmPage.watchFirst.note}</p>
+      <div class="vid">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${lmPage.watchFirst.youtube}?rel=0`}
+          title={lmPage.watchFirst.title}
+          loading="lazy"
+          allow="fullscreen; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- THE RESEARCH, WRITTEN ALONG THE WAY ---------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">{lmPage.posts.kicker}</div>
+      <h2 class="sec" style="margin:10px 0 18px">{lmPage.posts.title}</h2>
+      <div class="lmposts">
+        {posts.map((e) => (
+          <a class="lmpost" href={(e.links ?? [])[0]?.href} target="_blank" rel="noopener">
+            <img src={e.image} alt="" loading="lazy" data-nozoom />
+            <h3>{e.title}</h3>
+            <div class="lmpost-d">{e.when}</div>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top:20px"><a class="more" href={lmPage.posts.href}>{lmPage.posts.hrefLabel} ⇢</a></p>
+    </section>
+  </div>
+
+  <!-- IMAGINING THE FUTURE WITH OUR HANDS ------------------------------------ -->
+  <section class="lmquote">
+    <div class="wrap lmquote-in">
+      <div class="lmquote-t">
+        <p class="verdelis lmquote-big">{lmPage.hands.quote}</p>
+        <p class="verdelis lmquote-sub">{lmPage.hands.sub}</p>
+        <p style="margin-top:18px">
+          <a class="more" href={lmPage.hands.href} target="_blank" rel="noopener">The essay ⇢</a>
+        </p>
+      </div>
+      <img src={lmPage.hands.image} alt={lmPage.hands.imageAlt} loading="lazy" />
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="narrow" style="margin-top:56px">
+      {lmPage.story.map((p) => <p>{p}</p>)}
+      <p><b>{lmPage.bargain.lead}</b> {lmPage.bargain.body}</p>
+    </div>
+  </div>
+
+  <!-- TIME SPACE AS ORIGAMI --------------------------------------------------- -->
+  <section class="lmfeather">
+    <img src={lmPage.origami.image} alt={lmPage.origami.imageAlt} loading="lazy" />
+    <div class="lmfeather-t">
+      <div class="wrap"><p class="verdelis">{lmPage.origami.quote}</p></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="narrow" style="margin-top:52px">
+      {lmPage.guide.map((p) => <p>{p}</p>)}
+    </div>
+
+    <section class="lmreality">
+      <p class="verdelis lmquote-big">{lmPage.reality.quote}</p>
+      <p class="lmreality-sub"><b>{lmPage.reality.lead}</b></p>
+    </section>
 
     <!-- THE FILMS ------------------------------------------------------------ -->
     <section class="wsec lm-films">
@@ -170,6 +265,17 @@ const tabs = [
       </p>
     </section>
 
+    <!-- HOW ONE IS MADE -------------------------------------------------------- -->
+    <section class="wsec">
+      <div class="kicker">{lmPage.pipeline.kicker}</div>
+      <h2 class="sec" style="margin:10px 0 16px">{lmPage.pipeline.title}</h2>
+      <ol class="lmpipe">
+        {lmPage.pipeline.steps.map((t, i) => (
+          <li><span>{String(i + 1).padStart(2, '0')}</span>{t}</li>
+        ))}
+      </ol>
+    </section>
+
     <!-- THE CODEX ------------------------------------------------------------ -->
     {codex && (
       <section class="wsec">
@@ -181,11 +287,21 @@ const tabs = [
         </p>
         <BookReader book={{ ...codex.read, title: codex.title }} />
         <p class="story-links">
-          <a class="more" href="/books">All the books ⇢</a>
+          <a class="more" href="/books/codex">The Codex on its own page ⇢</a>
           <a class="more" href="https://littlemartians.substack.com/p/the-little-martians-codex" target="_blank" rel="noopener">
             How the Codex was made ⇢
           </a>
         </p>
+
+        <div class="lmbooks">
+          {otherBooks.map((bk) => (
+            <a class="lmbook" href={`/books/${bk.read.slug}`}>
+              <img src={bk.image} alt="" loading="lazy" />
+              <h3>{bk.title}</h3>
+              <span class="more">Read it ⇢</span>
+            </a>
+          ))}
+        </div>
       </section>
     )}
 
@@ -282,6 +398,16 @@ const tabs = [
       <div class="narrow">
         {lm.metaverse.body.map((p) => <p>{p}</p>)}
       </div>
+      <div class="lmarium">
+        {lmPage.arium.map((v) => (
+          <figure>
+            <video controls playsinline loop preload="none" poster={v.poster} aria-label={v.caption}>
+              <source src={v.video} type="video/mp4" />
+            </video>
+            <figcaption>{v.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
     </section>
 
     <!-- ON CHAIN ------------------------------------------------------------- -->
@@ -295,7 +421,27 @@ const tabs = [
         {lm.onchain.links.map((l) => (
           <a class="more" href={l.href} target="_blank" rel="noopener">{l.label} ⇢</a>
         ))}
+        <a class="more" href="/fiction-writing">The fiction published by Untitled Frontier ⇢</a>
       </p>
+
+      <!-- THE CHARACTERS ------------------------------------------------------ -->
+      <div class="lmchars">
+        <div class="kicker">{lmPage.characters.kicker}</div>
+        <h2 class="sec" style="margin:10px 0 6px">{lmPage.characters.title}</h2>
+        <p class="narrow" style="margin-bottom:8px">{lmPage.characters.body}</p>
+        <div class="lmchar-grid">
+          {lmPage.characters.items.map((c) => (
+            <a class="lmchar" href={c.href} target="_blank" rel="noopener">
+              <img src={c.icon} alt={c.name} loading="lazy" data-nozoom />
+              <p>{c.body}</p>
+              <span class="more">Talk to {c.name} ⇢</span>
+            </a>
+          ))}
+        </div>
+        <p style="margin-top:22px">
+          <a class="more" href={lmPage.characters.href} target="_blank" rel="noopener">{lmPage.characters.hrefLabel} ⇢</a>
+        </p>
+      </div>
     </section>
 
     <!-- THE RECORD ----------------------------------------------------------- -->
@@ -338,6 +484,8 @@ const tabs = [
 
     <Spine current="little-martians" />
   </div>
+
+  <img class="lmground" src={lmPage.closing.image} alt={lmPage.closing.imageAlt} loading="lazy" data-nozoom />
 
   <script is:inline>
     // One picture at a time, with a button that opens the whole set.

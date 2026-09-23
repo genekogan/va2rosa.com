@@ -115,3 +115,124 @@ export const lm = {
       'Opens on a selection. The tabs open up the whole record: every screening, every show, the talks, the prizes and the press.',
   },
 };
+
+// ---------------------------------------------------------------------------
+// Added 2026: the page follows Vanessa's own account of the project. The three
+// lines set in the Verdelis face are hers; the font has no em dash, so those
+// lines use her hyphens.
+// ---------------------------------------------------------------------------
+export const lmPage = {
+  opening: [
+    'When the 2020 pandemic hit I was already in Mars. Not so far as the planet Mars, but in a little part of the California Sonoran desert where some friends and I created an art community and R&D lab we call Mars. After all, if our technology could one day take some humans to Mars, we could just as well use it to try to inhabit the harsh parts of nowadays Earth. A high-tech, low-cost approach. It is an exercise in resilience and sustainability, with a lot of space for artistic madness and fun.',
+    'Yet my first response to the Martian landscape was not to gravitate towards cutting-edge technology but, quite the contrary, to turn to one of the most time-honoured techniques known to mankind. I began to gather local clay, creating ceramics using rudimentary kilns I carved into the earth. As I grew more audacious, I experimented with an array of art clays and glazes, transforming my sculptures into three-dimensional digital entities via photogrammetry. Using artificial intelligence tools and 3D software, I crafted animations based on these sculptures. I found myself immersed in the creation of a sci-fi narrative about humans and other species undergoing mutation to adapt to a shifting environment. I decided to call my sculptures Little Martians.',
+  ],
+  marsHref: 'https://mars.college/',
+
+  // the research, in the order it was written
+  posts: {
+    kicker: 'Written along the way',
+    title: 'The research',
+    titles: [
+      'Ceramics with local clay',
+      'Little Martians: from ceramics to 3D AI beings',
+      'Little Martians and the Human Imaginarium',
+      'In the Footsteps of Earthly Spirits',
+      'Creating a Collective World',
+      'A Scientific Framework for Cosmic Seeds',
+      'Agentic Storytelling',
+    ],
+    dates: {
+      'Ceramics with local clay': 'September 2021',
+      'Little Martians: from ceramics to 3D AI beings': 'October 2021',
+      'Little Martians and the Human Imaginarium': 'June 2023',
+      'In the Footsteps of Earthly Spirits': 'October 2023',
+      'Creating a Collective World': 'December 2023',
+      'A Scientific Framework for Cosmic Seeds': 'July 2025',
+      'Agentic Storytelling': 'January 2026',
+    },
+    href: '/research',
+    hrefLabel: 'All the research',
+  },
+
+  hands: {
+    image: '/images/lm/hands.webp',
+    imageAlt: 'Hands shaping a Little Martian head in clay.',
+    quote: 'Imagining the future with our hands',
+    sub: '- embodied future making -',
+    href: 'https://littlemartians.substack.com/p/embodied-future-making',
+  },
+
+  story: [
+    'The story slowly came to me. Little Martians are future beings, descended from all of Earth’s lifeforms, tending the extreme worlds and keeping our biological and cultural memory inside a vast network of simulations called the Imaginarium. Verdelis is part plant. Mycos is a fungal mind. Kweku is a pattern distributed through eight hundred kilometres of lava tube. In their perspective, we live inside their imagination.',
+  ],
+  bargain: {
+    lead: 'By imagining beings who have already lived through our transitions, we access different vantage points.',
+    body: 'Every Little Martian embodies a different solution, a different evolutionary path. Unable to resolve their differences, they strike a bargain: each will create a “temporal sculpture”, a vision of the optimal timeline between humanity’s past and their own present. They will invite other Little Martians to do the same, then present all visions in a Temporal Art Show, letting humans and Little Martians alike judge which future-paths are worth pursuing.',
+  },
+
+  origami: {
+    image: '/images/lm/imaginarium.webp',
+    imageAlt: 'A library without end, painted for the Imaginarium.',
+    quote: 'Time Space as origami',
+  },
+
+  guide: [
+    'The project became my guide to learning about computational biology, symbiogenesis, terraforming, and the history of artificial intelligence, opening a whole new world of art and science collaborations. It led me to work with NVIDIA, Christie’s, film and art festivals all over the world, scientists from the Foresight Institute and the California Institute of Machine Consciousness, and above all, Mars College.',
+  ],
+
+  reality: {
+    quote: 'Imagination creates reality',
+    lead: 'The futures we vividly imagine become the futures we build toward.',
+  },
+
+  pipeline: {
+    kicker: 'How one is made',
+    title: 'From clay to agent',
+    steps: [
+      'Hand-sculpted ceramics, with silicone moulds to let one head branch into many',
+      '3D scanning, for the digital mesh',
+      'A custom AI model trained on the character: LoRA, Flux, and whatever the newest character workflow is',
+      'Image to video: Eden.art, Runway, Kling, and the older models before them',
+      'AI voice and music: ElevenLabs, Suno',
+      'Facial animation: Kling, Runway, Hedra',
+      'Final assembly in After Effects and Premiere Pro',
+      'Interactive agents on the Eden.art platform',
+      'Website and simulations, written with Claude Code or Codex',
+    ],
+  },
+
+  arium: [
+    { video: '/video/lm-arium-run.mp4', poster: '/video/lm-arium-run.webp', caption: 'A run through the world, 2022.' },
+    { video: '/video/lm-arium-2022.mp4', poster: '/video/lm-arium-2022.webp', caption: 'The second world, built for Pupila Dilatada 3.' },
+  ],
+
+  watchFirst: {
+    kicker: 'Watch first',
+    title: 'Little Martians: building an AI powered sci-fi world',
+    youtube: 'TG16nfIx66o',
+    note: 'Six minutes on where the characters come from and how they are made. The talk first went out at NVIDIA GTC.',
+  },
+
+  characters: {
+    kicker: 'Meet them',
+    title: 'The Little Martians, and where to find them',
+    body: 'Each of them is also an agent you can talk to. They keep their own lore, their own voice and their own way of arguing; ask them anything, and the answer comes back in character.',
+    href: 'https://www.littlemartians.world/talk-to-a-little-martian/',
+    hrefLabel: 'Talk to a Little Martian',
+    items: [
+      { name: 'Verdelis', icon: '/images/lm/icons/verdelis.webp', body: 'Part plant, a gardener of Martian biodomes, and the one who cares most about humans.', href: 'https://www.littlemartians.world/verdelis/' },
+      { name: 'Mycos', icon: '/images/lm/icons/mycos.webp', body: 'A fungal mind who spreads spores across the solar system and finds chaos a reasonable method.', href: 'https://www.littlemartians.world/mycos/' },
+      { name: 'Kweku', icon: '/images/lm/icons/kweku.webp', body: 'A trickster, a pattern distributed through eight hundred kilometres of lava tube.', href: 'https://www.littlemartians.world/kweku-1/' },
+      { name: 'Kalama', icon: '/images/lm/icons/kalama.webp', body: 'Fire wisdom and energy gradients: physics wants to live.', href: 'https://www.littlemartians.world/kalama/' },
+      { name: 'Ada', icon: '/images/lm/icons/ada.webp', body: 'The cloud-lab mind of Venus, at home in an atmosphere nothing else can hold.', href: 'https://www.littlemartians.world/ada/' },
+      { name: 'Shuijing', icon: '/images/lm/icons/shuijing.webp', body: 'A student of deep oceans, under ice, where the light never reaches.', href: 'https://www.littlemartians.world/shuijing/' },
+      { name: 'The Human Imaginarium', icon: '/images/lm/icons/human-imaginarium.webp', body: 'The network of simulations where Earth’s biological and cultural memory is kept.', href: 'https://www.littlemartians.world/human-imaginarium/' },
+      { name: 'Physical Reality', icon: '/images/lm/icons/physical-reality.webp', body: 'The other half of the argument: clay, kiln, glaze, and a thing you can hold.', href: 'https://www.littlemartians.world/physical-reality/' },
+    ],
+  },
+
+  closing: {
+    image: '/images/lm/ground.webp',
+    imageAlt: 'Verdelis and Mycos underwater, from the duet.',
+  },
+};
