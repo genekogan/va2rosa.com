@@ -123,10 +123,10 @@ export const essays = {
         alt: 'A speculative being drawn for Verdelis’s Letter, its crown branching like neurons.',
       },
       {
-        src: '/images/verd/kalama-still2.webp',
+        src: '/images/verd/kalama-still3.webp',
         // the same being, turning its head; the still stands in where a
         // browser will not play a video with a transparent background
-        video: '/video/creature-kalama2.webm',
+        video: '/video/creature-kalama3.webm',
         alt: 'A mushroom-headed Little Martian on a seed, turning its head.',
       },
     ],
