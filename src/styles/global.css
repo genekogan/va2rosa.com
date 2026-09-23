@@ -2886,7 +2886,11 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .lmportal-t { padding-right: 4px; }
 .lmportal-t p { color: var(--blue); }
 .lmportal-t .lmquote-big { font-size: clamp(30px, 4.4vw, 56px); line-height: 1.05; }
-.lmportal-t .lmreality-sub { margin-top: 26px; font-size: clamp(20px, 2.4vw, 30px); line-height: 1.15; }
+.lmportal-t .lmreality-sub {
+  margin-top: 26px; font-size: clamp(20px, 2.4vw, 30px); line-height: 1.15;
+  /* the two lines centre on each other, so "reality" does not hang out alone */
+  text-align: center; text-wrap: balance; max-width: 12ch;
+}
 
 .lmreality { margin: 8px 0 10px; }
 .lmreality .lmquote-big { color: var(--blue); }
