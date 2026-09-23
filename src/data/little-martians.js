@@ -54,7 +54,7 @@ export const lm = {
       title: 'Vision Weekend, Foresight Institute',
       where: 'Schloss Bückeburg, Germany · 2024',
       body: [
-        'Little Martians installed inside a castle, for an audience that spends its weekends arguing about the long-term future. It was the right room for a species that exists to make a point about what survives. Over the cyberfuture dinner I painted the guests’ faces.',
+        'Little Martians presented inside a castle, for an audience that spends its weekends arguing about the long-term future. It was the right room for a species to meet the scientists that inspired them. Over the cyberfuture dinner I painted the guests’ faces.',
       ],
       href: '/foresight-buckeburg',
       images: [
@@ -72,7 +72,7 @@ export const lm = {
       title: 'Immersive rooms, São Paulo',
       where: 'Fundação Bienal de São Paulo · 2024 and 2025',
       body: [
-        'Two years running at the Bienal foundation: NFT.Brasil in 2024, TokenNation Brasil in 2025. Projection filling a whole room, and, more importantly, Brazilian audiences meeting the work at home rather than reading about it from abroad.',
+        'Two years running at the Bienal foundation: NFT.Brasil in 2024, TokenNation Brasil in 2025.',
       ],
       href: '/immersive-sao-paulo',
       video: { youtube: 'JJ_Ug1mwCXw', caption: 'The immersive room in São Paulo.' },
@@ -198,8 +198,8 @@ export const lmPage = {
       '3D scanning, for the digital mesh',
       'A custom AI model trained on the character: LoRA, Flux, and whatever the newest character workflow is',
       'Image to video: Eden.art, Runway, Kling, and the older models before them',
-      'AI voice and music: ElevenLabs, Suno',
-      'Facial animation: Kling, Runway, Hedra',
+      'AI voice and music: ElevenLabs, Suno, Uberduck',
+      'Facial animation: Kling, Runway, Hedra, Audio2Face',
       'Final assembly in After Effects and Premiere Pro',
       'Interactive agents on the Eden.art platform',
       'Website and simulations, written with Claude Code or Codex',
@@ -224,14 +224,48 @@ export const lmPage = {
     href: 'https://www.littlemartians.world/talk-to-a-little-martian/',
     hrefLabel: 'Talk to a Little Martian',
     items: [
-      { name: 'Verdelis', icon: '/images/lm/icons/verdelis.webp', body: 'Part plant, a gardener of Martian biodomes, and the one who cares most about humans.', href: 'https://www.littlemartians.world/verdelis/' },
-      { name: 'Mycos', icon: '/images/lm/icons/mycos.webp', body: 'A fungal mind who spreads spores across the solar system and finds chaos a reasonable method.', href: 'https://www.littlemartians.world/mycos/' },
-      { name: 'Kweku', icon: '/images/lm/icons/kweku.webp', body: 'A trickster, a pattern distributed through eight hundred kilometres of lava tube.', href: 'https://www.littlemartians.world/kweku-1/' },
-      { name: 'Kalama', icon: '/images/lm/icons/kalama.webp', body: 'Fire wisdom and energy gradients: physics wants to live.', href: 'https://www.littlemartians.world/kalama/' },
-      { name: 'Ada', icon: '/images/lm/icons/ada.webp', body: 'The cloud-lab mind of Venus, at home in an atmosphere nothing else can hold.', href: 'https://www.littlemartians.world/ada/' },
-      { name: 'Shuijing', icon: '/images/lm/icons/shuijing.webp', body: 'A student of deep oceans, under ice, where the light never reaches.', href: 'https://www.littlemartians.world/shuijing/' },
-      { name: 'The Human Imaginarium', icon: '/images/lm/icons/human-imaginarium.webp', body: 'The network of simulations where Earth’s biological and cultural memory is kept.', href: 'https://www.littlemartians.world/human-imaginarium/' },
-      { name: 'Physical Reality', icon: '/images/lm/icons/physical-reality.webp', body: 'The other half of the argument: clay, kiln, glaze, and a thing you can hold.', href: 'https://www.littlemartians.world/physical-reality/' },
+      { name: 'Verdelis', icon: '/images/lm/icons/verdelis.webp', href: 'https://www.littlemartians.world/verdelis/' },
+      { name: 'Mycos', icon: '/images/lm/icons/mycos.webp', href: 'https://www.littlemartians.world/mycos/' },
+      { name: 'Kweku', icon: '/images/lm/icons/kweku.webp', href: 'https://www.littlemartians.world/kweku-1/' },
+      { name: 'Kalama', icon: '/images/lm/icons/kalama.webp', href: 'https://www.littlemartians.world/kalama/' },
+      { name: 'Ada', icon: '/images/lm/icons/ada.webp', href: 'https://www.littlemartians.world/ada/' },
+      { name: 'Shuijing', icon: '/images/lm/icons/shuijing.webp', href: 'https://www.littlemartians.world/shuijing/' },
+    ],
+  },
+
+  // A selection of everywhere else the work has been: the full list is in the
+  // record at the foot of the page.
+  elsewhere: {
+    note: 'A selection. The whole record, with every screening, show, talk and prize, is at the foot of this page.',
+    items: [
+      {
+        title: 'NVIDIA AI Art Gallery',
+        meta: '2023 to 2025 · one of four featured artists',
+        image: '/images/films/fqpb6Wmcbag.webp',
+        body: 'A Brief History of Consciousness in the Simulation, made with Audio2Face and Blender from a 3-D scanned ceramic head, stayed in NVIDIA’s gallery for two years.',
+        href: 'https://www.nvidia.com/en-us/research/ai-art-gallery/artists/vanessa-rosa/',
+      },
+      {
+        title: 'Custom World Building with AI Avatars',
+        meta: 'NVIDIA GTC, 2023 · featured session',
+        image: '/images/writing/lm-imaginarium.webp',
+        body: 'How the characters are made, from clay to avatar, for an audience of engineers.',
+        href: 'https://www.nvidia.com/en-us/on-demand/session/gtcspring23-s51360/',
+      },
+      {
+        title: 'Artists Exploring Creativity and Language with Generative AI',
+        meta: 'NVIDIA GTC, 2024 · panel',
+        image: '/images/writing/lm-agentic.webp',
+        body: 'A panel on what generative tools do to language and storytelling.',
+        href: 'https://www.nvidia.com/en-us/on-demand/session/gtc24-s62958/',
+      },
+      {
+        title: 'The Art of World Building',
+        meta: 'Foresight Institute and Protocol Labs, Edge Esmeralda, 2024',
+        image: '/images/writing/talk-foresight.webp',
+        body: 'The Little Martians world, walked through at Raven Theater in Healdsburg; Gene Kogan introduced Abraham.ai in the same session.',
+        href: 'https://www.youtube.com/watch?v=JV10RDZuu14',
+      },
     ],
   },
 

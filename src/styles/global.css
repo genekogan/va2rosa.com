@@ -2914,10 +2914,9 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 
 /* the marks, and the agents behind them */
 .lmchars { margin-top: 76px; padding-top: 34px; border-top: 1px solid var(--line); }
-.lmchar-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px 20px; margin-top: 26px; }
-.lmchar img { width: 100%; max-width: 190px; display: block; margin: 0 auto; }
-.lmchar p { font-size: 13.5px; color: var(--ink-2); margin-top: 10px; }
-.lmchar .more { margin-top: 6px; display: inline-block; font-size: 11px; }
+.lmchar-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; margin-top: 26px; }
+.lmchar img { width: 100%; display: block; transition: transform 0.25s ease; }
+.lmchar:hover img { transform: translateY(-4px); }
 
 .lmground { width: 100%; display: block; margin-top: 30px; }
 

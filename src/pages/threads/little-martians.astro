@@ -36,11 +36,15 @@ const written = new Set(['/christies', '/foresight-buckeburg', '/immersive-sao-p
 const LM_SHOWS = new Set([
   'Uncanny Nova Phenomenon',
   'Saturn’s Theater of Minds',
-  'Little Martians at Saturn',
-  'Little Martians pop-up',
   'Simulated Worlds',
 ]);
-const otherShows = mainShows.filter((s) => LM_SHOWS.has(s.title) && !written.has(s.href));
+const otherShows = mainShows
+  .filter((s) => LM_SHOWS.has(s.title) && !written.has(s.href))
+  .map((s) =>
+    s.title === 'Simulated Worlds'
+      ? { ...s, href: 'https://grayarea.org/event/simulated-worlds-participatory-world-building-with-ai/', external: true }
+      : s,
+  );
 
 // ---------------------------------------------------------------------------
 // The record. One list, several views, built from the same two datasets that
@@ -367,6 +371,7 @@ const tabs = [
     {otherShows.length > 0 && (
       <section class="wsec">
         <div class="kicker">And elsewhere</div>
+        <p style="font-size:14px; color:var(--ink-2); max-width:42em; margin-top:10px">{lmPage.elsewhere.note}</p>
         <div class="showcards" style="margin-top:26px">
           {otherShows.map((s) => (
             <article class="showcard">
@@ -382,6 +387,16 @@ const tabs = [
                   rel={s.external ? 'noopener' : undefined}
                 >View project →</a>
               )}
+            </article>
+          ))}
+
+          {lmPage.elsewhere.items.map((e) => (
+            <article class="showcard">
+              <a href={e.href} target="_blank" rel="noopener"><img src={e.image} alt="" loading="lazy" /></a>
+              <h3>{e.title}</h3>
+              <div class="sc-meta">{e.meta}</div>
+              <p>{e.body}</p>
+              <a class="sc-link" href={e.href} target="_blank" rel="noopener">View project →</a>
             </article>
           ))}
         </div>
@@ -428,10 +443,8 @@ const tabs = [
         <p class="narrow" style="margin-bottom:8px">{lmPage.characters.body}</p>
         <div class="lmchar-grid">
           {lmPage.characters.items.map((c) => (
-            <a class="lmchar" href={c.href} target="_blank" rel="noopener">
+            <a class="lmchar" href={c.href} target="_blank" rel="noopener" aria-label={c.name}>
               <img src={c.icon} alt={c.name} loading="lazy" data-nozoom />
-              <p>{c.body}</p>
-              <span class="more">Talk to {c.name} ⇢</span>
             </a>
           ))}
         </div>
