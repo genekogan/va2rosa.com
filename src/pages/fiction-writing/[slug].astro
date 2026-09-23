@@ -91,7 +91,6 @@ const isHead = (p) => p.length < 64 && !/[.:,;!?…"”]$/.test(p) && !p.startsW
             <h3 class="fx-block-h">{parts(m.title).map((x) => x.dir ? <span class="fx-dir">{x.t}</span> : x.t)}</h3>
             {m.script.map((p) => <p>{parts(p).map((x) => x.dir ? <span class="fx-dir">{x.t}</span> : x.t)}</p>)}
           </div>
-          <p class="fx-note">Working note in the document: “{m.note}”</p>
         </section>
 
         <section class="fx-part">

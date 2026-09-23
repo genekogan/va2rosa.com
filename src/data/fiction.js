@@ -14,7 +14,8 @@ export const fiction = {
   heroAlt: 'Three Little Martians books in print on a wrought-iron table: O Segredo de Kweku, Verdelis Letter, and Dear Human, Welcome to the Little Martians World.',
   lede: 'Most of my fiction happens inside one world: the Little Martians, future beings descended from all of Earth’s life, who keep our memory in a vast simulation called the Imaginarium.',
   intro: [
-    'The world began as clay in 2020 and grew into letters, songs, scripts, books and characters that people can talk to. Some of it I wrote alone, some with friends at Mars College, and some in conversation with language models. The last group has its own section below, with every text marked for what I wrote, what I asked the machine, and what it answered.',
+    'The world began as clay in 2020 and grew into letters, songs, scripts, films, books and characters that people can talk to. Some of it I wrote alone, some with friends at Mars College, and some in conversation with language models. The last group has its own section below, with comments on the process.',
+    'As the years pass, the early experiments with AI assisted creative writing become all the more interesting to me. Vintage AI.',
   ],
 
   stories: {
@@ -94,7 +95,7 @@ export const fiction = {
         year: 2022,
         title: 'Memories from the early time of life on Mars',
         tool: 'GPT-3, davinci family, probably text-davinci-002',
-        body: 'Memories for the Little Martians shown at the Pupila Dilatada metaverse show. I wrote five first-person memories as a guide, and GPT-3 continued in the same voice; then the same again for theories of where the Martians came from. The page keeps it all, marked.',
+        body: 'An experiment with GPT-3. I wrote five first-person memories for the Little Martians as a guide, and the model continued in the same voice; then the same again for theories of where the Martians came from. The page keeps it all, marked.',
         image: '/images/writing/lm-shakespeare.webp',
         href: '/fiction-writing/memories-of-mars',
         cta: 'Read the whole experiment',
@@ -253,7 +254,7 @@ export const fictionPages = {
     kicker: 'An experiment with GPT-3 · 2022',
     context: [
       'Written in 2022 with GPT-3, the davinci family of models, most likely text-davinci-002. This was a completion model, before chat: you gave it the beginning of a document and it continued the document. So the prompt is written as the thing itself — an introduction and a few examples — and the model carries on in the same shape.',
-      'The memories were for the Little Martians shown at the Pupila Dilatada metaverse show, one for each ceramic head. The notes beside my examples (“red and green eyes”, “mushroom 1”) are the heads each memory belonged to.',
+      'Each memory belongs to one of the ceramic heads. The notes beside my examples (“red and green eyes”, “mushroom 1”) name the head the memory was written for.',
     ],
   },
   'verdelis-and-mycos': {
