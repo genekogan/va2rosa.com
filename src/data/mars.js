@@ -131,6 +131,8 @@ export const contributions = [
     body: [
       'It started as a fun unpretentious project during our Midterms project presentation back in 2021. I created a series of eatable sculptures. Sofy Yuditskaya, the Mars Midterms original organizer, loved the work and pushed me to serve the chocolate heads the following year as part of her wedding celebration. Since then, it evolved as a Martian annual ritual. Eventually we realized it was a kind of cacao ceremony and it became a moment for expressing gratitude towards the community.',
     ],
+    // names in the prose above that should carry a link
+    bodyLinks: [{ text: 'Sofy Yuditskaya', href: 'https://www.yuditskaya.com/' }],
     gallery: 'slides',
     images: [
       { src: '/images/mars/ritual/r-01.webp', caption: '2021. The first eatable sculptures.' },

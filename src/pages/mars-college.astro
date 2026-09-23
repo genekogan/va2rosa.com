@@ -7,6 +7,20 @@ import Base from '../layouts/Base.astro';
 import {
   cover, opening, what, years, aspects, mine, contributions, note, facts, links,
 } from '../data/mars.js';
+
+// A few names in the prose are people with their own sites. Rather than put
+// markup in the data, the data names them and the text is split around them.
+const parts = (text, links = []) => {
+  let out = [text];
+  for (const l of links) {
+    out = out.flatMap((chunk) =>
+      typeof chunk === 'string' && chunk.includes(l.text)
+        ? chunk.split(l.text).flatMap((piece, i) => (i === 0 ? [piece] : [l, piece]))
+        : [chunk],
+    );
+  }
+  return out.filter((c) => c !== '');
+};
 ---
 
 <Base
@@ -103,7 +117,15 @@ import {
           </div>
         </div>
         <div class="mars-body">
-          {c.body.map((p) => <p>{p}</p>)}
+          {c.body.map((p) => (
+            <p>
+              {parts(p, c.bodyLinks).map((bit) =>
+                typeof bit === 'string'
+                  ? bit
+                  : <a class="ul" href={bit.href} target="_blank" rel="noopener">{bit.text}</a>,
+              )}
+            </p>
+          ))}
           {c.links && (
             <p class="mars-links">
               {c.links.map((l) => (
