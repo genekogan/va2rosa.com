@@ -23,7 +23,7 @@ export const lm = {
     kicker: 'Watch',
     title: 'The films',
     body: [
-      'The films are where the clay learns to move. They have travelled some fifty festivals across four continents, and taken a couple of dozen prizes along the way, including Best Female Director for a Super Short at Cannes World Film Festival.',
+      'The films are where the clay learns to move. They have travelled some sixty festivals across four continents, and taken a couple of dozen prizes along the way, including at Korea International AI Film Festival and Cannes World Film Festival.',
       'Three of them are below. The rest, with every festival and every prize, are on the screenings page.',
     ],
     featured: ['WmdZ04y0ufI', '1BJsrK_8AdI', 'yWZLU5njSbk'],
