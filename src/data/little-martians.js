@@ -171,7 +171,7 @@ export const lmPage = {
   },
 
   origami: {
-    image: '/images/lm/portal.webp',
+    image: '/images/lm/portal2.webp',
     imageAlt: 'A library without end, its far wall opening into a door: the Imaginarium.',
     quote: 'Time-space as origami',
   },
