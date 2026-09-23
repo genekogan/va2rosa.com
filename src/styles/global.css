@@ -2833,13 +2833,16 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
    LITTLE MARTIANS: Vanessa's own hand, cut as a typeface, and the page that
    uses it. The face carries no em dash, so those lines use hyphens.
    =========================================================================== */
+/* Named apart from --hand on purpose: --hand is the site's display face and
+   already asks for a 'Verdelis' that was never loaded, so giving this file
+   that name would have re-set every title on the site. */
 @font-face {
-  font-family: 'Verdelis';
+  font-family: 'VerdelisHand';
   src: url('/fonts/verdelis.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
-.verdelis { font-family: 'Verdelis', var(--hand), serif; }
+.verdelis { font-family: 'VerdelisHand', var(--hand), serif; }
 
 /* the research, one picture next to the other */
 .lmposts {
@@ -2870,25 +2873,25 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .lmquote-sub { font-size: clamp(17px, 2vw, 24px); color: var(--ink-2); margin-top: 10px; }
 .lmquote img { width: 100%; display: block; }
 
-/* the picture that fades in and out of the page, with a line over it */
-.lmfeather { position: relative; margin-top: 70px; }
-.lmfeather img { width: 100%; height: clamp(320px, 56vh, 620px); object-fit: cover; display: block; }
-.lmfeather::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, var(--paper, #eef3f7) 0%, rgba(238, 243, 247, 0) 26%,
-              rgba(238, 243, 247, 0) 74%, var(--paper, #eef3f7) 100%);
+/* the portal, already feathered in the file, with the lines beside it */
+.lmportal {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 10px; align-items: center; margin-top: 66px;
 }
-.lmfeather-t { position: absolute; inset: 0; display: flex; align-items: center; z-index: 1; }
-.lmfeather-t .wrap { width: 100%; }
-.lmfeather-t p {
-  margin-left: auto; max-width: 11em; text-align: right;
-  font-size: clamp(28px, 4.2vw, 54px); line-height: 1.06; color: #fff;
-  text-shadow: 0 2px 22px rgba(4, 18, 20, 0.6);
-}
+.lmportal img { width: 100%; display: block; }
+.lmportal-t { padding-right: 4px; }
+.lmportal-t p { color: var(--blue); }
+.lmportal-t .lmquote-big { font-size: clamp(30px, 4.4vw, 56px); line-height: 1.05; }
+.lmportal-t .lmreality-sub { margin-top: 26px; font-size: clamp(20px, 2.4vw, 30px); line-height: 1.15; }
 
-.lmreality { margin: 72px 0 10px; text-align: center; }
+.lmreality { margin: 8px 0 10px; }
 .lmreality .lmquote-big { color: var(--blue); }
-.lmreality-sub { margin-top: 14px; font-size: 17px; max-width: 30em; margin-left: auto; margin-right: auto; }
+.lmreality-sub { font-size: 17px; }
+
+/* the head in the desert, under the opening line */
+.lmhead { margin-top: 30px; }
+.lmhead img { width: 100%; display: block; }
+.lmhead figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 8px; }
 
 /* from clay to agent */
 .lmpipe { list-style: none; counter-reset: none; max-width: 52em; }
@@ -2919,6 +2922,7 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   .lmchar-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .lmquote-in { grid-template-columns: 1fr; gap: 18px; }
   .lmquote-t { text-align: left; }
+  .lmportal { grid-template-columns: 1fr; gap: 6px; }
 }
 @media (max-width: 620px) {
   .lmposts { grid-template-columns: repeat(2, minmax(0, 1fr)); }

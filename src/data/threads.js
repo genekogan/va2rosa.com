@@ -691,7 +691,7 @@ export const threads = [
       'It has its own world, its own episodes and its own site.',
     ],
     lede:
-      'A species descended from all of Earth’s life, tending the extreme worlds and keeping our memory in the Imaginarium. It begins as a lump of clay and ends as something with a voice.',
+      'A species descended from all of Earth’s life, tending the extreme worlds and keeping our memory in the Imaginarium.',
     strands: [
       {
         title: 'I. Clay first',

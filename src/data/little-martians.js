@@ -155,7 +155,7 @@ export const lmPage = {
   },
 
   hands: {
-    image: '/images/lm/hands.webp',
+    image: '/images/lm/hands-cut.webp',
     imageAlt: 'Hands shaping a Little Martian head in clay.',
     quote: 'Imagining the future with our hands',
     sub: '- embodied future making -',
@@ -171,9 +171,14 @@ export const lmPage = {
   },
 
   origami: {
-    image: '/images/lm/imaginarium.webp',
-    imageAlt: 'A library without end, painted for the Imaginarium.',
-    quote: 'Time Space as origami',
+    image: '/images/lm/portal.webp',
+    imageAlt: 'A library without end, its far wall opening into a door: the Imaginarium.',
+    quote: 'Time-space as origami',
+  },
+
+  head: {
+    image: '/images/lm/head-desert.webp',
+    imageAlt: 'A ceramic Little Martian head lying on cracked desert ground.',
   },
 
   guide: [
@@ -210,7 +215,6 @@ export const lmPage = {
     kicker: 'Watch first',
     title: 'Little Martians: building an AI powered sci-fi world',
     youtube: 'TG16nfIx66o',
-    note: 'Six minutes on where the characters come from and how they are made. The talk first went out at NVIDIA GTC.',
   },
 
   characters: {
