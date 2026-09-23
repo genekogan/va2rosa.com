@@ -253,13 +253,6 @@ export const lmPage = {
         href: 'https://www.nvidia.com/en-us/on-demand/session/gtcspring23-s51360/',
       },
       {
-        title: 'Artists Exploring Creativity and Language with Generative AI',
-        meta: 'NVIDIA GTC, 2024 · panel',
-        image: '/images/writing/lm-agentic.webp',
-        body: 'A panel on what generative tools do to language and storytelling.',
-        href: 'https://www.nvidia.com/en-us/on-demand/session/gtc24-s62958/',
-      },
-      {
         title: 'The Art of World Building',
         meta: 'Foresight Institute and Protocol Labs, Edge Esmeralda, 2024',
         image: '/images/writing/talk-foresight.webp',
