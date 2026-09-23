@@ -123,8 +123,11 @@ export const essays = {
         alt: 'A speculative being drawn for Verdelis’s Letter, its crown branching like neurons.',
       },
       {
-        src: '/images/verd/kalama2.webp',
-        alt: 'Kalama, one of the Little Martians, drawn for Verdelis’s Letter.',
+        src: '/images/verd/kalama-still.webp',
+        // the same being, turning its head; the still stands in where a
+        // browser will not play a video with a transparent background
+        video: '/video/creature-kalama.webm',
+        alt: 'A mushroom-headed Little Martian on a seed, turning its head.',
       },
     ],
     href: '/research',
