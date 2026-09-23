@@ -2865,8 +2865,10 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 /* a line of hers beside the hands that make the work */
 .lmquote { margin-top: 74px; }
 .lmquote-in {
-  display: grid; grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.38fr);
+  display: grid; grid-template-columns: minmax(0, 0.58fr) minmax(0, 1.42fr);
   gap: 20px; align-items: center;
+  /* the text keeps the page's margin; the picture runs to the right edge */
+  padding-left: max(var(--pad), calc((100% - var(--max)) / 2 + var(--pad)));
 }
 .lmquote-t { text-align: right; }
 .lmquote-big { font-size: clamp(30px, 4.6vw, 58px); line-height: 1.08; color: var(--blue); }
@@ -2875,8 +2877,10 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 
 /* the portal, already feathered in the file, with the lines beside it */
 .lmportal {
-  display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.55fr);
-  gap: 6px; align-items: center; margin-top: 66px;
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.5fr);
+  gap: 18px; align-items: center; margin-top: 66px;
+  /* mirrored: the picture reaches the left edge, the lines keep the margin */
+  padding-right: max(var(--pad), calc((100% - var(--max)) / 2 + var(--pad)));
 }
 .lmportal img { width: 100%; display: block; }
 .lmportal-t { padding-right: 4px; }
@@ -2920,9 +2924,9 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 @media (max-width: 900px) {
   .lmposts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .lmchar-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .lmquote-in { grid-template-columns: 1fr; gap: 18px; }
+  .lmquote-in { grid-template-columns: 1fr; gap: 18px; padding-left: 0; }
   .lmquote-t { text-align: left; padding: 0 var(--pad); }
-  .lmportal { grid-template-columns: 1fr; gap: 10px; }
+  .lmportal { grid-template-columns: 1fr; gap: 10px; padding-right: 0; }
   .lmportal-t { padding: 0 var(--pad); }
 }
 @media (max-width: 620px) {
