@@ -2774,3 +2774,24 @@ video.res-fig { background: none; }
   /* the poster stays; nothing moves for a reader who asked for stillness */
   video.res-fig { animation: none; }
 }
+
+/* the two ways in, under each picture on the homepage */
+.door-links { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px 26px; }
+.door-links .more { margin: 0; color: #9fe3c8; border-color: #9fe3c8; }
+
+/* The research question on a phone. The 15em measure that suits a desktop
+   column squeezed it into five short lines and hyphenated one; here it takes
+   the full width, a size up, and balances its own line breaks. */
+@media (max-width: 620px) {
+  .res-block .res-ask {
+    font-size: 31px;
+    line-height: 1.16;
+    max-width: 100%;
+    hyphens: none;
+    text-wrap: balance;
+    margin: 14px auto 24px;
+  }
+}
+@media (max-width: 380px) {
+  .res-block .res-ask { font-size: 28px; }
+}

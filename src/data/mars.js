@@ -12,9 +12,9 @@ export const cover = {
   kicker: 'A place · 2020 to now',
   title: 'Mars College',
   line: 'An off-grid college in the Southern California desert, built from scratch every winter.',
-  image: '/images/mars/mc-cover.webp',
+  image: '/images/mars/mc-cover-camp.webp',
   imageAlt:
-    'The Mars College camp on the dry lake bed at dusk: the solar array, the pallet-rack building and the vans parked around it.',
+    'The camp from the air: the MARS letters, the trailers and the pallet-rack building on the dry lake bed, with people gathered around a wooden frame in the foreground.',
 };
 
 export const opening = {
