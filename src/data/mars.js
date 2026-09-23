@@ -148,7 +148,7 @@ export const contributions = [
     years: 'Since 2023',
     body: [
       'I started the film festival in 2023 and it has run every season since. Gene Kogan offers the computing credits and teaches the main AI filmmaking classes.',
-      'Every film is made by Martians during the semester — generative video, voice, music and story — and premieres as one reel, outdoors under the desert sky, during Mars Electronica at the Bombay Beach Drive-In.',
+      'Every film is made by Martians during the semester — generative video, voice, music and story — and premieres as one reel, outdoors under the desert sky, during Mars Electronica and Bombay Beach Biennale.',
     ],
     images: [{ src: '/images/fest/fest-hero.webp', caption: 'The screening, Bombay Beach' }],
     links: [
