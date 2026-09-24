@@ -1199,15 +1199,6 @@ export const regency2023 = {
       ],
     },
     {
-      title: 'Moving through it',
-      video: {
-        file: '/video/shows/regency-2023.mp4',
-        poster: '/video/shows/regency-2023.webp',
-        alt: 'A walk past the lit tables at the pop-up.',
-        caption: 'Past the tables, once the lights went blue.',
-      },
-    },
-    {
       title: 'The talk',
       body: [
         'The art talk ran alongside the pop-up, with the interactive experiment projected on the wall — the first time anyone outside the studio could put a question to a Little Martian and get an answer back.',

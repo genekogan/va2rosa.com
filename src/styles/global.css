@@ -2965,8 +2965,7 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 
 /* one sculpture on its black ground, before the films */
 .lmsculpt { margin: 66px 0 0; }
-.lmsculpt img { width: 100%; display: block; background: #000; }
-.lmsculpt figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 8px; }
+.lmsculpt .sl-item img, .lmsculpt .sl-grid img { background: #000; }
 
 /* a book, or anything else, set inside the opening text of a project page */
 .wp-inline { margin: 22px 0 28px; }

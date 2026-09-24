@@ -176,10 +176,29 @@ export const lmPage = {
     quote: 'Time-space as origami',
   },
 
+  // Every character starts here, in fired clay. One at a time, with a button
+  // that opens the whole set; the first is still Verdelianus.
   verdelianus: {
-    image: '/images/lm/verdelianus.webp',
-    imageAlt: 'Verdelianus: a glazed ceramic Little Martian, its crown opening like petals, lit against black.',
-    caption: 'Verdelianus, glazed ceramic, 2024.',
+    images: [
+      {
+        src: '/images/lm/verdelianus2.webp',
+        alt: 'Verdelianus: a glazed ceramic Little Martian, its crown opening like petals, lit against black.',
+        caption: 'Verdelianus, glazed ceramic, 2024.',
+      },
+      { src: '/images/lm/ceramics/c-01.webp', caption: 'Winged, glazed and fired' },
+      { src: '/images/lm/ceramics/c-02.webp', caption: 'A head on its stalk, against black' },
+      { src: '/images/lm/ceramics/c-03.webp', caption: 'Three of them together' },
+      { src: '/images/lm/ceramics/c-04.webp', caption: 'Out in the woods' },
+      { src: '/images/lm/ceramics/c-05.webp', caption: 'Ears open, on the rock' },
+      { src: '/images/lm/ceramics/c-06.webp', caption: 'Blue glaze, crested' },
+      { src: '/images/lm/ceramics/c-07.webp', caption: 'A pair' },
+      { src: '/images/lm/ceramics/c-08.webp', caption: 'Under glass, outdoors' },
+      { src: '/images/lm/ceramics/c-09.webp', caption: 'Under a dome' },
+      { src: '/images/lm/ceramics/c-10.webp', caption: 'Inside a brass dodecahedron' },
+      { src: '/images/lm/ceramics/c-11.webp', caption: 'The society, all of them small' },
+      { src: '/images/lm/ceramics/c-12.webp', caption: 'Fired together' },
+      { src: '/images/lm/ceramics/c-13.webp', caption: 'Glazes, side by side' },
+    ],
   },
 
   head: {

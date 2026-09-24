@@ -311,7 +311,8 @@ export const threads = [
           { src: '/images/srcanvas/canvas-3.webp', caption: 'Azulejos, entrance, 2015' },
           { src: '/images/srcanvas/canvas-4.webp', caption: 'On paper' },
           { src: '/images/srcanvas/canvas-5.webp', caption: 'The print made for Stroke, Munich' },
-          { src: '/images/srcanvas/studio-1.webp', caption: 'In the studio, 2017' },
+          { src: '/images/srcanvas/canvas-qing.webp', caption: 'Qing porcelain, framed, oil on canvas' },
+          { src: '/images/srcanvas/studio-1b.webp', caption: 'In the studio, 2017' },
         ],
       },
       {

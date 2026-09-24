@@ -236,10 +236,32 @@ const tabs = [
     </div>
 
     <!-- ONE SCULPTURE, BEFORE THE FILMS --------------------------------------- -->
-    <figure class="lmsculpt">
-      <img src={lmPage.verdelianus.image} alt={lmPage.verdelianus.imageAlt} loading="lazy" />
-      <figcaption>{lmPage.verdelianus.caption}</figcaption>
-    </figure>
+    <div class="slides lmsculpt" data-slides>
+      <div class="sl-stage">
+        <button class="sl-nav sl-prev" type="button" aria-label="Previous">‹</button>
+        <div class="sl-track">
+          {lmPage.verdelianus.images.map((im, i) => (
+            <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
+              <img src={im.src} alt={im.alt || im.caption} loading={i < 2 ? 'eager' : 'lazy'} />
+              <figcaption>{im.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <button class="sl-nav sl-next" type="button" aria-label="Next">›</button>
+      </div>
+      <div class="sl-bar">
+        <span class="sl-count">1 / {lmPage.verdelianus.images.length}</span>
+        <button class="sl-all" type="button" aria-pressed="false">Show all {lmPage.verdelianus.images.length}</button>
+      </div>
+      <div class="wgrid sl-grid" hidden>
+        {lmPage.verdelianus.images.map((im) => (
+          <figure>
+            <img src={im.src} alt={im.alt || im.caption} loading="lazy" />
+            <figcaption>{im.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
 
     <!-- THE FILMS ------------------------------------------------------------ -->
     <section class="wsec lm-films">
