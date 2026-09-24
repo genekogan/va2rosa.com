@@ -99,7 +99,7 @@ export const contributions = [
       'Living on Mars College inspired me to imagine futures with my hands. That’s where the Little Martians came to life: a sci-fi world based on my own ceramic sculptures, merging ancient craft with every new AI technique I get the chance to learn.',
     ],
     images: [
-      { src: '/images/mars/lm-mycos.webp', caption: 'Mycos the Little Martian.' },
+      { src: '/images/mars/lm-mycos-hand.webp', caption: 'Mycos the Little Martian.' },
       { src: '/images/mars/lm-electronica.webp', caption: 'Little Martians projected during Mars Electronica, 2022.' },
       { src: '/images/mars/lm-chiba.webp', caption: 'The Little Martians shrine at Chiba, 2026. Photograph by Ygor Marotta.' },
     ],
