@@ -202,7 +202,7 @@ export const festivalRows = [
 export const filmography = [
   { year: 2026, title: 'Little Martians: Season One', note: 'Seven episodes, in production' },
   { year: 2025, title: VM, note: 'Short film' },
-  { year: 2025, title: LA, note: 'Short film, with Gene Kogan. Sold at Christie’s with the original sculpture' },
+  { year: 2025, title: LA, note: 'Short film. Sold at Christie’s with the original sculpture' },
   { year: 2024, title: DH, note: 'Animated from hand-built ceramic sculptures with 3-D animation and generative models' },
   { year: 2023, title: BH, note: 'One of four featured works in the NVIDIA AI Art Gallery, 2023 to 2025' },
 ];
