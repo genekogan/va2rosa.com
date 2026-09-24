@@ -724,8 +724,8 @@ export const foresight = {
     ['What', 'Installation and a face-painting performance'],
   ],
   intro: [
-    'Foresight Institute’s Vision Weekends are their annual festivals. Held in two countries, over two weekends, people are invited to burst their tech silos and plan for flourishing long-term futures. It is a conference, an unconference, mentorship hours, curated one-to-ones, demos, satellite gatherings, cyberfuture dinners, tea services, costume closets, interactive art, secret dance parties and surprise experiences.',
-    'Little Martians were installed in a hundred-year-old castle, for an audience spending the weekend arguing about the long term.',
+    'Foresight Institute’s Vision Weekends are their annual festivals. Held in two countries, over two weekends, people are invited to burst their tech silos and plan for flourishing long-term futures. It is a conference, an unconference, mentorship hours, curated one-to-ones, demos, satellite gatherings, cyberfuture dinners, tea services, costume closets, interactive art, secret dance parties and surprise experiences. With a track record of supporting Nobel Laureates decades before their acclaim, Foresight focuses on areas that are too ambitious or interdisciplinary for legacy institutions.',
+    'Little Martians were installed in a castle several hundred years old, for an audience spending the weekend arguing about the long term.',
   ],
   sections: [
     {
@@ -751,11 +751,11 @@ export const foresight = {
       gallery: 'slides',
       images: [
         { src: '/images/fb/fb-14.webp', caption: 'Painting a face' },
-        { src: '/images/fb/fb-15.webp', caption: 'Working' },
-        { src: '/images/fb/fb-16.webp', caption: 'Finished' },
+        { src: '/images/fb/fb-15.webp', caption: 'Allison Duettmann, Foresight’s chief executive' },
+        { src: '/images/fb/fb-16.webp', caption: 'DNA is her name' },
         { src: '/images/fb/fb-17.webp', caption: 'Anders Sandberg, painted at the cyberfuture dinner' },
-        { src: '/images/fb/fb-18.webp', caption: 'Finished' },
-        { src: '/images/fb/fb-19.webp', caption: 'At the dinner' },
+        { src: '/images/fb/fb-18.webp', caption: 'Jeremy Barton' },
+        { src: '/images/fb/fb-19.webp', caption: 'Teddy, who owns the castle' },
       ],
     },
   ],
