@@ -1,0 +1,70 @@
+---
+// Glitch, year by year. The films are silent and small, and nothing downloads
+// until somebody presses play: each one sits behind a still.
+import Base from '../layouts/Base.astro';
+import { glitch as g } from '../data/glitch.js';
+---
+
+<Base title={g.title} description={g.intro[0]} image={g.hero} current="Art" bodyClass="paper">
+  <div class="projhero">
+    <img src={g.hero} alt={g.heroAlt} fetchpriority="high" />
+    <div class="t">
+      <div class="kicker" style="color:#fff; opacity:.9">{g.kicker}</div>
+      <h1>{g.title}</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="meta">
+      {g.meta.map(([k, v]) => (
+        <div><div class="k">{k}</div>{v}</div>
+      ))}
+    </div>
+
+    <div class="narrow" style="margin-top:52px">
+      <p class="lede">{g.lede}</p>
+    </div>
+
+    <div class="narrow" style="margin-top:26px">
+      {g.intro.map((p) => <p>{p}</p>)}
+    </div>
+
+    <p class="story-links" style="margin-top:24px">
+      {g.links.map((l) => (
+        <a class="more" href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined}>
+          {l.label} ⇢
+        </a>
+      ))}
+    </p>
+
+    {g.years.map((y) => (
+      <section class="gl-year">
+        <div class="gl-head">
+          <div class="gl-n">{y.year}</div>
+          <p>{y.body}</p>
+        </div>
+
+        <div class="gl-media">
+          {y.media.map((m) => (
+            <figure class={m.wide ? 'gl-item wide' : 'gl-item'}>
+              {m.video ? (
+                <video controls playsinline loop preload="none" poster={m.poster} aria-label={m.caption}>
+                  <source src={m.video} type="video/mp4" />
+                </video>
+              ) : (
+                <img src={m.image} alt={m.caption} loading="lazy" />
+              )}
+              <figcaption>{m.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <p style="margin:60px 0 90px">
+      <a class="more" href="/art">All the art ⇢</a>
+      <span style="display:inline-block; width:22px"></span>
+      <a class="more" href="/threads/little-martians">Little Martians ⇢</a>
+    </p>
+  </div>
+</Base>

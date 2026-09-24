@@ -116,9 +116,8 @@ const showCards = [
     venue: 'Château du Feÿ, Burgundy, France',
     image: '/images/shows/glitch-chateau.webp',
     imageAlt: 'Château du Feÿ seen from the air, the courtyard and fountain in front of it.',
-    body: 'Two weeks in a château in Burgundy, once a year, with artists, technologists, writers and collectors who work across digital and physical media. I have taken part in all four editions: 2022, 2023, 2024 and 2025. Most of what came out of it were friendships and the collaborations that followed.',
-    href: 'https://www.instagram.com/glitchresidency/',
-    external: true,
+    body: 'Two weeks in a château in Burgundy, once a year, with artists, technologists, writers and collectors who work across digital and physical media. I have taken part in all four editions: 2022, 2023, 2024 and 2025.',
+    href: '/glitch',
   },
   {
     year: 2024,
@@ -199,14 +198,6 @@ const showCards = [
     imageAlt: 'The anamorphic landscape wrapped around the columns at Caixa Cultural.',
     body: 'My first massive institutional show. Thirteen artists on the urban scene, and I took the parts of the building nobody had asked for: a hanging drawing of downtown Rio behind the stairway, gouache passengers on the steps, and an anamorphic landscape wrapped around the columns upstairs. I produced the show as well.',
     href: '/ver-a-cidade',
-  },
-  {
-    year: 2012,
-    title: 'Mural at Artur Fidalgo',
-    venue: 'Galeria Artur Fidalgo, Rio de Janeiro',
-    image: '/images/op2/fidalgo-1.webp',
-    imageAlt: 'The red mural installed at Galeria Artur Fidalgo, Rio de Janeiro.',
-    body: 'I created a mural for this art gallery in November 2012, as a distorted mirror of the surrounding antique stores.',
   },
   {
     year: 2017,
