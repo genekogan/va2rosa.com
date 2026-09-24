@@ -457,7 +457,34 @@ const tabs = [
       <div class="narrow">
         {lm.onchain.body.map((p) => <p>{p}</p>)}
       </div>
-      <p class="story-links">
+      <div class="slides lmsculpt" data-slides>
+        <div class="sl-stage">
+          <button class="sl-nav sl-prev" type="button" aria-label="Previous">‹</button>
+          <div class="sl-track">
+            {lm.onchain.images.map((im, i) => (
+              <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
+                <img src={im.src} alt={im.caption} loading="lazy" />
+                <figcaption>{im.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <button class="sl-nav sl-next" type="button" aria-label="Next">›</button>
+        </div>
+        <div class="sl-bar">
+          <span class="sl-count">1 / {lm.onchain.images.length}</span>
+          <button class="sl-all" type="button" aria-pressed="false">Show all {lm.onchain.images.length}</button>
+        </div>
+        <div class="wgrid sl-grid" hidden>
+          {lm.onchain.images.map((im) => (
+            <figure>
+              <img src={im.src} alt={im.caption} loading="lazy" />
+              <figcaption>{im.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+
+      <p class="story-links" style="margin-top:26px">
         {lm.onchain.links.map((l) => (
           <a class="more" href={l.href} target="_blank" rel="noopener">{l.label} ⇢</a>
         ))}

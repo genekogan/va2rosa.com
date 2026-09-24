@@ -107,6 +107,11 @@ export const lm = {
         external: true,
       },
     ],
+    images: [
+      { src: '/images/lm/onchain/svg-01.webp', caption: 'One of the minted characters' },
+      { src: '/images/lm/onchain/svg-02.webp', caption: 'Another, with a tighter grain' },
+      { src: '/images/lm/onchain/svg-03.webp', caption: 'And another' },
+    ],
   },
 
   // The record at the foot of the page. Selected opens; the tabs open it up.
