@@ -6,6 +6,17 @@ const { story } = Astro.props;
 ---
 
 {story.map((sec) => (
+  sec.highlight ? (
+    <a class="st-big" href={sec.highlight.href}>
+      <img src={sec.highlight.image} alt={sec.highlight.imageAlt} loading="lazy" data-nozoom />
+      <div>
+        <div class="kicker">{sec.highlight.kicker}</div>
+        <h3>{sec.highlight.title}</h3>
+        <p>{sec.highlight.body}</p>
+        <span class="more">{sec.highlight.label} ⇢</span>
+      </div>
+    </a>
+  ) : (
   <section class="wsec">
     {sec.title && <div class="kicker">{sec.title}</div>}
 
@@ -100,6 +111,7 @@ const { story } = Astro.props;
       </p>
     )}
   </section>
+  )
 ))}
 
 <script is:inline>

@@ -2976,3 +2976,16 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .wp-inline-imgs figcaption { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
 .wp-inline .story-links { margin-top: 12px; }
 @media (max-width: 620px) { .wp-inline-imgs { grid-template-columns: 1fr; } }
+
+/* a project held up inside a thread: picture, a line, and the way in */
+.st-big {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 28px; align-items: center;
+  margin-top: 66px; padding: 26px 0;
+  border-top: 2px solid var(--blue); border-bottom: 1px solid var(--line);
+}
+.st-big img { width: 100%; display: block; }
+.st-big h3 { font-family: var(--hand); font-size: clamp(24px, 3.2vw, 36px); margin: 8px 0 8px; }
+.st-big p { font-size: 15px; color: var(--ink-2); }
+.st-big .more { margin-top: 14px; display: inline-block; }
+@media (max-width: 760px) { .st-big { grid-template-columns: 1fr; gap: 14px; } }
