@@ -19,7 +19,7 @@ export const glitch = {
   ],
   intro: [
     'Two weeks in a château in Burgundy, once a year, with artists, technologists, writers and collectors who work across digital and physical media. I have taken part every year since 2022.',
-    'Glitch is organized by Primavera De Filippi. Her work on copyright law, blockchain and code as law has been a massive inspiration for Gene and for me. So many people we met there ended up in the Mars ecosystem too, and the two communities keep pollinating each other.',
+    'Glitch is organized by Primavera De Filippi. Her work on copyright law, blockchain and code as law has been a massive inspiration for Gene Kogan and for me. So many people we met there ended up in the Mars ecosystem too, and the two communities keep pollinating each other.',
     'I’m especially inspired by her Plantoids and by strategies for turning artworks into living systems.',
   ],
   links: [
@@ -43,17 +43,14 @@ export const glitch = {
       body: 'My first interactive storytelling installation, made with Gene Kogan: a ceramic head, a screen, and a Little Martian answering whoever stood in front of it.',
       media: [
         { video: '/video/glitch/g23-installation.mp4', poster: '/video/glitch/g23-installation.webp', caption: 'The installation in the château.', wide: true },
-        { video: '/video/glitch/g23-projection.mp4', poster: '/video/glitch/g23-projection.webp', caption: 'A Little Martian projected onto the wall.', wide: true },
       ],
     },
     {
       year: '2024',
       body: 'More sculptures, many painted bodies, a screening of Dear Human, My Muse, and the first Little Martians children’s book.',
       media: [
-        { image: '/images/glitch/g24-heads.webp', caption: 'The heads laid out, with the film running behind them.' },
-        { image: '/images/glitch/g24-mirror.webp', caption: 'One of them, on the gilt frame.' },
-        { image: '/images/glitch/g24-hand.webp', caption: 'A painted hand, from the body painting.' },
-        { video: '/video/glitch/g24-ceremony.mp4', poster: '/video/glitch/g24-ceremony.webp', caption: 'Lighting the candle, in the château kitchen.', wide: true },
+        { image: '/images/glitch/g24-heads2.webp', caption: 'The heads laid out, with the film running behind them.' },
+        { image: '/images/glitch/g24-hand2.webp', caption: 'A painted hand, from the body painting.' },
       ],
     },
     {
