@@ -181,6 +181,7 @@ export const infinityGame = {
   sections: [
     {
       title: 'The projection mapping installation',
+      gallery: 'slides',
       images: [
         { src: '/images/ig/ig-proj-1.webp' },
         { src: '/images/ig/ig-proj-2.webp' },
@@ -193,6 +194,7 @@ export const infinityGame = {
     },
     {
       title: 'The Infinity Boxes',
+      gallery: 'slides',
       images: [
         { src: '/images/ig/ig-box-1.webp' },
         { src: '/images/ig/ig-box-2.webp' },
@@ -201,6 +203,7 @@ export const infinityGame = {
     },
     {
       title: 'People playing with the stencils and the projection',
+      gallery: 'slides',
       images: [
         { src: '/images/ig/ig-play-1.webp' },
         { src: '/images/ig/ig-play-2.webp' },
@@ -213,6 +216,7 @@ export const infinityGame = {
     },
     {
       title: 'Design layouts and studies for the Infinity Boxes',
+      gallery: 'slides',
       body: ['Made with Grasshopper by Verônica Natividade and her students.'],
       images: [
         { src: '/images/ig/ig-design-1.webp' },
