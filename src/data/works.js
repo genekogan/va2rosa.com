@@ -754,7 +754,7 @@ export const foresight = {
         { src: '/images/fb/fb-15.webp', caption: 'Allison Duettmann, Foresight’s chief executive' },
         { src: '/images/fb/fb-16.webp', caption: 'DNA is her name' },
         { src: '/images/fb/fb-17.webp', caption: 'Anders Sandberg, painted at the cyberfuture dinner' },
-        { src: '/images/fb/fb-18.webp', caption: 'Jeremy Barton' },
+        { src: '/images/fb/fb-18.webp', caption: 'Jeremy Barton, who builds computer-controlled nanorobotics' },
         { src: '/images/fb/fb-19.webp', caption: 'Teddy, who owns the castle' },
       ],
     },
