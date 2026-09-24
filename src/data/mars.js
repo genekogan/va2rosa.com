@@ -173,14 +173,15 @@ export const contributions = [
   },
   {
     n: 'VI',
-    title: 'Art shows at Saturn',
-    years: 'Since 2025',
+    title: 'Mars Electronica and the Saturn art shows',
+    years: 'Since 2020',
     body: [
-      'Last year I was finally able to focus on organising art shows at Saturn, and I would like to do much more of it. The ambition is outreach: bringing people from outside the desert in, and getting the work made here seen by more than the people who made it.',
+      'We end each season with a massive art show celebration: Mars Electronica, and right after it the Bombay Beach Biennale. During the biennale, Saturn becomes one of the attractions.',
+      'The ambition is to bring people from outside the desert into the world we created together.',
     ],
     images: [
-      { src: '/images/mars/mc-show.webp', caption: 'An installation at Saturn' },
-      { src: '/images/mars/mc-dusk.webp', caption: 'Between the lake bed and town' },
+      { src: '/images/mars/mc-electronica-gallery.webp', caption: '2026. The gallery show at Mars Electronica.' },
+      { src: '/images/mars/mc-saturn-gallery.webp', caption: '2024. Little Martians in the gallery at Saturn.' },
     ],
   },
 ];
