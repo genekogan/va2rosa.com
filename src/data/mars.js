@@ -161,13 +161,14 @@ export const contributions = [
   {
     n: 'V',
     title: 'Hosting',
-    years: '2021 to now',
+    years: '2022 to now',
     body: [
-      'Beyond supporting the project overall, I have personally hosted dozens of people in my house in town, Saturn. Bombay Beach is a few minutes from the lake bed, and Saturn is where people land when they arrive, or warm up when the desert gets too much.',
+      'Bombay Beach, a very curious little town, is a mile away from Mars. Its houses gave us water, kitchens, toilets and a delivery address. Mars was birthed by Venus, the house of our first year. Buying a house in Bombay is closer to a vow than an investment.',
+      'Saturn is my house in town, where I have personally hosted dozens of Martians. Together with the other Martian houses we have a growing Solar System: Venus, Mercury, Uranus, Neptune, Pluto, Vulcan and Jupiter!',
     ],
     images: [
-      { src: '/images/mars/mc-saturn.webp', caption: 'A long dinner' },
-      { src: '/images/mars/mc-camp.webp', caption: 'The edge of the season' },
+      { src: '/images/mars/mc-saturn-dinner.webp', caption: 'Dinner in the yard at Saturn.' },
+      { src: '/images/mars/mc-saturn-living.webp', caption: 'An afternoon in the living room at Saturn.' },
     ],
   },
   {
