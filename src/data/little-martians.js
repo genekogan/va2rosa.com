@@ -176,6 +176,12 @@ export const lmPage = {
     quote: 'Time-space as origami',
   },
 
+  verdelianus: {
+    image: '/images/lm/verdelianus.webp',
+    imageAlt: 'Verdelianus: a glazed ceramic Little Martian, its crown opening like petals, lit against black.',
+    caption: 'Verdelianus, glazed ceramic, 2024.',
+  },
+
   head: {
     image: '/images/lm/head-desert.webp',
     imageAlt: 'A ceramic Little Martian head lying on cracked desert ground.',
