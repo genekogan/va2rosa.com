@@ -2967,3 +2967,12 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .lmsculpt { margin: 66px 0 0; }
 .lmsculpt img { width: 100%; display: block; background: #000; }
 .lmsculpt figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 8px; }
+
+/* a book, or anything else, set inside the opening text of a project page */
+.wp-inline { margin: 22px 0 28px; }
+.wp-inline-imgs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.wp-inline-imgs figure { margin: 0; }
+.wp-inline-imgs img { width: 100%; display: block; }
+.wp-inline-imgs figcaption { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+.wp-inline .story-links { margin-top: 12px; }
+@media (max-width: 620px) { .wp-inline-imgs { grid-template-columns: 1fr; } }

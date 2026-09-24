@@ -473,6 +473,18 @@ export const mauricioHora = {
     'Maurício is a photographer and a community leader. He started out delivering newspapers, got curious about the newsroom cameras, and became one of the first people to photograph a favela from the inside, with all of it at once: the traffic, the friendships, the beauty, the violence, the ordinary afternoons. He was the first person from Providência to visit Canudos, and he made a photo essay about the trip. With the French artist JR he founded Casa Amarela, the only cultural center in Providência, which has received Madonna and Pharrell Williams and a long line of politicians and entrepreneurs. Meanwhile parts of Providência can only be reached by climbing hundreds of steps. Maurício spends a lot of his time pressing the government or organizing his peers to build basic infrastructure, like massive water tanks, so people don’t have to carry buckets up those steps on their backs anymore. His life is told in the graphic novel Picture a Favela, by André Diniz.',
     'I met him because of my Visible Memories project. Maurício was the reason why my work at the historical Pedra do Sal lasted at all. He is one of the founders of Quilombo da Pedra do Sal, and he invited me to be part of his collective studio, where I had my painting corner for two years, a space called Imaginary Zone. I participated in his meetings with public officials, patrons, activist groups, and community gatherings. I created oil and spray painting works based on his photographs as an act of appreciation for how much I learned from him.',
   ],
+  // the book, set under the paragraph that mentions it
+  introInline: {
+    2: {
+      images: [
+        { src: '/images/mh/mh-book-cover.webp', caption: 'Picture a Favela, by André Diniz, with photographs by Maurício Hora.' },
+        { src: '/images/mh/mh-book-page.webp', caption: 'A page from the book.' },
+      ],
+      links: [
+        { label: 'The book, at SelfMadeHero', href: 'https://www.selfmadehero.com/books/picture-a-favela', external: true },
+      ],
+    },
+  },
   sections: [
     {
       title: 'His photographs',

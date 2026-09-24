@@ -30,7 +30,32 @@ const { work } = Astro.props;
     </div>
 
     <div class="narrow" style="margin-top:26px">
-      {work.intro.map((p) => <p>{p}</p>)}
+      {work.intro.map((p, i) => (
+        <>
+          <p>{p}</p>
+          {work.introInline?.[i] && (
+            <div class="wp-inline">
+              <div class="wp-inline-imgs">
+                {work.introInline[i].images.map((im) => (
+                  <figure>
+                    <img src={im.src} alt={im.caption} loading="lazy" />
+                    <figcaption>{im.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+              {work.introInline[i].links && (
+                <p class="story-links">
+                  {work.introInline[i].links.map((l) => (
+                    <a class="more" href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined}>
+                      {l.label} ⇢
+                    </a>
+                  ))}
+                </p>
+              )}
+            </div>
+          )}
+        </>
+      ))}
     </div>
 
     {work.quote && (
