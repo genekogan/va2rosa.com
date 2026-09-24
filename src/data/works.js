@@ -1092,3 +1092,191 @@ export const eyes = {
     links: [{ label: 'The whole thing', href: '/street-art' }],
   },
 };
+
+// ---------------------------------------------------------------------------
+// Three shows that had no page of their own: the solo exhibition inside Saturn
+// during the 2024 biennale, the Brooklyn pop-up of 2023, and the Gray Area
+// evening of 2022. Minimal text; the pictures carry them.
+// ---------------------------------------------------------------------------
+
+export const saturn2024 = {
+  slug: 'little-martians-saturn',
+  kicker: 'Solo exhibition · 2024',
+  title: 'Little Martians at Saturn',
+  hero: '/images/saturn/sat-01.webp',
+  heroAlt: 'Glass cases holding ceramic heads, lit blue and violet in a dark room.',
+  lede: '2024 · Bombay Beach Biennale, California',
+  meta: [
+    ['Where', 'Saturn, Bombay Beach, California'],
+    ['When', 'Spring 2024'],
+    ['What', 'A solo exhibition'],
+    ['Photographs', 'Chebel'],
+  ],
+  intro: [
+    'A solo exhibition in the desert, at the biennale that takes over Bombay Beach for a weekend each spring.',
+    'Saturn is my house in town. For the biennale its gallery fills with the ceramic heads, each one under glass, lit so the glazes go strange.',
+  ],
+  video: {
+    file: '/video/shows/saturn-2024.mp4',
+    poster: '/video/shows/saturn-2024.webp',
+    alt: 'A walk through the exhibition at Saturn.',
+    caption: 'A walk through the room.',
+  },
+  sections: [
+    {
+      title: 'The room',
+      gallery: 'slides',
+      images: [
+        { src: '/images/saturn/sat-01.webp', caption: 'The gallery at Saturn' },
+        { src: '/images/saturn/sat-02.webp', caption: 'Cases across the floor' },
+        { src: '/images/saturn/sat-03.webp', caption: 'A head inside its glass' },
+        { src: '/images/saturn/sat-04.webp', caption: 'Glaze under violet light' },
+        { src: '/images/saturn/sat-05.webp', caption: 'Held up on a hand' },
+        { src: '/images/saturn/sat-12.webp', caption: 'A collar of clay' },
+        { src: '/images/saturn/sat-06.webp', caption: 'Crowned' },
+        { src: '/images/saturn/sat-07.webp', caption: 'Close' },
+        { src: '/images/saturn/sat-08.webp', caption: 'In profile' },
+        { src: '/images/saturn/sat-09.webp', caption: 'The long shoal of small heads' },
+        { src: '/images/saturn/sat-10.webp', caption: 'Closer' },
+        { src: '/images/saturn/sat-11.webp', caption: 'Closer still' },
+      ],
+    },
+  ],
+  also: {
+    kicker: 'Where it lives',
+    title: 'Mars College',
+    body: ['Saturn is one of the Martian houses in Bombay Beach, a mile from the camp on the dry lake bed.'],
+    links: [
+      { label: 'Mars College', href: '/mars-college' },
+      { label: 'Bombay Beach Biennale', href: 'https://www.bombaybeachbiennale.org/', external: true },
+    ],
+  },
+};
+
+export const regency2023 = {
+  slug: 'little-martians-popup',
+  kicker: 'Solo pop-up and art talk · 2023',
+  title: 'Little Martians pop-up',
+  hero: '/images/regency/rg-e3.webp',
+  heroAlt: 'The pop-up seen across the room: round tables of lit glass cases under brick arches.',
+  lede: '2023 · Re:Gen:Cy, Brooklyn, New York',
+  meta: [
+    ['Where', 'Re:Gen:Cy, Red Hook, Brooklyn'],
+    ['When', 'July 2023'],
+    ['What', 'A solo pop-up and an art talk'],
+    ['Host', 'Ashley Taylor'],
+  ],
+  intro: [
+    'A solo pop-up and art talk in Brooklyn. The first presentation of a Little Martians interactive AI storytelling experiment: visitors could talk to a character, and the character answered.',
+    'The heads were set out under glass domes and brass terrariums on round tables, daylight at first and then blue.',
+  ],
+  sections: [
+    {
+      title: 'The room',
+      gallery: 'slides',
+      images: [
+        { src: '/images/regency/rg-e1.webp', caption: 'The tables, set' },
+        { src: '/images/regency/rg-01.webp', caption: 'Under the lamp' },
+        { src: '/images/regency/rg-02.webp', caption: 'Under the arches' },
+        { src: '/images/regency/rg-03.webp', caption: 'Heads across the room' },
+        { src: '/images/regency/rg-04.webp', caption: 'Inside a terrarium' },
+        { src: '/images/regency/rg-05.webp', caption: 'Under a dome' },
+        { src: '/images/regency/rg-06.webp', caption: 'Blue glaze' },
+        { src: '/images/regency/rg-07.webp', caption: 'A brass cage' },
+        { src: '/images/regency/rg-08.webp', caption: 'Gold light' },
+        { src: '/images/regency/rg-09.webp', caption: 'Two under one dome' },
+        { src: '/images/regency/rg-10.webp', caption: 'The busts' },
+        { src: '/images/regency/rg-11.webp', caption: 'Small heads on the table' },
+        { src: '/images/regency/rg-12.webp', caption: 'A pair' },
+        { src: '/images/regency/rg-13.webp', caption: 'The room, gone blue' },
+        { src: '/images/regency/rg-14.webp', caption: 'Red ears' },
+        { src: '/images/regency/rg-15.webp', caption: 'Through the glass' },
+        { src: '/images/regency/rg-16.webp', caption: 'Lit from below' },
+        { src: '/images/regency/rg-18.webp', caption: 'The tables at night' },
+        { src: '/images/regency/rg-e0.webp', caption: 'Blue ears, under glass' },
+        { src: '/images/regency/rg-e2.webp', caption: 'A head in a brass terrarium' },
+        { src: '/images/regency/rg-19.webp', caption: 'Last look' },
+      ],
+    },
+    {
+      title: 'Moving through it',
+      video: {
+        file: '/video/shows/regency-2023.mp4',
+        poster: '/video/shows/regency-2023.webp',
+        alt: 'A walk past the lit tables at the pop-up.',
+        caption: 'Past the tables, once the lights went blue.',
+      },
+    },
+    {
+      title: 'The talk',
+      body: [
+        'The art talk ran alongside the pop-up, with the interactive experiment projected on the wall — the first time anyone outside the studio could put a question to a Little Martian and get an answer back.',
+      ],
+      images: [{ src: '/images/regency/rg-17.webp', caption: 'The projection, set up for the talk' }],
+    },
+  ],
+  also: {
+    kicker: 'The host',
+    title: 'Re:Gen:Cy',
+    body: [
+      'An event venue and community space in Red Hook, Brooklyn, founded by Ashley Taylor around what they call a regenerative culture: a vision of the earth as sacred. The space runs on renewable energy, with composting, biodegradable products and salvaged furniture, and rentals pay for the regenerative projects it hosts.',
+    ],
+    links: [{ label: 'Re:Gen:Cy on Instagram', href: 'https://www.instagram.com/re_gen_cy_/', external: true }],
+  },
+};
+
+export const simulatedWorlds = {
+  slug: 'simulated-worlds',
+  kicker: 'Exhibition, talk and workshops · 2022',
+  title: 'Simulated Worlds',
+  hero: '/images/gray/ga-05.webp',
+  heroAlt: 'The hall at Gray Area, the audience seated, screens lit on the stage.',
+  lede: '2022 · Gray Area Foundation for the Arts, San Francisco',
+  meta: [
+    ['Where', 'Gray Area, San Francisco'],
+    ['When', '2 December 2022, with workshops on 29 November and 1 December'],
+    ['As', 'Xenoform Labs artist in residence'],
+    ['With', 'Gene Kogan, Rivka Dette, Scott Kildall, Christopher Lejeune'],
+  ],
+  intro: [
+    'Participatory world-building with AI: an exhibition and two workshops.',
+    'Gray Area presented a special program on the new image-making technologies with me as Xenoforms artist in residence. It opened with a talk on the history and the then-current state of generative AI art, and carried on as something to do rather than watch: people wrote prompts, fed them into DALL·E, Stable Diffusion and Midjourney, and the contributions were animated together into one film.',
+    'Two prompt-writing workshops ran in the days before it. The evening also held Nevermined’s Arcadia, a collaborative storytelling piece, and The Oracle by Rivka Dette and Gene Kogan.',
+  ],
+  sections: [
+    {
+      title: 'The talk',
+      gallery: 'slides',
+      images: [
+        { src: '/images/gray/ga-05.webp', caption: 'The hall' },
+        { src: '/images/gray/ga-07.webp', caption: 'A generated face, the size of a wall' },
+        { src: '/images/gray/ga-08.webp', caption: 'Architecture that never stood' },
+        { src: '/images/gray/ga-06.webp', caption: 'Pattern, at scale' },
+        { src: '/images/gray/ga-04.webp', caption: 'Street work on screen' },
+        { src: '/images/gray/ga-09.webp', caption: 'A creature, mid-generation' },
+        { src: '/images/gray/ga-10.webp', caption: 'Gene Kogan’s page, shown during the talk' },
+        { src: '/images/gray/ga-11.webp', caption: 'Inside the tools' },
+        { src: '/images/gray/ga-12.webp', caption: 'A page of variations' },
+      ],
+    },
+    {
+      title: 'The participatory part',
+      body: ['Screens around the room where people wrote their own prompts and watched what came back.'],
+      gallery: 'slides',
+      images: [
+        { src: '/images/gray/ga-01.webp', caption: 'At the screens' },
+        { src: '/images/gray/ga-02.webp', caption: 'Writing prompts' },
+        { src: '/images/gray/ga-03.webp', caption: 'The stations along the wall' },
+      ],
+    },
+  ],
+  also: {
+    kicker: 'The host',
+    title: 'Gray Area',
+    body: ['The programme, with the full billing, is still up on Gray Area’s site.'],
+    links: [
+      { label: 'Simulated Worlds at Gray Area', href: 'https://grayarea.org/event/simulated-worlds-participatory-world-building-with-ai/', external: true },
+      { label: 'Little Martians', href: '/threads/little-martians' },
+    ],
+  },
+};

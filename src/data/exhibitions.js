@@ -135,6 +135,7 @@ const showCards = [
     image: '/images/shows/bbb-2024.webp',
     imageAlt: 'The Little Martians solo installation at Bombay Beach, lit at night.',
     body: 'A solo exhibition in the desert, at the biennale that takes over Bombay Beach for a weekend each spring.',
+    href: '/little-martians-saturn',
   },
   {
     year: 2023,
@@ -143,6 +144,7 @@ const showCards = [
     image: '/images/shows/regency-2023.webp',
     imageAlt: 'Ceramic heads on plinths at the Re:Gen:Cy pop-up in New York.',
     body: 'A solo pop-up and art talk in Brooklyn. First presentation of a Little Martians interactive AI storytelling experiment.',
+    href: '/little-martians-popup',
   },
   {
     year: 2022,
@@ -151,6 +153,7 @@ const showCards = [
     image: '/images/shows/gray-area-2022.webp',
     imageAlt: 'The Simulated Worlds installation and workshop at Gray Area.',
     body: 'Participatory world-building with AI: an exhibition and two workshops.',
+    href: '/simulated-worlds',
   },
   {
     year: 2019,
