@@ -55,10 +55,10 @@ export const aspects = [
     title: 'High-tech, off-grid living',
     body: [
       'The campus is plywood, metal framing and a large central solar array, with experimental dwellings raised each season alongside the vans and the RVs.',
-      'Chiba is the central building: a pallet-rack structure built each January and disassembled each April, rebuilt differently the next year. Since 2021 it has been gradually wired with AI — Discord bots that run the lights and the gallery screens, environmental sensors, generative displays — so the building answers its inhabitants like a living system. Then we take it down and teach it to be alive again next season.',
+      'We call the main structure Chiba every year. Since 2021 it has been gradually wired with AI — Discord bots that run the lights and the gallery screens, environmental sensors, generative displays — so the building answers its inhabitants like a living system.',
     ],
-    image: '/images/mars/mc-chiba.webp',
-    caption: 'Under the solar array',
+    image: '/images/mars/mc-chiba-screens.webp',
+    caption: 'The gallery screens inside Chiba',
   },
   {
     n: 'II',
@@ -75,10 +75,10 @@ export const aspects = [
     title: 'Community',
     body: [
       'Somewhere between an artist residency, a tech incubator and a commune, with shared meals, high-speed internet and sanitation handled cooperatively.',
-      'Over the years it has grown into distinct camps with their own governance: AI Camp, Freeside, Tool Camp, Co-Lab.',
+      'Over the years it has grown into distinct camps with their own governance: Freeside, Tool Camp, Co-Lab, and the one that was AI Camp until it renamed itself the Mars Institute of Technology, aka MIT. The camps like to change their names.',
     ],
-    image: '/images/mars/mc-community.webp',
-    caption: 'The Martians',
+    image: '/images/mars/mc-community2.webp',
+    caption: 'The Martians, in front of Chiba',
   },
 ];
 
@@ -96,13 +96,12 @@ export const contributions = [
     title: 'Little Martians',
     years: '2020 to now',
     body: [
-      'The Little Martians begin as clay, and much of that clay work happens in the desert. The heads are shaped and glazed by hand, then scanned and handed to generative models, where they learn to speak and move.',
-      'At the end of the season they come back as a shrine in the Chiba gallery, lit from inside, for Mars Electronica.',
+      'Living on Mars College inspired me to imagine futures with my hands. That’s where the Little Martians came to life: a sci-fi world based on my own ceramic sculptures, merging ancient craft with every new AI technique I get the chance to learn.',
     ],
     images: [
-      { src: '/images/work/lm-1.webp', caption: 'A head, straight out of the glaze' },
-      { src: '/images/work/little-martians-hero.webp', caption: 'A season of heads' },
-      { src: '/images/work/lm-2.webp', caption: 'And where they end up living' },
+      { src: '/images/mars/lm-mycos.webp', caption: 'Mycos the Little Martian.' },
+      { src: '/images/mars/lm-electronica.webp', caption: 'Little Martians projected during Mars Electronica, 2022.' },
+      { src: '/images/mars/lm-chiba.webp', caption: 'The Little Martians shrine at Chiba, 2026. Photograph by Ygor Marotta.' },
     ],
     links: [
       { label: 'The whole project', href: '/threads/little-martians' },
@@ -112,16 +111,17 @@ export const contributions = [
   {
     n: 'II',
     title: 'Murals & projections',
-    years: '2021 to now',
+    years: '2020 to now',
     body: [
-      'Most of the complex murals on Mars are mine. They go straight onto the plywood of Chiba and the camps, and they are painted knowing the building will be taken apart in April.',
-      'At night the same walls stop being walls. I projection-map onto what I painted, so a flat surface opens into the world the characters live in, and the mural and the projection are two states of one image.',
+      'Martian plywood is a great base for murals. Each year we create new ones, then they come down, and the following year we often recombine the pieces into new configurations.',
+      'At night the same walls stop being walls. Projection mapping is a Martian tradition, and it turns the paintings into portals.',
     ],
     images: [
-      { src: '/images/mars/mc-mural-1.webp', caption: 'The arches, finished' },
-      { src: '/images/mars/mc-mural-2.webp', caption: 'Painting them' },
-      { src: '/images/work/mars-college-plate.webp', caption: 'The solar building' },
-      { src: '/images/mars/mc-projection.webp', caption: 'A Little Martian on the mountains' },
+      { src: '/images/mars/mural/m-01.webp', caption: '2021. A jungle painted across the plywood.' },
+      { src: '/images/mars/mural/m-02.webp', caption: '2022. Blue arches under the solar array.' },
+      { src: '/images/mars/mural/m-03.webp', caption: '2024. Chiba, with the lettering by Will Simmons and a central flower after Marzipan’s AI version of Kirby’s Mars College logo.' },
+      { src: '/images/mars/mural/m-04.webp', caption: '2024. Painted with Cekis.' },
+      { src: '/images/mars/mural/m-05.webp', caption: '2026. Saturn’s Theater of Minds: painting and projections.' },
     ],
   },
   {
