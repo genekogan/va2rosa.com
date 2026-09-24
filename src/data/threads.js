@@ -305,7 +305,7 @@ export const threads = [
         ],
         gallery: 'slides',
         images: [
-          { src: '/images/srcanvas/canvas-interior.webp', caption: 'One of the canvases in an interior by Architonic, the Zurich architecture and design platform behind ArchDaily and Designboom, posted as one of their interior proposals.' },
+          { src: '/images/srcanvas/canvas-interior.webp', caption: 'One of the canvases in an interior by Architonic, the Zurich architecture and design platform behind ArchDaily and Designboom, posted as one of their interior proposals in July 2017.' },
           { src: '/images/srcanvas/canvas-1.webp', caption: 'Shown at Context Art Fair, 2017' },
           { src: '/images/srcanvas/canvas-2.webp', caption: 'An arch, built out of tiles' },
           { src: '/images/srcanvas/canvas-3.webp', caption: 'Azulejos, entrance, 2015' },
