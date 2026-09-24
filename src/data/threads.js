@@ -213,8 +213,8 @@ export const threads = [
         ],
         gallery: 'slides',
         images: [
-          { src: '/images/sr2/ny-1.webp' },
           { src: '/images/sr2/ny-2.webp' },
+          { src: '/images/sr2/ny-1.webp' },
           { src: '/images/sr2/ny-3.webp' },
           { src: '/images/sr2/ny-4.webp' },
           { src: '/images/sr2/ny-5.webp' },
