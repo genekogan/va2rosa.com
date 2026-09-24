@@ -263,6 +263,9 @@ export const threads = [
         body: [
           'In NYC 2017, during the AnnexB residency, with Islamophobia growing and people being barred from entering the US, I did a solo show in which I combined the tiles with Islamic art and invited an Iranian friend, Marjan Fadavi, to write the text for the exhibition.',
         ],
+        images: [
+          { src: '/images/it/it-01.webp', caption: 'Imaginary Tiles, the solo show at AnnexB, New York, 2017' },
+        ],
         more: { label: 'Imaginary Tiles, the solo show', href: '/imaginary-tiles' },
       },
       {
@@ -309,27 +312,6 @@ export const threads = [
           { src: '/images/srcanvas/canvas-4.webp', caption: 'On paper' },
           { src: '/images/srcanvas/canvas-5.webp', caption: 'The print made for Stroke, Munich' },
           { src: '/images/srcanvas/studio-1.webp', caption: 'In the studio, 2017' },
-        ],
-      },
-      {
-        title: 'Diana',
-        gallery: 'slides',
-        images: [
-          { src: '/images/pw/pw-corner.webp', caption: 'The fence turning the corner onto Pioneer Street, 2017' },
-          { src: '/images/pw/pw-000.webp' },
-          { src: '/images/pw/pw-001.webp' },
-          { src: '/images/pw/pw-002.webp' },
-          { src: '/images/pw/pw-003.webp' },
-          { src: '/images/pw/pw-004.webp' },
-          { src: '/images/pw/pw-005.webp' },
-          { src: '/images/pw/pw-006.webp' },
-          { src: '/images/pw/pw-007.webp' },
-          { src: '/images/pw/pw-008.webp' },
-          { src: '/images/pw/pw-010.webp' },
-          { src: '/images/pw/pw-011.webp' },
-          { src: '/images/pw/pw-012.webp' },
-          { src: '/images/pw/pw-013.webp' },
-          { src: '/images/pw/pw-014.webp' },
         ],
       },
       {
