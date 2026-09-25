@@ -233,8 +233,8 @@ export const workPages = [
     title: 'Petrobras Sinfônica',
     years: '2022',
     href: '/petrobras-sinfonica',
-    image: '/video/petrobras/tree.webp',
-    imageAlt: 'A tree and a bird in a painted VR landscape at sunset.',
+    image: '/images/work/petrobras-vr.webp',
+    imageAlt: 'Vanessa Rosa in a VR headset, drawing red strokes in the air against a violet sky.',
     body: 'Brazil’s first immersive orchestral concert: painting live in a VR headset while the orchestra played, the drawings appearing around the musicians.',
   },
   {
