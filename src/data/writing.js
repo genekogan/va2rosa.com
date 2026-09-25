@@ -304,3 +304,19 @@ export const groups = [
 // A note the page carries about what is still missing.
 export const pending =
   'More texts are on their way, including older academic articles. This list will grow.';
+
+// A newspaper op-ed, set apart just above the library: Correio Braziliense is
+// one of Brazil's main national dailies.
+export const pressHighlight = {
+  kicker: 'In the press',
+  title: 'Quem tem medo da inteligência artificial?',
+  translation: 'Who is afraid of artificial intelligence?',
+  venue: 'Correio Braziliense',
+  date: '29 October 2024',
+  section: 'Opinião, page 11',
+  image: '/images/writing/correio-2024.webp',
+  imageAlt: 'The printed op-ed in Correio Braziliense: “Quem tem medo da inteligência artificial?”, by Vanessa Rosa.',
+  detail:
+    'An op-ed for one of Brazil’s main national newspapers: what AI already does in daily life, what it actually is, and why learning it beats fearing it. With a map of where to start, from the classic papers to the Brazilian researchers and labs doing the work.',
+  href: 'https://www.correiobraziliense.com.br/opiniao/2024/10/6975443-quem-tem-medo-da-inteligencia-artificial.html',
+};

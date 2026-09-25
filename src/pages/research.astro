@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { topics } from '../data/topics.js';
-import { positions, featured, groups, pending } from '../data/writing.js';
+import { positions, featured, groups, pending, pressHighlight as ph } from '../data/writing.js';
 import { site } from '../data/site.js';
 import Shelf from '../components/Shelf.astro';
 
@@ -139,6 +139,23 @@ const isExternal = (h) => h.startsWith('http');
     <div class="kicker">The shelf</div>
     <h2 class="sec" style="margin:12px 0 8px">A bit of what inspires me</h2>
     <Shelf />
+  </section>
+
+  <!-- IN THE PRESS: one op-ed, set apart ---------------------------------- -->
+  <section class="wrap" style="margin-top:80px">
+    <div class="kicker">{ph.kicker}</div>
+    <article class="posrow posrow-press">
+      <a href={ph.href} target="_blank" rel="noopener" data-nozoom>
+        <img src={ph.image} alt={ph.imageAlt} loading="lazy" />
+      </a>
+      <div>
+        <h3><a href={ph.href} target="_blank" rel="noopener">{ph.title}</a></h3>
+        <p class="posrow-tr">{ph.translation}</p>
+        <div class="posrow-meta">{ph.venue} · {ph.date} · {ph.section}</div>
+        <p>{ph.detail}</p>
+        <a class="sc-link" href={ph.href} target="_blank" rel="noopener">Read it, in Portuguese →</a>
+      </div>
+    </article>
   </section>
 
   <!-- THE LIBRARY -------------------------------------------------------- -->
