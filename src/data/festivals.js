@@ -99,8 +99,8 @@ const BH = 'Brief History of Consciousness in the Simulation';
 // Keyed 'year|festival|film|outcome', because one festival can list the same
 // film twice. Awards have their own filter on the page.
 const SELECTED = new Set([
-  // wins worth leading with
-  `2024|Cannes World Film Festival|${DH}|Best Female Director, Super Short Film`,
+  // wins worth leading with. Cannes is not here: the award row in cv.js already
+  // carries it, and the two read as the same line twice.
   `2024|Korea International AI Film Festival|${DH}`,
   // festivals that matter whether or not they gave a prize
   `2025|Shapeshift Festival|${DH}`,
