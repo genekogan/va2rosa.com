@@ -156,6 +156,7 @@ export const threads = [
         ],
         images: [
           { src: '/images/sr2/porto-1.webp', caption: 'Porto, northern Portugal, 2015' },
+          { src: '/images/muzi/mz-03.webp', caption: 'A laser-cut stencil, lit. Photograph by Marcos Muzi.' },
         ],
       },
       {
@@ -297,6 +298,18 @@ export const threads = [
           href: '/infinity-game',
           label: 'The whole project',
         },
+      },
+      {
+        title: 'Light painting with Marcos Muzi, São Paulo, 2018',
+        body: [
+          'A collaboration with the photographer Marcos Muzi: my laser-cut stencils, a light source and a long exposure, over São Paulo at night.',
+        ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/muzi/mz-01.webp', caption: 'Light painting over São Paulo. Photograph by Marcos Muzi.' },
+          { src: '/images/muzi/mz-02.webp', caption: 'Photograph by Marcos Muzi.' },
+          { src: '/images/muzi/mz-04.webp', caption: 'Photograph by Marcos Muzi.' },
+        ],
       },
       {
         title: 'On canvas and on paper',

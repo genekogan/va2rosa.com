@@ -230,6 +230,14 @@ export const workPages = [
   },
 
   {
+    title: 'Petrobras Sinfônica',
+    years: '2022',
+    href: '/petrobras-sinfonica',
+    image: '/video/petrobras/tree.webp',
+    imageAlt: 'A tree and a bird in a painted VR landscape at sunset.',
+    body: 'Brazil’s first immersive orchestral concert: painting live in a VR headset while the orchestra played, the drawings appearing around the musicians.',
+  },
+  {
     title: 'Street art over the years',
     years: '2009 to now',
     href: '/street-art',

@@ -1271,3 +1271,76 @@ export const simulatedWorlds = {
     ],
   },
 };
+
+// ---------------------------------------------------------------------------
+// The immersive concert with Petrobras Sinfônica: painting in VR, live, while
+// the orchestra played. The films carry it, so they are what the page is made
+// of — each one behind a still, so nothing downloads until it is asked for.
+// ---------------------------------------------------------------------------
+
+export const petrobras = {
+  slug: 'petrobras-sinfonica',
+  kicker: 'Live performance · 2022',
+  title: 'Petrobras Sinfônica, Concerto Imersivo',
+  hero: '/video/petrobras/concert-stream.webp',
+  heroAlt: 'The orchestra on stage under a hanging installation of lit tubes.',
+  lede: '2022 · Qualistage, Rio de Janeiro',
+  meta: [
+    ['Where', 'Qualistage, Rio de Janeiro'],
+    ['When', '1 July 2022'],
+    ['What', 'Live VR painting with an orchestra'],
+    ['Conductor', 'Felipe Prazeres'],
+  ],
+  intro: [
+    'Brazil’s first immersive orchestral concert. I performed live in a VR headset, drawing sculptures, creatures and landscapes as the orchestra played, and what I made appeared around the musicians through projection and augmented reality.',
+    'The programme ran from Villa-Lobos, Oscar Lorenzo Fernández, Ravel and Stravinsky to Grieg and arrangements of Pink Floyd, Metallica and Guns N’ Roses. Felipe Prazeres conducted, in person and as an avatar. Studio XR built the technology, and the whole thing was streamed in 360º.',
+  ],
+  video: {
+    file: '/video/petrobras/concert-short.mp4',
+    poster: '/video/petrobras/concert-short.webp',
+    alt: 'Two minutes from the immersive concert.',
+    caption: 'Two minutes of the concert.',
+  },
+  sections: [
+    {
+      title: 'The concert, as it was streamed',
+      video: {
+        file: '/video/petrobras/concert-stream.mp4',
+        poster: '/video/petrobras/concert-stream.webp',
+        alt: 'The orchestra on stage during the immersive concert.',
+        caption: 'From the live stream.',
+      },
+    },
+    {
+      title: 'Painting inside the headset',
+      body: [
+        'Everything was made in the moment, standing up, with controllers. These are from the rehearsals: a world built while the music ran.',
+      ],
+      video: {
+        file: '/video/petrobras/vr-session.mp4',
+        poster: '/video/petrobras/vr-session.webp',
+        alt: 'A rehearsal recording of the VR painting session.',
+        caption: 'From a rehearsal, recorded inside the headset.',
+      },
+    },
+    {
+      title: 'One of the scenes',
+      video: {
+        file: '/video/petrobras/tree.mp4',
+        poster: '/video/petrobras/tree.webp',
+        alt: 'A tree and a bird in a painted VR landscape at sunset.',
+        caption: 'A tree, a bird, a sunset.',
+      },
+    },
+  ],
+  also: {
+    kicker: 'Elsewhere',
+    title: 'The concert, written up',
+    body: ['Petrobras Sinfônica’s own page for the evening, the listing in Veja Rio, and the full recording on YouTube.'],
+    links: [
+      { label: 'Petrobras Sinfônica', href: 'https://petrobrasinfonica.com.br/evento/concerto-imersivo-2/', external: true },
+      { label: 'Veja Rio', href: 'https://vejario.abril.com.br/programe-se/petrobras-sinfonica-concerto-imersivo/', external: true },
+      { label: 'The full concert on YouTube', href: 'https://www.youtube.com/watch?v=RcRctaRJz_Q', external: true },
+    ],
+  },
+};
