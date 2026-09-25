@@ -1336,10 +1336,11 @@ export const petrobras = {
   also: {
     kicker: 'Elsewhere',
     title: 'The concert, written up',
-    body: ['Petrobras Sinfônica’s own page for the evening, the listing in Veja Rio, and the full recording on YouTube.'],
+    body: ['Petrobras Sinfônica’s own page for the evening, the coverage in Veja Rio and Diário do Rio, and the full recording on YouTube.'],
     links: [
       { label: 'Petrobras Sinfônica', href: 'https://petrobrasinfonica.com.br/evento/concerto-imersivo-2/', external: true },
       { label: 'Veja Rio', href: 'https://vejario.abril.com.br/programe-se/petrobras-sinfonica-concerto-imersivo/', external: true },
+      { label: 'Diário do Rio', href: 'https://diariodorio.com/orquestra-petrobras-sinfonica-apresenta-o-primeiro-concerto-imersivo-do-pais/', external: true },
       { label: 'The full concert on YouTube', href: 'https://www.youtube.com/watch?v=RcRctaRJz_Q', external: true },
     ],
   },

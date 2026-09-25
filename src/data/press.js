@@ -338,10 +338,18 @@ export const press = [
   },
   {
     year: 2022,
-    outlet: 'Veja Rio, Rotacult and Gazeta Play',
-    title:
-      'Petrobras Sinfônica’s first immersive concert, with Vanessa’s live VR painting',
+    outlet: 'Veja Rio',
+    title: 'Petrobras Sinfônica’s immersive concert, with Vanessa’s live VR painting',
     href: 'https://vejario.abril.com.br/programe-se/petrobras-sinfonica-concerto-imersivo/',
+    kinds: ['br', 'online'],
+    lang: 'Portuguese',
+  },
+  {
+    year: 2022,
+    outlet: 'Diário do Rio',
+    title: 'Orquestra Petrobras Sinfônica apresenta o primeiro Concerto Imersivo do país',
+    note: '23 June 2022. Names the live performance by the multimedia artist Vanessa Rosa, drawing in a VR headset.',
+    href: 'https://diariodorio.com/orquestra-petrobras-sinfonica-apresenta-o-primeiro-concerto-imersivo-do-pais/',
     kinds: ['br', 'online'],
     lang: 'Portuguese',
   },
