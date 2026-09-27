@@ -1,38 +1,130 @@
 ---
-// Drawings. Vanessa's own two lines from the original page, and then the work.
-// No invented framing: the drawings do the talking.
+// Drawings. The self portrait first, a handful of single drawings over the
+// years, then the sketchbooks year by year. Films of pages being turned sit
+// behind a still: nothing downloads until somebody presses play.
 import Base from '../layouts/Base.astro';
-
-const drawings = Array.from({ length: 17 }, (_, i) =>
-  `/images/sk/dr-${String(i + 1).padStart(2, '0')}.webp`
-);
+import { selfPortrait as sp, highlights, years } from '../data/drawings.js';
 ---
 
 <Base
   title="Drawings"
   current="Art"
   bodyClass="paper"
-  description="Drawings by Vanessa Rosa: watercolour and ink sketches made on the streets and in life model sessions."
+  description="Drawings and sketchbooks by Vanessa Rosa, from a self portrait in 2000 to watercolour sketchbooks in 2018: made on the streets, in cafés and in life model sessions."
 >
   <section class="wrap" style="padding-top:70px">
     <div class="kicker">Drawings</div>
     <h1 class="sec" style="margin:12px 0 20px">What I love most is to draw wherever I am</h1>
-    <p class="lede">
-      Here some sketches done mostly on the streets or life model sessions.
-    </p>
+    <p class="lede">Here some sketches done mostly on the streets or life model sessions.</p>
   </section>
 
-  <section class="wrap" style="padding-top:34px; padding-bottom:70px">
+  <!-- THE SELF PORTRAIT -------------------------------------------------- -->
+  <section class="wrap dr-self">
+    <figure>
+      <img src={sp.src} alt={sp.alt} fetchpriority="high" />
+      <figcaption>{sp.caption}</figcaption>
+    </figure>
+  </section>
+
+  <!-- HIGHLIGHTS ---------------------------------------------------------- -->
+  <section class="wrap" style="margin-top:70px">
+    <div class="kicker">Highlights</div>
+    <h2 class="sec" style="margin:10px 0 18px">Over the years</h2>
     <div class="wgrid tall">
-      {drawings.map((src) => (
+      {highlights.map((h) => (
         <figure>
-          <img src={src} alt="A drawing by Vanessa Rosa." loading="lazy" />
+          <img src={h.src} alt={h.caption} loading="lazy" />
+          <figcaption>{h.caption}</figcaption>
         </figure>
       ))}
     </div>
+  </section>
+
+  <!-- THE SKETCHBOOKS, YEAR BY YEAR ---------------------------------------- -->
+  <section class="wrap" style="margin-top:80px; padding-bottom:70px">
+    <div class="kicker">Sketchbooks</div>
+    <h2 class="sec" style="margin:10px 0 6px">Year by year</h2>
+
+    {years.map((y) => (
+      <section class="gl-year">
+        <div class="gl-head">
+          <div class="gl-n">{y.year}</div>
+          <div>
+            <h3 class="dr-t">{y.title}</h3>
+            {y.body && <p>{y.body}</p>}
+          </div>
+        </div>
+
+        {y.video && (
+          <figure class={y.video.tall ? 'dr-vid tall' : 'dr-vid'}>
+            <video controls playsinline preload="none" poster={y.video.poster} aria-label={y.video.caption}>
+              <source src={y.video.file} type="video/mp4" />
+            </video>
+            <figcaption>{y.video.caption}</figcaption>
+          </figure>
+        )}
+
+        {y.slides && (
+          <div class="slides" data-slides>
+            <div class="sl-stage">
+              <button class="sl-nav sl-prev" type="button" aria-label="Previous">‹</button>
+              <div class="sl-track">
+                {y.slides.map((im, i) => (
+                  <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
+                    <img src={im.src} alt={`${y.title}, ${y.year}`} loading={i < 1 ? 'eager' : 'lazy'} />
+                  </figure>
+                ))}
+              </div>
+              <button class="sl-nav sl-next" type="button" aria-label="Next">›</button>
+            </div>
+            <div class="sl-bar">
+              <span class="sl-count">1 / {y.slides.length}</span>
+              <button class="sl-all" type="button" aria-pressed="false">Show all {y.slides.length}</button>
+            </div>
+            <div class="wgrid sl-grid" hidden>
+              {y.slides.map((im) => (
+                <figure><img src={im.src} alt={`${y.title}, ${y.year}`} loading="lazy" /></figure>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+    ))}
 
     <p style="margin-top:50px">
       <a class="more" href="/art">All the art ⇢</a>
     </p>
   </section>
 </Base>
+
+<script is:inline>
+  // One picture at a time, with a button that opens the whole set.
+  document.querySelectorAll('[data-slides]').forEach(function (box) {
+    var items = box.querySelectorAll('.sl-item');
+    var count = box.querySelector('.sl-count');
+    var grid = box.querySelector('.sl-grid');
+    var all = box.querySelector('.sl-all');
+    var stage = box.querySelector('.sl-stage');
+    var bar = box.querySelector('.sl-bar');
+    var at = 0;
+    function show(i) {
+      at = (i + items.length) % items.length;
+      items.forEach(function (el, k) {
+        el.hidden = k !== at;
+        if (k === at) el.querySelector('img').loading = 'eager';
+      });
+      count.textContent = at + 1 + ' / ' + items.length;
+    }
+    box.querySelector('.sl-prev').addEventListener('click', function () { show(at - 1); });
+    box.querySelector('.sl-next').addEventListener('click', function () { show(at + 1); });
+    all.addEventListener('click', function () {
+      var open = grid.hidden;
+      grid.hidden = !open;
+      stage.hidden = open;
+      count.hidden = open;
+      all.setAttribute('aria-pressed', String(open));
+      all.textContent = open ? 'One at a time' : 'Show all ' + items.length;
+    });
+    if (items.length < 2) bar.hidden = true;
+  });
+</script>
