@@ -944,6 +944,7 @@ export const mad = {
     },
     {
       title: 'Playing with the image frame and space',
+      gallery: 'slides',
       images: [
         { src: '/images/mad/mad-07.webp' },
         { src: '/images/mad/mad-08.webp' },
@@ -951,10 +952,26 @@ export const mad = {
     },
     {
       title: 'Inspired by M. C. Escher, Another World',
+      gallery: 'slides',
       images: [
         { src: '/images/mad/mad-09.webp' },
         { src: '/images/mad/mad-10.webp' },
         { src: '/images/mad/mad-11.webp' },
+      ],
+    },
+    {
+      title: 'White on black, 2020',
+      body: [
+        'The machine drawing in white ink on black paper: an arcade, a tiled floor, the vase, and its shadow. Then up close, where every surface turns out to be made of the pen’s passes.',
+      ],
+      gallery: 'slides',
+      images: [
+        { src: '/images/mad/mad-20.webp', caption: 'The whole drawing, July 2020' },
+        { src: '/images/mad/mad-21.webp', caption: 'The vase' },
+        { src: '/images/mad/mad-22.webp', caption: 'The arch and its shadow' },
+        { src: '/images/mad/mad-23.webp', caption: 'Hatching' },
+        { src: '/images/mad/mad-24.webp', caption: 'Blocks' },
+        { src: '/images/mad/mad-25.webp', caption: 'Lines' },
       ],
     },
     {
