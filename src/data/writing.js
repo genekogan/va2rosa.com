@@ -317,6 +317,6 @@ export const pressHighlight = {
   image: '/images/writing/correio-2024.webp',
   imageAlt: 'The printed op-ed in Correio Braziliense: “Quem tem medo da inteligência artificial?”, by Vanessa Rosa.',
   detail:
-    'An op-ed for one of Brazil’s main national newspapers: what AI already does in daily life, what it actually is, and why learning it beats fearing it. With a map of where to start, from the classic papers to the Brazilian researchers and labs doing the work.',
+    'An op-ed for one of Brazil’s main newspapers: what AI already does in daily life, what it actually is, and why learning it beats fearing it. With a map of where to start, from the classic papers to the Brazilian researchers and labs doing the work.',
   href: 'https://www.correiobraziliense.com.br/opiniao/2024/10/6975443-quem-tem-medo-da-inteligencia-artificial.html',
 };
