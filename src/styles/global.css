@@ -3015,3 +3015,13 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   border-bottom: 1px solid var(--ink-3); padding: 0 1px;
 }
 .pub-hl:hover { background: rgba(255, 214, 102, 0.55); }
+
+/* books: the Chinese edition beside the English covers */
+.bk-abroad { margin: 40px 0 50px; }
+.bk-abroad-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 34px; align-items: start; margin-top: 22px; }
+.bk-abroad-china { margin: 0; }
+.bk-abroad-china img { width: 100%; height: auto; display: block; }
+.bk-abroad-china figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 8px; }
+.bk-abroad-covers .wsec { margin-top: 0; }
+.bk-abroad-covers .sl-item img { max-height: 620px; width: auto; margin: 0 auto; }
+@media (max-width: 760px) { .bk-abroad-grid { grid-template-columns: 1fr; } }

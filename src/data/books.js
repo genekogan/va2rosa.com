@@ -40,6 +40,24 @@ export const books = {
       ],
     },
   ],
+  // Abroad: the Chinese edition beside the English covers, set under the
+  // paragraph that mentions licensing to mainland China.
+  abroad: {
+    after: 1,
+    kicker: 'Abroad',
+    body:
+      'My mother’s series, Caius Zip, Time Traveller, was licensed to mainland China. The originals are all in Portuguese: translating them was part of our work in international outreach, and I made the covers for the English collection.',
+    china: {
+      src: '/images/caius/china.webp',
+      caption: 'The Chinese edition of the Time Traveller series, by my mother, Regina Gonçalves.',
+    },
+    covers: [
+      'Mathematics, What Beast Is This?', 'Ramses II and the Battle of Kadesh', 'Alexander and Aristotle',
+      'Napoleon Bonaparte in Russia', 'The Phantom of the Opera Carmen', 'Santos Dumont: Flight Is for Everyone',
+      'The Emperor and the Journalist', 'Einstein, Picasso, Agatha and Chaplin', 'Hannibal and Archimedes',
+      'Tutankhamun', 'Marco Polo’s Travels', 'The Angel of the Great Depression',
+    ].map((t, i) => ({ src: `/images/caius/en-${String(i + 1).padStart(2, '0')}.webp`, caption: t })),
+  },
   // the publisher's name, highlighted and linked the first time the text says it
   publisher: { name: 'Viajante do Tempo', href: 'https://viajantedotempo.com/' },
   story: [

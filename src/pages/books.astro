@@ -48,6 +48,21 @@ const parts = (p, i) => {
             )}
           </p></div>
           {books.inline?.[i] && <div class="books-inline"><Story story={books.inline[i]} /></div>}
+          {books.abroad && books.abroad.after === i && (
+            <section class="bk-abroad">
+              <div class="kicker">{books.abroad.kicker}</div>
+              <p class="narrow" style="margin-top:10px">{books.abroad.body}</p>
+              <div class="bk-abroad-grid">
+                <figure class="bk-abroad-china">
+                  <img src={books.abroad.china.src} alt={books.abroad.china.caption} loading="lazy" />
+                  <figcaption>{books.abroad.china.caption}</figcaption>
+                </figure>
+                <div class="bk-abroad-covers">
+                  <Story story={[{ gallery: 'slides', images: books.abroad.covers }]} />
+                </div>
+              </div>
+            </section>
+          )}
         </>
       ))}
     </div>
