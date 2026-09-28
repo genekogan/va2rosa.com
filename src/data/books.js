@@ -40,6 +40,8 @@ export const books = {
       ],
     },
   ],
+  // the publisher's name, highlighted and linked the first time the text says it
+  publisher: { name: 'Viajante do Tempo', href: 'https://viajantedotempo.com/' },
   story: [
     'As with many long stories, none of us really knows how it started. Books have always been magical and important in my family. My sister Diana and I liked to make little physical copies of special books for our dolls, back when she was 7 and I was 4. Later on, my mom started writing down the stories she was inventing for her elementary school students, and we became her commenters and editors. When she finally printed proper copies, we were the illustrators. Her stories, of course, were about time travelling. Filled with art, enigmas, military strategy and mathematics.',
     'In the 2000s there was a revolution in the book industry called the digital turn. Digital software, online retail and print on demand as an international service changed how books could be produced and distributed worldwide. Which meant that a middle-class Brazilian family could start selling books through the early years of social media. We stacked inventory in our living room, built a publishing company on our own, scaled it across the country through specialized government sales, worked with many authors and illustrators, eventually sold over a million books, and licensed international rights to mainland China and elsewhere. So I grew up making books with my family, all of us learning the job as we went.',

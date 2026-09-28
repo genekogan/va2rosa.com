@@ -3007,3 +3007,11 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .dr-vid { margin: 18px 0 22px; max-width: 900px; }
 .dr-vid video { width: 100%; display: block; background: #000; }
 .dr-vid.tall { max-width: 420px; }
+
+/* the publisher's name, the first time the books page says it */
+.pub-hl {
+  font-weight: 600; color: var(--ink);
+  background: linear-gradient(transparent 58%, rgba(255, 214, 102, 0.55) 58%);
+  border-bottom: 1px solid var(--ink-3); padding: 0 1px;
+}
+.pub-hl:hover { background: rgba(255, 214, 102, 0.55); }
