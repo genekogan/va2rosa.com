@@ -242,11 +242,59 @@ export const streetArt = {
   ],
   intro: [
     'A wall is the only studio that argues back. You paint at the speed of the light and the weather, the neighbours have opinions, and when you leave, the work belongs to the street rather than to you.',
-    'This page is a portfolio rather than a chronology: Rio, Chile, Berlin, Lisbon, Cotonou, New York. Some of these walls are gone. Most of the good ones were painted with somebody else.',
+    'Year by year, and where each wall was: Rio, Berlin, Saint-Denis, Fortaleza, Macaé, Chile, Lisbon, New York, Cotonou, São Paulo. Some of these walls are gone. Most of the good ones were painted with somebody else.',
   ],
   sections: [
     {
-      title: 'Caminho',
+      title: '2010 · Rio de Janeiro, Morro da Conceição',
+      body: ['My first street art project: figures from other centuries painted life-size on the walls and steps of the hill, in the port zone of Rio.'],
+      gallery: 'slides',
+      images: [
+        { src: '/images/street/street-011.webp', caption: 'Morro da Conceição, 2010' },
+        { src: '/images/street/street-009.webp', caption: 'Morro da Conceição, 2010' },
+        { src: '/images/street/street-008.webp', caption: 'Morro da Conceição, 2010' },
+        { src: '/images/street/street-010.webp', caption: 'Morro da Conceição, 2010' },
+        { src: '/images/street2/rio10-friar.webp', caption: 'Rio de Janeiro, 2010' },
+      ],
+    },
+    {
+      title: '2010 · Berlin',
+      body: ['Philosophers in the snow: Nietzsche, Hegel, Kant and Schopenhauer, painted over the graffiti.'],
+      gallery: 'slides',
+      images: [
+        { src: '/images/street2/ber10-1.webp', caption: 'Berlin, winter 2010' },
+        { src: '/images/street2/ber10-2.webp', caption: 'The wall in the snow' },
+        { src: '/images/street2/ber10-3.webp', caption: 'Painting' },
+        { src: '/images/street2/ber10-4.webp', caption: 'Nietzsche' },
+        { src: '/images/street2/ber10-5.webp', caption: 'Hegel' },
+        { src: '/images/street2/ber10-6.webp', caption: 'Kant' },
+        { src: '/images/street2/ber10-7.webp', caption: 'Schopenhauer' },
+        { src: '/images/street2/ber10-8.webp', caption: 'Over the graffiti' },
+      ],
+    },
+    {
+      title: '2011 · Saint-Denis, France',
+      body: ['Painted on paper and pasted on the streets of Saint-Denis during my exchange year at Paris 8: portraits, and figures carrying their own heads.'],
+      gallery: 'slides',
+      images: [
+        { src: '/images/street2/sd11-1.webp', caption: 'Saint-Denis, 2011' },
+        { src: '/images/street2/sd11-2.webp', caption: 'Saint-Denis, 2011' },
+        { src: '/images/street2/sd11-3.webp', caption: 'Figures carrying heads' },
+        { src: '/images/street2/sd11-4.webp', caption: 'A hooded figure' },
+        { src: '/images/street2/sd11-5.webp', caption: 'Detail' },
+        { src: '/images/street2/sd11-11.webp', caption: 'Passers-by' },
+        { src: '/images/street2/sd11-6.webp', caption: 'On a shopfront' },
+        { src: '/images/street2/sd11-7.webp', caption: 'Portrait' },
+        { src: '/images/street2/sd11-8.webp', caption: 'Portrait' },
+        { src: '/images/street2/sd11-9.webp', caption: 'Portrait' },
+        { src: '/images/street2/sd11-10.webp', caption: 'Detail' },
+        { src: '/images/street2/sd11-12.webp', caption: 'Among the graffiti' },
+        { src: '/images/street2/sd11-13.webp', caption: 'Paper on the wall' },
+        { src: '/images/street2/sd11-press.webp', caption: '“Saint Denis en tête d’affiche”, in the local paper, 2011' },
+      ],
+    },
+    {
+      title: '2011 and 2012 · Caminho, in Rio, Fortaleza and Macaé',
       body: [
         'Using a photo by Angela Rolim, taken at Morro da Conceição in the port zone of Rio de Janeiro, I made a digital distortion of the image to enhance the perspective’s illusion. After pasting the photographic enlargement on a wall, I continued the work with spray paint and acrylics, creating characters who looked like the people who live there.',
         'Intrigued by the illusive effect, I decided to reassemble it in other contexts. I always try to adapt the painting and collage to their new surroundings, making characters and painted architectures that refer to local specificities.',
@@ -254,10 +302,69 @@ export const streetArt = {
       ],
       gallery: 'slides',
       images: [
-        { src: '/images/street/cam-01.webp', caption: 'Made in Rio de Janeiro. Photo by Paulo Barros' },
-        { src: '/images/street/cam-02.webp', caption: 'Made in Fortaleza. Photo by Danielle Travassos' },
+        { src: '/images/street/cam-01.webp', caption: 'Morro da Conceição, Rio de Janeiro, 2011. Photo by Paulo Barros' },
+        { src: '/images/street2/cam12-indoor.webp', caption: '63rd Fortaleza Art Salon, 2012' },
+        { src: '/images/street/cam-02.webp', caption: '63rd Fortaleza Art Salon, 2012. Photo by Danielle Travassos' },
         { src: '/images/street/cam-03.webp', caption: 'Fortaleza, detail. Photo by Danielle Travassos' },
-        { src: '/images/street/cam-04.webp', caption: 'Fortaleza. Photo by Danielle Travassos' },
+        { src: '/images/street2/cam12-julia.webp', caption: 'With Julia Suav, II Kolirius International Festival, Macaé, 2012' },
+      ],
+    },
+    {
+      title: '2011 to 2013 · Brazil',
+      body: ['Walls and collective murals, 2011 to 2013.'],
+      gallery: 'slides',
+      images: [
+        { src: '/images/street2/br11-1.webp', caption: '2011' },
+        { src: '/images/street2/br11-2.webp', caption: '2011' },
+        { src: '/images/street2/br12-rio.webp', caption: 'Collective mural, Rio de Janeiro, 2012' },
+        { src: '/images/street2/br12-2.webp', caption: '2012' },
+        { src: '/images/street2/br13-1.webp', caption: '2013' },
+      ],
+    },
+    {
+      title: '2013 · Chile',
+      body: ['Murals painted in Chile in 2013, the year of the CONCEGRAFF festival in Concepción.'],
+      gallery: 'slides',
+      images: [
+        { src: '/images/street2/ch13-1.webp', caption: 'Chile, 2013' },
+        { src: '/images/street2/ch13-2.webp', caption: 'The whole wall' },
+        { src: '/images/street2/ch13-3.webp', caption: 'Detail' },
+        { src: '/images/street2/ch13-4.webp', caption: 'Detail' },
+        { src: '/images/street2/ch13-5.webp', caption: 'By the river' },
+        { src: '/images/street2/ch13-6.webp', caption: 'Detail' },
+        { src: '/images/street2/ch13-7.webp', caption: 'Painting' },
+        { src: '/images/street2/ch13-8.webp', caption: 'Chile, 2013' },
+        { src: '/images/street/street-004.webp', caption: 'Chile' },
+        { src: '/images/street/street-005.webp', caption: 'Chile' },
+        { src: '/images/street/street-006.webp', caption: 'Chile' },
+        { src: '/images/street/street-007.webp', caption: 'Chile' },
+      ],
+    },
+    {
+      title: '2013 · Berlin',
+      images: [
+        { src: '/images/street2/ber13-1.webp', caption: 'Berlin, 2013' },
+      ],
+    },
+    {
+      title: '2014 · Santiago, Chile',
+      body: ['La Lucha Mapuche en el Mapocho: a mural with Injusticia on the banks of the Mapocho river, supported by the Red de Apoyo a los Presos Políticos Mapuche, December 2014.'],
+      gallery: 'slides',
+      images: [
+        { src: '/images/street/street-000.webp', caption: 'The Mapocho, Santiago, 2014' },
+        { src: '/images/street/street-001.webp', caption: 'Painting from the riverbed' },
+        { src: '/images/street/street-002.webp', caption: 'Detail' },
+        { src: '/images/street/street-003.webp', caption: 'Detail' },
+      ],
+    },
+    {
+      title: '2014 · Rio de Janeiro, Pedra do Sal',
+      gallery: 'slides',
+      images: [
+        { src: '/images/street/street-012.webp', caption: 'Pedra do Sal, 2014' },
+        { src: '/images/street/street-013.webp', caption: 'Detail' },
+        { src: '/images/street/street-014.webp', caption: 'Detail' },
+        { src: '/images/street2/rio14-face.webp', caption: 'Rio de Janeiro, 2014' },
       ],
     },
     {
@@ -268,6 +375,7 @@ export const streetArt = {
       gallery: 'slides',
       images: [
         { src: '/images/eyes/sesc-1.webp' },
+        { src: '/images/street2/prov15.webp', caption: 'Providência, Rio de Janeiro, 2015' },
         { src: '/images/eyes/loomit-1.webp' },
         { src: '/images/eyes/un-1.webp' },
         { src: '/images/eyes/formiga-1.webp' },
@@ -275,33 +383,63 @@ export const streetArt = {
       more: { label: 'The whole project', href: '/eyes-on-walls' },
     },
     {
-      title: 'Chile',
-      body: ['Concepción and Valparaíso, 2013 and 2014.'],
+      title: '2015 · Rio de Janeiro, Botafogo',
+      body: ['Back from Lisbon, the tiles on the planters of Botafogo.'],
       gallery: 'slides',
-      images: take('street', 0, 8),
+      images: [
+        { src: '/images/sr2/rio-1.webp', caption: 'Botafogo, 2015' },
+        { src: '/images/sr2/rio-2.webp', caption: 'Botafogo, 2015' },
+        { src: '/images/sr2/rio-3.webp', caption: 'Botafogo, 2015' },
+        { src: '/images/street/street-015.webp', caption: 'Painting' },
+      ],
+      more: { label: 'Silk Roads', href: '/threads/the-silk-roads' },
     },
     {
-      title: 'Rio de Janeiro',
-      body: ['The port zone, Morro da Conceição and the slave ship panel at Pedra do Sal.'],
+      title: '2015 · Lisbon, the Blue Wall Project',
+      body: ['For GAU and the Lisbon Municipality.'],
       gallery: 'slides',
-      images: take('street', 8, 8),
+      images: [
+        { src: '/images/street/street-016.webp', caption: 'Lisbon, 2015' },
+        { src: '/images/street/street-017.webp', caption: 'The Blue Wall, Lisbon' },
+        { src: '/images/street/street-018.webp', caption: 'The Blue Wall, Lisbon' },
+      ],
     },
     {
-      title: 'The Blue Wall Project, Lisbon',
-      body: ['For GAU and the Lisbon Municipality, 2015.'],
-      gallery: 'slides',
-      images: take('street', 16, 3),
+      title: '2016 · New York',
+      body: ['The tiles on a shopfront in Brooklyn.'],
+      images: [
+        { src: '/images/street/street-019.webp', caption: 'Brooklyn, 2016' },
+      ],
     },
     {
-      title: 'New York',
-      body: ['The tiles carried indoors, onto a shopfront in Brooklyn, 2016.'],
+      title: '2017 · Cotonou, Benin',
+      body: ['A mural at Le Centre, painted during the residency with Gérard Quenum.'],
       gallery: 'slides',
-      images: take('street', 19, 1),
+      images: [
+        { src: '/images/gq/gq-afro-2.webp', caption: 'Le Centre, Cotonou, 2017' },
+        { src: '/images/gq/gq-afro-1.webp', caption: 'Le Centre, Cotonou, 2017' },
+        { src: '/images/gq/gq-afro-3.webp', caption: 'Detail' },
+        { src: '/images/gq/gq-afro-4.webp', caption: 'Detail' },
+      ],
+      more: { label: 'Dialogues, with Gérard Quenum', href: '/gerard-quenum' },
+    },
+    {
+      title: '2017 · São Paulo',
+      images: [
+        { src: '/images/street2/sp17.webp', caption: 'With Vinicius Caps, São Paulo, 2017' },
+      ],
+    },
+    {
+      title: '2017 · Red Hook, Brooklyn',
+      body: ['The fence around Pioneer Works: 250 square metres of tiles, painted in perspective.'],
+      images: [
+        { src: '/images/pw/pw-corner.webp', caption: 'Pioneer Works, Red Hook, 2017' },
+      ],
+      more: { label: 'The Pioneer Works fence', href: '/pioneer-works' },
     },
   ],
-  closing:
-    'More walls are being added: Berlin, Cotonou and the desert are still to come, along with the earliest work from 2009 and 2010 in Rio.',
 };
+
 
 export const haMuitasNoites = {
   slug: 'ha-muitas-noites',
