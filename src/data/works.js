@@ -651,8 +651,10 @@ export const mauricioHora = {
       body: [
         'A mural in front of Casa Amarela, painted for the show Desarquitetura: the first thing Maurício and I made together.',
       ],
+      gallery: 'slides',
       images: [
-        { src: '/images/mh/mh-2013-casa-amarela.webp', caption: 'Three children on the steps. Mural in front of Casa Amarela, Morro da Providência, for Desarquitetura, 2013' },
+        { src: '/images/mh/mh-2013-desarq-1.webp', caption: 'Three children on the steps. Mural in front of Casa Amarela, Morro da Providência, for Desarquitetura, 2013' },
+        { src: '/images/mh/mh-2013-desarq-2.webp', caption: 'The whole wall, with the eyes beside it' },
       ],
     },
     {
