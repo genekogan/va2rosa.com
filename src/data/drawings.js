@@ -15,8 +15,8 @@ const v = (name) => ({ file: `/video/draw/${name}.mp4`, poster: `/video/draw/${n
 export const selfPortrait = {
   src: d('h-2000-self'),
   year: 2000,
-  caption: 'Self portrait, 2000. Pencil on paper.',
-  alt: 'A pencil self portrait: a young woman with curly hair looking straight out, drawn in 2000.',
+  caption: 'Self portrait, 2000. Pencil on canvas board.',
+  alt: 'A pencil self portrait on canvas board: a young woman with curly hair looking straight out, drawn in 2000.',
 };
 
 // single drawings, oldest first
