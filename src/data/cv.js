@@ -200,7 +200,6 @@ export const cv = [
   { year: 2011, type: 'affiliation', title: 'Artist and project coordinator, Rede Nami', venue: 'Feminist urban art network, 2011 to 2014. Murals, workshops and campaigns on women’s rights', city: 'Rio de Janeiro, Brazil' , href: 'https://redenami.com/' },
   { year: 2020, type: 'affiliation', title: 'Core member, Mars College', venue: '', city: 'Bombay Beach, California' , href: 'https://mars.college/' },
   { year: 2023, type: 'affiliation', title: 'Lead artist, Eden.art', venue: 'Creative AI platform and artist community', city: '' , href: 'https://www.eden.art/' },
-  { year: 2023, type: 'affiliation', title: 'Principal, Human Imaginarium LLC', venue: '', city: 'United States' },
   { year: 2026, type: 'affiliation', title: 'Founding ambassador, Good Standing', venue: '', city: '' , href: 'https://goodstanding.co/' },
 ];
 
