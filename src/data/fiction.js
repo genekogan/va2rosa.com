@@ -95,7 +95,7 @@ export const fiction = {
         year: 2022,
         title: 'Memories from the early time of life on Mars',
         tool: 'GPT-3, davinci family, probably text-davinci-002',
-        body: 'An experiment with GPT-3. I wrote five first-person memories for the Little Martians as a guide, and the model continued in the same voice; then the same again for theories of where the Martians came from. The page keeps it all, marked.',
+        body: 'An experiment with GPT-3. I wrote five first-person memories for the Little Martians as a guide, and the model continued in the same voice; then the same again for theories of where the Martians came from. Many of the outputs I then edited, as I learned to collaborate with the model. The page keeps it all, marked.',
         image: '/images/writing/lm-shakespeare.webp',
         href: '/fiction-writing/memories-of-mars',
         cta: 'Read the whole experiment',
@@ -255,6 +255,7 @@ export const fictionPages = {
     context: [
       'Written in 2022 with GPT-3, the davinci family of models, most likely text-davinci-002. This was a completion model, before chat: you gave it the beginning of a document and it continued the document. So the prompt is written as the thing itself — an introduction and a few examples — and the model carries on in the same shape.',
       'Each memory belongs to one of the ceramic heads. The notes beside my examples (“red and green eyes”, “mushroom 1”) name the head the memory was written for.',
+      'Many of the AI outputs were edited by me afterwards. I was learning how to collaborate with these models to create interesting stories at scale.',
     ],
   },
   'verdelis-and-mycos': {
