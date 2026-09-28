@@ -40,7 +40,7 @@ const parts = (p, i) => {
     <div style="margin-top:26px">
       {books.story.map((p, i) => (
         <>
-          <div class="narrow"><p>
+          <div class={i === firstPub ? 'narrow bk-callout-wrap' : 'narrow'}><p class={i === firstPub ? 'verdelis bk-callout' : undefined}>
             {parts(p, i).map((bit) =>
               bit === null
                 ? <a class="pub-hl" href={pub.href} target="_blank" rel="noopener">{pub.name}</a>

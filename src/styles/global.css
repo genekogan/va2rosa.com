@@ -3025,3 +3025,8 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .bk-abroad-covers .wsec { margin-top: 0; }
 .bk-abroad-covers .sl-item img { max-height: 620px; width: auto; margin: 0 auto; }
 @media (max-width: 760px) { .bk-abroad-grid { grid-template-columns: 1fr; } }
+
+/* books: the line that names the company, set in Verdelis's hand */
+.bk-callout-wrap { margin: 64px 0 64px; }
+.bk-callout { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.18; color: var(--blue); margin: 0; }
+.bk-callout .pub-hl { font-weight: inherit; color: var(--blue); border-bottom-color: var(--blue); }
