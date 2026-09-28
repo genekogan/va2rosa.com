@@ -111,26 +111,42 @@ const stateLabel = { ended: 'ended', transformed: 'became the next thing', ongoi
     <li><i class="k-ongoing"></i>ongoing</li>
   </ul>
 
-  <!-- the same data as a table, for narrow screens and for screen readers -->
-  <table class="tl-table">
-    <caption class="visually-hidden">The work by period</caption>
-    <thead>
-      <tr><th>№</th><th>Period</th><th>Years</th><th>What carries the memory</th><th>Status</th></tr>
-    </thead>
-    <tbody>
-      {rows.map((t) => (
-        <tr>
-          <td class="n">{t.number}</td>
-          <td class="ti">
-            {(t.href ?? linkFor(t))
-              ? <a href={t.href ?? linkFor(t)}>{t.title}</a>
-              : t.title}
-          </td>
-          <td class="yr">{t.years}</td>
-          <td>{t.carrier ?? '–'}</td>
-          <td class="st">{stateLabel[t.state]}</td>
-        </tr>
+  <!-- Narrow screens: one card per period, the words at full width, and a
+       small painted bar that keeps the duration-and-overlap idea. -->
+  <div class="tl-cards">
+    <ul>
+      {/* one year axis per column, so the painted bars line up under it */}
+      {[0, 1].map(() => (
+        <li class="tl-axis-li" aria-hidden="true">
+          <div class="tl-mini-axis">
+            <span style="left:0%">{FIRST}</span>
+            <span style={`left:${pct(2015)}%`}>2015</span>
+            <span style={`left:${pct(2020)}%`}>2020</span>
+            <span style={`left:${pct(2026)}%`}>now</span>
+          </div>
+        </li>
       ))}
-    </tbody>
-  </table>
+      {bars.map((b) => {
+        const href = b.href ?? linkFor(b);
+        return (
+          <li class={`tl-card${b.underlay ? ' underlay' : ''}`}>
+            <div class="tl-card-top">
+              {b.number && <span class="tl-card-n">{b.number}</span>}
+              {href
+                ? <a class="tl-card-t" href={href}>{b.title}</a>
+                : <span class="tl-card-t">{b.title}</span>}
+            </div>
+            <p class="tl-card-meta">{b.years} · {stateLabel[b.state]}</p>
+            {b.carrier && <p class="tl-card-c">{b.carrier}</p>}
+            <div class="tl-mini" aria-hidden="true">
+              <span
+                class={`tl-bar nolink${b.ongoing ? ' ongoing' : ''}${b.state === 'transformed' ? ' transformed' : ''}${b.underlay ? ' underlay' : ''}`}
+                style={`left:${b.left}%; width:${b.width}%; ${washVars(b.wash)}`}
+              ></span>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
 </div>
