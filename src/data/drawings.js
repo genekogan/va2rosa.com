@@ -37,11 +37,6 @@ export const highlights = [
 // the sketchbooks, year by year
 export const years = [
   {
-    year: 'Late 1990s',
-    title: 'A folder of drawings',
-    video: { ...v('draw-90s'), caption: 'Turning the pages of a folder from the late 1990s.' },
-  },
-  {
     year: '1999',
     title: 'Drawings, 1999',
     video: { ...v('draw-1999'), caption: 'A portfolio of drawings from 1999.' },
