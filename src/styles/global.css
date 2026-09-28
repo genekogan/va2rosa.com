@@ -3039,3 +3039,12 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .oped-print img { width: 100%; display: block; border: 1px solid var(--line-2); background: #fff; }
 .oped-body { margin-top: 40px; font-size: 17px; line-height: 1.7; }
 @media (max-width: 760px) { .oped-head { grid-template-columns: 1fr; } .oped-print { max-width: 240px; } }
+
+/* info: the photographs under the lettering, in a square frame so the page
+   does not jump as they change */
+.about-title-flat { margin-bottom: 14px; width: 80%; }
+.about-slides { width: 100%; }
+.about-slides .sl-item { margin: 0; }
+.about-slides .sl-item img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; display: block; background: transparent; }
+.about-slides figcaption { font-size: 12px; color: var(--ink-3); margin-top: 8px; text-align: center; }
+.about-slides .sl-bar { justify-content: center; }

@@ -3,6 +3,16 @@ import Base from '../layouts/Base.astro';
 import { site } from '../data/site.js';
 import { byYear, cvTypes, typeLabel } from '../data/cv.js';
 import { pressByYear, pressKinds } from '../data/press.js';
+
+const portraits = [
+  { src: '/images/me/me-01.webp', caption: 'Photo by Edu Monteiro, 2025', alt: 'Vanessa Rosa in a patterned dress, against a grey backdrop.' },
+  { src: '/images/me/me-02.webp', caption: 'Photo by Renata Chebel, 2024', alt: 'Vanessa Rosa in the desert, holding ceramic heads in both hands, in black and white.' },
+  { src: '/images/me/me-03.webp', caption: 'Photo by Ania Catherine, 2022', alt: 'Vanessa Rosa holding a small blue ceramic head.' },
+  { src: '/images/me/me-04.webp', caption: 'With a Little Martian', alt: 'Vanessa Rosa in profile, face to face with a dark glazed ceramic head.' },
+  { src: '/images/me/me-05.webp', caption: 'Photo by Renata Chebel, 2024', alt: 'Vanessa Rosa by the sea, holding a ceramic head to her face, in black and white.' },
+  { src: '/images/me/me-06.webp', caption: 'Photo by Edu Monteiro, 2025', alt: 'Vanessa Rosa looking over her shoulder, in black and white.' },
+  { src: '/images/me/me-07.webp', caption: 'Painting in New York, 2017', alt: 'Vanessa Rosa kneeling on a large blue tile painting laid on a wooden floor.' },
+];
 ---
 
 <Base
@@ -11,25 +21,35 @@ import { pressByYear, pressKinds } from '../data/press.js';
   bodyClass=""
   description="Biography, full curriculum and press record of Vanessa Rosa, Brazilian visual artist and art historian: exhibitions, film festivals, awards, talks, teaching, residencies and publications since 2009."
 >
-  <!-- The portrait, cut out, on the speculative-biology ground.
-       "About Vanessa Rosa" sits over the top of it. -->
+  <!-- Photographs of Vanessa, one at a time, under the lettering. -->
   <div class="about">
    <div class="about-inner">
     <div class="about-art">
       <img
-        class="about-title"
+        class="about-title about-title-flat"
         src="/images/about-lettering.webp"
         alt="About Vanessa Rosa"
         width="760"
         height="513"
       />
-      <img
-        class="about-portrait"
-        src="/images/portrait-cutout.webp"
-        alt="Vanessa Rosa in profile, holding a small painted globe."
-        width="1000"
-        height="1279"
-      />
+      <div class="slides about-slides" data-slides>
+        <div class="sl-stage">
+          <button class="sl-nav sl-prev" type="button" aria-label="Previous">‹</button>
+          <div class="sl-track">
+            {portraits.map((im, i) => (
+              <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
+                <img src={im.src} alt={im.alt} loading={i < 1 ? 'eager' : 'lazy'} />
+                <figcaption>{im.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <button class="sl-nav sl-next" type="button" aria-label="Next">›</button>
+        </div>
+        <div class="sl-bar">
+          <span class="sl-count">1 / {portraits.length}</span>
+        </div>
+        <div class="sl-grid" hidden></div>
+      </div>
     </div>
 
     <div class="about-text">
@@ -235,3 +255,22 @@ import { pressByYear, pressKinds } from '../data/press.js';
     })();
   </script>
 </Base>
+
+<script is:inline>
+  // The photographs: one at a time, arrows to move.
+  document.querySelectorAll('.about-slides').forEach(function (box) {
+    var items = box.querySelectorAll('.sl-item');
+    var count = box.querySelector('.sl-count');
+    var at = 0;
+    function show(i) {
+      at = (i + items.length) % items.length;
+      items.forEach(function (el, k) {
+        el.hidden = k !== at;
+        if (k === at) el.querySelector('img').loading = 'eager';
+      });
+      count.textContent = at + 1 + ' / ' + items.length;
+    }
+    box.querySelector('.sl-prev').addEventListener('click', function () { show(at - 1); });
+    box.querySelector('.sl-next').addEventListener('click', function () { show(at + 1); });
+  });
+</script>
