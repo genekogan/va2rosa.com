@@ -342,8 +342,14 @@ export const streetArt = {
     },
     {
       title: '2013 · Berlin',
+      gallery: 'slides',
       images: [
         { src: '/images/street2/ber13-1.webp', caption: 'Berlin, 2013' },
+        { src: '/images/street2/ber13-amarildo.webp', caption: 'Amarildo, painted in Berlin in 2013' },
+        { src: '/images/street2/ber13-amarildo2.webp', caption: 'Amarildo, detail' },
+        { src: '/images/street2/ber13-spree-hegel.webp', caption: '“Das ist sinnlos, über Hegel hier zu sprechen.” Urban Spree, Berlin, 2013' },
+        { src: '/images/street2/ber13-spree-detail.webp', caption: 'Detail' },
+        { src: '/images/street2/ber13-spree-archer.webp', caption: 'Urban Spree, Berlin, 2013' },
       ],
     },
     {
@@ -436,6 +442,22 @@ export const streetArt = {
         { src: '/images/pw/pw-corner.webp', caption: 'Pioneer Works, Red Hook, 2017' },
       ],
       more: { label: 'The Pioneer Works fence', href: '/pioneer-works' },
+    },
+    {
+      title: '2020 to now · Mars College, California',
+      body: [
+        'Martian plywood is a great base for murals. Each year we create new ones, then they come down, and the following year we often recombine the pieces into new configurations.',
+        'At night the same walls stop being walls. Projection mapping is a Martian tradition, and it turns the paintings into portals.',
+      ],
+      gallery: 'slides',
+      images: [
+        { src: '/images/mars/mural/m-01.webp', caption: '2021. A jungle painted across the plywood.' },
+        { src: '/images/mars/mural/m-02.webp', caption: '2022. Blue arches under the solar array.' },
+        { src: '/images/mars/mural/m-03.webp', caption: '2024. Chiba, with the lettering by Will Simmons and a central flower after Marzipan’s AI version of Kirby’s Mars College logo.' },
+        { src: '/images/mars/mural/m-04.webp', caption: '2024. Painted with Cekis.' },
+        { src: '/images/mars/mural/m-05.webp', caption: '2026. Saturn’s Theater of Minds: painting and projections.' },
+      ],
+      more: { label: 'Mars College', href: '/mars-college' },
     },
   ],
 };

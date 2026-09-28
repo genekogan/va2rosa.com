@@ -235,7 +235,7 @@ const { work } = Astro.props;
         )}
 
         {sec.images && sec.images.length > 0 && sec.gallery !== 'slides' && (
-          <div class={sec.grid === 'tall' ? 'wgrid tall' : 'wgrid'}>
+          <div class={sec.images.length === 1 ? 'wgrid solo' : sec.grid === 'tall' ? 'wgrid tall' : 'wgrid'}>
             {sec.images.map((im) => (
               <figure class={im.wide ? 'wide' : undefined}>
                 <img src={im.src} alt={im.caption || ''} loading="lazy" />
