@@ -3030,3 +3030,12 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .bk-callout-wrap { margin: 64px 0 64px; }
 .bk-callout { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.18; color: var(--blue); margin: 0; }
 .bk-callout .pub-hl { font-weight: inherit; color: var(--blue); border-bottom-color: var(--blue); }
+
+/* the op-ed in English: the printed page beside the opening */
+.oped-head { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; align-items: start; margin-top: 18px; }
+.oped-orig { font-style: italic; color: var(--ink-3); margin: 0 0 14px; }
+.oped-by { font-size: 14.5px; color: var(--ink-2); margin: 0 0 10px; }
+.oped-note { font-size: 13.5px; color: var(--ink-3); max-width: 40em; margin: 0; }
+.oped-print img { width: 100%; display: block; border: 1px solid var(--line-2); background: #fff; }
+.oped-body { margin-top: 40px; font-size: 17px; line-height: 1.7; }
+@media (max-width: 760px) { .oped-head { grid-template-columns: 1fr; } .oped-print { max-width: 240px; } }

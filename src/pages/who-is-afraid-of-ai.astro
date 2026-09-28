@@ -1,0 +1,44 @@
+---
+// The Correio Braziliense op-ed, in English. The printed page beside the
+// opening, the text in full, and the way back to the original.
+import Base from '../layouts/Base.astro';
+import { opEd as o } from '../data/op-ed.js';
+---
+
+<Base
+  title={o.title}
+  current="Research"
+  bodyClass="paper"
+  description={`${o.title} An op-ed by ${o.author}, translated from the Portuguese. First published in ${o.venue}, ${o.date}.`}
+>
+  <article class="wrap oped">
+    <p class="fx-back" style="padding-top:60px"><a href="/research">← Research</a></p>
+
+    <div class="oped-head">
+      <div>
+        <div class="kicker">Op-ed · {o.venue} · {o.date}</div>
+        <h1 class="sec" style="margin:12px 0 8px">{o.title}</h1>
+        <p class="oped-orig">{o.original}</p>
+        <p class="oped-by">{o.author}. {o.role}.</p>
+        <p class="oped-note">
+          Translated from the Portuguese. First published in {o.venue}, one of Brazil’s main newspapers,
+          in {o.section}, on {o.date}.
+          <a class="ul" href={o.href} target="_blank" rel="noopener">Read the original in Portuguese</a>.
+        </p>
+      </div>
+      <a href={o.href} target="_blank" rel="noopener" data-nozoom class="oped-print">
+        <img src={o.image} alt={o.imageAlt} />
+      </a>
+    </div>
+
+    <div class="narrow oped-body">
+      {o.body.map((p) => <p>{p}</p>)}
+    </div>
+
+    <p style="margin:50px 0 90px">
+      <a class="more" href={o.href} target="_blank" rel="noopener">The original, in Portuguese ⇢</a>
+      <span style="display:inline-block; width:22px"></span>
+      <a class="more" href="/research">Research ⇢</a>
+    </p>
+  </article>
+</Base>
