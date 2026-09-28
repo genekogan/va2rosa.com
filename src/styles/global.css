@@ -3040,11 +3040,17 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .oped-body { margin-top: 40px; font-size: 17px; line-height: 1.7; }
 @media (max-width: 760px) { .oped-head { grid-template-columns: 1fr; } .oped-print { max-width: 240px; } }
 
-/* info: the photographs under the lettering, in a square frame so the page
-   does not jump as they change */
-.about-title-flat { margin-bottom: 14px; width: 80%; }
+/* info: the photographs beside the bio, in a square frame so the page does
+   not jump as they change. Given more of the row than the old drawing had. */
+.about:has(.about-slides) .about-inner { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 44px; }
+.about:has(.about-slides) .about-art { max-width: none; width: 100%; }
+/* arrows sit over the picture instead of beside it, so the picture gets the width */
+.about-slides .sl-stage { position: relative; display: block; }
+.about-slides .sl-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; background: rgba(240, 240, 228, 0.82); }
+.about-slides .sl-prev { left: 8px; }
+.about-slides .sl-next { right: 8px; }
 .about-slides { width: 100%; }
 .about-slides .sl-item { margin: 0; }
-.about-slides .sl-item img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; display: block; background: transparent; }
+.about-slides .sl-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; display: block; background: transparent; }
 .about-slides figcaption { font-size: 12px; color: var(--ink-3); margin-top: 8px; text-align: center; }
 .about-slides .sl-bar { justify-content: center; }
