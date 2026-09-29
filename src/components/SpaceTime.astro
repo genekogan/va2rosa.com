@@ -1,0 +1,208 @@
+---
+// The timeline for phones, as a drawing rather than a chart: a gravity well
+// of rings, 2009 deep in the middle and "now" at the rim. Each period is a
+// thread that spirals out from its first year to its last; the ones still
+// going run on to the rim and fade. It turns slowly, can be dragged, and a tap
+// on a node (or a name in the list) lights up that thread.
+import { threads, timelineExtra, linkFor } from '../data/threads.js';
+
+const stateLabel = { ended: 'ended', transformed: 'became the next thing', ongoing: 'ongoing' };
+const rows = [...threads, ...timelineExtra].map((t) => ({
+  n: t.number ?? '',
+  title: t.title,
+  years: t.years,
+  start: t.start,
+  end: t.end ?? null,
+  state: t.state,
+  status: stateLabel[t.state],
+  carrier: t.carrier ?? '',
+  href: t.href ?? linkFor(t) ?? '',
+  underlay: !!t.underlay,
+}));
+---
+
+<section class="spacetime" aria-label="The work over time, drawn as threads in a gravity well">
+  <div class="kicker">Timeline</div>
+  <canvas class="st-canvas" data-rows={JSON.stringify(rows)} aria-hidden="true"></canvas>
+
+  <div class="st-info" aria-live="polite">
+    <p class="st-info-meta"></p>
+    <a class="st-info-t" href="#"></a>
+    <p class="st-info-c"></p>
+  </div>
+
+  <ol class="st-list">
+    {rows.map((r, i) => (
+      <li>
+        <button type="button" data-i={i}>
+          <span class="st-n">{r.n || '·'}</span>{r.title}
+        </button>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<script is:inline>
+  (function () {
+    var box = document.querySelector('.spacetime');
+    if (!box) return;
+    var cv = box.querySelector('.st-canvas');
+    var rows = JSON.parse(cv.getAttribute('data-rows'));
+    var ctx = cv.getContext('2d');
+    var FIRST = 2009, LAST = 2027, SPAN = LAST - FIRST;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var W = 0, H = 0, R = 0, cx = 0, cy = 0, dpr = 1;
+    function size() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = cv.clientWidth; H = Math.round(W * 1.02);
+      cv.style.height = H + 'px';
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      R = W * 0.46; cx = W / 2; cy = H * 0.40;
+    }
+
+    // year -> radius and depth: the early years sink into the middle of the well
+    function rad(y) { return R * (0.1 + 0.9 * (y - FIRST) / SPAN); }
+    function depth(y) { var t = 1 - (y - FIRST) / SPAN; return R * 0.95 * t * t; }
+
+    var theta = 0.6;
+    function project(y, a) {
+      var r = rad(y), x = r * Math.cos(a + theta), z = r * Math.sin(a + theta);
+      var persp = 1 / (1 + z / (R * 5));               // the far side a little smaller
+      return { x: cx + x * persp, y: cy + (z * 0.42 + depth(y)) * persp, z: z };
+    }
+
+    // each thread gets its own bearing, and spirals as the years pass
+    var TWIST = 0.16;
+    rows.forEach(function (r, i) {
+      r.a0 = (i / rows.length) * Math.PI * 2;
+      r.stop = r.end === null ? LAST : r.end + 0.4;
+    });
+    function bearing(r, y) { return r.a0 + TWIST * (y - r.start); }
+
+    var sel = 0, nodes = [];
+    var BLUE = '28, 74, 134', GREY = '109, 130, 153';
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      // the well itself: rings every three years, and spokes
+      ctx.lineWidth = 1;
+      for (var y = FIRST; y <= LAST; y += 3) {
+        ctx.beginPath();
+        for (var k = 0; k <= 96; k++) {
+          var p = project(y, (k / 96) * Math.PI * 2);
+          k ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y);
+        }
+        ctx.strokeStyle = 'rgba(' + BLUE + ',' + (y === LAST ? 0.22 : 0.10) + ')';
+        ctx.stroke();
+      }
+      for (var s = 0; s < 16; s++) {
+        ctx.beginPath();
+        for (var yy = FIRST; yy <= LAST; yy += 0.5) {
+          var q = project(yy, (s / 16) * Math.PI * 2);
+          yy === FIRST ? ctx.moveTo(q.x, q.y) : ctx.lineTo(q.x, q.y);
+        }
+        ctx.strokeStyle = 'rgba(' + BLUE + ',0.07)';
+        ctx.stroke();
+      }
+
+      // the years, written on the rim and in the well
+      ctx.font = '10px ui-sans-serif, system-ui, sans-serif';
+      ctx.fillStyle = 'rgba(' + BLUE + ',0.55)';
+      ctx.textAlign = 'center';
+      ctx.fillText('2009', cx, cy + depth(FIRST) + 16);
+      // "now" sits on the right-hand edge of the rim, clear of the threads
+      var rim = project(LAST, -theta);
+      ctx.textAlign = 'right';
+      ctx.fillText('now', rim.x - 2, rim.y - 7);
+
+      // the threads
+      nodes = [];
+      rows.forEach(function (r, i) {
+        var on = i === sel;
+        var col = r.underlay ? GREY : BLUE;
+        var pts = [];
+        for (var y = r.start; y <= r.stop; y += 0.25) pts.push(project(y, bearing(r, y)));
+        for (var j = 1; j < pts.length; j++) {
+          var f = j / pts.length;
+          var fade = r.end === null ? Math.max(0, 1 - Math.max(0, f - 0.7) / 0.3) : 1;
+          var base = on ? 0.95 : 0.42;
+          ctx.beginPath();
+          ctx.moveTo(pts[j - 1].x, pts[j - 1].y); ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.strokeStyle = 'rgba(' + col + ',' + (base * fade).toFixed(3) + ')';
+          ctx.lineWidth = on ? 3.2 : (r.state === 'ended' ? 1.2 : 1.8);
+          if (r.state === 'transformed') ctx.setLineDash([4, 3]); else ctx.setLineDash([]);
+          ctx.stroke();
+        }
+        ctx.setLineDash([]);
+        var a = pts[0];
+        ctx.beginPath(); ctx.arc(a.x, a.y, on ? 5 : 3.4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + col + ',' + (on ? 1 : 0.8) + ')'; ctx.fill();
+        if (r.end !== null) {
+          var b = pts[pts.length - 1];
+          ctx.beginPath(); ctx.arc(b.x, b.y, on ? 4.5 : 3, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(' + col + ',' + (on ? 1 : 0.6) + ')'; ctx.lineWidth = 1.3; ctx.stroke();
+        }
+        ctx.fillStyle = 'rgba(' + col + ',' + (on ? 1 : 0.75) + ')';
+        ctx.font = (on ? '600 ' : '') + '10px ui-sans-serif, system-ui, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(r.n || '·', a.x + 7, a.y - 5);
+        nodes.push({ i: i, x: a.x, y: a.y });
+      });
+    }
+
+    var info = box.querySelector('.st-info');
+    var btns = box.querySelectorAll('.st-list button');
+    function select(i) {
+      sel = i;
+      var r = rows[i];
+      info.querySelector('.st-info-meta').textContent = (r.n ? r.n + ' · ' : '') + r.years + ' · ' + r.status;
+      var t = info.querySelector('.st-info-t');
+      t.textContent = r.title;
+      if (r.href) { t.href = r.href; t.removeAttribute('aria-disabled'); } else { t.removeAttribute('href'); }
+      info.querySelector('.st-info-c').textContent = r.carrier;
+      btns.forEach(function (b) { b.classList.toggle('is-on', +b.getAttribute('data-i') === i); });
+      draw();
+    }
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () { select(+b.getAttribute('data-i')); });
+    });
+
+    // drag to turn the well; a tap near a node picks that thread
+    var down = null, moved = 0;
+    cv.addEventListener('pointerdown', function (e) { down = e.clientX; moved = 0; });
+    cv.addEventListener('pointermove', function (e) {
+      if (down === null) return;
+      var dx = e.clientX - down; down = e.clientX; moved += Math.abs(dx);
+      theta += dx * 0.012; draw();
+    });
+    cv.addEventListener('pointerup', function (e) {
+      if (moved < 6) {
+        var rect = cv.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top;
+        var best = null, bd = 26;
+        nodes.forEach(function (n) { var d = Math.hypot(n.x - x, n.y - y); if (d < bd) { bd = d; best = n; } });
+        if (best) select(best.i);
+      }
+      down = null;
+    });
+    cv.addEventListener('pointercancel', function () { down = null; });
+
+    // a slow turn, only while the drawing is on screen
+    var visible = false, last = 0;
+    function tick(t) {
+      if (visible && down === null && !reduce) {
+        theta += Math.min(t - last, 50) * 0.00012;
+        draw();
+      }
+      last = t;
+      requestAnimationFrame(tick);
+    }
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(cv);
+
+    size(); select(rows.length > 6 ? 6 : 0);
+    window.addEventListener('resize', function () { size(); draw(); });
+    requestAnimationFrame(tick);
+  })();
+</script>

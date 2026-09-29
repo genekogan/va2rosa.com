@@ -3090,3 +3090,22 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 @media (max-width: 600px) {
   #timeline { display: none; }
 }
+
+/* --- the timeline for phones: threads in a gravity well ------------------- */
+.st-wrap { display: none; }
+@media (max-width: 600px) {
+  .st-wrap { display: block; margin-top: 56px; }
+}
+.st-canvas { display: block; width: 100%; margin-top: 10px; touch-action: pan-y; cursor: grab; }
+.st-info { min-height: 96px; margin-top: 4px; }
+.st-info-meta { margin: 0; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+.st-info-t { display: inline-block; margin-top: 6px; font-family: var(--hand); font-size: 26px; line-height: 1.1; color: var(--blue); }
+.st-info-t[href] { border-bottom: 1px solid var(--line); }
+.st-info-c { margin: 6px 0 0; font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+.st-list { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.st-list button {
+  font: inherit; font-size: 13px; color: var(--ink-2); background: transparent;
+  border: 1px solid var(--line); border-radius: 999px; padding: 8px 13px; min-height: 40px; cursor: pointer;
+}
+.st-list button.is-on { border-color: var(--blue); color: var(--blue); background: rgba(28, 74, 134, 0.06); }
+.st-n { color: var(--ink-3); font-size: 11px; margin-right: 6px; font-variant-numeric: tabular-nums; }

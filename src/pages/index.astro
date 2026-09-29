@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Timeline from '../components/Timeline.astro';
+import SpaceTime from '../components/SpaceTime.astro';
 import { site } from '../data/site.js';
 import { heroLoop, HOLD } from '../data/heroloop.js';
 import { collections, essays } from '../data/collections.js';
@@ -57,6 +58,11 @@ const figs = essays.research.figures.filter((f) =>
     <!-- TIMELINE -------------------------------------------------------- -->
     <section class="wrap" style="margin-top:70px" id="timeline">
       <Timeline />
+    </section>
+
+    <!-- phones only: the timeline as threads in a gravity well -->
+    <section class="wrap st-wrap">
+      <SpaceTime />
     </section>
 
     <!-- RESEARCH -------------------------------------------------------- -->
