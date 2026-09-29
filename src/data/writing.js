@@ -267,6 +267,7 @@ export const groups = [
     title: 'Talks',
     blurb: '',
     items: [
+      { year: 2025, title: 'My journey as an AI artist', kind: 'Talk and workshop', image: '/images/writing/talk-jaaga.webp', imageAlt: 'Vanessa Rosa presenting her work to the AI Futures Fellowship, Jaaga.', venue: 'Jaaga, AI Futures Fellowship, Bengaluru', detail: 'A workshop for women in Bengaluru, in Jaaga’s AI Futures Fellowship, opening with the path from street painting to the Little Martians.', links: [{ label: 'Watch it', href: 'https://www.youtube.com/watch?v=7u24SG0fGSo' }, { label: 'Jaaga', href: 'https://www.jaaga.org/' }] },
       { year: 2025, title: 'Little Martians: From Desert Clay to Generative Agents', kind: 'Paper and panel', image: '/images/writing/paper-ceramic.webp', imageAlt: 'A glazed ceramic Little Martian head.', venue: 'NeurIPS 2025, Creative AI track', detail: '', links: [] },
       {
         year: 2024,

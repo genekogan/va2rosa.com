@@ -3027,8 +3027,16 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 
 /* info: the photographs beside the bio, in a square frame so the page does
    not jump as they change. Given more of the row than the old drawing had. */
-.about:has(.about-slides) .about-inner { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 44px; }
+@media (min-width: 901px) {
+  .about:has(.about-slides) .about-inner { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 44px; }
+}
 .about:has(.about-slides) .about-art { max-width: none; width: 100%; }
+/* narrow screens: the photograph first and large, the text underneath */
+@media (max-width: 900px) {
+  .about:has(.about-slides) .about-inner { grid-template-columns: minmax(0, 1fr); gap: 22px; padding-top: 18px; }
+  .about-slides .sl-item img { aspect-ratio: auto; max-height: 78vh; object-fit: contain; }
+  .about-slides .sl-nav { width: 40px; height: 40px; }
+}
 /* arrows sit over the picture instead of beside it, so the picture gets the width */
 .about-slides .sl-stage { position: relative; display: block; }
 .about-slides .sl-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; background: rgba(240, 240, 228, 0.82); }
@@ -3076,3 +3084,9 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 /* info: the life map, at the foot of the page */
 .lifemap { padding-top: 10px; padding-bottom: 90px; }
 .lifemap .wpop { max-width: 17rem; }
+
+/* phones: no timeline at all. It needs width to mean anything; tablets keep
+   the cards, wide screens the chart. */
+@media (max-width: 600px) {
+  #timeline { display: none; }
+}
