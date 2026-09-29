@@ -10,6 +10,10 @@
 import { festivalRows } from '../data/festivals.js';
 import { places, extraPins } from '../data/places.js';
 
+// Default: the screenings. A page may pass its own pins ({label, lat, lon,
+// items}) and the words for the note, and get the same drawn world.
+const { pins: givenPins, note: givenNote, one = 'screening', many = 'screenings' } = Astro.props;
+
 const TOP = 78; // the top of the frame, in degrees of latitude
 const BOT = -58; // and the bottom
 const W = 360;
@@ -179,7 +183,9 @@ const add = (city, festival, year) => {
 festivalRows.forEach((r) => add(r.city, r.title, r.year));
 extraPins.forEach((p) => add(p.city, p.festival, p.year));
 
-const pins = [...byCity.values()].sort((a, b) => b.shows.length - a.shows.length);
+const pins = givenPins
+  ? givenPins.map((p) => ({ ...p, shows: p.items }))
+  : [...byCity.values()].sort((a, b) => b.shows.length - a.shows.length);
 const cities = pins.length;
 ---
 
@@ -200,7 +206,7 @@ const cities = pins.length;
         type="button"
         style={`left:${((px(p.lon) / W) * 100).toFixed(2)}%; top:${((py(p.lat) / H) * 100).toFixed(2)}%`}
         data-pin={i}
-        aria-label={`${p.label}: ${p.shows.length} screening${p.shows.length > 1 ? 's' : ''}`}
+        aria-label={`${p.label}: ${p.shows.length} ${p.shows.length > 1 ? many : one}`}
       >
         <span class="wpin-dot"></span>
       </button>
@@ -219,7 +225,7 @@ const cities = pins.length;
   </div>
 
   <p class="wmap-note">
-    {cities} cities. Tap a pin to see which festival showed the film there.
+    {givenNote ? givenNote.replace('{n}', String(cities)) : `${cities} cities. Tap a pin to see which festival showed the film there.`}
   </p>
 </div>
 

@@ -1680,7 +1680,7 @@ body.lb-open { overflow: hidden; }
 .wpop-city {
   font-family: var(--hand); font-size: 17px; line-height: 1.1; margin-bottom: 7px;
 }
-.wpop ul { list-style: none; margin: 0; padding: 0; }
+.wpop ul { list-style: none; margin: 0; padding: 0; max-height: 15rem; overflow-y: auto; overscroll-behavior: contain; }
 .wpop li {
   font-size: 11.5px; line-height: 1.4; color: rgba(238, 244, 251, 0.86);
   margin-bottom: 2px;
@@ -3072,3 +3072,7 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   .tl-axis-li + .tl-axis-li { display: none; }
   .tl-card-t { font-size: 21px; }
 }
+
+/* info: the life map, at the foot of the page */
+.lifemap { padding-top: 10px; padding-bottom: 90px; }
+.lifemap .wpop { max-width: 17rem; }

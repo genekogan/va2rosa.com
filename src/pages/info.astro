@@ -3,6 +3,8 @@ import Base from '../layouts/Base.astro';
 import { site } from '../data/site.js';
 import { byYear, cvTypes, typeLabel } from '../data/cv.js';
 import { pressByYear, pressKinds } from '../data/press.js';
+import WorldMap from '../components/WorldMap.astro';
+import { lifePins } from '../data/lifemap.js';
 
 const portraits = [
   { src: '/images/me/me-01.webp', caption: 'Photo by Edu Monteiro, 2025', alt: 'Vanessa Rosa in a patterned dress, against a grey backdrop.' },
@@ -188,6 +190,18 @@ const portraits = [
       <p style="margin-top:18px; font-size:12.5px; color:var(--ink-3)">
         ORCID <a class="ul" href={site.orcid} rel="noopener me" target="_blank">0000-0003-2583-7985</a>
       </p>
+    </section>
+
+    <!-- THE MAP: everywhere the work has been ----------------------------- -->
+    <section class="wrap lifemap">
+      <div class="rule" style="margin:10px 0 30px"></div>
+      <div class="kicker">The map</div>
+      <h2 class="sec" style="margin:10px 0 6px">Everywhere the work has been</h2>
+      <p style="font-size:14px; color:var(--ink-2); max-width:42em">
+        Shows, screenings, residencies, talks, walls and press, from the same record as the curriculum above,
+        with the streets the project pages add.
+      </p>
+      <WorldMap pins={lifePins} one="entry" many="entries" note="{n} places. Tap a pin to see what happened there." />
     </section>
   </div>
 
