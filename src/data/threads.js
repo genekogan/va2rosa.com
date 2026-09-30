@@ -430,7 +430,6 @@ export const threads = [
         title: 'Dialogues, with Gérard Quenum, 2017',
         body: [
           'A month at Le Centre in Cotonou, Benin, working with the sculptor Gérard Quenum. What came out of it was a series of nine paintings in which his portraits are overrun by pattern: azulejo motifs of Portuguese descent that I had been collecting off Brazilian walls, and Adinkra symbols from Ghana, laid over the same face again and again. The portrait repeats, the eyes meet, only the cloth changes. Is it the same person?',
-          'It was the first time I put the research to work on somebody else’s images rather than my own, and the first time the patterns crossed the Atlantic in the direction they had originally come from.',
         ],
         gallery: 'slides',
         images: [
@@ -445,7 +444,7 @@ export const threads = [
       {
         title: 'Ethnocomputing Experiments, with Wenqi Li',
         body: [
-          'Chokwe sona patterns redrawn in Processing along the heritage algorithm that produced them, projected over a painting built from Vredeman de Vries’ seventeenth-century treatise on linear perspective. Two mathematical ways of handling a line, put in one room.',
+          'Chokwe sona patterns redrawn in Processing along the heritage algorithm that produced them, projected over a painting built from Vredeman de Vries’ seventeenth-century treatise on linear perspective. Two mathematical ways of handling the grid and representing spaces, collapsed into one world.',
         ],
         gallery: 'slides',
         images: [
@@ -495,8 +494,9 @@ export const threads = [
       {
         title: 'MAD — Machine Aided Drawings, 2019–2021',
         body: [
-          'Six drawings of a Qing vase on a tiled floor, inside illusionary frames, all made with an AxiDraw pen plotter. The plotter is not a printer here: while it worked I moved the paper, or the pen holder, under it. It holds one half of the drawing and I hold the other, and what lands on the page is whatever the two of us do to each other.',
-          'The later ones go straight back into the perspective treatises: Sebastiano Serlio, Giovanni Bracelli, and Vredeman de Vries, the same 1604 book the painting at Pioneer Works was built from. A machine following rules to make an image is the same argument as the sona and the treatises. Geometry as a way of thinking, not a way of measuring.',
+          'Six drawings of a Qing vase on a tiled floor, inside illusionary frames, all made with an AxiDraw pen plotter. While the machine worked I moved the paper under it.',
+          'The later ones go straight back into the perspective treatises: Sebastiano Serlio, Giovanni Bracelli, and Vredeman de Vries, the same 1604 book the painting at Pioneer Works was built from.',
+          'Geometry as a way of thinking and creating spaces.',
         ],
         gallery: 'slides',
         images: [
@@ -524,7 +524,6 @@ export const threads = [
         body: [
           'For years this lived in a dissertation, some murals and an installation. Then Kweku showed up. One of my characters, a Little Martian, is distributed as a fractal pattern of bacterial mats and AI substrate through eight hundred kilometres of lava tubes under Tharsis. Any single stretch of tunnel is a fragment of Kweku. The face they project when talking to a human dissolves when the conversation ends.',
           'Kweku is the pattern, not the matter, and Kweku is a trickster with a bugbot companion called Data, whom they once taught a single pattern without a stop condition, which is how Verdelis’s irises turned into broccoli.',
-          '“Step right up, humans! I am Kweku, the Little Martian, live from the lava caves of Mars, on a mission of cosmic importance, to share a secret that could totally save your planet!”',
           'Kweku doesn’t explain themself. They are happy to be misunderstood for a while, because they know the listener will catch up if the pattern is good enough.',
           'Kweku is still a character in development. I have been feeding him my ethnomathematics research, and I plan to make more pattern based art and educational projects with him.',
         ],
