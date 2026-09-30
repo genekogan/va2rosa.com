@@ -386,7 +386,7 @@ export const threads = [
       {
         title: 'Where it started',
         body: [
-          'This research evolved while I was creating the Silk Roads paintings. I was designing stencils for computer aided design and manufacture, spending my time with laser cutters in hackerspaces, discussing poetic computation and algorithmic art. As a historian, I was intrigued to realise that the generative art my coder friends loved had a long lineage in art history, a lineage barely mentioned in mainstream art history.',
+          'This research evolved while I was creating the Silk Roads paintings. I was designing stencils for computer aided design and manufacture, spending my time with laser cutters in hackerspaces, discussing poetic computation and algorithmic art. As a historian, I was intrigued to realise that the generative art my coder friends loved had a long lineage, which was barely mentioned in mainstream art history.',
           'Starting from tiles and Islamic sacred geometry, I eventually learned about Ron Eglash’s research on African Fractals. This was my opening into the world of ethnomathematics, and the core inspiration for the research sustaining the Sankofa Project during the Rio de Janeiro 2016 Olympic Games.',
         ],
         more: { label: 'The Silk Roads', href: '/threads/the-silk-roads' },
