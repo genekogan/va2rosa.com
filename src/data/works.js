@@ -19,7 +19,7 @@ export const pioneerWorks = {
   heroAlt:
     'The painted fence turning the corner at Pioneer Works, with the red brick building and the street behind it.',
   lede:
-    'Two hundred and fifty square metres of painting wrapped around the Center for Art and Innovation in Red Hook, Brooklyn. Most of it stood until the end of 2020, one stretch longer than that, and then it did what a painted fence does.',
+    'Two hundred and fifty square meters of painting wrapped around Pioneer Works, the Center for Art and Innovation in Red Hook, Brooklyn. Most of it stood until the end of 2020, one stretch longer than that, and then it did what a painted fence does.',
   meta: [
     ['Where', 'Pioneer Works, Red Hook, Brooklyn'],
     ['When', 'Painted July 2017; up until December 2020, one stretch of it longer'],
@@ -27,8 +27,8 @@ export const pioneerWorks = {
     ['Made during', 'The technology residency'],
   ],
   intro: [
-    'Pioneer Works sits behind a long perimeter fence, and in 2017 the fence was mine to paint. I filled it with the vocabulary I had been building for years: arches, azulejo blues, Adinkra and arabesque forms pushed into a one-point perspective so the flat boards open into rooms that are not there.',
-    'A wall like this is not a canvas that happens to be outside. People lean on it, walk past it every morning, photograph themselves against it, park in front of it. The work is finished by the street, not by me.',
+    'I filled the fence with the vocabulary I had been building for years: arches, azulejo blues, Adinkra and arabesque forms pushed into a one-point perspective so the wavy boards open into impossible spaces.',
+    'People leaned on it, walked past it every morning, photographed themselves against it, parked in front of it. Plants grew and died on top of the blue, the harsh weather did its magic. The work is finished by the environment.',
   ],
   read: {
     kicker: 'Written at the time',
@@ -53,7 +53,7 @@ export const pioneerWorks = {
     {
       title: 'What people did with it',
       body: [
-        'For four years the fence was a backdrop for other people’s pictures. These are some of the posts that came back: portraits, dogs, weddings, skateboards, first days of school. This is the part of a public work you cannot design.',
+        'For four years the fence was a backdrop for other people’s pictures. These are some of the posts that came back: portraits, dogs, weddings, skateboards, first days of school. And the plants.',
       ],
       gallery: 'slides',
       images: take('pwig', 0, 17),
@@ -61,8 +61,8 @@ export const pioneerWorks = {
     {
       title: 'Four years later, 2021',
       body: [
-        'By September 2021 the sun, the salt air and four Red Hook winters had done their work on the stretch that was still standing. I went back and photographed it panel by panel: the blue gone chalky, the stencils half eaten, rust coming up through the pattern, paint lifting off in sheets, and a surveillance notice bolted straight through the painting.',
-        'A mural outdoors is a slow performance and this is its last act. It is not a failure. It is the thing behaving exactly as a painted fence in Red Hook behaves.',
+        'By September 2021 the sun, the salt air and four Red Hook winters had done their work on the art. I went back and photographed it panel by panel: the blue gone chalky, the stencils half eaten, rust coming up through the pattern, paint lifting off in sheets, and a surveillance notice bolted straight through the painting.',
+        'A mural outdoors is a slow performance and this is its last act.',
       ],
       gallery: 'slides',
       images: slice('pw21', 0),
