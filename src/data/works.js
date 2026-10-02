@@ -514,7 +514,7 @@ export const ethnocomputingExperiments = {
   heroAlt:
     'A Sona line projected across a painted perspective corridor at Pioneer Works, at night.',
   lede:
-    'A work about the mix of two extremely different representational systems, though both are highly mathematical in their approach to line.',
+    'A work about the mix of two extremely different representational systems, though both are based on lines and a grid. Created with Wenqi Li.',
   meta: [
     ['With', 'Wenqi Li'],
     ['Opened', 'Second Sundays, 8 April 2018'],
@@ -524,7 +524,7 @@ export const ethnocomputingExperiments = {
   intro: [
     'A set of Angolan traditional patterns known as Sona, from the Chokwe people, are recreated with Processing, a free graphical library and development environment. The recreation follows the heritage algorithm embedded in the original patterns, which used to be made as finger drawings in sand: a person would tell a story and draw at the same time.',
     'We chose one specific pattern to project over a painting inspired by an early seventeenth-century treatise on linear perspective by the Dutch artist Vredeman de Vries. It is a pattern that tells the story of a wild chicken running away from a hunter. The line is the path the chicken takes while it tries to fool the hunter and exhaust him, until it can return to its hidden home, which sits precisely where the run started.',
-    'The main inspiration for this project is the academic work of the Dutch and Mozambican author Paulus Gerdes, a prominent figure in the field of ethnomathematics. The other great influence is Ron Eglash’s work on ethnocomputing and heritage algorithms.',
+    'The main inspiration for this project is the academic work of the Dutch and Mozambican author Paulus Gerdes, a prominent figure in the field of ethnomathematics. The other great influences are Ron Eglash, Erwin Panofsky, Hans Belting and George Saliba.',
   ],
   video: {
     vimeo: '265263624',
