@@ -19,8 +19,8 @@ export const lead = {
     'The work has run since 2020 as installations, films, books and exhibitions. It went to Christie’s first AI art auction, the NVIDIA AI Art Gallery, CVPR and NeurIPS, and it has collected some dozens of festival awards along the way.',
   ],
   links: [
-    { label: 'Enter the world', href: 'https://littlemartians.world', external: true },
-    { label: 'The thread on this site', href: '/threads/little-martians' },
+    { label: 'The whole project', href: '/threads/little-martians' },
+    { label: 'Enter littlemartians.world', href: 'https://littlemartians.world', external: true },
   ],
 };
 

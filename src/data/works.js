@@ -614,6 +614,7 @@ export const ethnocomputingExperiments = {
 // ---------------------------------------------------------------------------
 export const mauricioHora = {
   slug: 'mauricio-hora',
+  spine: 'mauricio-hora', // one of the seven movements: close with the other six
   kicker: 'A friendship · 2011 to now',
   title: 'Maurício Hora',
   hero: '/images/mh/mh-p-tank.webp',

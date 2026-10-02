@@ -42,5 +42,5 @@ export const nav = [
   { label: 'Art', href: '/art' },
   { label: 'Research', href: '/research' },
   { label: 'Info', href: '/info' },
-  { label: 'Little Martians ⇢', href: 'https://littlemartians.world', external: true },
+  { label: 'Little Martians ⇢', href: '/threads/little-martians' },
 ];

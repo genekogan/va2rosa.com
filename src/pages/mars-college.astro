@@ -4,6 +4,7 @@
 // hairline rule, one headline, a narrow column, photographs across the width.
 // The type is this site's own; only the colours change.
 import Base from '../layouts/Base.astro';
+import Spine from '../components/Spine.astro';
 import {
   cover, opening, what, years, aspects, mine, contributions, note, facts, links,
 } from '../data/mars.js';
@@ -204,9 +205,10 @@ const parts = (text, links = []) => {
         >{l.label} ⇢</a>
       ))}
     </p>
-    <p style="margin:44px 0 90px">
+    <p style="margin:44px 0 0">
       <a class="more" href="/art">All the art ⇢</a>
     </p>
+    <div style="padding-bottom:90px"><Spine current="mars-college" /></div>
   </section>
   <script is:inline>
     // One picture at a time, with a button that opens the whole set.

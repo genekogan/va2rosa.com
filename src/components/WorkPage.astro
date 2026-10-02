@@ -3,6 +3,7 @@
 // the argument, then sections of pictures. Everything comes from one data
 // object so adding a page is adding a data file.
 import Base from '../layouts/Base.astro';
+import Spine from './Spine.astro';
 
 const { work } = Astro.props;
 ---
@@ -332,9 +333,10 @@ const { work } = Astro.props;
       </div>
     )}
 
-    <p style="margin:60px 0 90px">
+    <p style={work.spine ? 'margin:60px 0 0' : 'margin:60px 0 90px'}>
       <a class="more" href="/art">All the art ⇢</a>
     </p>
+    {work.spine && <div style="padding-bottom:90px"><Spine current={work.spine} /></div>}
   </div>
 </Base>
 
