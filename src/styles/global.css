@@ -984,7 +984,7 @@ a.ul { border-bottom: 1px solid rgba(13, 33, 54, 0.35); }
    =========================================================================== */
 .paper-feature {
   margin-top: 54px;
-  padding: 38px 0 42px;
+  padding: 38px var(--pad) 42px;
   border-top: 2px solid var(--blue);
   border-bottom: 1px solid var(--line);
   display: grid;
@@ -3109,3 +3109,13 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 }
 .st-list button.is-on { border-color: var(--blue); color: var(--blue); background: rgba(28, 74, 134, 0.06); }
 .st-n { color: var(--ink-3); font-size: 11px; margin-right: 6px; font-variant-numeric: tabular-nums; }
+
+/* research, phones: the NeurIPS paper keeps its name and its links, and lets
+   the description go */
+@media (max-width: 600px) {
+  .paper-feature .pf-abstract, .paper-feature .pf-points, .paper-feature .pf-figs { display: none; }
+  .paper-feature { gap: 6px; padding-top: 28px; padding-bottom: 30px; }
+  .paper-feature .pf-links { margin-top: 6px; }
+  .paper-feature .pf-links .sep { display: none; }
+  .paper-feature .pf-links a { display: block; width: fit-content; padding: 9px 0; border-bottom-color: rgba(13, 33, 54, 0.25); }
+}

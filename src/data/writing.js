@@ -81,7 +81,7 @@ export const groups = [
     key: 'academic',
     title: 'Academic writing',
     blurb:
-      'Art history and design research, written in Portuguese between 2012 and 2018. The two long texts were translated into English in 2026 by Claude Fable, at my request; the translators’ notes inside each file set out the conventions used.',
+      'Art history and design research, written in Portuguese between 2012 and 2018. Claude Fable 5 / Opus 5.5 made the English translations in 2026; the translators’ notes inside each file set out the conventions used.',
     items: [
       {
         year: 2018,
