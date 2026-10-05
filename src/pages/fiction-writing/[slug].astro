@@ -5,7 +5,8 @@
 import Base from '../../layouts/Base.astro';
 import BookReader from '../../components/BookReader.astro';
 import { fictionPages } from '../../data/fiction.js';
-import { memories as m, duet, verdelisStories as vs } from '../../data/fiction-texts.js';
+import { memories as m, duet, duetOriginal, duetBeats, verdelisStories as vs } from '../../data/fiction-texts.js';
+import DuetTurn from '../../components/DuetTurn.astro';
 
 export function getStaticPaths() {
   return Object.keys(fictionPages).map((slug) => ({ params: { slug } }));
@@ -153,27 +154,56 @@ const isHead = (p) => p.length < 64 && !/[.:,;!?…"”]$/.test(p) && !p.startsW
     {/* ================================================================== */}
     {slug === 'verdelis-and-mycos' && (
       <>
-        <ul class="fx-legend" aria-label="Key">
-          <li><i class="fx-sw fx-mine"></i>Written by Vanessa Rosa with ChatGPT, 2024</li>
-          <li><span class="fx-dir">(stage directions)</span></li>
-        </ul>
-        <div class="fx-script">
-          {duet.turns.map((t, i) => (
-            <>
-              {t.after && !duet.turns[i - 1]?.after && <h2 class="fx-part-h" style="margin-top:44px">After scene</h2>}
-              <div class="fx-turn">
-                <div class={`fx-who fx-who-${t.who.toLowerCase()}`}>{t.who}</div>
-                <div class="fx-lines">
-                  {t.lines.map((l) =>
-                    l === '' ? <div class="fx-gap"></div>
-                      : <p>{parts(l).map((x) => x.dir ? <span class="fx-dir">{x.t}</span> : x.t)}</p>
-                  )}
-                </div>
-              </div>
-            </>
-          ))}
-          {duet.afterIntro.length > 0 && duet.afterIntro.map((l) => <p class="fx-dir">{l}</p>)}
+        <section class="fx-part">
+          <h2 class="fx-part-h">How it changed</h2>
+          <div class="narrow">{page.changed.map((p) => <p>{p}</p>)}</div>
+        </section>
+
+        {/* phones: one version at a time */}
+        <div class="fx-switch" role="group" aria-label="Which version">
+          <button type="button" data-show="orig" aria-pressed="true">First draft</button>
+          <button type="button" data-show="final" aria-pressed="false">Final script</button>
         </div>
+
+        <div class="fx-par" data-show="orig">
+          <div class="fx-par-head" aria-hidden="true">
+            <span></span>
+            <div><span class="fx-col-h">First draft</span><span class="fx-label">Written by Vanessa Rosa</span></div>
+            <div><span class="fx-col-h">Final script</span><span class="fx-label">After Suno, my editing and Claude, 2024</span></div>
+          </div>
+          {duetBeats.map((b, k) => (
+            <div class={`fx-beat${b.label ? ' fx-beat-labelled' : ''}`}>
+              <span class="fx-beat-n">{b.label ?? String(k).padStart(2, '0')}</span>
+              <div class="fx-b fx-b-orig">
+                <div class="fx-b-tag">First draft</div>
+                {b.o.map((i) => <DuetTurn t={duetOriginal.turns[i]} />)}
+              </div>
+              <div class="fx-b fx-b-final">
+                <div class="fx-b-tag">Final script</div>
+                {b.f.length === 0 && <p class="fx-dir fx-stage">(the final script opens straight on Verdelis’s voice)</p>}
+                {b.f.map((i) =>
+                  i === 'intro'
+                    ? duet.afterIntro.map((l) => <p class="fx-dir fx-stage">{l}</p>)
+                    : <DuetTurn t={duet.turns[i]} />
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <script is:inline>
+          (function () {
+            var cmp = document.querySelector('.fx-par');
+            document.querySelectorAll('.fx-switch button').forEach(function (b) {
+              b.addEventListener('click', function () {
+                cmp.setAttribute('data-show', b.getAttribute('data-show'));
+                document.querySelectorAll('.fx-switch button').forEach(function (o) {
+                  o.setAttribute('aria-pressed', String(o === b));
+                });
+              });
+            });
+          })();
+        </script>
       </>
     )}
 

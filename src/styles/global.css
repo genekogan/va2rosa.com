@@ -3119,3 +3119,40 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   .paper-feature .pf-links .sep { display: none; }
   .paper-feature .pf-links a { display: block; width: fit-content; padding: 9px 0; border-bottom-color: rgba(13, 33, 54, 0.25); }
 }
+
+/* fiction: a first draft beside its final version, beat by beat — a parallel
+   text, the way an edition sets an original beside its translation */
+.fx-switch { display: none; }
+.fx-par { margin-top: 34px; }
+/* wider than the reading column: the two versions need the room */
+@media (min-width: 761px) {
+  .fx-par { --w: min(calc(var(--max) - 2 * var(--pad)), calc(100vw - 2 * var(--pad))); width: var(--w); margin-left: calc((100% - var(--w)) / 2); }
+}
+.fx-par-head, .fx-beat { display: grid; grid-template-columns: 74px minmax(0, 1fr) minmax(0, 1fr); gap: 0 40px; }
+.fx-par-head {
+  position: sticky; top: var(--navh, 64px); z-index: 4; padding: 12px 0 10px;
+  background: linear-gradient(var(--paper-bg, #eef2f7) 82%, transparent); border-bottom: 1px solid var(--line);
+}
+.fx-par-head .fx-col-h { display: block; font-family: var(--hand); font-size: 22px; color: var(--blue); }
+.fx-par-head .fx-label { display: block; margin: 2px 0 0; }
+.fx-beat { padding: 22px 0 14px; border-bottom: 1px solid var(--line-2); align-items: start; }
+.fx-beat-n { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.fx-beat-labelled .fx-beat-n { line-height: 1.4; }
+.fx-b-orig { color: var(--ink-2); }
+.fx-b-tag { display: none; }
+.fx-par .fx-turn { display: block; margin-bottom: 12px; }
+.fx-par .fx-who { margin-bottom: 3px; }
+.fx-par .fx-lines p { margin: 0 0 6px; }
+.fx-stage { margin: 0 0 10px; font-size: 13.5px; }
+@media (max-width: 760px) {
+  .fx-switch { display: flex; gap: 8px; margin-top: 30px; position: sticky; top: calc(var(--navh, 56px) + 6px); z-index: 5; }
+  .fx-switch button {
+    font: inherit; font-size: 13px; padding: 9px 16px; min-height: 42px; border-radius: 999px;
+    border: 1px solid var(--line); background: #eef2f7; color: var(--ink-2); cursor: pointer;
+  }
+  .fx-switch button[aria-pressed="true"] { border-color: var(--blue); color: var(--blue); background: #fff; }
+  .fx-par-head { display: none; }
+  .fx-beat { grid-template-columns: minmax(0, 1fr); padding: 16px 0 8px; }
+  .fx-par[data-show="orig"] .fx-b-final, .fx-par[data-show="final"] .fx-b-orig { display: none; }
+  .fx-b-orig { color: var(--ink); }
+}

@@ -112,7 +112,7 @@ export const fiction = {
       {
         year: 2024,
         title: 'Verdelis & Mycos, a duet',
-        tool: 'ChatGPT',
+        tool: 'My first draft, then Suno, my editing and Claude',
         body: 'The script for the film: Verdelis, who believes in patient cultivation, against Mycos, the fungal mind who thinks chaos is how life learns. Sung and spoken, with the stage directions.',
         image: '/images/films/WmdZ04y0ufI.webp',
         href: '/fiction-writing/verdelis-and-mycos',
@@ -262,10 +262,14 @@ export const fictionPages = {
     title: 'Verdelis & Mycos',
     kicker: 'A Little Martians duet · 2024',
     context: [
-      'The script for the film Verdelis & Mycos, written in 2024 with ChatGPT. Verdelis, part plant, believes in patient cultivation; Mycos, a fungal mind, believes chaos is how evolution learns. Their argument about suffering turns into a plan to fold time itself.',
-      'Stage directions are set small, in grey. The rest is sung or spoken.',
+      'The script for the film Verdelis & Mycos, 2024. Verdelis, part plant, believes in patient cultivation; Mycos, a fungal mind, believes chaos is how evolution learns. Their argument about suffering turns into a plan to fold time itself.',
+      'Below, my first draft beside the final script. Stage directions are set small, in grey. The rest is sung or spoken.',
     ],
     film: { youtube: 'WmdZ04y0ufI', title: 'Verdelis & Mycos' },
+    changed: [
+      'The writing changed a lot from my first draft to the final script. Multiple passes through Suno, my own editing, and then Claude’s inputs were essential to turn the original idea into something that would sound good as a musical.',
+      'The concept and the structure didn’t change, though: the same two characters, the same argument, the same bet, the same scene after the credits. And that’s essential for good AI writing, at least for now. The more specific we can be in our requests about how we want to improve the text, the better the results.',
+    ],
   },
   'outer-membrane': {
     title: 'The Outer Membrane',

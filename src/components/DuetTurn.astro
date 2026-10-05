@@ -1,0 +1,22 @@
+---
+// One turn of a script: a speaker and their lines, or a stage direction.
+// (…) and […] inside a line are set apart as directions.
+const { t } = Astro.props;
+const parts = (s) =>
+  s.split(/(\([^)]*\)|\[[^\]]*\])/g).filter(Boolean).map((x) => ({ dir: /^[([]/.test(x), t: x }));
+---
+
+{t.who === null ? (
+  <p class="fx-dir fx-stage">{t.lines.join(' ')}</p>
+) : (
+  <div class="fx-turn">
+    <div class={`fx-who fx-who-${t.who.toLowerCase()}`}>{t.who}</div>
+    <div class="fx-lines">
+      {t.lines.map((l) =>
+        l === ''
+          ? <div class="fx-gap"></div>
+          : <p>{parts(l).map((x) => (x.dir ? <span class="fx-dir">{x.t}</span> : x.t))}</p>
+      )}
+    </div>
+  </div>
+)}

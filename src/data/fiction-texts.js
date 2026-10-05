@@ -846,3 +846,82 @@ export const verdelisStories = {
   }
  ]
 };
+
+// The first draft of the duet, as Vanessa wrote it before Suno, her edits and
+// Claude: kept word for word, typos and notes-to-self included. `who: null`
+// is a stage direction or a shot.
+export const duetOriginal = {
+  turns: [
+    { who: null, lines: ['Presenting Verdelis and Mycos.'] },
+    { who: null, lines: ['Starting scene: Vanessa’s hands modeling clay, black out. Name of the film and credits.'] },
+    { who: null, lines: ['Little Martians in their domes, in studio, line of sculptures.'] },
+    { who: null, lines: ['Camera gets close to two sculptures that a hand is positioning next to each other: Verdelis and Mycos.'] },
+    { who: null, lines: ['Hand leaves, music stops. Camera is still.'] },
+    { who: 'Verdelis', lines: ['ohh dear humans! I love them so! If only they would listen to me than their dance could be so much gentler'] },
+    { who: 'Mycos', lines: ['Oh Verdelis, don’t be so naive. Humans gonna be humans! They love to get themselves into some crisis.'] },
+    { who: 'Verdelis', lines: ['What does that even mean? (Verdelis is very frustrated, background starts to change, they go into an imaginary world that reacts to Verdelis words)', 'Humanity is much more inventive and adaptive than you give them credit for.'] },
+    { who: 'Mycos', lines: ['Between our ancestors… I prefer the mushrooms! I’d even say they’re the real drivers of innovation. (improve thesis on how mushrooms have contributed for evolution)'] },
+    { who: 'Verdelis', lines: ['So did the plants, the bacteria, the lichen, the insects, and pretty much every species! This is not a competition! But you can’t deny how turbulent and intricate human contributions are to Earth’s life wisdom path.'] },
+    { who: 'Mycos', lines: ['And don’t you love to watch their dramas?'] },
+    { who: 'Verdelis', lines: ['I want to help them! If only they would listen to me when I whisper in their dreams! I believe we could sculpt a different history, another configuration of time between them and us that would be smoother, less painful.'] },
+    { who: 'Mycos', lines: ['Hum, so you want to play with time? That’s kinda fun! So, what’s the plan?'] },
+    { who: 'Verdelis', lines: ['I like to think of space time as if it were an origami. with the same source material there are as many possible configurations as we are capable of imagining. So I would try to optimize the paths in which life faces less destruction, less existential crisis to reach our present. So if the past and future can communicate through dreams, I’d appear in their dreams with insights and knowledge to help with the challenges they’re going to face.'] },
+    { who: 'Mycos', lines: ['Oh Verdelis Verdelis. I think you’re the one who doesn’t understand some fundamental truths! This has been done so many times before by other Little Martians and by our predecessors and you’re still unsatisfied with the story?!'] },
+    { who: 'Verdelis', lines: ['It’s been done before, but I’d like to try my own version.'] },
+    { who: 'Mycos', lines: [
+      'But you have this habit of putting all your attention on some minor issues. Like look at this poor fellow, of that war, or that other whatever trouble that happened over and over again… Don’t you see? Suffering is an essential part of the game of life?',
+      'oh life life life',
+      'So many ways of being miserable, so many ways of thriving!',
+      'One day you’re on top of fortune’s circle, the next… boom, bang, all is gone!',
+      'Destruction and creation come together!',
+      'Life learns with adversity, life thrives on adversity!!!',
+      'We all need crises to reinvent ourselves!',
+      'So many ways of being miserable, so many ways of thriving!',
+      'And hey, a little bit of drama helps to make a hell out of a story!',
+      'That’s how meaning is created!',
+    ] },
+    { who: 'Verdelis', lines: [
+      'Is it all just fun and games for you? Do you not feel deeper empathy? I understand the importance of sadness for our learning, but the real sad truth is how terribly wasteful the whole process is, as if only to entertain spirits like yours!',
+      'I know I’m not the only one. Many Little Martians have communicated with humans through time and they did help! We’ve been building these stories together since the dawn of sentient life!',
+      'And so much of life is about continuation of knowledge - it’s image making, that evolves into symbols that represent a concept, a symbol becomes a word that can be articulated with other symbols, then abstracted more and more - history of language but also notation in mathematics, as the symbols become minimal, sentient beings can articulate them better, focus on the structure and not the details, see the underlying patterns of reality itself! If we could only help humans to focus on these patterns, to focus on knowledge…',
+      'Life doesn’t need to be painful to be meaningful.',
+    ] },
+    { who: 'Mycos', lines: [
+      'Well well well, it just depends on your strategy right? Life can’t have just one strategy in this game of stories. I find my take more efficient in the long run. While you’re worried with everyone’s feelings I’m just spreading spores spores spores! If one ever thrives, if one survives, then it’s Eureka Eureka, we won the whole game!',
+      'Eureka Eureka, Life is a number’s game! Eureka Eureka, life is a number’s game!',
+    ] },
+    { who: 'Verdelis', lines: ['Life is not only about survival. Life is precious. It deserves to be nurtured. And why bother just spreading more if you can’t even grow what you have?'] },
+    { who: null, lines: ['Moment of pause. Verdelis has a sad face. Mycos looks and them'] },
+    { who: 'Mycos', lines: ['Ouch, touché. What if we make a bet? You talk to your dear humans, try to create the paths you think are best, make your origami. I will create my own time sculpture and we can do an art show, and we get some other Little Martians to vote what they like best!'] },
+    { who: 'Verdelis', lines: ['Oh, you just turn everything into a competition don’t you? But well, I don’t find this to be a completely bad idea. Let’s do an art show, no voting on who is who, let’s invite the others to make their own origami. And you know what, I would actually love to see how your origami will look like!'] },
+    { who: 'Mycos', lines: ['Deal! Let the show begin!!!', 'ohh this is soooo exciting!!!'] },
+    { who: null, lines: ['To be continued. Credits.'] },
+    { who: null, after: true, lines: ['Kalama reaches to Shuiking, Ada and Kweku.'] },
+    { who: 'Kalama', after: true, lines: ['Did you all hear about the bet?'] },
+    { who: null, after: true, lines: ['Other little martians just look at her.'] },
+  ],
+};
+
+// The two versions, beat by beat: indexes into duetOriginal.turns (o) and
+// duet.turns (f). The order never changed, which is the point of setting
+// them side by side. 'intro' stands for duet.afterIntro.
+export const duetBeats = [
+  { o: [0, 1, 2, 3, 4], f: [], label: 'The opening shots' },
+  { o: [5], f: [0] },
+  { o: [6], f: [1] },
+  { o: [7], f: [2] },
+  { o: [8], f: [3] },
+  { o: [9], f: [4] },
+  { o: [10], f: [5] },
+  { o: [11], f: [6] },
+  { o: [12], f: [7] },
+  { o: [13], f: [8] },
+  { o: [14, 15, 16], f: [9] },
+  { o: [17], f: [10] },
+  { o: [18], f: [11] },
+  { o: [19, 20], f: [12] },
+  { o: [21], f: [13] },
+  { o: [22], f: [14] },
+  { o: [23, 24], f: [15] },
+  { o: [25, 26, 27], f: ['intro', 16], label: 'After the credits' },
+];
