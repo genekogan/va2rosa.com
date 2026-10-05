@@ -906,7 +906,8 @@ export const duetOriginal = {
 // duet.turns (f). The order never changed, which is the point of setting
 // them side by side. 'intro' stands for duet.afterIntro.
 export const duetBeats = [
-  { o: [0, 1, 2, 3, 4], f: [], label: 'The opening shots' },
+  // the film opens exactly as the draft planned, so the final column repeats it
+  { o: [0, 1, 2, 3, 4], f: ['o0', 'o1', 'o2', 'o3', 'o4'], label: 'The opening shots' },
   { o: [5], f: [0] },
   { o: [6], f: [1] },
   { o: [7], f: [2] },

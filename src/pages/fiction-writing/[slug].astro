@@ -184,7 +184,9 @@ const isHead = (p) => p.length < 64 && !/[.:,;!?…"”]$/.test(p) && !p.startsW
                 {b.f.map((i) =>
                   i === 'intro'
                     ? duet.afterIntro.map((l) => <p class="fx-dir fx-stage">{l}</p>)
-                    : <DuetTurn t={duet.turns[i]} />
+                    : typeof i === 'string'
+                      ? <DuetTurn t={duetOriginal.turns[Number(i.slice(1))]} />
+                      : <DuetTurn t={duet.turns[i]} />
                 )}
               </div>
             </div>
