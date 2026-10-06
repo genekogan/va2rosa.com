@@ -37,7 +37,7 @@ export const books = {
           caption: 'Illustration by Vanessa Rosa, 11 years old.',
         },
         {
-          src: '/images/caio/caio-3.webp',
+          src: '/images/caio/caio-didi.webp',
           caption: 'Illustration by Diana Rosa, 14 years old.',
         },
       ],
