@@ -313,11 +313,16 @@ export const streetArt = {
     },
     {
       title: '2011 to 2013 · Brazil',
-      body: ['Walls and collective murals, 2011 to 2013.'],
+      body: ['Walls and collective murals, 2011 to 2013. The collective murals were made as part of the art projects of the NGO Rede Nami.'],
       gallery: 'slides',
       images: [
+        { src: '/images/street2/nami11-1.webp', caption: 'Quem ama abraça, collective mural with Rede Nami, Rua Camerino, Rio de Janeiro, 2011' },
+        { src: '/images/street2/nami11-2.webp', caption: 'Collective mural with Rede Nami, Teatro Municipal Ziembinski, Rio de Janeiro, 2011' },
+        { src: '/images/street2/nami11-3.webp', caption: 'Opening night of a Rede Nami project I coordinated, 2011' },
         { src: '/images/street2/br11-1.webp', caption: '2011' },
         { src: '/images/street2/br11-2.webp', caption: '2011' },
+        { src: '/images/street2/nami12-1.webp', caption: 'Collective mural with Rede Nami for the Fundação Roberto Marinho, painted with Diana Rosa and Julia Suav, 2012' },
+        { src: '/images/street2/nami12-2.webp', caption: 'Painting the Fundação Roberto Marinho mural, 2012' },
         { src: '/images/street2/br12-rio.webp', caption: 'Collective mural, Rio de Janeiro, 2012' },
         { src: '/images/street2/br12-2.webp', caption: '2012' },
         { src: '/images/street2/br13-1.webp', caption: '2013' },
