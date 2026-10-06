@@ -38,7 +38,8 @@ function rewrite(tag, sizes) {
   const [w, h, copies] = entry;
   let add = '';
   if (!/\swidth=/.test(tag)) add += ` width="${w}" height="${h}"`;
-  if (copies.length && !/\ssrcset=/.test(tag)) {
+  // data-full: pictures that are zoomed into always load the full file
+  if (copies.length && !/\ssrcset=/.test(tag) && !/\sdata-full/.test(tag)) {
     const set = copies.map((c) => `/images/_w/${c}${src.slice('/images'.length)} ${c}w`);
     set.push(`${src} ${w}w`);
     const hero = /\sfetchpriority="high"/.test(tag);

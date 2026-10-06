@@ -3219,154 +3219,163 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 }
 
 /* ===========================================================================
-   THE HOMEPAGE, 2026 — after Pioneer Labs: an arch that opens onto the
-   desert, cards that stack, a picture that draws you in.
-   Every moving part reads one number, --p (0 → 1), written by the script in
-   index.astro as its section passes. Without the script, or with reduced
-   motion, each section simply shows its finished state.
+   THE HOMEPAGE — a walk through time.
+   A portal opens in the page as the timeline ends; the bodies of work are
+   stops on one path; the page opens again in the shape of the Mars College
+   flower and walks you up to it; seeds at the end.
+   Moving parts read --p (0 → 1), written by the script in index.astro.
+   Without it, or with reduced motion, each section is shown finished.
    =========================================================================== */
 
 /* the opening line: "time traveling" never splits, and is set in small caps */
 .intro .welcome .tt { white-space: nowrap; font-variant-caps: small-caps; }
+.intro .welcome { margin-bottom: 22px; }
 .intro-what {
-  font-size: clamp(18px, 1.9vw, 23px);
-  line-height: 1.5;
+  font-size: clamp(15px, 1.25vw, 17px);
+  line-height: 1.6;
   color: var(--ink-2);
-  max-width: 34em;
+  max-width: none;
   margin: 0;
 }
-@media (max-width: 620px) { .intro-what br { display: none; } }
+@media (max-width: 760px) { .intro-what br { display: none; } }
 
-/* --- the arch ------------------------------------------------------------ */
-.arch { position: relative; height: 100svh; margin-top: 90px; }
-html.scrolly .arch { height: 270svh; }
-.arch-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
-.arch-win {
-  --p1: min(1, calc(var(--p, 1) / 0.6));            /* the opening, first 60% */
-  --w: calc(var(--aw0, 34vw) + (100vw - var(--aw0, 34vw)) * var(--p1));
-  --r: calc(var(--w) / 2 * (1 - var(--p1) * var(--p1)));  /* stays an arch, flattens late */
-  position: absolute; left: 50%; bottom: 0;
-  width: var(--w);
-  height: calc(46svh + 54svh * var(--p1));
-  translate: -50% 0;
-  border-radius: var(--r) var(--r) 0 0;
-  overflow: hidden;
-  background: #2a1d14;
-}
-/* the picture is the size of the screen: the arch is a window onto it */
-.arch-win img {
-  position: absolute; left: 50%; bottom: 0; translate: -50% 0;
-  width: 100vw; height: 100svh; max-width: none;
-  object-fit: cover; object-position: 50% 45%;
-}
-.arch-veil {
-  position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, rgba(10, 6, 3, 0.05) 0%, rgba(10, 6, 3, 0.35) 45%, rgba(10, 6, 3, 0.85) 100%);
-  opacity: clamp(0, calc((var(--p, 1) - 0.55) / 0.2), 1);
-}
-.arch-t {
-  --p2: clamp(0, calc((var(--p, 1) - 0.62) / 0.22), 1);   /* the words, after */
-  position: absolute; inset: auto 0 0 0; padding-bottom: clamp(36px, 7svh, 80px);
-  color: #fff;
-  opacity: var(--p2);
-  filter: blur(calc((1 - var(--p2)) * 14px));
-  translate: 0 calc((1 - var(--p2)) * 24px);
-}
-.arch-logo { margin: 0 0 18px; }
-.arch-logo img { width: clamp(170px, 22vw, 300px); height: auto; }
-.arch-t p { max-width: 36em; font-size: clamp(15.5px, 1.4vw, 18px); color: rgba(255, 255, 255, 0.94); text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45); }
-@media (max-width: 760px) {
-  .arch { --aw0: 62vw; }
-  .arch-win img { object-position: 66% 50%; }   /* the head, not the dirt beside it */
-}
-
-/* --- the stacked cards ---------------------------------------------------- */
-.stack { margin-top: 110px; }
-.stack-cards {
-  --off: 62px;                                   /* how much of each title stays in view */
-  --top: calc(var(--navh, 62px) + 16px);
-  margin-top: 40px;
-  /* the space between cards is grid gap, not margin: a sticky card's margin
-     counts against its container and would lift the stack too early */
-  display: grid;
-  row-gap: 24svh;
-}
-.stack-hold { height: 0; margin-top: -6svh; }   /* with the gap: the full stack holds a moment */
-.scard {
-  position: sticky;
-  top: calc(var(--top) + var(--i) * var(--off));
-  height: calc(100svh - var(--top) - (var(--n) - 1) * var(--off) - 24px);
-  min-height: 460px;
-  display: grid;
-  grid-template-rows: var(--off) auto minmax(0, 1fr);
-  background: var(--wash-1);
-  border: 1px solid var(--line);
-  align-self: start;
-  box-shadow: 0 -10px 30px rgba(13, 33, 54, 0.06);
-  overflow: hidden;
-}
-.scard-head {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
-  padding: 16px 22px 0;
-}
-.scard-head h3 { font-family: var(--hand); font-size: clamp(22px, 2.6vw, 32px); color: var(--blue); }
-.scard-span { color: var(--ink-3); font-size: 12px; letter-spacing: 0.08em; white-space: nowrap; }
-.scard-text {
-  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 10px 40px;
-  padding: 6px 22px 18px;
-}
-.scard-blurb { font-size: clamp(16px, 1.5vw, 19px); line-height: 1.5; margin: 0; }
-.scard-list { list-style: none; margin: 0; font-size: 14.5px; }
-.scard-list li { display: flex; justify-content: space-between; gap: 14px; padding: 5px 0; border-bottom: 1px solid var(--line-2); }
-.scard-list a { border-bottom: 1px solid rgba(13, 33, 54, 0.3); }
-.scard-list a:hover { border-color: var(--ink); }
-.scard-list .yr { color: var(--ink-3); font-size: 12px; white-space: nowrap; }
-.scard-img { min-height: 0; overflow: hidden; }
-.scard-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-@media (max-width: 760px) {
-  .stack-cards { --off: 50px; --top: calc(var(--navh, 56px) + 10px); }
-  .scard-head { padding: 12px 16px 0; }
-  .scard-text { grid-template-columns: 1fr; padding: 4px 16px 14px; gap: 10px; }
-  .scard-list { font-size: 14px; }
-  .scard-list li { padding: 3px 0; }
-  /* one line per title, so each stays readable in its band */
-  .scard-head h3 { font-size: 16.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .scard-span { display: none; }
-}
-.wrap p.intro-what, .wrap p.scard-blurb, .arch-t p, .zoom-t p { hyphens: none; }
-
-/* --- the zoom ------------------------------------------------------------- */
-.zoom { position: relative; height: 100svh; margin-top: 110px; }
-html.scrolly .zoom { height: 240svh; }
-.zoom-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; }
-.zoom-frame {
-  --p1: min(1, calc(var(--p, 1) / 0.65));
-  position: absolute; inset: 0; overflow: hidden; background: #0b1416;
-  clip-path: inset(calc(16% * (1 - var(--p1))) calc(20% * (1 - var(--p1))) round calc(18px * (1 - var(--p1))));
-}
-.zoom-frame img {
+/* --- the portal (Little Martians) ---------------------------------------- */
+.portal { position: relative; height: 100svh; margin-top: 10px; }
+html.scrolly .portal { height: 300svh; }
+.portal-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.portal-win { position: absolute; inset: 0; overflow: hidden; background: #2a1d14; }
+html.scrolly .portal-win { clip-path: circle(0px at 50% 52%); }   /* until the script draws it */
+.portal-win img {
   width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 45%;
-  scale: calc(1 + 0.18 * var(--p, 1));
+  transform-origin: 50% 52%; will-change: transform;
 }
-.zoom-t {
-  --p2: clamp(0, calc((var(--p, 1) - 0.6) / 0.25), 1);
+.portal-rings { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.portal-rings path { fill: none; stroke: var(--blue); stroke-width: 1.2; opacity: 0; }
+.portal-veil {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(10, 6, 3, 0) 0%, rgba(10, 6, 3, 0.3) 45%, rgba(10, 6, 3, 0.86) 100%);
+  opacity: clamp(0, calc((var(--p, 1) - 0.66) / 0.14), 1);
+}
+.portal-t {
+  --t: clamp(0, calc((var(--p, 1) - 0.72) / 0.14), 1);
+  position: absolute; inset: auto 0 0 0; padding-bottom: clamp(36px, 7svh, 80px);
+  color: #fff; opacity: var(--t);
+  filter: blur(calc((1 - var(--t)) * 12px));
+  translate: 0 calc((1 - var(--t)) * 20px);
+}
+.portal-logo { margin: 0 0 18px; }
+.portal-logo img { width: clamp(170px, 22vw, 300px); height: auto; }
+.portal-t p { max-width: 36em; font-size: clamp(15.5px, 1.4vw, 18px); color: rgba(255, 255, 255, 0.94); text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45); }
+@media (max-width: 760px) { .portal-win img { object-position: 66% 50%; } }
+
+/* --- the bodies of work: a path -------------------------------------------- */
+.bw { margin-top: 120px; }
+.bw-lede { max-width: 38em; color: var(--ink-2); }
+.bw-list { list-style: none; margin: 60px 0 0; padding: 0; position: relative; }
+/* the path: a faint dotted line, drawn over in blue as you go */
+.bw-list::before, .bw-list::after {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 0;
+  border-left: 1.5px dotted rgba(28, 74, 134, 0.35); translate: -50% 0;
+}
+.bw-list::after {
+  border-left: 2px solid var(--blue);
+  transform-origin: top; scale: 1 var(--p, 1);
+}
+.bw-item {
+  --r: var(--p, 1);
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(60px, 8vw, 120px);
+  align-items: center;
+  padding: clamp(40px, 7vw, 90px) 0;
+}
+/* a stop on the path */
+.bw-item::before {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 13px; height: 13px; border-radius: 50%;
+  background: var(--paper); border: 2px solid var(--blue); translate: -50% -50%;
+  scale: calc(0.4 + 0.6 * var(--r)); z-index: 1;
+}
+.bw-item:nth-child(even) .bw-img { order: 2; }
+.bw-img {
+  display: block; overflow: hidden; aspect-ratio: 1 / 1;
+  /* an arched window: the same shape the portal settles into */
+  border-radius: 50% 50% 18px 18px / 34% 34% 18px 18px;
+  opacity: calc(0.15 + 0.85 * var(--r));
+  translate: 0 calc((1 - var(--r)) * 40px);
+}
+.bw-img img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  scale: calc(1.14 - 0.14 * var(--r));
+  transition: scale 0.9s ease;
+}
+.bw-img:hover img { scale: 1.04; }
+.bw-text { opacity: calc(var(--r) * 1.2 - 0.2); translate: 0 calc((1 - var(--r)) * 26px); }
+.bw-n { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+.bw-text h3 { font-family: var(--hand); font-size: clamp(26px, 3vw, 40px); color: var(--blue); margin: 10px 0 14px; }
+.bw-text p { font-size: clamp(16px, 1.45vw, 19px); line-height: 1.55; max-width: 26em; margin: 0; }
+.bw-links { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.bw-links a {
+  display: inline-flex; align-items: baseline; gap: 8px;
+  padding: 7px 14px; border-radius: 999px; font-size: 14px;
+  color: var(--blue); background: rgba(28, 74, 134, 0.07); border: 1px solid rgba(28, 74, 134, 0.22);
+  transition: background 0.2s, color 0.2s;
+}
+.bw-links a span { font-size: 11px; color: var(--ink-3); letter-spacing: 0.04em; }
+.bw-links a:hover { background: var(--blue); color: #fff; }
+.bw-links a:hover span { color: rgba(255, 255, 255, 0.75); }
+@media (max-width: 760px) {
+  .bw-list::before, .bw-list::after { left: 7px; translate: none; }
+  .bw-item { grid-template-columns: 1fr; gap: 18px; padding: 34px 0 34px 30px; }
+  .bw-item::before { left: 7px; top: 34px; }
+  .bw-item:nth-child(even) .bw-img { order: 0; }
+  .bw-img { aspect-ratio: 4 / 3.4; }
+}
+
+/* --- Mars College: the flower opening and the walk ------------------------- */
+.mars-j { position: relative; height: 100svh; margin-top: 40px; }
+html.scrolly .mars-j { height: 320svh; }
+.mars-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.mars-clip { position: absolute; inset: 0; overflow: hidden; background: #b9442c; }
+html.scrolly .mars-clip { clip-path: circle(0px at 53% 34%); }
+.mars-clip img {
+  position: absolute; left: 0; top: 0; max-width: none; height: auto;
+  transform-origin: 0 0; will-change: transform;
+}
+.mars-a { width: 100%; }
+.mars-b { opacity: 0; }
+.mars-t {
+  --t: clamp(0, calc((var(--p, 1) - 0.86) / 0.1), 1);
   position: absolute; inset: auto 0 0 0;
-  padding: 130px 0 clamp(36px, 7svh, 80px);
-  background: linear-gradient(180deg, rgba(4, 18, 20, 0) 0%, rgba(4, 18, 20, 0.55) 40%, rgba(4, 18, 20, 0.92) 100%);
-  color: #fff;
-  opacity: var(--p2);
-  filter: blur(calc((1 - var(--p2)) * 12px));
+  padding: 140px 0 clamp(36px, 7svh, 80px);
+  background: linear-gradient(180deg, rgba(40, 8, 4, 0) 0%, rgba(40, 8, 4, 0.55) 40%, rgba(30, 6, 3, 0.9) 100%);
+  color: #fff; opacity: var(--t);
+  filter: blur(calc((1 - var(--t)) * 12px));
 }
-.zoom-t .kicker { color: #9fe3c8; }
-.zoom-t h2 { font-family: var(--hand); font-size: clamp(30px, 5vw, 56px); margin: 8px 0 10px; color: #fff; }
-.zoom-t p { max-width: 36em; font-size: clamp(15.5px, 1.4vw, 18px); color: rgba(255, 255, 255, 0.94); }
+.mars-t .kicker { color: #ffd7a0; }
+.mars-t h2 { font-family: var(--hand); font-size: clamp(30px, 5vw, 56px); margin: 8px 0 10px; color: #fff; }
+.mars-t p { max-width: 36em; font-size: clamp(15.5px, 1.4vw, 18px); color: rgba(255, 255, 255, 0.94); }
+.mars-t .door-links .more { color: #ffd7a0; border-color: #ffd7a0; }
 
-/* --- the last picture ------------------------------------------------------ */
-.leaves { margin: 90px 0 0; }
-.leaves img { width: 100%; height: auto; aspect-ratio: 16 / 5; object-fit: cover; object-position: 50% 55%; display: block; }
-@media (max-width: 620px) { .leaves img { aspect-ratio: 16 / 7; } }
-
-/* no motion: the finished state, at the height of the screen */
-@media (prefers-reduced-motion: reduce) {
-  html.scrolly .arch, html.scrolly .zoom { height: 100svh; }
+/* --- the garden at the end --------------------------------------------------- */
+.garden {
+  --r: var(--p, 1);
+  position: relative; display: flex; justify-content: center; align-items: flex-end;
+  gap: clamp(4px, 2vw, 30px);
+  margin: 80px auto 0; padding: 0 var(--pad); max-width: var(--max);
+  height: clamp(150px, 20vw, 250px);
+  pointer-events: none;
 }
+.garden .g {
+  height: auto; width: auto; max-height: 100%;
+  transform-origin: 50% 100%;
+  translate: 0 calc((1 - var(--r)) * 40px);
+  scale: calc(0.6 + 0.4 * var(--r));
+  opacity: calc(var(--r) * 1.3 - 0.1);
+}
+.garden .g1 { height: 62%; }
+.garden .g2 { height: 70%; transition-delay: 0.05s; }
+.garden .g3 { height: 100%; }
+.garden .g4 { height: 78%; }
+.garden .g5 { height: 64%; }
+@media (max-width: 620px) { .garden .g1, .garden .g5 { display: none; } }
+
+.wrap p.intro-what, .bw-text p, .portal-t p, .mars-t p { hyphens: none; }

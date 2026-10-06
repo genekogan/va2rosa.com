@@ -72,16 +72,18 @@ const figs = essays.research.figures.filter((f) =>
       <SpaceTime />
     </section>
 
-    <!-- LITTLE MARTIANS: an arch opens onto the desert as you scroll ------ -->
-    <section class="arch" id="door" data-scrolly="arch">
-      <div class="arch-stage">
-        <div class="arch-win">
-          <img src="/images/home/door-martians.webp" alt="The first Little Martian: a ceramic head lying on cracked desert ground." loading="lazy" data-nozoom />
+    <!-- LITTLE MARTIANS: a portal opens in the page as you scroll past the
+         timeline, its edge rippling like water, and lets you through ----- -->
+    <section class="portal" id="door" data-scrolly="portal">
+      <div class="portal-stage">
+        <svg class="portal-rings" aria-hidden="true"><path /><path /><path /></svg>
+        <div class="portal-win">
+          <img src="/images/home/door-martians.webp" alt="The first Little Martian: a ceramic head lying on cracked desert ground." loading="lazy" data-full data-nozoom />
         </div>
-        <div class="arch-veil"></div>
-        <div class="arch-t">
+        <div class="portal-veil"></div>
+        <div class="portal-t">
           <div class="wrap">
-            <h2 class="arch-logo"><img src="/images/home/lm-logo-white.webp" alt="Little Martians" loading="lazy" data-nozoom /></h2>
+            <h2 class="portal-logo"><img src="/images/home/lm-logo-white.webp" alt="Little Martians" loading="lazy" data-nozoom /></h2>
             <p>
               Imagining the future with my hands. I create a sci-fi world based on my ceramic
               characters. They’re Little Martians: a species descended from all of Earth’s life,
@@ -125,50 +127,43 @@ const figs = essays.research.figures.filter((f) =>
       )}
     </section>
 
-    <!-- BODIES OF WORK: cards that stack as you scroll ---------------------- -->
-    <section class="wrap stack" id="work">
+    <!-- BODIES OF WORK: one path through time, each body of work a stop on
+         it; the line draws itself as you go ------------------------------ -->
+    <section class="wrap bw" id="work">
       <div class="kicker">The art</div>
       <h2 class="sec" style="margin:12px 0 10px">Many bodies of work</h2>
-      <p style="max-width:38em; color:var(--ink-2)">
+      <p class="bw-lede">
         Grouped by what they are made of and what they are for. They overlap, and each one fed
         the next.
       </p>
 
-      <div class="stack-cards" style={`--n:${collections.length}`}>
+      <ol class="bw-list" data-scrolly="line">
         {collections.map((c, i) => (
-          <article class="scard" style={`--i:${i}`}>
-            <header class="scard-head">
+          <li class="bw-item" data-scrolly="reveal">
+            <a class="bw-img" href={c.items[0].href} tabindex="-1" aria-hidden="true">
+              <img src={c.image} alt="" loading="lazy" data-nozoom />
+            </a>
+            <div class="bw-text">
+              <span class="bw-n">{String(i + 1).padStart(2, '0')} · {c.span}</span>
               <h3>{c.title}</h3>
-              <span class="scard-span">{c.span}</span>
-            </header>
-            <div class="scard-text">
-              <p class="scard-blurb">{c.blurb}</p>
-              <ul class="scard-list">
+              <p>{c.blurb}</p>
+              <ul class="bw-links">
                 {c.items.map((it) => (
                   <li>
-                    {it.href ? (
-                      <a
-                        href={it.href}
-                        target={it.external ? '_blank' : undefined}
-                        rel={it.external ? 'noopener' : undefined}
-                      >
-                        {it.label}
-                      </a>
-                    ) : (
-                      <span>{it.label}</span>
-                    )}
-                    <span class="yr">{it.years ?? ''}</span>
+                    <a
+                      href={it.href}
+                      target={it.external ? '_blank' : undefined}
+                      rel={it.external ? 'noopener' : undefined}
+                    >
+                      {it.label}<span>{it.years}</span>
+                    </a>
                   </li>
                 ))}
               </ul>
             </div>
-            <div class="scard-img">
-              <img src={c.image} alt={c.imageAlt ?? ''} loading="lazy" data-nozoom />
-            </div>
-          </article>
+          </li>
         ))}
-        <div class="stack-hold" aria-hidden="true"></div>
-      </div>
+      </ol>
     </section>
 
     <!-- IN PRINT (hidden until real quotes exist) ------------------------ -->
@@ -184,13 +179,21 @@ const figs = essays.research.figures.filter((f) =>
       </section>
     )}
 
-    <!-- MARS COLLEGE: the picture opens out and draws you in ---------------- -->
-    <section class="zoom" id="mars" data-scrolly="zoom">
-      <div class="zoom-stage">
-        <div class="zoom-frame">
-          <img src="/images/home/door-mars-chiba.webp" alt="Chiba, the red mural at Mars College, 2024, with lettering by Will Simmons and a flower after the Mars College logo." loading="lazy" data-nozoom />
+    <!-- MARS COLLEGE: the page opens in the shape of the Mars College flower,
+         and you walk across the desert and up to the logo on the wall ---- -->
+    <section
+      class="mars-j"
+      id="mars"
+      data-scrolly="mars"
+      data-a="2000 2713 0.53 0.305 0.145"
+      data-b="1500 2000 0.52 0.41 1.12"
+    >
+      <div class="mars-stage">
+        <div class="mars-clip">
+          <img class="mars-a" src="/images/home/mars-approach.webp" alt="Chiba, the red mural building at Mars College, 2024, with the Mars College flower painted above the doors." loading="lazy" data-full data-nozoom />
+          <img class="mars-b" src="/images/home/mars-logo.webp" alt="" loading="lazy" data-full data-nozoom />
         </div>
-        <div class="zoom-t">
+        <div class="mars-t">
           <div class="wrap">
             <div class="kicker">The desert</div>
             <h2>Mars College</h2>
@@ -237,10 +240,15 @@ const figs = essays.research.figures.filter((f) =>
       <p style="margin-top:34px"><a class="more" href="/info">Full record ⇢</a></p>
     </section>
 
-    <!-- the end: the blue wall at Pioneer Works, with the ivy growing over it -->
-    <figure class="leaves">
-      <img src="/images/home/leaves-blue.webp" alt="Green ivy growing over the blue stencil patterns of the Pioneer Works fence." loading="lazy" />
-    </figure>
+    <!-- the end: seeds and plants from Verdelis’s Letter, growing up from
+         the bottom of the page as you arrive -->
+    <div class="garden" aria-hidden="true" data-scrolly="reveal">
+      <img class="g g1" src="/images/home/garden-plants1.webp" alt="" loading="lazy" data-nozoom />
+      <img class="g g2" src="/images/home/garden-seed2.webp" alt="" loading="lazy" data-nozoom />
+      <img class="g g3" src="/images/home/garden-seed5.webp" alt="" loading="lazy" data-nozoom />
+      <img class="g g4" src="/images/home/garden-flor2.webp" alt="" loading="lazy" data-nozoom />
+      <img class="g g5" src="/images/home/garden-seed4.webp" alt="" loading="lazy" data-nozoom />
+    </div>
 
 
 
@@ -253,30 +261,147 @@ const figs = essays.research.figures.filter((f) =>
   </div>
 
   <script is:inline>
-  // Scroll-driven sections (the arch, the zoom). Each one gets --p, how far
-  // the reader has scrolled through it, from 0 to 1; the CSS does the rest.
-  // Reduced motion: no script, the finished picture.
+  // Scroll-driven sections. Each gets --p, how far the reader has come
+  // through it (0 → 1); the CSS reads it for fades and focus, and two drawings
+  // read it here:
+  //   portal — the Little Martians opening: an edge that ripples like water,
+  //            rings spreading out from it, the desert turning into place;
+  //   mars   — an opening in the shape of the Mars College flower, centred on
+  //            the flower on the wall, then a walk up to it: one continuous
+  //            zoom that hands over to a close photograph of the painting.
+  // Reduced motion: every section is drawn once, finished, and stays still.
   (function () {
-    var secs = document.querySelectorAll('[data-scrolly]');
-    if (!secs.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    document.documentElement.classList.add('scrolly');
+    var secs = [].slice.call(document.querySelectorAll('[data-scrolly]'));
+    if (!secs.length) return;
+    var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var cl = function (x) { return x < 0 ? 0 : x > 1 ? 1 : x; };
+    var ease = function (x) { x = cl(x); return x * x * (3 - 2 * x); };
+    var lerp = function (a, b, t) { return a + (b - a) * t; };
+
+    function progress(sec, r, vh) {
+      var t = sec.dataset.scrolly;
+      if (t === 'reveal') return cl((vh - r.top) / (vh * 0.55));
+      if (t === 'line') return cl((vh * 0.62 - r.top) / r.height);
+      return cl((vh - r.top) / r.height); // from entering the screen to leaving the stage
+    }
+
+    // a closed outline around (cx, cy): radius R, bent by f(θ)
+    function outline(cx, cy, R, f, n, svg) {
+      var out = [];
+      for (var k = 0; k < n; k++) {
+        var a = (k / n) * Math.PI * 2, rr = R * f(a);
+        var x = cx + Math.cos(a) * rr, y = cy + Math.sin(a) * rr;
+        out.push(svg ? (k ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1) : x.toFixed(1) + 'px ' + y.toFixed(1) + 'px');
+      }
+      return svg ? out.join('') + 'Z' : 'polygon(' + out.join(',') + ')';
+    }
+
+    var draw = {
+      portal: function (sec, p) {
+        var stage = sec.firstElementChild, win = sec.querySelector('.portal-win');
+        var img = win.querySelector('img'), rings = sec.querySelectorAll('.portal-rings path');
+        var W = stage.clientWidth, H = stage.clientHeight, m = Math.min(W, H);
+        var s = H / sec.offsetHeight;              // where the stage takes hold
+        var open = 0.7;                            // fully open here
+        var cx = W / 2, cy = H * 0.52;
+        var cover = Math.hypot(W, H) * 0.62;
+        var R = p < s ? lerp(10, m * 0.2, ease(p / s)) : lerp(m * 0.2, cover, Math.pow(cl((p - s) / (open - s)), 1.6));
+        var q = cl((p - s) / (open - s));
+        var amp = 0.11 * (1 - ease(q)) + 0.02 * (1 - q);
+        var ph = p * 16;
+        var f = function (o) {
+          return function (a) {
+            return 1 + amp * (0.55 * Math.sin(3 * a + ph + o) + 0.3 * Math.sin(5 * a - ph * 1.3 + o) + 0.15 * Math.sin(9 * a + ph * 2));
+          };
+        };
+        win.style.clipPath = p >= open ? 'none' : outline(cx, cy, R, f(0), 90);
+        // the scene settles as you go through: turned and too close, then still
+        var k = ease((p - 0.12) / 0.62);
+        img.style.transform = 'scale(' + (1.38 - 0.38 * k).toFixed(4) + ') rotate(' + ((1 - k) * -13).toFixed(2) + 'deg)';
+        // three rings spreading out from the edge, gone once it is open
+        var svg = sec.querySelector('.portal-rings');
+        svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        for (var i = 0; i < rings.length; i++) {
+          var drift = (p * 3 + i / rings.length) % 1;
+          rings[i].setAttribute('d', outline(cx, cy, R * (1.08 + 0.55 * drift), f(i * 1.7), 72, true));
+          rings[i].style.opacity = ((1 - drift) * 0.55 * (1 - q)).toFixed(3);
+        }
+      },
+
+      mars: function (sec, p) {
+        var stage = sec.firstElementChild, clip = sec.querySelector('.mars-clip');
+        var A = sec.querySelector('.mars-a'), B = sec.querySelector('.mars-b');
+        var a = sec.dataset.a.split(' ').map(Number), b = sec.dataset.b.split(' ').map(Number);
+        var W = stage.clientWidth, H = stage.clientHeight;
+        var s = H / sec.offsetHeight;
+        // the approach photograph, covering the screen, the flower high in the frame
+        var cA = Math.max(W / a[0], H / a[1]), AW = a[0] * cA, AH = a[1] * cA;
+        var ox = Math.min(0, Math.max(W - AW, W * 0.5 - a[2] * AW));
+        var oy = Math.min(0, Math.max(H - AH, H * 0.34 - a[3] * AH));
+        var L0x = ox + a[2] * AW, L0y = oy + a[3] * AH;
+        // the close photograph, covering the screen when the walk ends
+        var cB = Math.max(W / b[0], H / b[1]) * 1.08, BW = b[0] * cB, BH = b[1] * cB;
+        var Lex = W * 0.5, Ley = H * 0.42;
+        var Send = (b[4] * BW) / (b[3] * AW);
+        // the opening: a flower of eight petals, centred on the painted one
+        var o = cl(p / (s + 0.1));
+        var cover = Math.hypot(W, H) * 1.05;
+        var R = lerp(0, cover, Math.pow(o, 1.35));
+        var amp = 0.16 * (1 - ease(o)), rot = p * 2.2;
+        clip.style.clipPath = o >= 1 ? 'none' : outline(L0x, L0y, R, function (t) { return 1 + amp * Math.cos(8 * t + rot); }, 120);
+        // the walk: a steady zoom, the flower drifting to the middle
+        var z = cl((p - (s + 0.04)) / (0.86 - (s + 0.04)));
+        var S = Math.exp(Math.log(Send) * z);
+        var e = ease(z), Lx = lerp(L0x, Lex, e), Ly = lerp(L0y, Ley, e);
+        A.style.width = AW + 'px'; A.style.height = AH + 'px';
+        A.style.transform = 'translate(' + (Lx - a[2] * AW * S).toFixed(1) + 'px,' + (Ly - a[3] * AH * S).toFixed(1) + 'px) scale(' + S.toFixed(4) + ')';
+        var SB = (S * b[3] * AW) / (b[4] * BW);
+        B.style.width = BW + 'px'; B.style.height = BH + 'px';
+        B.style.transform = 'translate(' + (Lx - b[2] * BW * SB).toFixed(1) + 'px,' + (Ly - b[3] * BH * SB).toFixed(1) + 'px) scale(' + SB.toFixed(4) + ')';
+        // the close photograph comes in as a soft circle around the flower, then fills
+        // (a soft oval that fades out before the photograph's own edges, then,
+        // once the photograph fills the screen, a solid layer that lets it all show)
+        var fade = ease((z - 0.32) / 0.3);
+        var inner = lerp(45, 80, ease((z - 0.4) / 0.4)).toFixed(1);
+        var all = ease((z - 0.82) / 0.16).toFixed(3);
+        var mask = 'radial-gradient(closest-side at ' + (b[2] * 100).toFixed(1) + '% ' + (b[3] * 100).toFixed(1) + '%, #000 ' + inner + '%, transparent 100%), ' +
+          'linear-gradient(rgba(0,0,0,' + all + '), rgba(0,0,0,' + all + '))';
+        B.style.webkitMaskImage = B.style.maskImage = mask;
+        B.style.opacity = fade.toFixed(3);
+      },
+    };
+
     var on = new Set(), ticking = false;
     function update() {
       ticking = false;
       var vh = innerHeight;
       on.forEach(function (sec) {
-        var r = sec.getBoundingClientRect();
-        var run = r.height - vh;
-        var p = run > 0 ? Math.min(1, Math.max(0, -r.top / run)) : 1;
+        var p = progress(sec, sec.getBoundingClientRect(), vh);
         sec.style.setProperty('--p', p.toFixed(4));
+        if (draw[sec.dataset.scrolly]) draw[sec.dataset.scrolly](sec, p);
       });
     }
     function ask() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+
+    if (still) {
+      secs.forEach(function (sec) {
+        sec.style.setProperty('--p', '1');
+        if (draw[sec.dataset.scrolly]) draw[sec.dataset.scrolly](sec, 1);
+      });
+      addEventListener('resize', function () {
+        secs.forEach(function (sec) { if (draw[sec.dataset.scrolly]) draw[sec.dataset.scrolly](sec, 1); });
+      });
+      return;
+    }
+
+    document.documentElement.classList.add('scrolly');
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { e.isIntersecting ? on.add(e.target) : on.delete(e.target); });
       ask();
-    });
-    secs.forEach(function (sec) { sec.style.setProperty('--p', '0'); io.observe(sec); });
+    }, { rootMargin: '25% 0px' });
+    secs.forEach(function (sec) { sec.style.setProperty('--p', '0'); on.add(sec); io.observe(sec); });
+    update();
+    on.clear();
     addEventListener('scroll', ask, { passive: true });
     addEventListener('resize', ask);
   })();
