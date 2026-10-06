@@ -2239,6 +2239,8 @@ html.bk-lock, html.bk-lock body { overflow: hidden; }
   .res-block { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .res-mid { grid-column: 1 / -1; order: -1; }
   .res-fig { max-height: 240px; }
+  /* one being alone sits in the middle, not in the left of two columns */
+  .res-fig:only-of-type { grid-column: 1 / -1; justify-self: center; width: auto; max-width: 70%; }
 }
 
 
