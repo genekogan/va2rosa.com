@@ -3189,3 +3189,17 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .wclips video { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: var(--ink); }
 .wclips figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 6px; }
 @media (max-width: 600px) { .wclips { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+
+/* LM thread: the Verdelis LoRA diagram, under the ceramics */
+.lmlora { margin: 46px 0 0; }
+.lmlora img { width: 100%; display: block; background: #fff; }
+.lmlora figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 8px; }
+/* phones: Verdelianus fills the screen, the black at the sides cropped away */
+@media (max-width: 600px) {
+  .lmsculpt .sl-item:first-child img { aspect-ratio: 3 / 4; width: 100%; object-fit: cover; object-position: 51% 50%; }
+  /* the arrows sit over the picture, so the picture gets the whole width */
+  .lmsculpt .sl-stage { position: relative; display: block; }
+  .lmsculpt .sl-nav { position: absolute; top: 42%; z-index: 2; background: rgba(13, 33, 54, 0.45); color: #fff; border-color: transparent; }
+  .lmsculpt .sl-prev { left: 6px; }
+  .lmsculpt .sl-next { right: 6px; }
+}
