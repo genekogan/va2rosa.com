@@ -343,6 +343,7 @@ export const threads = [
       { years: '2015', text: 'The Blue Wall Project, GAU and the Lisbon Municipality' },
       { years: '2015', text: 'Paintings in Botafogo, Rio de Janeiro' },
       { years: '2015', text: 'Workshop at MAM Bahia, during a LIBRE gathering, Salvador' },
+      { years: '2015', text: 'Collective show at Espaço Galerio, Rio de Janeiro' },
       { years: '2015–2016', text: 'Paintings in Queens and Brooklyn, New York' },
       { years: '2016', text: 'Falha de Diálogo, Choque Festival, São Paulo. Participated, then withdrew and erased the work' },
       { years: '2016', text: 'Muro Art Festival, Lisbon, curated by Ana Vilar Bravo' },
@@ -350,6 +351,8 @@ export const threads = [
       { years: '2017', text: 'Imaginary Tiles, solo exhibition at B[x]space, New York' },
       { years: '2017', text: 'The Infinity Game, Babycastles, New York' },
       { years: '2017', text: 'The perimeter mural at Pioneer Works, Red Hook, Brooklyn' },
+      { years: '2017', text: 'Installation for Lilo.think space, São Paulo' },
+      { years: '2017', text: 'ITP NYU summer program final show, New York' },
     ],
     reading: [
       'Frankopan, Peter. <em>The Silk Roads: A New History of the World</em>. Bloomsbury, 2015.',
