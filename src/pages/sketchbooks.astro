@@ -71,7 +71,7 @@ import { selfPortrait as sp, highlights, years } from '../data/drawings.js';
               <div class="sl-track">
                 {y.slides.map((im, i) => (
                   <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
-                    <img src={im.src} alt={`${y.title}, ${y.year}`} loading={i < 1 ? 'eager' : 'lazy'} />
+                    <img src={im.src} alt={`${y.title}, ${y.year}`} loading="lazy" />
                   </figure>
                 ))}
               </div>
@@ -111,7 +111,7 @@ import { selfPortrait as sp, highlights, years } from '../data/drawings.js';
       at = (i + items.length) % items.length;
       items.forEach(function (el, k) {
         el.hidden = k !== at;
-        if (k === at) el.querySelector('img').loading = 'eager';
+        if (k === at || k === (at + 1) % items.length) el.querySelector('img').loading = 'eager';
       });
       count.textContent = at + 1 + ' / ' + items.length;
     }

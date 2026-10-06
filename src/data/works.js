@@ -599,8 +599,14 @@ export const ethnocomputingExperiments = {
       images: [
         ec('vries.webp', 'Hans Vredeman de Vries (1527 to 1606), engraving from The Book of Perspective, 1604 to 1605.'),
         ec('sona.webp', 'A Chokwe pattern from Angola, known as Sona. This one tells the story of a wild chicken running away from a hunter.'),
-        ec('algorithm.gif', 'The running chicken algorithm, redrawn in Processing.'),
-        ec('making.gif', 'Making of.'),
+      ],
+    },
+    {
+      // the two animations, once GIFs (4.6 MB), now short silent loops
+      clipsWide: true,
+      clips: [
+        { file: '/video/ecx/algorithm.mp4', poster: '/video/ecx/algorithm.webp', caption: 'The running chicken algorithm, redrawn in Processing.' },
+        { file: '/video/ecx/making.mp4', poster: '/video/ecx/making.webp', caption: 'Making of.' },
       ],
     },
     {
@@ -730,7 +736,7 @@ export const mauricioHora = {
       video: {
         // served from this site rather than a platform, and nothing is
         // fetched until someone presses play
-        file: '/video/mh-latent-walk.mp4',
+        file: '/video/mh-latent-walk-2.mp4',
         poster: '/video/mh-latent-walk.webp',
         caption:
           'A walk through the latent space of the model trained on Maurício’s archive. Thirty seconds, no sound.',
@@ -1649,7 +1655,7 @@ export const immersiveMural = {
       body: ['The photograph of the mural as the starting image, and Deforum dreaming outward from it.'],
       clips: [1, 2, 3, 4, 5, 6, 7].map((n) => {
         const k = String(n).padStart(2, '0');
-        return { file: `/video/gau22/deforum-${k}.mp4`, poster: `/video/gau22/deforum-${k}.webp` };
+        return { file: `/video/gau22/deforum-${k}-2.mp4`, poster: `/video/gau22/deforum-${k}.webp` };
       }),
     },
   ],

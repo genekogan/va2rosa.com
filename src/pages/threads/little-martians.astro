@@ -242,7 +242,7 @@ const tabs = [
         <div class="sl-track">
           {lmPage.verdelianus.images.map((im, i) => (
             <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
-              <img src={im.src} alt={im.alt || im.caption} loading={i < 2 ? 'eager' : 'lazy'} />
+              <img src={im.src} alt={im.alt || im.caption} loading="lazy" />
               <figcaption>{im.caption}</figcaption>
             </figure>
           ))}
@@ -389,7 +389,7 @@ const tabs = [
             <div class="sl-track">
               {s.images.map((im, i) => (
                 <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
-                  <img src={im.src} alt={im.caption || s.title} loading={i < 2 ? 'eager' : 'lazy'} />
+                  <img src={im.src} alt={im.caption || s.title} loading="lazy" />
                   {im.caption && <figcaption>{im.caption}</figcaption>}
                 </figure>
               ))}
@@ -588,7 +588,7 @@ const tabs = [
         at = (i + items.length) % items.length;
         items.forEach(function (el, k) {
           el.hidden = k !== at;
-          if (k === at) el.querySelector('img').loading = 'eager';
+          if (k === at || k === (at + 1) % items.length) el.querySelector('img').loading = 'eager';
         });
         count.textContent = at + 1 + ' / ' + items.length;
       }

@@ -79,7 +79,8 @@
       img.classList.remove('is-zoomed');
       stage.scrollTop = 0;
       stage.scrollLeft = 0;
-      img.src = el.currentSrc || el.src;
+      // the full-size original, not the smaller copy a phone may have shown
+      img.src = el.src || el.currentSrc;
       img.alt = el.getAttribute('alt') || '';
       cap.textContent = captionOf(el);
       count.textContent = group.length > 1 ? at + 1 + ' / ' + group.length : '';

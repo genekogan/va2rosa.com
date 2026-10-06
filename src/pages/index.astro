@@ -244,6 +244,12 @@ const figs = essays.research.figures.filter((f) =>
     function load(i) {
       var img = slides[(i + slides.length) % slides.length].querySelector('img.bg');
       if (img && img.dataset.src) {
+        // the smaller copies, when the build added them, so a phone loads less
+        if (img.dataset.srcset) {
+          img.sizes = '(orientation: portrait) 100vh, 100vw'; // drawn as cover, full height
+          img.srcset = img.dataset.srcset;
+          delete img.dataset.srcset;
+        }
         img.src = img.dataset.src;
         delete img.dataset.src;
       }

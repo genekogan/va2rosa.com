@@ -90,7 +90,7 @@ const next = sp.projects[idx + 1];
               <div class="sl-track">
                 {s.images.map((src, i) => (
                   <figure class="sl-item" hidden={i !== 0 ? true : undefined}>
-                    <img src={src} alt="" loading={i < 2 ? 'eager' : 'lazy'} />
+                    <img src={src} alt="" loading="lazy" />
                   </figure>
                 ))}
               </div>
@@ -142,7 +142,7 @@ const next = sp.projects[idx + 1];
       at = (i + items.length) % items.length;
       items.forEach(function (el, k) {
         el.hidden = k !== at;
-        if (k === at) el.querySelector('img').loading = 'eager';
+        if (k === at || k === (at + 1) % items.length) el.querySelector('img').loading = 'eager';
       });
       count.textContent = at + 1 + ' / ' + items.length;
     }

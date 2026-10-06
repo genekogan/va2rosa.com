@@ -35,7 +35,7 @@ const portraits = [
           <div class="sl-track">
             {portraits.map((im, i) => (
               <figure class="sl-item" data-i={i} hidden={i !== 0 ? true : undefined}>
-                <img src={im.src} alt={im.alt} loading={i < 1 ? 'eager' : 'lazy'} />
+                <img src={im.src} alt={im.alt} loading="lazy" />
                 <figcaption>{im.caption}</figcaption>
               </figure>
             ))}
@@ -275,7 +275,7 @@ const portraits = [
       at = (i + items.length) % items.length;
       items.forEach(function (el, k) {
         el.hidden = k !== at;
-        if (k === at) el.querySelector('img').loading = 'eager';
+        if (k === at || k === (at + 1) % items.length) el.querySelector('img').loading = 'eager';
       });
       count.textContent = at + 1 + ' / ' + items.length;
     }

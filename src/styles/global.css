@@ -78,7 +78,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img { max-width: 100%; display: block; }
+/* height: auto keeps each picture's own proportions now that it carries
+   width and height attributes (they are there to hold its place while it loads) */
+img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
@@ -1332,8 +1334,10 @@ a.ul { border-bottom: 1px solid rgba(13, 33, 54, 0.35); }
 .wgrid figure.wide { grid-column: 1 / -1; }
 /* one picture on its own: the full width, but never stretched past its own size */
 .wgrid.solo { grid-template-columns: minmax(0, 1fr); }
-.wgrid.solo img { width: auto; max-width: 100%; }
-.wgrid img { width: 100%; height: auto; display: block; background: var(--line-2); }
+/* a picture on its own keeps its own width (from its width attribute), up to the column */
+.wgrid.solo img { max-width: 100%; }
+.wgrid img { height: auto; display: block; background: var(--line-2); }
+.wgrid:not(.solo) img { width: 100%; }
 .wgrid figcaption {
   font-size: 12.5px; color: var(--ink-3); margin-top: 8px; line-height: 1.45;
 }
@@ -3194,8 +3198,11 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 .wclips { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; margin-top: 20px; }
 .wclips figure { margin: 0; }
 .wclips video { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: var(--ink); }
+.wclips.wide { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.wclips.wide video { aspect-ratio: 16 / 9; object-fit: contain; background: transparent; }
 .wclips figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 6px; }
 @media (max-width: 600px) { .wclips { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+@media (max-width: 600px) { .wclips.wide { grid-template-columns: 1fr; } }
 
 /* LM thread: the Verdelis LoRA diagram, under the ceramics */
 .lmlora { margin: 46px 0 0; }
