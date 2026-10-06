@@ -3156,3 +3156,29 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   .fx-par[data-show="orig"] .fx-b-final, .fx-par[data-show="final"] .fx-b-orig { display: none; }
   .fx-b-orig { color: var(--ink); }
 }
+
+/* talk to a little martian: four phones in a row */
+.tm-phones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-top: 40px; }
+.tm-phone { margin: 0; }
+.tm-screen { border-radius: 22px; overflow: hidden; background: var(--ink); border: 6px solid var(--ink); box-shadow: 0 10px 28px rgba(13, 33, 54, 0.18); }
+.tm-screen video { display: block; width: 100%; aspect-ratio: 888 / 1920; object-fit: cover; background: var(--ink); }
+.tm-phone figcaption { margin-top: 12px; }
+.tm-name { display: block; font-family: var(--hand); font-size: 20px; color: var(--blue); }
+.tm-note { display: block; font-size: 13px; color: var(--ink-3); margin-top: 4px; line-height: 1.4; }
+.tm-hint { font-size: 12.5px; color: var(--ink-3); margin-top: 18px; }
+.tm-shown { list-style: none; margin: 14px 0 0; padding: 0; }
+.tm-shown li { display: grid; grid-template-columns: 56px 1fr; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line-2); }
+.tm-y { color: var(--ink-3); font-variant-numeric: tabular-nums; font-size: 14px; }
+.tm-shown a { border-bottom: 1px solid var(--line); }
+.tm-place { display: block; font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+@media (max-width: 900px) {
+  .tm-phones {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
+    overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px;
+    margin-left: calc(-1 * var(--pad)); margin-right: calc(-1 * var(--pad)); padding-left: var(--pad); padding-right: var(--pad);
+  }
+  .tm-phone { scroll-snap-align: start; }
+}
+@media (min-width: 601px) and (max-width: 900px) { .tm-phones { grid-auto-columns: 38%; } }
+/* a phone-shaped video inside a project page */
+.vid.vid-tall { aspect-ratio: 888 / 1920; max-width: 320px; border-radius: 18px; overflow: hidden; }

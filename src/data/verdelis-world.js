@@ -76,6 +76,7 @@ export const verdelisWorld = {
   },
 
   links: [
+    { label: 'Where it began: Talk to a Little Martian, 2023', href: '/talk-to-a-little-martian' },
     { label: 'Visit verdelis.world', href: 'https://www.verdelis.world/', external: true },
     { label: 'Talk to Verdelis on Eden', href: 'https://app.eden.art/chat?agent=verdelis', external: true },
     { label: 'The archive of films', href: 'https://www.verdelis.world/archive', external: true },

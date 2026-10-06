@@ -101,6 +101,15 @@ export const fiction = {
         cta: 'Read the whole experiment',
       },
       {
+        year: 2023,
+        title: 'Talk to a Little Martian',
+        tool: 'Language models with personas, on Eden, with Gene Kogan',
+        body: 'The first interactive storytelling experiment: an app where you typed a question and a Little Martian answered in their own voice, remembering what they had said before. Shown in Venice Beach, Brooklyn, Portugal and Burgundy in 2023.',
+        image: '/video/talk/nebulana.webp',
+        href: '/talk-to-a-little-martian',
+        cta: 'Four characters, one question',
+      },
+      {
         year: 2024,
         title: 'Dear Human, My Muse',
         tool: 'ChatGPT, as a partner in discussion',

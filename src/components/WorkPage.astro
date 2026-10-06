@@ -154,7 +154,7 @@ const { work } = Astro.props;
         {sec.note && <p class="wnote">{sec.note}</p>}
         {sec.video && (
           <>
-            <div class="vid" style="margin-bottom:6px">
+            <div class={sec.video.tall ? 'vid vid-tall' : 'vid'} style="margin-bottom:6px">
               {sec.video.file && (
                 <video
                   controls playsinline loop preload="none"

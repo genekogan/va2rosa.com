@@ -1,0 +1,62 @@
+---
+// Four phones in a row, each asking a different Little Martian the same
+// question. The recordings sit behind a still and play with sound: the voice
+// was the point of the app.
+import Base from '../layouts/Base.astro';
+import Spine from '../components/Spine.astro';
+import { talkMartian as t } from '../data/talk-martian.js';
+---
+
+<Base title={t.title} current="Art" description={t.lede} image={t.videos[0].poster} bodyClass="paper">
+  <div class="wrap">
+    <p class="fx-back" style="padding-top:60px"><a href="/fiction-writing">← Fiction writing</a></p>
+    <div class="kicker" style="margin-top:28px">{t.kicker}</div>
+    <h1 class="sec" style="margin:12px 0 18px">{t.title}</h1>
+    <div class="narrow">
+      <p class="lede">{t.lede}</p>
+      {t.intro.map((p) => <p>{p}</p>)}
+    </div>
+
+    <div class="tm-phones">
+      {t.videos.map((v) => (
+        <figure class="tm-phone">
+          <div class="tm-screen">
+            <video controls playsinline preload="none" poster={v.poster} aria-label={`${v.name} answers: how did humans become Martians?`}>
+              <source src={v.file} type="video/mp4" />
+            </video>
+          </div>
+          <figcaption>
+            <span class="tm-name">{v.name}</span>
+            {v.note && <span class="tm-note">{v.note}</span>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="tm-hint">Recorded on a phone at app.mars.college, September 2023. With sound.</p>
+
+    <section class="wsec">
+      <div class="kicker">Where it was shown</div>
+      <ul class="tm-shown">
+        {t.shown.map((s) => (
+          <li>
+            <span class="tm-y">{s.year}</span>
+            <span>
+              {s.href
+                ? <a href={s.href} {...(s.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}>{s.where}</a>
+                : s.where}
+              <span class="tm-place">{s.place}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <p class="story-links" style="margin-top:34px">
+      {t.links.map((l) => (
+        <a class="more" href={l.href} {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>{l.label} ⇢</a>
+      ))}
+    </p>
+
+    <div style="padding-bottom:90px"><Spine current="little-martians" /></div>
+  </div>
+</Base>

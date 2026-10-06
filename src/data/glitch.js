@@ -41,6 +41,7 @@ export const glitch = {
     {
       year: '2023',
       body: 'My first interactive storytelling installation, made with Gene Kogan: a ceramic head, a screen, and a Little Martian answering whoever stood in front of it.',
+      more: { label: 'The app it ran on', href: '/talk-to-a-little-martian' },
       media: [
         { video: '/video/glitch/g23-installation.mp4', poster: '/video/glitch/g23-installation.webp', caption: 'The installation in the château.', wide: true },
       ],

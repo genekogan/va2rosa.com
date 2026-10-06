@@ -42,6 +42,7 @@ import { glitch as g } from '../data/glitch.js';
         <div class="gl-head">
           <div class="gl-n">{y.year}</div>
           <p>{y.body}</p>
+          {y.more && <p style="margin-top:8px"><a class="more" href={y.more.href}>{y.more.label} ⇢</a></p>}
         </div>
 
         <div class="gl-media">
