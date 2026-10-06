@@ -32,7 +32,7 @@ export const place = {
   imageAlt: 'Painted blue archways on a solar-powered structure at Mars College, in the desert.',
   body: [
     'Mars College is a three-month school, research lab and off-grid community on a dry lake bed near Bombay Beach, California, dedicated to a low-cost, high-tech life. The campus is built from scratch each winter from pallet racks and plywood, runs on solar, and is taken down again in the spring.',
-    'Vanessa has been part of the core team since it began in 2020. She paints murals, teaches workshops, hosts people and does the hundred unglamorous things a temporary town needs. Several of the projects on this page were made there, or were inspired by it.',
+    'I have been part of the core team since it began in 2020. I paint murals, teach workshops, host people and do the hundred unglamorous things a temporary town needs. Several of the projects on this page were made there, or were inspired by it.',
   ],
   links: [
     { label: 'My thread on Mars College', href: '/mars-college' },
