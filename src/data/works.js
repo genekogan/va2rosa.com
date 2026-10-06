@@ -250,9 +250,11 @@ export const streetArt = {
       body: ['My first street art project: figures from other centuries painted life-size on the walls and steps of the hill, in the port zone of Rio.'],
       gallery: 'slides',
       images: [
+        { src: '/images/street2/conc10-1.webp', caption: 'Morro da Conceição, 2010' },
+        { src: '/images/street2/conc10-2.webp', caption: 'Detail' },
+        { src: '/images/street2/conc10-3.webp', caption: 'On a street corner, Morro da Conceição, 2010' },
         { src: '/images/street/street-011.webp', caption: 'Morro da Conceição, 2010' },
         { src: '/images/street/street-009.webp', caption: 'Morro da Conceição, 2010' },
-        { src: '/images/street/street-008.webp', caption: 'Morro da Conceição, 2010' },
         { src: '/images/street/street-010.webp', caption: 'Morro da Conceição, 2010' },
         { src: '/images/street2/rio10-friar.webp', caption: 'Rio de Janeiro, 2010' },
       ],
