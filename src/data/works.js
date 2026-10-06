@@ -1398,7 +1398,7 @@ export const regency2023 = {
       body: [
         'The art talk ran alongside the pop-up, with the interactive experiment projected on the wall: visitors typed their questions and Nebulana, the first Little Martian I made, answered them in her own voice.',
       ],
-      video: { file: '/video/talk/nebulana.mp4', poster: '/video/talk/nebulana.webp', tall: true, alt: 'Nebulana answering a question in the app.', caption: 'Nebulana, in the app made with Gene Kogan, 2023.' },
+      video: { file: '/video/talk/nebulana.mp4', poster: '/video/talk/nebulana-first.webp', tall: true, alt: 'Nebulana answering a question in the app.', caption: 'Nebulana, in the app made with Gene Kogan, 2023.' },
       images: [{ src: '/images/regency/rg-17.webp', caption: 'The projection, set up for the talk' }],
       more: { label: 'The app: Talk to a Little Martian', href: '/talk-to-a-little-martian' },
     },

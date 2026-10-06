@@ -11,15 +11,14 @@ export const talkMartian = {
   lede: 'The first Little Martians interactive storytelling experiment, made with Gene Kogan in 2023.',
   intro: [
     'An experimental app based on language models with personas, running on Eden. You typed a question and a voice answered as the character, while their video kept repeating on a loop. The previous answers stayed on screen as text, the character’s memory.',
-    'It was very novel at the time, though we promoted it little. These are the first Little Martians interactive storytelling experiments.',
     'Below, four characters answer the same question: how did humans become Martians?',
   ],
   // the order she showed them: Nebulana first, she was the first one made
   videos: [
-    { name: 'Nebulana', note: 'The first Little Martian I made, and the one I presented at most of the events.', file: '/video/talk/nebulana.mp4', poster: '/video/talk/nebulana.webp' },
-    { name: 'Mycologus', file: '/video/talk/mycologus.mp4', poster: '/video/talk/mycologus.webp' },
-    { name: 'Cabloclus', file: '/video/talk/cabloclus.mp4', poster: '/video/talk/cabloclus.webp' },
-    { name: 'Lumis', file: '/video/talk/lumis.mp4', poster: '/video/talk/lumis.webp' },
+    { name: 'Nebulana', note: 'The first Little Martian I made, and the one I presented at most of the events.', file: '/video/talk/nebulana.mp4', poster: '/video/talk/nebulana-first.webp' },
+    { name: 'Mycologus', file: '/video/talk/mycologus.mp4', poster: '/video/talk/mycologus-first.webp' },
+    { name: 'Cabloclus', file: '/video/talk/cabloclus.mp4', poster: '/video/talk/cabloclus-first.webp' },
+    { name: 'Lumis', file: '/video/talk/lumis.mp4', poster: '/video/talk/lumis-first.webp' },
   ],
   shown: [
     { year: 2023, where: 'Deforum, Bright Moments Gallery', place: 'Venice Beach, Los Angeles' },
