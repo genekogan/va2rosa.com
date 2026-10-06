@@ -1312,7 +1312,11 @@ export const eyes = {
     {
       title: 'About Amarildo',
       body: ['A man who was murdered by police in the favela da Rocinha.'],
-      images: [{ src: '/images/eyes/amarildo-1.webp' }],
+      gallery: 'slides',
+      images: [
+        { src: '/images/eyes/amarildo-room.webp' },
+        { src: '/images/eyes/amarildo-mouth.webp', caption: 'Detail' },
+      ],
     },
   ],
   also: {
