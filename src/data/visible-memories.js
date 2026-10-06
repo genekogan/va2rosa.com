@@ -163,5 +163,9 @@ export const visibleMemories = {
   reading: [
     'Eglash, Ron. <em>African Fractals: Modern Computing and Indigenous Design</em>. Rutgers UP, 1999.',
     'Campbell, Bolaji. On Yoruba traditional religious painting.',
+    'Diniz, André, and Maurício Hora. <em>Picture a Favela</em>.',
+    'Costa, Flávia Carolina da. <em>Morro da Conceição: uma etnografia da sociabilidade e do conflito numa metrópole brasileira</em>. Thesis.',
+    'Moura, Roberto. <em>Tia Ciata e a Pequena África no Rio de Janeiro</em>. 1983.',
+    'Abreu, Maurício de Almeida. <em>Evolução urbana do Rio de Janeiro</em>. 1987.',
   ],
 };
