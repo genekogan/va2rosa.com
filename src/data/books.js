@@ -49,7 +49,7 @@ export const books = {
     after: 1,
     kicker: 'Abroad',
     body:
-      'My mother’s series, Caius Zip, Time Traveller, was licensed to mainland China. The originals are all in Portuguese: translating them was part of our work in international outreach, and I made the covers for the English collection.',
+      'My mother’s series, Caius Zip, Time Traveller, was licensed to mainland China and South Korea. The originals are all in Portuguese, we translated them to English as part of our work in international outreach efforts.',
     china: {
       src: '/images/caius/china.webp',
       caption: 'The Chinese edition of the Time Traveller series, by my mother, Regina Gonçalves.',
@@ -59,7 +59,7 @@ export const books = {
       'Napoleon Bonaparte in Russia', 'The Phantom of the Opera Carmen', 'Santos Dumont: Flight Is for Everyone',
       'The Emperor and the Journalist', 'Einstein, Picasso, Agatha and Chaplin', 'Hannibal and Archimedes',
       'Tutankhamun', 'Marco Polo’s Travels', 'The Angel of the Great Depression',
-    ].map((t, i) => ({ src: `/images/caius/en-${String(i + 1).padStart(2, '0')}.webp`, caption: t })),
+    ].map((t, i) => ({ src: `/images/caius/en-${String(i + 1).padStart(2, '0')}.webp`, caption: `${t}${t.endsWith('?') ? '' : '.'} Cover by Vanessa Rosa and Rafael Nobre.` })),
   },
   // the publisher's name, highlighted and linked the first time the text says it
   publisher: { name: 'Viajante do Tempo', href: 'https://viajantedotempo.com/' },
