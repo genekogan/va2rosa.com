@@ -719,7 +719,7 @@ export const mauricioHora = {
     {
       title: '2020, and the GANs',
       body: [
-        'In 2020, I showed him how GANs worked and told him why I believed it was going to disrupt the lives of professional photographers. He understood immediately what it meant. Then he gave me a terabyte of his work to train a model as an experiment. My plan was to write an article on technology and inequality, but my trials did not work so well. To train a good StyleGAN2 image back then, it was important to have thousands of images with very similar compositions, and Maurício’s photos were too diverse for that. I did write a first draft that worked mostly as a preliminary version to my article Copyright Storm, which used Instagram photos from storm chasing photographers.',
+        { html: 'In 2020, I showed him how GANs worked and told him why I believed it was going to disrupt the lives of professional photographers. He understood immediately what it meant. Then he gave me a terabyte of his work to train a model as an experiment. My plan was to write an article on technology and inequality, but my trials did not work so well. To train a good StyleGAN2 image back then, it was important to have thousands of images with very similar compositions, and Maurício’s photos were too diverse for that. I did write a first draft that worked mostly as a preliminary version to my article <a class="pub-hl" href="https://va2rosa.medium.com/copyright-storm-authorship-in-the-age-of-ai-baba554aa617" target="_blank" rel="noopener">Copyright Storm</a>, which used Instagram photos from storm chasing photographers.' },
       ],
       images: [
         { src: '/images/mh/mh-gan-1.webp', caption: 'StyleGAN2, trained on his archive' },

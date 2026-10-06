@@ -148,7 +148,7 @@ const { work } = Astro.props;
         {sec.title && <div class="kicker">{sec.title}</div>}
         {sec.body && (
           <div class="narrow" style="margin-top:14px">
-            {sec.body.map((p) => <p>{p}</p>)}
+            {sec.body.map((p) => (typeof p === 'string' ? <p>{p}</p> : <p set:html={p.html} />))}
           </div>
         )}
         {sec.note && <p class="wnote">{sec.note}</p>}
