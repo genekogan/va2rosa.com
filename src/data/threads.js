@@ -343,7 +343,7 @@ export const threads = [
       { years: '2015', text: 'The Blue Wall Project, GAU and the Lisbon Municipality' },
       { years: '2015', text: 'Paintings in Botafogo, Rio de Janeiro' },
       { years: '2015', text: 'Workshop at MAM Bahia, during a LIBRE gathering, Salvador' },
-      { years: '2015', text: 'Collective show at Espaço Galerio, Rio de Janeiro' },
+      { years: '2015', text: 'Viagens pitorescas e urbanas pela cidade de São Sebastião do Rio de Janeiro, collective show at Espaço GaleRio, Botafogo, Rio de Janeiro' },
       { years: '2015–2016', text: 'Paintings in Queens and Brooklyn, New York' },
       { years: '2016', text: 'Falha de Diálogo, Choque Festival, São Paulo. Participated, then withdrew and erased the work' },
       { years: '2016', text: 'Muro Art Festival, Lisbon, curated by Ana Vilar Bravo' },
