@@ -1277,6 +1277,16 @@ export const eyes = {
       ],
     },
     {
+      title: 'How the image travelled',
+      gallery: 'slides',
+      images: [
+        { src: '/images/eyes/un-rep-carta.webp', caption: 'CartaCapital, “Como reconhecer a armadilha do relacionamento abusivo”, 2014. Illustration: Vanessa Rosa, photograph: Flávio Sandoval/UN Women' },
+        { src: '/images/eyes/un-rep-onu.webp', caption: 'UN Women Brazil, announcing the UN fund for projects to end violence against women, April 2016' },
+        { src: '/images/eyes/un-rep-unb-1.webp', caption: 'III Colóquio de Estudos Feministas e de Gênero, “Mulheres e violências: interseccionalidades”, Universidade de Brasília, November 2016' },
+        { src: '/images/eyes/un-rep-unb-2.webp', caption: 'The colloquium’s website' },
+      ],
+    },
+    {
       title: 'Sesc Cultural Center, Cinelândia, Rio de Janeiro',
       body: [
         'An exhibition in Rio de Janeiro. Vanessa Rosa and Thiago Haule, representing the Zona Imaginária project.',
