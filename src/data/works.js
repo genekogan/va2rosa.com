@@ -408,6 +408,8 @@ export const streetArt = {
         { src: '/images/eyes/loomit-1.webp' },
         { src: '/images/eyes/un-1.webp' },
         { src: '/images/eyes/formiga-1.webp' },
+        { src: '/images/eyes/cardoso15.webp', caption: 'Rua Cardoso Júnior, Rio de Janeiro, 2015' },
+        { src: '/images/eyes/metro14.webp', caption: 'Metrô, 2014' },
       ],
       more: { label: 'The whole project', href: '/eyes-on-walls' },
     },
