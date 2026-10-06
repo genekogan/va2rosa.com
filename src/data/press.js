@@ -684,6 +684,16 @@ export const press = [
     clipping: true,
     featured: true,
   },
+  {
+    year: 2011,
+    outlet: 'Wooster Collective',
+    title: 'Seen On The Streets Of Morro da Conceição',
+    note: '2 January 2011. The New York street art site on the human-scale figures painted at Morro da Conceição, in Vanessa’s own words.',
+    href: 'http://www.woostercollective.com/post/seen-on-the-streets-of-morro-da-conceicaeo',
+    kinds: ['online'],
+    thread: 'visible-memories',
+    featured: true,
+  },
 ];
 
 export const pressKinds = [
