@@ -325,7 +325,8 @@ export const threads = [
           { src: '/images/srcanvas/canvas-4.webp', caption: 'On paper' },
           { src: '/images/srcanvas/canvas-5.webp', caption: 'The print made for Stroke, Munich' },
           { src: '/images/srcanvas/canvas-qing.webp', caption: 'Qing porcelain, framed, oil on canvas' },
-          { src: '/images/srcanvas/studio-1b.webp', caption: 'In the studio, 2017' },
+          { src: '/images/srcanvas/studio-1b.webp', caption: 'The installation for Lilo.think space before it was finished, São Paulo, 2017' },
+          { src: '/images/srcanvas/lilo-2017.webp', caption: 'Installation for Lilo.think space, São Paulo, 2017' },
         ],
       },
       {
