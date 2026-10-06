@@ -370,7 +370,12 @@ export const streetArt = {
         { src: '/images/street/street-012.webp', caption: 'Pedra do Sal, 2014' },
         { src: '/images/street/street-013.webp', caption: 'Detail' },
         { src: '/images/street/street-014.webp', caption: 'Detail' },
-        { src: '/images/street2/rio14-face.webp', caption: 'Rio de Janeiro, 2014' },
+      ],
+    },
+    {
+      title: '2014 · Diana, Rio de Janeiro',
+      images: [
+        { src: '/images/street2/rio14-face.webp', caption: 'Diana, Rio de Janeiro, 2014' },
       ],
     },
     {
