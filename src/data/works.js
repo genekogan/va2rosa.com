@@ -444,6 +444,12 @@ export const streetArt = {
       more: { label: 'The Pioneer Works fence', href: '/pioneer-works' },
     },
     {
+      title: '2022 · Lisbon, Calçada da Glória',
+      body: ['A mural for GAU, then the street 3-D scanned into an animation and the wall fed to Deforum.'],
+      images: [{ src: '/images/gau22/m-01.webp', caption: 'Calçada da Glória, August 2022' }],
+      more: { label: 'Immersive mural experiment', href: '/immersive-mural-experiment' },
+    },
+    {
       title: '2020 to now · Mars College, California',
       body: [
         'Martian plywood is a great base for murals. Each year we create new ones, then they come down, and the following year we often recombine the pieces into new configurations.',
@@ -1533,6 +1539,88 @@ export const petrobras = {
       { label: 'Veja Rio', href: 'https://vejario.abril.com.br/programe-se/petrobras-sinfonica-concerto-imersivo/', external: true },
       { label: 'Diário do Rio', href: 'https://diariodorio.com/orquestra-petrobras-sinfonica-apresenta-o-primeiro-concerto-imersivo-do-pais/', external: true },
       { label: 'The full concert on YouTube', href: 'https://www.youtube.com/watch?v=RcRctaRJz_Q', external: true },
+    ],
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Lisbon, 2022: a mural for GAU on Calçada da Glória, then the street 3-D
+// scanned and turned into a small animation, and the photograph of the wall
+// fed to Deforum. A small experiment, told as one.
+// ---------------------------------------------------------------------------
+
+export const immersiveMural = {
+  slug: 'immersive-mural-experiment',
+  kicker: 'Mural, 3-D scans and AI animation · 2022',
+  title: 'Immersive mural experiment',
+  hero: '/images/gau22/m-01.webp',
+  heroAlt: 'The mural on Calçada da Glória at dusk, blue staircases and arches above a green wall, a street lamp lit in front of it.',
+  lede: '2022 · Calçada da Glória, Lisbon, for GAU',
+  meta: [
+    ['Where', 'Calçada da Glória, Lisbon'],
+    ['When', 'August 2022'],
+    ['For', 'GAU, Galeria de Arte Urbana, Lisbon Municipality'],
+    ['Then', '3-D scans, an animation, and Deforum'],
+  ],
+  intro: [
+    'In August 2022 I painted a mural for GAU, the Galeria de Arte Urbana of Lisbon’s municipality, on Calçada da Glória, one of the main streets of Lisbon, the steep one the Glória funicular climbs.',
+    'Then I 3-D scanned the area and made an animation merging 3-D scans of my sculptures with places I visited in Portugal, including the Museu Nacional do Azulejo. I also used the photograph of the mural as the starting image in Deforum, the open-source AI animation model that went viral in 2022, and made a few experiments with it.',
+    'It was a small experiment. It’s all so cute now, looking back.',
+  ],
+  video: {
+    file: '/video/gau22/animation.mp4',
+    poster: '/video/gau22/animation.webp',
+    alt: 'The animation: 3-D scans of ceramic heads moving through scanned Portuguese places.',
+    caption: 'The animation, 2022. It was cut to a song I had no rights to, so it plays here in silence and has never been shown at festivals.',
+  },
+  sections: [
+    {
+      title: 'The finished mural',
+      gallery: 'slides',
+      images: [
+        { src: '/images/gau22/m-01.webp', caption: 'Calçada da Glória, August 2022' },
+        { src: '/images/gau22/m-02.webp', caption: 'The whole wall' },
+        { src: '/images/gau22/m-03.webp', caption: 'Passers-by' },
+        { src: '/images/gau22/m-04.webp', caption: 'On the steep street' },
+        { src: '/images/gau22/m-05.webp', caption: 'Up the hill' },
+        { src: '/images/gau22/m-06.webp', caption: 'Detail' },
+        { src: '/images/gau22/m-07.webp', caption: 'Staircases' },
+        { src: '/images/gau22/m-08.webp', caption: 'Detail' },
+        { src: '/images/gau22/m-09.webp', caption: 'Detail' },
+        { src: '/images/gau22/m-10.webp', caption: 'Behind the lamp post' },
+      ],
+    },
+    {
+      title: 'Painting it',
+      body: ['Photographs by Marina Aguiar.'],
+      gallery: 'slides',
+      images: [
+        { src: '/images/gau22/p-01.webp', caption: 'Painting. Photo by Marina Aguiar' },
+        { src: '/images/gau22/p-02.webp', caption: 'Photo by Marina Aguiar' },
+        { src: '/images/gau22/p-03.webp', caption: 'Photo by Marina Aguiar' },
+        { src: '/images/gau22/p-04.webp', caption: 'Photo by Marina Aguiar' },
+      ],
+    },
+    {
+      title: 'The Glória funicular going past',
+      video: { file: '/video/gau22/funicular.mp4', poster: '/video/gau22/funicular.webp', alt: 'The Glória funicular passing the mural.', caption: 'With sound.' },
+    },
+    {
+      title: 'Deforum experiments, 2022',
+      body: ['The photograph of the mural as the starting image, and Deforum dreaming outward from it.'],
+      clips: [1, 2, 3, 4, 5, 6, 7].map((n) => {
+        const k = String(n).padStart(2, '0');
+        return { file: `/video/gau22/deforum-${k}.mp4`, poster: `/video/gau22/deforum-${k}.webp` };
+      }),
+    },
+  ],
+  also: {
+    kicker: 'Where it belongs',
+    title: 'Street art over the years',
+    body: ['The walls this came out of, from 2009 onwards.'],
+    links: [
+      { label: 'Street art', href: '/street-art' },
+      { label: 'GAU', href: 'https://gau.cm-lisboa.pt/', external: true },
     ],
   },
 };
