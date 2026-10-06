@@ -384,8 +384,10 @@ export const streetArt = {
     },
     {
       title: '2014 · Diana, Rio de Janeiro',
+      gallery: 'slides',
       images: [
         { src: '/images/street2/rio14-face.webp', caption: 'Diana, Rio de Janeiro, 2014' },
+        { src: '/images/street2/rio14-diana-2.webp', caption: 'Diana, 2014' },
       ],
     },
     {
