@@ -38,7 +38,7 @@ export const books = {
         },
         {
           src: '/images/caio/caio-didi.webp',
-          caption: 'Illustration by Diana Rosa, 14 years old.',
+          caption: 'The original Caio Zip, illustration by Diana Rosa, 14 years old.',
         },
       ],
     },
