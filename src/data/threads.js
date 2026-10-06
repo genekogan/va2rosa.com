@@ -352,6 +352,10 @@ export const threads = [
     ],
     reading: [
       'Frankopan, Peter. <em>The Silk Roads: A New History of the World</em>. Bloomsbury, 2015.',
+      'Nasr, Seyyed Hossein. <em>Islamic Art and Spirituality</em>. SUNY Press, 1987.',
+      'Panofsky, Erwin. <em>Perspective as Symbolic Form</em>. 1927.',
+      'Cassirer, Ernst. <em>The Philosophy of Symbolic Forms</em>. 1923 to 1929.',
+      'Belting, Hans. <em>Florence and Baghdad: Renaissance Art and Arab Science</em>. Harvard University Press, 2011.',
     ],
     credits:
       'Photographs by José Vicente and Bruno da Cunha (GAU — CAM Lisboa). The Blue Wall Project for GAU, Galeria de Arte Urbana da Câmara Municipal de Lisboa. Muro Art Festival curated by Ana Vilar Bravo. The Infinity Game with Wenqi Li and Verônica Natividade.',
