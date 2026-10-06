@@ -221,23 +221,6 @@ export const mainShows = [...showCards].sort((a, b) => b.year - a.year);
 
 export const workPages = [
   {
-    title: 'Maurício Hora',
-    years: '2011 to now',
-    href: '/mauricio-hora',
-    image: '/images/mh/mh-p-tank.webp',
-    imageAlt: 'Oil painting of a water tank on the hillside at Morro da Providência, against Rio at dusk.',
-    body: 'Fifteen years of friendship with the photographer of Morro da Providência: paintings made from his archive, and then two attempts, three years apart, to put the same photographs through machines.',
-  },
-
-  {
-    title: 'Petrobras Sinfônica',
-    years: '2022',
-    href: '/petrobras-sinfonica',
-    image: '/images/work/petrobras-vr.webp',
-    imageAlt: 'Vanessa Rosa in a VR headset, drawing red strokes in the air against a violet sky.',
-    body: 'Brazil’s first immersive orchestral concert: painting live in a VR headset while the orchestra played, the drawings appearing around the musicians.',
-  },
-  {
     title: 'Street art over the years',
     years: '2009 to now',
     href: '/street-art',
@@ -246,28 +229,12 @@ export const workPages = [
     body: 'Where all of it started: walls in Rio, Chile, Berlin, Lisbon, Cotonou and New York, usually painted with other people.',
   },
   {
-    title: 'Há muitas noites na noite',
-    years: '2014 to 2015',
-    href: '/ha-muitas-noites',
-    image: '/images/tendler/tv-00.webp',
-    imageAlt: 'The bay and the town, painted for the title sequence of the series.',
-    body: 'Silvio Tendler’s seven-part series on Ferreira Gullar’s exile. More than twenty time-lapse painting animations and forty drawings, broadcast on TV Brasil.',
-  },
-  {
     title: 'The love of making books',
     years: 'Ongoing',
     href: '/books',
     image: '/images/work/books-plate.webp',
     imageAlt: 'The Little Martians Codex, hand-bound, held up against grass.',
     body: 'A publishing house built by one family in a living room, and the books that came out of it. Diana’s World, the Little Martians titles, the Codex bound by hand.',
-  },
-  {
-    title: 'MAD — Machine Aided Drawings',
-    years: '2019 to 2021',
-    href: '/mad',
-    image: '/images/mad/mad-01.webp',
-    imageAlt: 'A plotted drawing of a Qing vase on a tiled floor, inside an illusionary frame.',
-    body: 'Six drawings of a Qing vase made with an AxiDraw pen plotter, each one different because I moved the paper or the pen while the machine worked. With the Escher and the perspective treatises behind them.',
   },
   {
     title: 'Fiction writing',
@@ -284,6 +251,38 @@ export const workPages = [
     image: '/images/sk/dr-03.webp',
     imageAlt: 'A watercolour portrait, eyes closed, in blues and reds.',
     body: 'What I love most is to draw wherever I am. Sketches made on the streets and in life model sessions.',
+  },
+  {
+    title: 'MAD — Machine Aided Drawings',
+    years: '2019 to 2021',
+    href: '/mad',
+    image: '/images/mad/mad-01.webp',
+    imageAlt: 'A plotted drawing of a Qing vase on a tiled floor, inside an illusionary frame.',
+    body: 'Six drawings of a Qing vase made with an AxiDraw pen plotter, each one different because I moved the paper or the pen while the machine worked. With the Escher and the perspective treatises behind them.',
+  },
+  {
+    title: 'Petrobras Sinfônica',
+    years: '2022',
+    href: '/petrobras-sinfonica',
+    image: '/images/work/petrobras-vr.webp',
+    imageAlt: 'Vanessa Rosa in a VR headset, drawing red strokes in the air against a violet sky.',
+    body: 'Brazil’s first immersive orchestral concert: painting live in a VR headset while the orchestra played, the drawings appearing around the musicians.',
+  },
+  {
+    title: 'Há muitas noites na noite',
+    years: '2014 to 2015',
+    href: '/ha-muitas-noites',
+    image: '/images/tendler/tv-00.webp',
+    imageAlt: 'The bay and the town, painted for the title sequence of the series.',
+    body: 'Silvio Tendler’s seven-part series on Ferreira Gullar’s exile. More than twenty time-lapse painting animations and forty drawings, broadcast on TV Brasil.',
+  },
+  {
+    title: 'Maurício Hora',
+    years: '2011 to now',
+    href: '/mauricio-hora',
+    image: '/images/mh/mh-p-tank.webp',
+    imageAlt: 'Oil painting of a water tank on the hillside at Morro da Providência, against Rio at dusk.',
+    body: 'Fifteen years of friendship with the photographer of Morro da Providência: paintings made from his archive, and then two attempts, three years apart, to put the same photographs through machines.',
   },
   {
     title: 'More projects',
