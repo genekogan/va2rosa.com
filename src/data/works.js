@@ -446,7 +446,7 @@ export const streetArt = {
     {
       title: '2022 · Lisbon, Calçada da Glória',
       body: ['A mural for GAU, then the street 3-D scanned into an animation and the wall fed to Deforum.'],
-      images: [{ src: '/images/gau22/m-01.webp', caption: 'Calçada da Glória, August 2022' }],
+      images: [{ src: '/images/gau22/m-04.webp', caption: 'Calçada da Glória, August 2022' }],
       more: { label: 'Immersive mural experiment', href: '/immersive-mural-experiment' },
     },
     {
@@ -1553,8 +1553,8 @@ export const immersiveMural = {
   slug: 'immersive-mural-experiment',
   kicker: 'Mural, 3-D scans and AI animation · 2022',
   title: 'Immersive mural experiment',
-  hero: '/images/gau22/m-01.webp',
-  heroAlt: 'The mural on Calçada da Glória at dusk, blue staircases and arches above a green wall, a street lamp lit in front of it.',
+  hero: '/images/gau22/m-04.webp',
+  heroAlt: 'The mural on Calçada da Glória, blue staircases and arches above a green wall, a boy and two men passing in front of it.',
   lede: '2022 · Calçada da Glória, Lisbon, for GAU',
   meta: [
     ['Where', 'Calçada da Glória, Lisbon'],
@@ -1568,10 +1568,10 @@ export const immersiveMural = {
     'It was a small experiment. It’s all so cute now, looking back.',
   ],
   video: {
-    file: '/video/gau22/animation.mp4',
+    file: '/video/gau22/animation-sound.mp4',
     poster: '/video/gau22/animation.webp',
     alt: 'The animation: 3-D scans of ceramic heads moving through scanned Portuguese places.',
-    caption: 'The animation, 2022. It was cut to a song I had no rights to, so it plays here in silence and has never been shown at festivals.',
+    caption: 'The animation, 2022. Music: “It’s Not Too Late” by T Bone Burnett.',
   },
   sections: [
     {
