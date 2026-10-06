@@ -15,7 +15,7 @@ export const collections = [
     title: 'Public art & community',
     span: '2009–present',
     blurb:
-      'From favela walls in Rio to an off-grid community in the California desert. Work made outdoors, at the scale of a body or a building, with the people who live where it stands. A community as a social sculpture.',
+      'From favela walls in Rio to an off-grid community in the California desert. Art as living ecosystem.',
     media: 'Mural · stencil · body painting · workshops · projection',
     items: [
       {
@@ -41,7 +41,7 @@ export const collections = [
     title: 'Patterns & Hackers',
     span: '2015–present',
     blurb:
-      'Everything is made out of patterns. Trade routes followed backwards through blue-and-white; azulejo, Adinkra and arabesque forced through one-point perspective until the perspective becomes the subject; weaves and braids understood through their algorithmic logic.',
+      'Everything is made out of patterns. Tales of world history, art & science intertwined.',
     media: 'Laser-cut stencil · parametric design · painting · writing',
     items: [
       {
@@ -72,7 +72,7 @@ export const collections = [
     title: 'From ceramics to AI-powered worlds',
     span: '2020–present',
     blurb:
-      'Ceramic characters, 3-D scanned and given voices. A species descended from all of Earth’s life, keeping our memory in the Imaginarium. Films, installations and exhibitions built from physical objects that become avatars.',
+      'A species descended from all of Earth’s life, keeping our memory in the Imaginarium. Films, installations and exhibitions built from physical objects that become avatars.',
     media: 'Ceramics · 3-D scanning · film · installation · generative models',
     items: [
       { label: 'Little Martians', years: '2020–present', href: '/threads/little-martians' },
@@ -92,8 +92,7 @@ export const collections = [
       'Little Martians World: The Codex, by Verdelia, Librarian of the Moon. The bound cover held up against grass.',
     title: 'The love of making books',
     span: 'Ongoing',
-    blurb:
-      'When I was a kid, my mom, my sister and I learned to make books together. In the 2000s there was a revolution in the book industry called the digital turn, which meant that a middle-class Brazilian family could start selling books through the early years of social media. We ended up creating a publishing company known as Viajante do Tempo, or Time Traveller in Portuguese. Only recently have I started fully integrating making books with my art practice, and I must confess I am very excited to create more.',
+    blurb: 'How everything started',
     media: 'Editorial · illustration · art direction · print',
     items: [
       { label: 'The art of making books', years: '1990s–present', href: '/books' },

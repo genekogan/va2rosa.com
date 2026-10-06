@@ -51,8 +51,15 @@ const figs = essays.research.figures.filter((f) =>
     <!-- WHO ------------------------------------------------------------- -->
     <section class="wrap intro" id="intro">
       <p class="greeting">{site.greeting}</p>
-      <h1 class="sec welcome" set:html={site.statementTitle.replace('\n', '<br>')} />
-      {site.statement.map((p) => <p class="lede">{p}</p>)}
+      <h1
+        class="sec welcome"
+        set:html={site.statementTitle
+          .replace('\n', '<br>')
+          .replace('time traveling', '<span class="tt">time traveling</span>')}
+      />
+      <p class="intro-what">
+        {site.statement.map((line, i) => (<>{i > 0 && <>{' '}<br /></>}{line}</>))}
+      </p>
     </section>
 
     <!-- TIMELINE -------------------------------------------------------- -->
@@ -63,6 +70,30 @@ const figs = essays.research.figures.filter((f) =>
     <!-- phones only: the timeline as threads in a gravity well -->
     <section class="wrap st-wrap">
       <SpaceTime />
+    </section>
+
+    <!-- LITTLE MARTIANS: an arch opens onto the desert as you scroll ------ -->
+    <section class="arch" id="door" data-scrolly="arch">
+      <div class="arch-stage">
+        <div class="arch-win">
+          <img src="/images/home/door-martians.webp" alt="The first Little Martian: a ceramic head lying on cracked desert ground." loading="lazy" data-nozoom />
+        </div>
+        <div class="arch-veil"></div>
+        <div class="arch-t">
+          <div class="wrap">
+            <h2 class="arch-logo"><img src="/images/home/lm-logo-white.webp" alt="Little Martians" loading="lazy" data-nozoom /></h2>
+            <p>
+              Imagining the future with my hands. I create a sci-fi world based on my ceramic
+              characters. They’re Little Martians: a species descended from all of Earth’s life,
+              tending life in extreme worlds and keeping our memory in the Imaginarium.
+            </p>
+            <p class="door-links">
+              <a class="more" href="/threads/little-martians">The thread on this site ⇢</a>
+              <a class="more" href={site.littleMartians} rel="noopener" target="_blank">Enter littlemartians.world ⇢</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- RESEARCH -------------------------------------------------------- -->
@@ -94,8 +125,8 @@ const figs = essays.research.figures.filter((f) =>
       )}
     </section>
 
-    <!-- COLLECTIONS ----------------------------------------------------- -->
-    <section class="wrap" style="margin-top:90px" id="work">
+    <!-- BODIES OF WORK: cards that stack as you scroll ---------------------- -->
+    <section class="wrap stack" id="work">
       <div class="kicker">The art</div>
       <h2 class="sec" style="margin:12px 0 10px">Many bodies of work</h2>
       <p style="max-width:38em; color:var(--ink-2)">
@@ -103,40 +134,41 @@ const figs = essays.research.figures.filter((f) =>
         the next.
       </p>
 
-      {collections.map((c) => (
-        <article class="coll-block">
-          <div class="coll-head">
-            <h3>{c.title}</h3>
-            <p class="coll-span">{c.span}</p>
-          </div>
-          <div class="coll-body">
-            <p>{c.blurb}</p>
-            <p class="coll-media">{c.media}</p>
-            <ul class="coll-list">
-              {c.items.map((it) => (
-                <li>
-                  {it.href ? (
-                    <a
-                      href={it.href}
-                      target={it.external ? '_blank' : undefined}
-                      rel={it.external ? 'noopener' : undefined}
-                    >
-                      {it.label}
-                    </a>
-                  ) : (
-                    <span class="noline">{it.label}</span>
-                  )}
-                  {it.note && <span class="note">{it.note}</span>}
-                  <span class="yr">{it.years ?? ''}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div class="coll-plate">
-            <img src={c.image} alt={c.imageAlt ?? ''} loading="lazy" />
-          </div>
-        </article>
-      ))}
+      <div class="stack-cards" style={`--n:${collections.length}`}>
+        {collections.map((c, i) => (
+          <article class="scard" style={`--i:${i}`}>
+            <header class="scard-head">
+              <h3>{c.title}</h3>
+              <span class="scard-span">{c.span}</span>
+            </header>
+            <div class="scard-text">
+              <p class="scard-blurb">{c.blurb}</p>
+              <ul class="scard-list">
+                {c.items.map((it) => (
+                  <li>
+                    {it.href ? (
+                      <a
+                        href={it.href}
+                        target={it.external ? '_blank' : undefined}
+                        rel={it.external ? 'noopener' : undefined}
+                      >
+                        {it.label}
+                      </a>
+                    ) : (
+                      <span>{it.label}</span>
+                    )}
+                    <span class="yr">{it.years ?? ''}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="scard-img">
+              <img src={c.image} alt={c.imageAlt ?? ''} loading="lazy" data-nozoom />
+            </div>
+          </article>
+        ))}
+        <div class="stack-hold" aria-hidden="true"></div>
+      </div>
     </section>
 
     <!-- IN PRINT (hidden until real quotes exist) ------------------------ -->
@@ -152,22 +184,23 @@ const figs = essays.research.figures.filter((f) =>
       </section>
     )}
 
-    <!-- THE DOOR: the world the work lives in -->
-    <section class="doors" id="door">
-      <div class="door">
-        <img src="/images/home/door-martians.webp" alt="A ceramic Little Martian head lying on cracked desert ground." loading="lazy" />
-        <div class="door-t">
+    <!-- MARS COLLEGE: the picture opens out and draws you in ---------------- -->
+    <section class="zoom" id="mars" data-scrolly="zoom">
+      <div class="zoom-stage">
+        <div class="zoom-frame">
+          <img src="/images/home/door-mars-chiba.webp" alt="Chiba, the red mural at Mars College, 2024, with lettering by Will Simmons and a flower after the Mars College logo." loading="lazy" data-nozoom />
+        </div>
+        <div class="zoom-t">
           <div class="wrap">
-            <div class="kicker">The door</div>
-            <h2>Little Martians</h2>
+            <div class="kicker">The desert</div>
+            <h2>Mars College</h2>
             <p>
-              Imagining the future with my hands. I create a sci-fi world based on my ceramic
-              characters. They’re Little Martians: a species descended from all of Earth’s life,
-              tending life in extreme worlds and keeping our memory in the Imaginarium.
+              Mars College is an annual off-grid pop-up college built literally from the ground up
+              every winter in the California desert.
             </p>
             <p class="door-links">
-              <a class="more" href="/threads/little-martians">The thread on this site ⇢</a>
-              <a class="more" href={site.littleMartians} rel="noopener" target="_blank">Enter littlemartians.world ⇢</a>
+              <a class="more" href="/mars-college">My thread on Mars College ⇢</a>
+              <a class="more" href="https://mars.college" rel="noopener" target="_blank">mars.college ⇢</a>
             </p>
           </div>
         </div>
@@ -204,32 +237,50 @@ const figs = essays.research.figures.filter((f) =>
       <p style="margin-top:34px"><a class="more" href="/info">Full record ⇢</a></p>
     </section>
 
-    <!-- THE DESERT -->
-    <section class="doors" id="mars">
-      <div class="door">
-        <img src="/images/home/door-mars-chiba.webp" alt="Chiba, the red mural at Mars College, 2024, with lettering by Will Simmons and a flower after the Mars College logo." loading="lazy" />
-        <div class="door-t">
-          <div class="wrap">
-            <div class="kicker">The desert</div>
-            <h2>Mars College</h2>
-            <p>
-              Mars College is an annual off-grid pop-up college built literally from the ground up
-              every winter in the California desert.
-            </p>
-            <p class="door-links">
-              <a class="more" href="/mars-college">My thread on Mars College ⇢</a>
-              <a class="more" href="https://mars.college" rel="noopener" target="_blank">mars.college ⇢</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- the end: the blue wall at Pioneer Works, with the ivy growing over it -->
+    <figure class="leaves">
+      <img src="/images/home/leaves-blue.webp" alt="Green ivy growing over the blue stencil patterns of the Pioneer Works fence." loading="lazy" />
+    </figure>
+
+
+
+
+
+
 
 
 
   </div>
 
   <script is:inline>
+  // Scroll-driven sections (the arch, the zoom). Each one gets --p, how far
+  // the reader has scrolled through it, from 0 to 1; the CSS does the rest.
+  // Reduced motion: no script, the finished picture.
+  (function () {
+    var secs = document.querySelectorAll('[data-scrolly]');
+    if (!secs.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.documentElement.classList.add('scrolly');
+    var on = new Set(), ticking = false;
+    function update() {
+      ticking = false;
+      var vh = innerHeight;
+      on.forEach(function (sec) {
+        var r = sec.getBoundingClientRect();
+        var run = r.height - vh;
+        var p = run > 0 ? Math.min(1, Math.max(0, -r.top / run)) : 1;
+        sec.style.setProperty('--p', p.toFixed(4));
+      });
+    }
+    function ask() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? on.add(e.target) : on.delete(e.target); });
+      ask();
+    });
+    secs.forEach(function (sec) { sec.style.setProperty('--p', '0'); io.observe(sec); });
+    addEventListener('scroll', ask, { passive: true });
+    addEventListener('resize', ask);
+  })();
+
   // The homepage loop: crossfade the frames, and only fetch a picture when it
   // is about to be needed. Pauses when the tab is hidden.
   (function () {

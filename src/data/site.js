@@ -21,7 +21,12 @@ export const site = {
   // The homepage opening.
   greeting: 'dear human,',
   statementTitle: 'I am devoted to the art of time traveling.',
-  statement: ['Let me share my story with you.'],
+  // what I make, said plainly under the headline, one line each
+  statement: [
+    'Murals become portals with projection mapping,',
+    'hand-built ceramics turn into AI-powered characters,',
+    'let me share my story with you.',
+  ],
 
   // Bios: the corrected text. The old site still carries the version with
   // “projects that mixtures public art”, which several institutions copy-pasted.
