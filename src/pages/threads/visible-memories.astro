@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Spine from '../../components/Spine.astro';
+import Story from '../../components/Story.astro';
 import { visibleMemories as vm } from '../../data/visible-memories.js';
 ---
 
@@ -76,7 +77,11 @@ import { visibleMemories as vm } from '../../data/visible-memories.js';
             ))}
           </div>
 
-          {ph.images.length > 0 && (
+          {ph.images.length > 0 && ph.gallery === 'slides' && (
+            <div class="ph-slides"><Story story={[{ gallery: 'slides', images: ph.images }]} /></div>
+          )}
+
+          {ph.images.length > 0 && ph.gallery !== 'slides' && (
             <div class="ph-images">
               {ph.images.map((im) => (
                 <figure class={im.wide ? 'wide' : undefined}>
