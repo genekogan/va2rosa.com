@@ -30,12 +30,15 @@ export const books = {
       images: [
         {
           src: '/images/caio/caio-1.webp',
-          caption: 'Caio Zip em: Matemática — Que bicho é esse? By Regina Gonçalves. Rio de Janeiro, 2001. Cover illustration by Vanessa Rosa.',
+          caption: 'Caio Zip em: Matemática — Que bicho é esse? By Regina Gonçalves. Rio de Janeiro, 2001. Cover illustration by Diana Rosa and Vanessa Rosa.',
         },
         {
           src: '/images/caio/caio-2.webp',
-          caption:
-            'Illustrated by Diana Gonçalves de Almeida Rosa, 14 years old, and Vanessa Gonçalves de Almeida Rosa, 11, who also made the cover illustration.',
+          caption: 'Illustration by Vanessa Rosa, 11 years old.',
+        },
+        {
+          src: '/images/caio/caio-3.webp',
+          caption: 'Illustration by Diana Rosa, 14 years old.',
         },
       ],
     },
