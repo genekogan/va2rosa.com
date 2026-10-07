@@ -248,12 +248,17 @@ const figs = essays.research.figures.filter((f) =>
       <p style="margin-top:34px"><a class="more" href="/info">Full record ⇢</a></p>
     </section>
 
-    <!-- SUBSCRIBE: a plain link to the newsletter's own sign-up page; nothing
-         from Substack loads on this site -->
+    <!-- SUBSCRIBE: an email field that hands the address to the newsletter's own
+         sign-up page, already filled in, where the reader confirms. Nothing
+         from Substack loads on this site. -->
     <section class="wrap subscribe" id="subscribe">
-      <div class="kicker">The Little Martians research</div>
+      <div class="kicker">Little Martians World, on Substack</div>
       <p class="sub-t">Follow the research by email.</p>
-      <a class="sub-btn" href="https://littlemartians.substack.com/subscribe" target="_blank" rel="noopener">Subscribe on Substack ⇢</a>
+      <form class="sub-form" action="https://littlemartians.substack.com/subscribe" method="get" target="_blank" rel="noopener">
+        <input type="email" name="email" required placeholder="Your email" autocomplete="email" aria-label="Your email" />
+        <button type="submit" class="sub-btn">Subscribe</button>
+      </form>
+      <p class="sub-note">You confirm on Substack, in one click.</p>
     </section>
 
     <!-- the end: seeds and plants from Verdelis’s Letter, growing up from
@@ -364,8 +369,8 @@ const figs = essays.research.figures.filter((f) =>
           pts3.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
         }
 
-        // the grid: lines pushed outwards around the shape, like a surface
-        // stretched over something rising underneath it (and never over it)
+        // the grid: the page's surface, pushed outwards around the shape, as
+        // if stretched over it (never drawn over the shape itself)
         ctx.save();
         ctx.beginPath(); ctx.rect(0, 0, W, H);
         pts3.forEach(function (q, n) { n ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); });
@@ -383,7 +388,7 @@ const figs = essays.research.figures.filter((f) =>
           var line = function (pts, gold) {
             ctx.beginPath();
             for (var n = 0; n < pts.length; n++) { var q = warp(pts[n][0], pts[n][1]); n ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); }
-            ctx.strokeStyle = gold ? 'rgba(' + GOLD + ',' + (0.55 * alpha).toFixed(3) + ')' : 'rgba(13, 33, 54,' + (0.2 * alpha).toFixed(3) + ')';
+            ctx.strokeStyle = gold ? 'rgba(' + GOLD + ',' + (0.7 * alpha).toFixed(3) + ')' : 'rgba(13, 33, 54,' + (0.3 * alpha).toFixed(3) + ')';
             ctx.lineWidth = gold ? 1 : 0.75;
             ctx.stroke();
           };
@@ -398,6 +403,17 @@ const figs = essays.research.figures.filter((f) =>
             for (var xx = -step; xx <= W + step; xx += sample) pts2.push([xx, yy]);
             line(pts2, Math.round((H - yy) / step) % 7 === 0);
           }
+          // the grid is only where the shape is pressing: strong at its edge,
+          // fading out across a band that widens as it grows; beyond it the
+          // page is still flat
+          var band = R * 0.85 + 70;
+          var fall = ctx.createRadialGradient(cx, cy, Math.max(0, R * 0.7), cx, cy, R * 1.05 + band);
+          fall.addColorStop(0, 'rgba(0,0,0,1)');
+          fall.addColorStop(0.45, 'rgba(0,0,0,0.75)');
+          fall.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.globalCompositeOperation = 'destination-in';
+          ctx.fillStyle = fall;
+          ctx.fillRect(0, 0, W, H);
         }
         ctx.restore();
 

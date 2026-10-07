@@ -3363,6 +3363,20 @@ html.scrolly .mars-a { height: auto; object-fit: fill; }
   transition: background 0.2s, translate 0.2s;
 }
 .sub-btn:hover { background: var(--ink); translate: 0 -1px; }
+.sub-form {
+  display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+  max-width: 440px; margin: 0 auto;
+}
+.sub-form input {
+  flex: 1 1 220px; min-width: 0;
+  padding: 11px 18px; border-radius: 999px; font: inherit; font-size: 15px;
+  color: var(--ink); background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(28, 74, 134, 0.3);
+}
+.sub-form input:focus { outline: none; border-color: var(--blue); background: #fff; }
+.sub-form .sub-btn { border: 0; cursor: pointer; font-family: inherit; }
+.wrap p.sub-note { font-size: 12.5px; color: var(--ink-3); margin: 12px auto 0; text-align: center; }
+.subscribe p { margin-left: auto; margin-right: auto; }
 
 /* --- the garden at the end --------------------------------------------------- */
 .garden {
@@ -3381,7 +3395,7 @@ html.scrolly .mars-a { height: auto; object-fit: fill; }
   opacity: calc(var(--r) * 1.3 - 0.1);
 }
 .garden .g1 { height: 62%; }
-.garden .g2 { height: 70%; transition-delay: 0.05s; }
+.garden .g2 { height: 70%; }
 .garden .g3 { height: 100%; }
 .garden .g4 { height: 78%; }
 .garden .g5 { height: 64%; }
