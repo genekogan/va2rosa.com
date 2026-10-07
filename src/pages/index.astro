@@ -196,8 +196,8 @@ const figs = essays.research.figures.filter((f) =>
       </section>
     )}
 
-    <!-- MARS COLLEGE: the whole building first, then a walk straight up to the
-         flower painted above the doors ------------------------------------ -->
+    <!-- MARS COLLEGE: the whole building as it comes up the page, the walk to the
+         flower above the doors happening while it does -------------------- -->
     <section class="mars-j" id="mars" data-scrolly="mars" data-a="2926 3650 0.53 0.266 0.145">
       <div class="mars-stage">
         <img class="mars-a" src="/images/home/mars-approach-2.webp" alt="Chiba, the red mural building at Mars College, 2024, with the Mars College flower painted above the doors." loading="lazy" data-full data-nozoom />
@@ -258,7 +258,7 @@ const figs = essays.research.figures.filter((f) =>
 
     <!-- the end: seeds and plants from Verdelis’s Letter, growing up from
          the bottom of the page as you arrive -->
-    <div class="garden" aria-hidden="true" data-scrolly="reveal">
+    <div class="garden" aria-hidden="true" data-scrolly="reveal" data-wait>
       <img class="g g1" src="/images/home/garden-plants1.webp" alt="" loading="lazy" data-nozoom />
       <img class="g g2" src="/images/home/garden-seed2.webp" alt="" loading="lazy" data-nozoom />
       <img class="g g3" src="/images/home/garden-seed5.webp" alt="" loading="lazy" data-nozoom />
@@ -298,7 +298,11 @@ const figs = essays.research.figures.filter((f) =>
 
     function progress(sec, r, vh) {
       var t = sec.dataset.scrolly;
-      if (t === 'reveal') return cl((vh - r.top) / (vh * 0.55));
+      if (t === 'reveal') {
+        // a group that grows together waits until every picture in it has arrived
+        if (sec.hasAttribute('data-wait') && [].some.call(sec.querySelectorAll('img'), function (im) { return !im.complete; })) return 0;
+        return cl((vh - r.top) / (vh * 0.55));
+      }
       if (t === 'braid') return cl((vh * 0.7 - r.top) / r.height);
       if (t === 'portal') {
         // the stage is pinned while the section passes; p runs over that hold
@@ -307,8 +311,9 @@ const figs = essays.research.figures.filter((f) =>
         st.style.top = top + 'px';
         return cl((top - r.top) / (r.height - st.offsetHeight));
       }
-      // mars: 0 as the stage takes hold, 1 when it lets go
-      return cl(-r.top / (r.height - vh));
+      // mars: from its top edge appearing to its bottom edge reaching the
+      // bottom of the screen
+      return cl((vh - r.top) / r.height);
     }
 
     var draw = {
@@ -457,24 +462,29 @@ const figs = essays.research.figures.filter((f) =>
             paths[m].style.strokeDasharray = len;
             paths[m].dataset.len = len;
           }
-          // the stops: small circles drawn by hand, gone round twice
-          var ns = 'http://www.w3.org/2000/svg', html = '';
+          // the stops: where the three threads tie into a small knot (a trefoil,
+          // each thread going round it once, a little apart from the others)
+          var ns = 'http://www.w3.org/2000/svg';
           stopsG.innerHTML = '';
+          var tones = ['rgba(28, 74, 134, 0.85)', 'rgba(91, 63, 143, 0.7)', 'rgba(170, 132, 52, 0.95)'];
           stops.slice(1, -1).forEach(function (s0, n) {
             var g = document.createElementNS(ns, 'g');
             g.setAttribute('data-y', s0[1] / Hs);
-            for (var pass = 0; pass < 2; pass++) {
-              var c = '', r0 = narrow ? 5.5 : 7;
-              for (var q = 0; q <= 40; q++) {
-                var a2 = (q / 40) * Math.PI * 2.15 + n + pass * 0.6;
-                var r = r0 + 0.9 * Math.sin(3 * a2 + n) + 0.5 * Math.sin(5 * a2 + pass) + pass * 0.8;
-                c += (q ? 'L' : 'M') + (s0[0] + Math.cos(a2) * r).toFixed(1) + ' ' + (s0[1] + Math.sin(a2) * r).toFixed(1);
+            var sc = narrow ? 1.7 : 2.6, turn = n * 0.9;
+            tones.forEach(function (tone, m) {
+              var c = '';
+              for (var q = 0; q <= 90; q++) {
+                var tt = (q / 90) * Math.PI * 2 + m * 0.12;
+                var kx = Math.sin(tt) + 2 * Math.sin(2 * tt), ky = Math.cos(tt) - 2 * Math.cos(2 * tt);
+                var rx = kx * Math.cos(turn) - ky * Math.sin(turn), ry = kx * Math.sin(turn) + ky * Math.cos(turn);
+                c += (q ? 'L' : 'M') + (s0[0] + rx * sc + m * 0.6).toFixed(1) + ' ' + (s0[1] + ry * sc * 0.9 - m * 0.4).toFixed(1);
               }
               var e = document.createElementNS(ns, 'path');
               e.setAttribute('d', c);
-              e.setAttribute('class', pass ? 'bw-stop2' : 'bw-stop');
+              e.setAttribute('class', 'bw-knot');
+              e.style.stroke = tone;
               g.appendChild(e);
-            }
+            });
             stopsG.appendChild(g);
           });
         }
@@ -498,7 +508,7 @@ const figs = essays.research.figures.filter((f) =>
         var L0x = ox + a[2] * AW, L0y = oy + a[3] * AH;
         // the end: the flower large, a little above the middle, the text under it
         var Send = Math.max(1, (Math.min(W, H) * (W < 700 ? 0.82 : 0.6)) / (a[4] * AW));
-        var z = ease(p / 0.8);
+        var z = ease(p);
         var S = Math.exp(Math.log(Send) * z);
         var Lx = lerp(L0x, W * 0.5, z), Ly = lerp(L0y, H * (W < 700 ? 0.34 : 0.38), z);
         A.style.width = AW + 'px'; A.style.height = AH + 'px';
@@ -531,7 +541,16 @@ const figs = essays.research.figures.filter((f) =>
 
     document.documentElement.classList.add('scrolly');
     var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { e.isIntersecting ? on.add(e.target) : on.delete(e.target); });
+      es.forEach(function (e) {
+        e.isIntersecting ? on.add(e.target) : on.delete(e.target);
+        // fetch a waiting group's pictures as soon as it is near, and draw again when they land
+        if (e.isIntersecting && e.target.hasAttribute('data-wait')) {
+          [].forEach.call(e.target.querySelectorAll('img'), function (im) {
+            im.loading = 'eager';
+            if (!im.complete) im.addEventListener('load', ask, { once: true });
+          });
+        }
+      });
       ask();
     }, { rootMargin: '25% 0px' });
     secs.forEach(function (sec) { sec.style.setProperty('--p', '0'); on.add(sec); io.observe(sec); });
