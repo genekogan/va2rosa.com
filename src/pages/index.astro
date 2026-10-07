@@ -48,29 +48,30 @@ const figs = essays.research.figures.filter((f) =>
   </header>
 
   <div class="paper">
-    <!-- WHO ------------------------------------------------------------- -->
-    <section class="wrap intro" id="intro">
-      <p class="greeting">{site.greeting}</p>
-      <h1
-        class="sec welcome"
-        set:html={site.statementTitle
-          .replace('\n', '<br>')
-          .replace('time traveling', '<span class="tt">time traveling</span>')}
-      />
-      <p class="intro-what">
-        {site.statement.map((line, i) => (<>{i > 0 && <>{' '}<br /></>}{line}</>))}
-      </p>
-    </section>
 
-    <!-- TIMELINE, AND THE WAY THROUGH IT --------------------------------------
-         The timeline holds still while space bends under it: a fine grid
-         gathers toward one point, the timeline is drawn in, and the first
-         Little Martian grows through the opening until the desert takes its
+    <!-- THE FIRST SCREEN, AND THE WAY THROUGH IT ------------------------------
+         "dear human" and the timeline hold still together. Space starts to
+         bend under them: a fine grid appears, a shape rises from the bottom
+         of the page and pushes it out of the way, the page ripples, and the
+         first Little Martian comes up through it until the desert takes its
          place. Then the page scrolls on. ------------------------------------ -->
     <section class="tlp" id="door" data-scrolly="portal">
       <div class="tlp-stage">
         <div class="tlp-content">
-          <section class="wrap" style="padding-top:70px" id="timeline">
+          <!-- WHO ------------------------------------------------------------- -->
+          <section class="wrap intro" id="intro">
+            <p class="greeting">{site.greeting}</p>
+            <h1
+              class="sec welcome"
+              set:html={site.statementTitle
+                .replace('\n', '<br>')
+                .replace('time traveling', '<span class="tt">time traveling</span>')}
+            />
+            <p class="intro-what">
+              {site.statement.map((line, i) => (<>{i > 0 && <>{' '}<br /></>}{line}</>))}
+            </p>
+          </section>
+          <section class="wrap" style="padding-top:44px" id="timeline">
             <Timeline />
           </section>
           <!-- phones only: the timeline as threads in a gravity well -->
@@ -79,6 +80,16 @@ const figs = essays.research.figures.filter((f) =>
           </section>
         </div>
 
+        <svg class="fx-defs" aria-hidden="true" width="0" height="0">
+          <filter id="tl-warp" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.004 0.009" numOctaves="2" seed="7" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter id="pencil" x="-20%" y="-2%" width="140%" height="104%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3" result="g" />
+            <feDisplacementMap in="SourceGraphic" in2="g" scale="1.6" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
         <div class="tlp-portal">
           <canvas class="portal-grid" aria-hidden="true"></canvas>
           <div class="portal-win">
@@ -143,7 +154,7 @@ const figs = essays.research.figures.filter((f) =>
       </p>
 
       <ol class="bw-list" data-scrolly="braid">
-        <svg class="bw-braid" aria-hidden="true"><path /><path /><path /></svg>
+        <svg class="bw-braid" aria-hidden="true"><g class="bw-lines"><path /><path /><path /><path /><path /><path /></g><g class="bw-stops"></g></svg>
         {collections.map((c, i) => (
           <li class="bw-item" data-scrolly="reveal">
             <a class="bw-img" href={c.items[0].href} tabindex="-1" aria-hidden="true">
@@ -305,7 +316,8 @@ const figs = essays.research.figures.filter((f) =>
         var layer = sec.querySelector('.tlp-portal'), cv = layer.querySelector('canvas');
         var win = layer.querySelector('.portal-win'), img = win.querySelector('img');
         var content = sec.querySelector('.tlp-content');
-        var W = layer.clientWidth, H = layer.clientHeight, m = Math.min(W, H);
+        var moving = document.documentElement.classList.contains('scrolly');
+        var W = layer.clientWidth, H = layer.clientHeight;
         var dpr = Math.min(devicePixelRatio || 1, 2);
         if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) {
           cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
@@ -314,97 +326,166 @@ const figs = essays.research.figures.filter((f) =>
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, W, H);
 
-        var cx = W / 2, cy = H * 0.5;
-        var open = 0.78;
-        var g = ease(p / 0.35);                          // the grid gathering
-        var R = lerp(0, Math.hypot(W, H) * 0.58, Math.pow(cl((p - 0.12) / (open - 0.12)), 1.7));
-        var sig = R + m * 0.32;
-        var pull = 0.42 * g * (1 - ease((p - 0.62) / 0.16));
-        var twist = 0.55 * g * (1 - ease((p - 0.5) / 0.25));
+        var open = 0.8, t = cl(p / open);
+        // the shape: it rises from the bottom of the page, grows, and keeps
+        // changing its outline as it comes (slow waves of different lengths)
+        var R = lerp(Math.min(W, H) * 0.05, Math.hypot(W, H) * 0.78, Math.pow(t, 1.45));
+        var cx = W * 0.5 + Math.sin(p * 5.3) * W * 0.025;
+        var cy = lerp(H * 1.08, H * 0.52, ease(t * 1.15));
+        var wob = 0.3 * Math.pow(1 - t, 0.6);
+        var rise = 0.28 * Math.pow(1 - t, 0.8);       // taller at the top while it is pushing up
+        var edge = function (a) {
+          return 1 - rise * Math.sin(a) +
+            wob * (0.45 * Math.sin(2 * a + p * 3.1) + 0.3 * Math.sin(3 * a - p * 4.3 + 1) + 0.15 * Math.sin(5 * a + p * 6.7 + 2) + 0.1 * Math.sin(7 * a - p * 2.3));
+        };
 
-        // the timeline is drawn toward the opening, and softens as it goes
-        // (only when the page moves; standing still, it stays as it is)
-        var k = document.documentElement.classList.contains('scrolly') ? ease((p - 0.05) / 0.6) : 0;
-        var oy = (cy + (sec.firstElementChild.offsetHeight - H)) / content.offsetHeight * 100;
-        content.style.transformOrigin = '50% ' + oy.toFixed(1) + '%';
-        content.style.transform = 'scale(' + (1 - 0.16 * k).toFixed(4) + ') rotate(' + (-2.5 * k).toFixed(2) + 'deg)';
-        content.style.filter = k > 0.01 ? 'blur(' + (k * 2.4).toFixed(2) + 'px)' : 'none';
-        content.style.opacity = (1 - 0.65 * k).toFixed(3);
+        // the page itself bends while the shape comes up
+        if (moving) {
+          var fe = sec.ownerDocument.querySelector('#tl-warp feDisplacementMap');
+          var ft = sec.ownerDocument.querySelector('#tl-warp feTurbulence');
+          var bend = W > 760 ? 30 * ease(p / 0.55) * (1 - ease((p - 0.65) / 0.15)) : 0;
+          if (bend > 0.5) {
+            fe.setAttribute('scale', bend.toFixed(1));
+            ft.setAttribute('baseFrequency', (0.004 + 0.002 * p).toFixed(4) + ' ' + (0.009 + 0.004 * p).toFixed(4));
+            content.style.filter = 'url(#tl-warp)';
+          } else content.style.filter = 'none';
+          content.style.opacity = (1 - 0.55 * ease((p - 0.15) / 0.5)).toFixed(3);
+        }
 
-        // the grid: space bending toward one point, a little turned
-        var alpha = g * (1 - ease((p - 0.6) / 0.18));
+        // the shape's outline
+        var pts3 = [];
+        for (var k = 0; k < 120; k++) {
+          var a = (k / 120) * Math.PI * 2, rr = R * edge(a);
+          pts3.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
+        }
+
+        // the grid: lines pushed outwards around the shape, like a surface
+        // stretched over something rising underneath it (and never over it)
+        ctx.save();
+        ctx.beginPath(); ctx.rect(0, 0, W, H);
+        pts3.forEach(function (q, n) { n ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); });
+        ctx.closePath(); ctx.clip('evenodd');
+        var alpha = ease(p / 0.14) * (1 - ease((p - 0.68) / 0.12));
         if (alpha > 0.01) {
-          var step = W < 600 ? 30 : 38, sample = 14;
+          var step = W < 600 ? 24 : 30, sample = 10, push = R * 0.6 * (1 - 0.45 * t);
           var warp = function (x, y) {
-            var dx = x - cx, dy = y - cy, d2 = dx * dx + dy * dy, f = Math.exp(-d2 / (2 * sig * sig));
-            var s = 1 - pull * f, a = twist * f, c = Math.cos(a), sn = Math.sin(a);
-            return [cx + (dx * c - dy * sn) * s, cy + (dx * sn + dy * c) * s];
+            var dx = x - cx, dy = y - cy, d = Math.hypot(dx, dy) || 1;
+            var rb = R * edge(Math.atan2(dy, dx));
+            var u = (d - rb) / (R * 0.85 + 50);
+            var f = d > rb ? push * Math.exp(-u * u) : push;
+            return [cx + (dx / d) * (d + f), cy + (dy / d) * (d + f)];
           };
           var line = function (pts, gold) {
             ctx.beginPath();
             for (var n = 0; n < pts.length; n++) { var q = warp(pts[n][0], pts[n][1]); n ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); }
-            ctx.strokeStyle = 'rgba(' + (gold ? GOLD : BLUE) + ',' + ((gold ? 0.5 : 0.22) * alpha).toFixed(3) + ')';
-            ctx.lineWidth = gold ? 1 : 0.8;
+            ctx.strokeStyle = gold ? 'rgba(' + GOLD + ',' + (0.55 * alpha).toFixed(3) + ')' : 'rgba(13, 33, 54,' + (0.2 * alpha).toFixed(3) + ')';
+            ctx.lineWidth = gold ? 1 : 0.75;
             ctx.stroke();
           };
-          var i0 = Math.floor(-cx / step) - 1, i1 = Math.ceil((W - cx) / step) + 1;
-          var j0 = Math.floor(-cy / step) - 1, j1 = Math.ceil((H - cy) / step) + 1;
-          for (var i = i0; i <= i1; i++) {
-            var x = cx + i * step, pts = [];
+          var x0 = cx - Math.ceil(cx / step) * step;
+          for (var i = -1, x = x0 - step; x <= W + step; x += step, i++) {
+            var pts = [];
             for (var y = -step; y <= H + step; y += sample) pts.push([x, y]);
-            line(pts, i % 6 === 0);
+            line(pts, Math.round((x - cx) / step) % 7 === 0);
           }
-          for (var j = j0; j <= j1; j++) {
-            var yy = cy + j * step, pts2 = [];
+          for (var yy = H + step; yy >= -step; yy -= step) {
+            var pts2 = [];
             for (var xx = -step; xx <= W + step; xx += sample) pts2.push([xx, yy]);
-            line(pts2, j % 6 === 0);
+            line(pts2, Math.round((H - yy) / step) % 7 === 0);
           }
         }
+        ctx.restore();
 
-        // the opening, with a gold rim, and the desert settling inside it
-        if (p >= open) { win.style.clipPath = 'none'; }
-        else { win.style.clipPath = 'circle(' + R.toFixed(1) + 'px at ' + cx.toFixed(1) + 'px ' + cy.toFixed(1) + 'px)'; }
-        if (R > 1 && p < open) {
-          ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(' + GOLD + ',' + (0.75 * (1 - ease((p - 0.6) / 0.18))).toFixed(3) + ')';
-          ctx.lineWidth = 1.2; ctx.stroke();
+        // the outline drawn twice, like a pen going round it, and the desert
+        // inside it, settling as it opens
+        if (p >= open) win.style.clipPath = 'none';
+        else win.style.clipPath = 'polygon(' + pts3.map(function (q) { return q[0].toFixed(1) + 'px ' + q[1].toFixed(1) + 'px'; }).join(',') + ')';
+        if (p < open && p > 0.005) {
+          var ra = 1 - ease((p - 0.6) / 0.18);
+          [[0, 'rgba(' + GOLD + ',' + (0.85 * ra).toFixed(3) + ')', 1.2], [7, 'rgba(13, 33, 54,' + (0.35 * ra).toFixed(3) + ')', 0.8]].forEach(function (o) {
+            ctx.beginPath();
+            pts3.forEach(function (q, n) {
+              var dx = q[0] - cx, dy = q[1] - cy, d = Math.hypot(dx, dy) || 1;
+              var X = q[0] + (dx / d) * o[0], Y = q[1] + (dy / d) * o[0];
+              n ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y);
+            });
+            ctx.closePath(); ctx.strokeStyle = o[1]; ctx.lineWidth = o[2]; ctx.stroke();
+          });
         }
-        var kk = ease((p - 0.12) / 0.66);
-        img.style.transform = 'scale(' + (1.22 - 0.22 * kk).toFixed(4) + ') rotate(' + ((1 - kk) * -6).toFixed(2) + 'deg)';
+        var kk = ease((p - 0.05) / 0.75);
+        img.style.transformOrigin = '50% 100%';
+        img.style.transform = 'scale(' + (1.25 - 0.25 * kk).toFixed(4) + ')';
         layer.classList.toggle('is-open', p >= open);
       },
 
       braid: function (sec, p) {
-        var svg = sec.querySelector('.bw-braid'), paths = svg.querySelectorAll('path');
+        var svg = sec.querySelector('.bw-braid'), paths = svg.querySelectorAll('.bw-lines path');
+        var stopsG = svg.querySelector('.bw-stops');
         var Hs = sec.offsetHeight, key = Hs + 'x' + innerWidth;
         if (svg.dataset.key !== key) {
           svg.dataset.key = key;
-          var narrow = innerWidth <= 760, w = narrow ? 24 : 120, cx = w / 2, A = narrow ? 7 : 34;
+          var narrow = innerWidth <= 760, w = narrow ? 30 : 170, cx = w / 2, A = narrow ? 8 : 38;
           svg.setAttribute('viewBox', '0 0 ' + w + ' ' + Hs);
           svg.style.width = w + 'px';
-          // where the stops are: the threads meet there
-          var stops = [0].concat([].map.call(sec.querySelectorAll('.bw-item'), function (it) {
-            return it.offsetTop + (narrow ? 40 : it.offsetHeight / 2);
-          })).concat([Hs]);
-          [0, 2.1, 4.2].forEach(function (ph, n) {
-            var d = '';
-            for (var y = 0; y <= Hs; y += 6) {
-              var k = 0; while (k < stops.length - 2 && y > stops[k + 1]) k++;
-              var a = stops[k], b = stops[k + 1], u = (y - a) / (b - a || 1);
-              var env = Math.sin(Math.PI * u);
-              var x = cx + A * env * Math.sin(u * Math.PI * 2 + ph);
+          // the stops, each a little off the middle, in height and to the side,
+          // the way they would fall drawn by hand
+          var JY = [-0.16, 0.12, -0.06, 0.18, -0.1], JX = [-0.3, 0.35, -0.15, 0.25, -0.2];
+          var stops = [[cx, 0]];
+          [].forEach.call(sec.querySelectorAll('.bw-item'), function (it, n) {
+            var y = narrow ? it.offsetTop + 46 + JY[n % 5] * 40 : it.offsetTop + it.offsetHeight * (0.5 + JY[n % 5]);
+            stops.push([cx + JX[n % 5] * A * (narrow ? 0.6 : 1), y]);
+          });
+          stops.push([cx, Hs]);
+          var hand = function (y, n) { return 1.1 * Math.sin(y * 0.037 + n * 1.9) + 0.6 * Math.sin(y * 0.11 + n * 4.3) + 0.35 * Math.sin(y * 0.29 + n); };
+          for (var n = 0; n < 3; n++) {
+            var ph = [0, 2.1, 4.2][n], d = '';
+            for (var y = 0; y <= Hs; y += 5) {
+              var k = 0; while (k < stops.length - 2 && y > stops[k + 1][1]) k++;
+              var a = stops[k], b = stops[k + 1], u = (y - a[1]) / (b[1] - a[1] || 1);
+              var amp = A * (0.75 + 0.5 * Math.abs(Math.sin(k * 2.7 + n)));
+              var turns = 0.8 + 0.5 * Math.abs(Math.sin(k * 1.3 + n * 0.7));
+              var x = lerp(a[0], b[0], u) + amp * Math.sin(Math.PI * u) * Math.sin(u * Math.PI * 2 * turns + ph) + hand(y, n);
               d += (y ? 'L' : 'M') + x.toFixed(1) + ' ' + y;
             }
-            paths[n].setAttribute('d', d);
-            var len = paths[n].getTotalLength();
-            paths[n].style.strokeDasharray = len;
-            paths[n].dataset.len = len;
+            // each strand twice: the line, and a fainter second pass beside it
+            paths[n * 2].setAttribute('d', d);
+            paths[n * 2 + 1].setAttribute('d', d);
+            paths[n * 2 + 1].setAttribute('transform', 'translate(' + (0.9 - n * 0.5) + ' 1.5)');
+          }
+          for (var m = 0; m < paths.length; m++) {
+            var len = paths[m].getTotalLength();
+            paths[m].style.strokeDasharray = len;
+            paths[m].dataset.len = len;
+          }
+          // the stops: small circles drawn by hand, gone round twice
+          var ns = 'http://www.w3.org/2000/svg', html = '';
+          stopsG.innerHTML = '';
+          stops.slice(1, -1).forEach(function (s0, n) {
+            var g = document.createElementNS(ns, 'g');
+            g.setAttribute('data-y', s0[1] / Hs);
+            for (var pass = 0; pass < 2; pass++) {
+              var c = '', r0 = narrow ? 5.5 : 7;
+              for (var q = 0; q <= 40; q++) {
+                var a2 = (q / 40) * Math.PI * 2.15 + n + pass * 0.6;
+                var r = r0 + 0.9 * Math.sin(3 * a2 + n) + 0.5 * Math.sin(5 * a2 + pass) + pass * 0.8;
+                c += (q ? 'L' : 'M') + (s0[0] + Math.cos(a2) * r).toFixed(1) + ' ' + (s0[1] + Math.sin(a2) * r).toFixed(1);
+              }
+              var e = document.createElementNS(ns, 'path');
+              e.setAttribute('d', c);
+              e.setAttribute('class', pass ? 'bw-stop2' : 'bw-stop');
+              g.appendChild(e);
+            }
+            stopsG.appendChild(g);
           });
         }
-        for (var n = 0; n < paths.length; n++) {
-          var L = +paths[n].dataset.len;
-          paths[n].style.strokeDashoffset = (L * (1 - p)).toFixed(1);
+        for (var n2 = 0; n2 < paths.length; n2++) {
+          var L = +paths[n2].dataset.len;
+          paths[n2].style.strokeDashoffset = (L * (1 - p)).toFixed(1);
         }
+        [].forEach.call(stopsG.children, function (g) {
+          var on = cl((p - +g.getAttribute('data-y') + 0.02) / 0.04);
+          g.style.opacity = on.toFixed(3);
+        });
       },
 
       mars: function (sec, p) {
