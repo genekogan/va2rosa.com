@@ -3239,29 +3239,35 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
 }
 @media (max-width: 760px) { .intro-what br { display: none; } }
 
-/* --- the portal (Little Martians) ---------------------------------------- */
-.portal { position: relative; height: 100svh; margin-top: 10px; }
-html.scrolly .portal { height: 300svh; }
-.portal-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+/* --- the timeline, and the way through it ----------------------------------
+   With motion: the section is tall and its stage is pinned (the script sets
+   its top so a stage taller than the screen pins at its bottom edge); the
+   portal layer covers the last screen of the stage. Without motion: the
+   desert simply follows the timeline. */
+.tlp { position: relative; }
+.tlp-content { will-change: transform; }
+.tlp-portal { position: relative; height: 100svh; overflow: hidden; margin-top: 60px; }
+html.scrolly .tlp { height: calc(var(--stage-h, 100svh) + 170svh); }
+html.scrolly .tlp-stage { position: sticky; top: 0; min-height: 100svh; }
+html.scrolly .tlp-portal { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; pointer-events: none; }
+html.scrolly .tlp-portal.is-open { pointer-events: auto; }
+.portal-grid { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 .portal-win { position: absolute; inset: 0; overflow: hidden; background: #2a1d14; }
-html.scrolly .portal-win { clip-path: circle(0px at 50% 52%); }   /* until the script draws it */
+html.scrolly .portal-win { clip-path: circle(0px at 50% 50%); }
 .portal-win img {
   width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 45%;
-  transform-origin: 50% 52%; will-change: transform;
+  will-change: transform;
 }
-.portal-rings { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
-.portal-rings path { fill: none; stroke: var(--blue); stroke-width: 1.2; opacity: 0; }
 .portal-veil {
   position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(180deg, rgba(10, 6, 3, 0) 0%, rgba(10, 6, 3, 0.3) 45%, rgba(10, 6, 3, 0.86) 100%);
-  opacity: clamp(0, calc((var(--p, 1) - 0.66) / 0.14), 1);
+  opacity: clamp(0, calc((var(--p, 1) - 0.74) / 0.12), 1);
 }
 .portal-t {
-  --t: clamp(0, calc((var(--p, 1) - 0.72) / 0.14), 1);
-  position: absolute; inset: auto 0 0 0; padding-bottom: clamp(36px, 7svh, 80px);
+  --t: clamp(0, calc((var(--p, 1) - 0.8) / 0.14), 1);
+  position: absolute; inset: auto 0 0 0; z-index: 2; padding-bottom: clamp(36px, 7svh, 80px);
   color: #fff; opacity: var(--t);
-  filter: blur(calc((1 - var(--t)) * 12px));
-  translate: 0 calc((1 - var(--t)) * 20px);
+  filter: blur(calc((1 - var(--t)) * 10px));
 }
 .portal-logo { margin: 0 0 18px; }
 .portal-logo img { width: clamp(170px, 22vw, 300px); height: auto; }
@@ -3272,15 +3278,12 @@ html.scrolly .portal-win { clip-path: circle(0px at 50% 52%); }   /* until the s
 .bw { margin-top: 120px; }
 .bw-lede { max-width: 38em; color: var(--ink-2); }
 .bw-list { list-style: none; margin: 60px 0 0; padding: 0; position: relative; }
-/* the path: a faint dotted line, drawn over in blue as you go */
-.bw-list::before, .bw-list::after {
-  content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 0;
-  border-left: 1.5px dotted rgba(28, 74, 134, 0.35); translate: -50% 0;
-}
-.bw-list::after {
-  border-left: 2px solid var(--blue);
-  transform-origin: top; scale: 1 var(--p, 1);
-}
+/* three thin timelines braided down the page, meeting at each stop */
+.bw-braid { position: absolute; left: 50%; top: 0; height: 100%; translate: -50% 0; overflow: visible; pointer-events: none; }
+.bw-braid path { fill: none; stroke-width: 1.1; stroke-linecap: round; }
+.bw-braid path:nth-child(1) { stroke: rgba(28, 74, 134, 0.55); }
+.bw-braid path:nth-child(2) { stroke: rgba(91, 63, 143, 0.4); }
+.bw-braid path:nth-child(3) { stroke: rgba(170, 132, 52, 0.7); }
 .bw-item {
   --r: var(--p, 1);
   position: relative;
@@ -3308,7 +3311,7 @@ html.scrolly .portal-win { clip-path: circle(0px at 50% 52%); }   /* until the s
   transition: scale 0.9s ease;
 }
 .bw-img:hover img { scale: 1.04; }
-.bw-text { opacity: calc(var(--r) * 1.2 - 0.2); translate: 0 calc((1 - var(--r)) * 26px); }
+.bw-text { opacity: calc(var(--r) * 1.2 - 0.2); translate: 0 calc((1 - var(--r)) * 18px); filter: blur(calc((1 - var(--r)) * 5px)); }
 .bw-n { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
 .bw-text h3 { font-family: var(--hand); font-size: clamp(26px, 3vw, 40px); color: var(--blue); margin: 10px 0 14px; }
 .bw-text p { font-size: clamp(16px, 1.45vw, 19px); line-height: 1.55; max-width: 26em; margin: 0; }
@@ -3323,37 +3326,44 @@ html.scrolly .portal-win { clip-path: circle(0px at 50% 52%); }   /* until the s
 .bw-links a:hover { background: var(--blue); color: #fff; }
 .bw-links a:hover span { color: rgba(255, 255, 255, 0.75); }
 @media (max-width: 760px) {
-  .bw-list::before, .bw-list::after { left: 7px; translate: none; }
+  .bw-braid { left: 7px; translate: -50% 0; }
   .bw-item { grid-template-columns: 1fr; gap: 18px; padding: 34px 0 34px 30px; }
   .bw-item::before { left: 7px; top: 34px; }
   .bw-item:nth-child(even) .bw-img { order: 0; }
   .bw-img { aspect-ratio: 4 / 3.4; }
 }
 
-/* --- Mars College: the flower opening and the walk ------------------------- */
-.mars-j { position: relative; height: 100svh; margin-top: 40px; }
-html.scrolly .mars-j { height: 320svh; }
-.mars-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
-.mars-clip { position: absolute; inset: 0; overflow: hidden; background: #b9442c; }
-html.scrolly .mars-clip { clip-path: circle(0px at 53% 34%); }
-.mars-clip img {
-  position: absolute; left: 0; top: 0; max-width: none; height: auto;
+/* --- Mars College: the building, then the walk to the flower ---------------- */
+.mars-j { position: relative; height: 100svh; margin-top: 110px; }
+html.scrolly .mars-j { height: 210svh; }
+.mars-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; background: #b9442c; }
+.mars-a {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; max-width: none; object-fit: cover;
   transform-origin: 0 0; will-change: transform;
 }
-.mars-a { width: 100%; }
-.mars-b { opacity: 0; }
+html.scrolly .mars-a { height: auto; object-fit: fill; }
 .mars-t {
-  --t: clamp(0, calc((var(--p, 1) - 0.86) / 0.1), 1);
+  --t: clamp(0, calc((var(--p, 1) - 0.72) / 0.18), 1);
   position: absolute; inset: auto 0 0 0;
-  padding: 140px 0 clamp(36px, 7svh, 80px);
-  background: linear-gradient(180deg, rgba(40, 8, 4, 0) 0%, rgba(40, 8, 4, 0.55) 40%, rgba(30, 6, 3, 0.9) 100%);
+  padding: 120px 0 clamp(32px, 6svh, 70px);
+  background: linear-gradient(180deg, rgba(40, 8, 4, 0) 0%, rgba(40, 8, 4, 0.5) 40%, rgba(30, 6, 3, 0.88) 100%);
   color: #fff; opacity: var(--t);
-  filter: blur(calc((1 - var(--t)) * 12px));
+  filter: blur(calc((1 - var(--t)) * 8px));
 }
 .mars-t .kicker { color: #ffd7a0; }
 .mars-t h2 { font-family: var(--hand); font-size: clamp(30px, 5vw, 56px); margin: 8px 0 10px; color: #fff; }
 .mars-t p { max-width: 36em; font-size: clamp(15.5px, 1.4vw, 18px); color: rgba(255, 255, 255, 0.94); }
 .mars-t .door-links .more { color: #ffd7a0; border-color: #ffd7a0; }
+
+/* --- subscribe ------------------------------------------------------------------ */
+.subscribe { margin-top: 100px; text-align: center; }
+.sub-t { font-family: var(--hand); font-size: clamp(22px, 2.6vw, 30px); color: var(--blue); margin: 12px auto 20px; }
+.sub-btn {
+  display: inline-block; padding: 12px 24px; border-radius: 999px;
+  background: var(--blue); color: #fff; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+  transition: background 0.2s, translate 0.2s;
+}
+.sub-btn:hover { background: var(--ink); translate: 0 -1px; }
 
 /* --- the garden at the end --------------------------------------------------- */
 .garden {
