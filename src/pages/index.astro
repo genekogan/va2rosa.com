@@ -85,6 +85,12 @@ const figs = essays.research.figures.filter((f) =>
             <feTurbulence type="fractalNoise" baseFrequency="0.004 0.009" numOctaves="2" seed="7" result="n" />
             <feDisplacementMap in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" />
           </filter>
+          <filter id="pencil-edge" x="-10%" y="-25%" width="120%" height="150%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035 0.06" numOctaves="2" seed="11" result="w" />
+            <feDisplacementMap in="SourceGraphic" in2="w" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="bent" />
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="5" result="g" />
+            <feDisplacementMap in="bent" in2="g" scale="1.2" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
           <filter id="pencil" x="-20%" y="-2%" width="140%" height="104%">
             <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3" result="g" />
             <feDisplacementMap in="SourceGraphic" in2="g" scale="1.6" xChannelSelector="R" yChannelSelector="G" />
