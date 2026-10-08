@@ -465,6 +465,9 @@ const figs = essays.research.figures.filter((f) =>
         var svg = sec.querySelector('.bw-braid'), paths = svg.querySelectorAll('.bw-lines path');
         var stopsG = svg.querySelector('.bw-stops');
         var Hs = sec.offsetHeight, key = Hs + 'x' + innerWidth;
+        // three threads at their own pace: blue, violet, and a slower gold one
+        // that reaches each knot late and ties its loop after the others
+        var SPEED = [1, 0.93, 0.8];
         if (svg.dataset.key !== key) {
           svg.dataset.key = key;
           var narrow = innerWidth <= 760, w = narrow ? 30 : 170, cx = w / 2, A = narrow ? 8 : 38;
@@ -478,7 +481,8 @@ const figs = essays.research.figures.filter((f) =>
             var y = narrow ? it.offsetTop + 46 + JY[n % 5] * 40 : it.offsetTop + it.offsetHeight * (0.5 + JY[n % 5]);
             stops.push([cx + JX[n % 5] * A * (narrow ? 0.6 : 1), y]);
           });
-          stops.push([cx, Hs]);
+          // the threads end in the last knot, the love of making books
+          var last = stops[stops.length - 1][1];
           var hand = function (y, n) { return 1.1 * Math.sin(y * 0.037 + n * 1.9) + 0.6 * Math.sin(y * 0.11 + n * 4.3) + 0.35 * Math.sin(y * 0.29 + n); };
           // the knot: a trefoil each thread goes round once as it reaches a
           // stop. It takes scroll to tie (KNOT px of "time"), and the threads
@@ -487,10 +491,16 @@ const figs = essays.research.figures.filter((f) =>
           var built = [];
           for (var n = 0; n < 3; n++) {
             var ph = [0, 2.1, 4.2][n], pts = [], tm = [], shift = 0, sk = 1;
-            for (var y = 0; y <= Hs; y += 5) {
-              var k = 0; while (k < stops.length - 2 && y > stops[k + 1][1]) k++;
-              // passing a stop: tie the knot there before going on
-              if (sk < stops.length - 1 && y >= stops[sk][1]) {
+            for (var y = 0; y <= last + 5; y += 5) {
+              var yy = Math.min(y, last);
+              var k = 0; while (k < stops.length - 2 && yy > stops[k + 1][1]) k++;
+              var a = stops[k], b = stops[k + 1], u = (yy - a[1]) / (b[1] - a[1] || 1);
+              var amp = A * (0.75 + 0.5 * Math.abs(Math.sin(k * 2.7 + n)));
+              var turns = 0.8 + 0.5 * Math.abs(Math.sin(k * 1.3 + n * 0.7));
+              pts.push([lerp(a[0], b[0], u) + amp * Math.sin(Math.PI * u) * Math.sin(u * Math.PI * 2 * turns + ph) + hand(yy, n), yy]);
+              tm.push(yy + shift);
+              // reaching a stop: tie the knot there before going on
+              if (sk < stops.length && yy >= stops[sk][1]) {
                 var s0 = stops[sk], turn = (sk - 1) * 0.9;
                 shift += LAG * n;
                 for (var q = 0; q <= 72; q++) {
@@ -503,11 +513,7 @@ const figs = essays.research.figures.filter((f) =>
                 shift += KNOT + LAG * (2 - n);
                 sk++;
               }
-              var a = stops[k], b = stops[k + 1], u = (y - a[1]) / (b[1] - a[1] || 1);
-              var amp = A * (0.75 + 0.5 * Math.abs(Math.sin(k * 2.7 + n)));
-              var turns = 0.8 + 0.5 * Math.abs(Math.sin(k * 1.3 + n * 0.7));
-              pts.push([lerp(a[0], b[0], u) + amp * Math.sin(Math.PI * u) * Math.sin(u * Math.PI * 2 * turns + ph) + hand(y, n), y]);
-              tm.push(y + shift);
+              if (yy >= last) break;
             }
             var d = '', len = [0];
             for (var m = 0; m < pts.length; m++) {
@@ -516,29 +522,37 @@ const figs = essays.research.figures.filter((f) =>
             }
             built.push({ d: d, tm: tm, len: len });
           }
-          svg._end = Math.max.apply(null, built.map(function (bb) { return bb.tm[bb.tm.length - 1]; }));
+          // the time it takes the slowest thread to finish, and the height that
+          // time is spread over
+          svg._end = Math.max.apply(null, built.map(function (bb, n) { return bb.tm[bb.tm.length - 1] / SPEED[n]; }));
+          svg._yEnd = last;
           // each thread twice: the line, and a fainter second pass beside it
           for (var n3 = 0; n3 < 3; n3++) {
             [paths[n3 * 2], paths[n3 * 2 + 1]].forEach(function (el, ghost) {
               el.setAttribute('d', built[n3].d);
               if (ghost) el.setAttribute('transform', 'translate(' + (0.9 - n3 * 0.5) + ' 1.5)');
-              el._tm = built[n3].tm; el._len = built[n3].len;
+              el._tm = built[n3].tm; el._len = built[n3].len; el._n = n3;
               var total = el._len[el._len.length - 1];
               el.style.strokeDasharray = total + ' ' + (total + 10);
             });
           }
           stopsG.innerHTML = '';
         }
-        // how far along its own "time" each thread has got, and how much of it
-        // is drawn by then
-        var T = p * svg._end;
+        // the drawing keeps pace with a line about 60% down the screen, on
+        // phones and computers alike (finished when standing still)
+        var r = sec.getBoundingClientRect();
+        var Tlin = p >= 1 && !document.documentElement.classList.contains('scrolly')
+          ? Infinity
+          : Math.max(0, (innerHeight * 0.6 - r.top) * (svg._end / svg._yEnd));
         for (var n2 = 0; n2 < paths.length; n2++) {
           var el = paths[n2], tm = el._tm, L = el._len, lo = 0, hi = tm.length - 1;
+          // its own pace, a little uneven, never going backwards
+          var T = Tlin === Infinity ? Infinity : Tlin * SPEED[el._n] + 24 * Math.sin(Tlin / 230 + el._n * 2.1) * Math.min(1, Tlin / 200);
           if (T >= tm[hi]) { el.style.strokeDashoffset = 0; continue; }
+          if (T <= tm[0]) { el.style.strokeDashoffset = L[L.length - 1]; continue; }
           while (hi - lo > 1) { var mid = (lo + hi) >> 1; tm[mid] <= T ? (lo = mid) : (hi = mid); }
           var f = tm[hi] > tm[lo] ? (T - tm[lo]) / (tm[hi] - tm[lo]) : 0;
-          var drawn = T <= tm[0] ? 0 : L[lo] + (L[hi] - L[lo]) * f;
-          el.style.strokeDashoffset = (L[L.length - 1] - drawn).toFixed(1);
+          el.style.strokeDashoffset = (L[L.length - 1] - (L[lo] + (L[hi] - L[lo]) * f)).toFixed(1);
         }
       },
 
