@@ -7,7 +7,7 @@ import { opEd } from '../data/op-ed.js';
 import { byYear, typeLabel } from '../data/cv.js';
 import { press } from '../data/press.js';
 
-const U = 'https://vanessarosa.art';
+const U = 'https://www.vanessarosa.art';
 const abs = (h) => (!h ? '' : h.startsWith('http') ? h : `${U}${h}`);
 
 export function GET() {

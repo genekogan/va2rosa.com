@@ -3426,3 +3426,7 @@ html.scrolly .mars-a { height: auto; object-fit: fill; }
 .wrap p.cs-note { font-size: 13.5px; color: var(--ink-3); border-left: 2px solid var(--line); padding-left: 14px; }
 .cs-list { margin: 0 0 1.2em 1.2em; }
 .cs-list li { margin: 4px 0; }
+
+/* the footer's link for machines: there, but quiet */
+.sitefoot .foot-ai { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+.sitefoot .foot-ai:hover { color: var(--ink); }

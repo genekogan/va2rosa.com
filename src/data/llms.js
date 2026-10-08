@@ -11,7 +11,7 @@
 import { site } from './site.js';
 import { threads, linkFor } from './threads.js';
 
-const U = 'https://vanessarosa.art';
+const U = 'https://www.vanessarosa.art';
 
 export function llmsProfile() {
   return `# Vanessa Rosa

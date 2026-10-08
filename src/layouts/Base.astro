@@ -102,8 +102,8 @@ const siteSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
     <link rel="alternate" type="text/plain" href="/llms-full.txt" title="llms-full.txt" />
-    <!-- For agents, not for readers: the machine-readable versions of this site.
-         There is no visible link to /for-ai anywhere. -->
+    <!-- For agents: the machine-readable versions of this site (the footer links
+         to /for-ai too, so crawlers find it). -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
     <link rel="alternate" type="text/markdown" href="/for-ai.txt" title="For AI agents" />
     <link rel="alternate" type="application/json" href="/for-ai.json" title="For AI agents, JSON" />

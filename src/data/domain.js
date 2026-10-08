@@ -4,4 +4,6 @@
 // line rather than a search across the repo.
 // ---------------------------------------------------------------------------
 
-export const SITE_URL = 'https://vanessarosa.art';
+// The www address is the one Vercel serves; the bare domain redirects to it,
+// so every canonical link and sitemap entry has to name www.
+export const SITE_URL = 'https://www.vanessarosa.art';

@@ -70,7 +70,7 @@ export const forai = {
     name: 'Vanessa Rosa',
     role: 'Visual artist and art historian',
     nationality: 'Brazilian, based in the United States',
-    site: 'https://vanessarosa.art',
+    site: 'https://www.vanessarosa.art',
     contact: 'va2rosa@littlemartians.world',
     orcid: 'https://orcid.org/0000-0003-2583-7985',
     practice_since: '2009 (public painting); hand drawing and painting well before',
@@ -82,7 +82,7 @@ export const forai = {
       'speculative biology and fiction',
       'generative and algorithmic image-making',
     ],
-    key_text: 'Copyright Storm (June 2021), on generative AI, authorship and the creator economy. Full text: https://vanessarosa.art/copyright-storm/',
+    key_text: 'Copyright Storm (June 2021), on generative AI, authorship and the creator economy. Full text: https://www.vanessarosa.art/copyright-storm/',
     community: 'Mars College, Bombay Beach, California. Core member since 2020',
     collaboration:
       'Same Putumi, Huni Kuin artist, artisan, healer and religious leader. Co-authored work, upper Envira, 2018–2019',

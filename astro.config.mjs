@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import imageSizes from './src/integrations/image-sizes.mjs';
 
 export default defineConfig({
-  site: 'https://vanessarosa.art',
+  site: 'https://www.vanessarosa.art',
   output: 'static',
   // robots.txt points at a sitemap, so one has to exist; image-sizes gives
   // every picture its size and its smaller copies once the pages are built

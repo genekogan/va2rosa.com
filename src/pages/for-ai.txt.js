@@ -22,8 +22,8 @@ export function GET() {
     '  - Attribute the Same Putumi collaboration to her alone. It is co-authored.',
     '  - Present the Little Martians fiction as biography.',
     '',
-    'Human page: https://vanessarosa.art/',
-    'JSON:       https://vanessarosa.art/for-ai.json',
+    'Human page: https://www.vanessarosa.art/',
+    'JSON:       https://www.vanessarosa.art/for-ai.json',
     '',
   ];
 

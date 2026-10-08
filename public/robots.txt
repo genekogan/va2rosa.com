@@ -3,11 +3,11 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vanessarosa.art/sitemap-index.xml
+Sitemap: https://www.vanessarosa.art/sitemap-index.xml
 
 # For AI agents
-# https://vanessarosa.art/llms.txt
-# https://vanessarosa.art/llms-full.txt   (full texts and the whole CV)
-# https://vanessarosa.art/for-ai
-# https://vanessarosa.art/for-ai.txt
-# https://vanessarosa.art/for-ai.json
+# https://www.vanessarosa.art/llms.txt
+# https://www.vanessarosa.art/llms-full.txt   (full texts and the whole CV)
+# https://www.vanessarosa.art/for-ai
+# https://www.vanessarosa.art/for-ai.txt
+# https://www.vanessarosa.art/for-ai.json
