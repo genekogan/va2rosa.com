@@ -22,7 +22,7 @@ export const positions = [
     imageAlt: 'From the Copyright Storm essay.',
     detail:
       'Written before the AI image boom of 2022. It explains how generative models would upend the creator economy, and that the best artists could do was to learn as much as they could about the AI models and the possibilities they open.',
-    href: 'https://va2rosa.medium.com/copyright-storm-authorship-in-the-age-of-ai-baba554aa617',
+    href: '/copyright-storm',
   },
   {
     year: 2025,
@@ -229,7 +229,7 @@ export const groups = [
         venue: 'Medium, June 2021',
         detail:
           'Written before the AI image boom of 2022. It explains how generative models would upend the creator economy, and that the best artists could do was to learn as much as they could about the AI models and the possibilities they open.',
-        links: [{ label: 'Read it', href: 'https://va2rosa.medium.com/copyright-storm-authorship-in-the-age-of-ai-baba554aa617' }],
+        links: [{ label: 'Read it', href: '/copyright-storm' }, { label: 'On Medium', href: 'https://va2rosa.medium.com/copyright-storm-authorship-in-the-age-of-ai-baba554aa617' }],
       },
       {
         year: 2019,

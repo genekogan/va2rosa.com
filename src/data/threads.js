@@ -525,7 +525,7 @@ export const threads = [
           'Linear perspective is about six hundred years old. Computer-aided design is about sixty. Latent space is barely ten, and it belongs to the same family. A diffusion model holds a space of relations where every image is a position. It is fascinating to try to understand how these models encode reality, how they connect structures of meaning beneath every human language and beyond, changing our understanding of ourselves.',
         ],
         video: { youtube: 'fw0CK_r0B9k', caption: 'StyleGAN2 Sacred Spaces.' },
-        more: { label: 'Copyright Storm: authorship in the age of AI', href: 'https://va2rosa.medium.com/copyright-storm-authorship-in-the-age-of-ai-baba554aa617' },
+        more: { label: 'Copyright Storm: authorship in the age of AI', href: '/copyright-storm' },
       },
       {
         title: 'Kweku',

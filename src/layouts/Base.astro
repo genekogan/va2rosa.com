@@ -20,9 +20,10 @@ const {
   hasHero = false,
   bodyClass = 'paper',
   image,
+  schema,            // an extra schema.org record for this page (an Article, say)
 } = Astro.props;
 
-const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · artist & art historian`;
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · artist & art historian, murals, ceramics and AI`;
 
 const ogImage = new URL(image ?? '/images/og-card.jpg', SITE_URL).href;
 const canonical = new URL(Astro.url.pathname, SITE_URL).href;
@@ -37,12 +38,14 @@ const personSchema = {
   alternateName: 'va2rosa',
   url: SITE_URL,
   image: new URL('/images/me/me-03.webp', SITE_URL).href,
-  jobTitle: 'Visual artist and art historian',
+  jobTitle: 'Visual artist and art historian working with AI',
   description: site.bioShort,
   email: `mailto:${site.email}`,
   nationality: { '@type': 'Country', name: 'Brazil' },
   knowsAbout: [
-    'Contemporary art', 'Art history', 'Artificial intelligence art',
+    'Contemporary art', 'Art history', 'Artificial intelligence art', 'AI art',
+    'Generative AI', 'Training custom AI models on an artist’s own work',
+    'AI and authorship', 'AI education for artists', 'AI filmmaking',
     'Ethnomathematics', 'Ceramics', 'Mural painting', 'Public art',
     'Generative art', 'Projection mapping',
   ],
@@ -56,6 +59,7 @@ const personSchema = {
     site.orcid,
     site.littleMartians,
     'https://littlemartians.substack.com/',
+    'https://va2rosa.medium.com/',
     'https://www.nvidia.com/en-us/research/ai-art-gallery/artists/vanessa-rosa/',
     'https://onlineonly.christies.com/s/augmented-intelligence/vanessa-rosa-b-1990-31/250113',
   ].filter(Boolean),
@@ -96,6 +100,8 @@ const siteSchema = {
 
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="llms-full.txt" />
     <!-- For agents, not for readers: the machine-readable versions of this site.
          There is no visible link to /for-ai anywhere. -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />

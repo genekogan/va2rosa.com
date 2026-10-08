@@ -3418,3 +3418,11 @@ html.scrolly .mars-a { height: auto; object-fit: fill; }
 @media (max-width: 620px) { .garden .g1, .garden .g5 { display: none; } }
 
 .wrap p.intro-what, .bw-text p, .portal-t p, .mars-t p { hyphens: none; }
+
+/* --- Copyright Storm, the essay in full ------------------------------------------ */
+.cs-fig { margin: 30px 0; }
+.cs-fig img { width: 100%; max-width: 640px; height: auto; display: block; margin: 0 auto; }
+.cs-fig figcaption { font-size: 13px; color: var(--ink-3); margin-top: 8px; text-align: center; line-height: 1.45; }
+.wrap p.cs-note { font-size: 13.5px; color: var(--ink-3); border-left: 2px solid var(--line); padding-left: 14px; }
+.cs-list { margin: 0 0 1.2em 1.2em; }
+.cs-list li { margin: 4px 0; }

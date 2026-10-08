@@ -1,0 +1,72 @@
+---
+// Copyright Storm, 2021, in full on the site: the text Medium hides behind its
+// interface, readable here by people and by machines, with the original linked.
+import Base from '../layouts/Base.astro';
+import { copyrightStorm as c } from '../data/copyright-storm.js';
+import { SITE_URL } from '../data/domain.js';
+
+const url = `${SITE_URL}/copyright-storm/`;
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Copyright Storm — Authorship in the age of AI',
+  alternativeHeadline: c.title,
+  description: c.lede,
+  datePublished: c.isoDate,
+  inLanguage: 'en',
+  url,
+  mainEntityOfPage: url,
+  image: new URL(c.image, SITE_URL).href,
+  author: { '@type': 'Person', name: 'Vanessa Rosa', alternateName: 'va2rosa', url: SITE_URL },
+  sameAs: c.href,
+  isBasedOn: c.href,
+  about: ['Generative AI', 'Authorship', 'Copyright', 'Artists and AI', 'Training datasets', 'GAN'],
+  articleBody: c.body
+    .map((b) => b.p ?? b.caption ?? b.note ?? (b.list ? b.list.join('; ') : ''))
+    .join('\n\n'),
+};
+---
+
+<Base
+  title={c.title}
+  current="Research"
+  bodyClass="paper"
+  image={c.image}
+  description={`${c.title}. An essay by Vanessa Rosa, first published on Medium on ${c.date}: training generative models on other artists’ work, authorship, copyright, and why artists should learn how AI works.`}
+  schema={articleSchema}
+>
+  <article class="wrap oped cstorm">
+    <p class="fx-back" style="padding-top:60px"><a href="/research">← Research</a></p>
+
+    <div class="kicker" style="margin-top:20px">Essay · {c.venue} · {c.date}</div>
+    <h1 class="sec" style="margin:12px 0 10px">{c.title}</h1>
+    <p class="oped-by">{c.author}</p>
+    <p class="oped-note">
+      First published on {c.venue} on {c.date}, more than a year before the AI image boom of 2022.
+      The full text as published. <a class="ul" href={c.href} target="_blank" rel="noopener">Read it on Medium</a>.
+    </p>
+
+    <div class="narrow oped-body cs-body">
+      {c.body.map((b) =>
+        b.fig ? (
+          <figure class="cs-fig">
+            <img src={b.fig} alt={b.caption} loading="lazy" />
+            <figcaption>{b.caption}</figcaption>
+          </figure>
+        ) : b.note ? (
+          <p class="cs-note">{b.note}</p>
+        ) : b.list ? (
+          <ul class="cs-list">{b.list.map((li) => <li>{li}</li>)}</ul>
+        ) : (
+          <p>{b.p}</p>
+        )
+      )}
+    </div>
+
+    <p style="margin:50px 0 90px">
+      <a class="more" href={c.href} target="_blank" rel="noopener">The original on Medium ⇢</a>
+      <span style="display:inline-block; width:22px"></span>
+      <a class="more" href="/research">Research ⇢</a>
+    </p>
+  </article>
+</Base>

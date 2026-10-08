@@ -7,6 +7,7 @@ Sitemap: https://vanessarosa.art/sitemap-index.xml
 
 # For AI agents
 # https://vanessarosa.art/llms.txt
+# https://vanessarosa.art/llms-full.txt   (full texts and the whole CV)
 # https://vanessarosa.art/for-ai
 # https://vanessarosa.art/for-ai.txt
 # https://vanessarosa.art/for-ai.json
