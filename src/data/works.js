@@ -41,14 +41,48 @@ export const pioneerWorks = {
     linkText: 'Read it in the Star-Revue',
   },
   sections: [
+    // the 2017 photographs, Vanessa's own selection, one slideshow for each
+    // side of the fence
     {
-      title: 'The painting, 2017',
+      title: 'The painting, 2017 · Front',
       body: [
-        'Front, side, back and the stairway. The blue is the constant, and the perspective does the rest.',
+        'The blue is the constant, and the perspective does the rest.',
       ],
       gallery: 'slides',
-      // the corner shot is the header; no need to meet it twice
-      images: slice('pw', 0).filter((im) => !im.src.includes('pw-corner')),
+      images: [
+        { src: '/images/pw17/front-1.webp' },
+        { src: '/images/pw17/front-2.webp' },
+        { src: '/images/pw17/front-3.webp' },
+        { src: '/images/pw17/front-4.webp' },
+        { src: '/images/pw17/front-5.webp' },
+      ],
+    },
+    {
+      title: 'Details',
+      gallery: 'slides',
+      images: [
+        { src: '/images/pw17/detail-1.webp' },
+        { src: '/images/pw17/detail-2.webp' },
+      ],
+    },
+    {
+      title: 'Lateral',
+      gallery: 'slides',
+      images: [
+        { src: '/images/pw17/lateral-1.webp' },
+        { src: '/images/pw17/lateral-2.webp' },
+        { src: '/images/pw17/lateral-3.webp' },
+        { src: '/images/pw17/lateral-4.webp' },
+        { src: '/images/pw17/lateral-5.webp' },
+      ],
+    },
+    {
+      title: 'Back',
+      gallery: 'slides',
+      images: [
+        { src: '/images/pw17/back-1.webp' },
+        { src: '/images/pw17/back-2.webp' },
+      ],
     },
     {
       title: 'What people did with it',
