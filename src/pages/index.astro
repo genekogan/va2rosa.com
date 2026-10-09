@@ -302,6 +302,14 @@ const figs = essays.research.figures.filter((f) =>
     var ease = function (x) { x = cl(x); return x * x * (3 - 2 * x); };
     var lerp = function (a, b, t) { return a + (b - a) * t; };
     var BLUE = '28, 74, 134', GOLD = '170, 132, 52';
+    // the screen height, read once per width: on phones the address bar slides
+    // in and out while scrolling and changes innerHeight, which would make
+    // anything pinned to "60% down the screen" jump
+    var _sh = { w: 0, h: 0 };
+    function steadyH() {
+      if (_sh.w !== innerWidth) { _sh.w = innerWidth; _sh.h = document.documentElement.clientHeight || innerHeight; }
+      return _sh.h;
+    }
 
     function progress(sec, r, vh) {
       var t = sec.dataset.scrolly;
@@ -460,12 +468,17 @@ const figs = essays.research.figures.filter((f) =>
       braid: function (sec, p) {
         var svg = sec.querySelector('.bw-braid'), paths = svg.querySelectorAll('.bw-lines path');
         var stopsG = svg.querySelector('.bw-stops');
-        var Hs = sec.offsetHeight, key = Hs + 'x' + innerWidth;
+        // rebuild only when the list really changes (a new width, or its height
+        // moving by more than a few pixels as pictures settle), never mid-scroll
+        // for a rounding difference
+        var Hs = sec.offsetHeight;
+        var same = svg._w === innerWidth && Math.abs((svg._h || 0) - Hs) < 6;
+        var key = same ? svg.dataset.key : Hs + 'x' + innerWidth;
         // three threads at their own pace: blue, violet, and a slower gold one
         // that reaches each knot late and ties its loop after the others
         var SPEED = [1, 0.93, 0.8];
         if (svg.dataset.key !== key) {
-          svg.dataset.key = key;
+          svg.dataset.key = key; svg._w = innerWidth; svg._h = Hs;
           var narrow = innerWidth <= 760, w = narrow ? 30 : 170, cx = w / 2, A = narrow ? 8 : 38;
           svg.setAttribute('viewBox', '0 0 ' + w + ' ' + Hs);
           svg.style.width = w + 'px';
@@ -539,7 +552,7 @@ const figs = essays.research.figures.filter((f) =>
         var r = sec.getBoundingClientRect();
         var Tlin = p >= 1 && !document.documentElement.classList.contains('scrolly')
           ? Infinity
-          : Math.max(0, (innerHeight * 0.6 - r.top) * (svg._end / svg._yEnd));
+          : Math.max(0, (steadyH() * 0.6 - r.top) * (svg._end / svg._yEnd));
         for (var n2 = 0; n2 < paths.length; n2++) {
           var el = paths[n2], tm = el._tm, L = el._len, lo = 0, hi = tm.length - 1;
           // its own pace, a little uneven, never going backwards

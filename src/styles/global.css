@@ -3283,6 +3283,10 @@ html.scrolly .portal-win { clip-path: circle(0px at 50% 50%); }
   position: absolute; left: 50%; top: 0; height: 100%; translate: -50% 0; overflow: visible; pointer-events: none;
   filter: url(#pencil);                      /* a grain at the edge of every line */
 }
+/* on phones the grain is left off: redrawing a filter over a strip this tall on
+   every scroll step is more than mobile browsers manage, and the threads would
+   flicker or vanish. The doubled strokes keep the hand-drawn look. */
+@media (max-width: 760px), (hover: none) { .bw-braid { filter: none; } }
 .bw-lines path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .bw-lines path:nth-child(odd) { stroke-width: 1.15; }
 .bw-lines path:nth-child(even) { stroke-width: 0.7; opacity: 0.45; }
