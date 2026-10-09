@@ -27,7 +27,7 @@ export const pioneerWorks = {
     ['Made during', 'The technology residency'],
   ],
   intro: [
-    'I filled the fence with the vocabulary I had been building for years: arches, azulejo blues, Adinkra and arabesque forms pushed into a one-point perspective so the wavy boards open into impossible spaces.',
+    'I filled the fence with the vocabulary I had been building for years: arches, azulejo blues, Adinkra and arabesque forms pushed into a one-point perspective so the wavy boards open into impossible spaces. The blue and white patterns as the tales of the Silk Roads.',
     'People leaned on it, walked past it every morning, photographed themselves against it, parked in front of it. Plants grew and died on top of the blue, the harsh weather did its magic. The work is finished by the environment.',
   ],
   read: {
@@ -50,19 +50,19 @@ export const pioneerWorks = {
       ],
       gallery: 'slides',
       images: [
+        { src: '/images/pw17/front-5.webp' },
         { src: '/images/pw17/front-1.webp' },
         { src: '/images/pw17/front-2.webp' },
         { src: '/images/pw17/front-3.webp' },
         { src: '/images/pw17/front-4.webp' },
-        { src: '/images/pw17/front-5.webp' },
       ],
     },
     {
       title: 'Details',
       gallery: 'slides',
       images: [
+        { src: '/images/pw17/detail-2.webp', caption: 'Patterns from Portugal, West Africa, China and the Islamic world' },
         { src: '/images/pw17/detail-1.webp' },
-        { src: '/images/pw17/detail-2.webp' },
       ],
     },
     {
@@ -71,9 +71,9 @@ export const pioneerWorks = {
       images: [
         { src: '/images/pw17/lateral-1.webp' },
         { src: '/images/pw17/lateral-2.webp' },
-        { src: '/images/pw17/lateral-3.webp' },
         { src: '/images/pw17/lateral-4.webp' },
         { src: '/images/pw17/lateral-5.webp' },
+        { src: '/images/pw17/lateral-3.webp' },
       ],
     },
     {
