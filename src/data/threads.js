@@ -270,6 +270,18 @@ export const threads = [
         more: { label: 'Imaginary Tiles, the solo show', href: '/imaginary-tiles' },
       },
       {
+        title: 'Light painting with Marcos Muzi, São Paulo, 2017',
+        body: [
+          'A collaboration with the photographer Marcos Muzi: my laser-cut stencils, a light source and a long exposure, over São Paulo at night.',
+        ],
+        gallery: 'slides',
+        images: [
+          { src: '/images/muzi/mz-01.webp', caption: 'Light painting over São Paulo. Photograph by Marcos Muzi.' },
+          { src: '/images/muzi/mz-02.webp', caption: 'Photograph by Marcos Muzi.' },
+          { src: '/images/muzi/mz-04.webp', caption: 'Photograph by Marcos Muzi.' },
+        ],
+      },
+      {
         title: 'Then the machines',
         body: [
           'Then I applied for a scholarship at NYU’s Interactive Technology Program and started using projection mapping on paintings, as well as going deeper in my studies on algorithmic design and ethnomathematics. Such research became a show with an immersive interactive installation at Babycastles in Manhattan, so I invited Wenqi Li to develop the project with me, alongside Verônica Natividade, with whom I was already talking about algorithmic design pedagogical methodologies that included world references, especially fractal design in Africa.',
@@ -298,18 +310,6 @@ export const threads = [
           href: '/infinity-game',
           label: 'The whole project',
         },
-      },
-      {
-        title: 'Light painting with Marcos Muzi, São Paulo, 2018',
-        body: [
-          'A collaboration with the photographer Marcos Muzi: my laser-cut stencils, a light source and a long exposure, over São Paulo at night.',
-        ],
-        gallery: 'slides',
-        images: [
-          { src: '/images/muzi/mz-01.webp', caption: 'Light painting over São Paulo. Photograph by Marcos Muzi.' },
-          { src: '/images/muzi/mz-02.webp', caption: 'Photograph by Marcos Muzi.' },
-          { src: '/images/muzi/mz-04.webp', caption: 'Photograph by Marcos Muzi.' },
-        ],
       },
       {
         title: 'On canvas and on paper',
