@@ -60,9 +60,13 @@ export const stencils = {
     },
     {
       place: 'Africa',
-      note: 'Patterns from Ethiopia. The African patterns also run through the mixed tiles below, and later led to the ethnomathematics research.',
+      note: 'Patterns from Ethiopia, Adinkra symbols from Ghana, and sona, the sand drawings of the Chokwe in Angola. The African patterns also run through the mixed tiles below, and later led to the ethnomathematics research.',
       items: [
         { src: P('af-ethiopia'), caption: 'After Ethiopian patterns' },
+        { src: P('af-funtunfunefu'), caption: 'Funtunfunefu, the Adinkra of the two crocodiles that share one stomach' },
+        { src: P('af-sona-grid'), caption: 'Sona from Angola, lines drawn around a grid of dots' },
+        { src: P('af-sona-knots'), caption: 'Sona, as a cutting file' },
+        { src: P('af-sona-warp'), caption: 'Sona, distorted for a wall' },
       ],
     },
     {
