@@ -38,7 +38,7 @@ import { stencils as s } from '../data/stencils.js';
           </div>
           <div class="stp-pats">
             {o.items.map((im) => (
-              <figure>
+              <figure class={im.big ? 'big' : undefined}>
                 <img src={im.src} alt={im.caption} loading="lazy" />
                 <figcaption>{im.caption}</figcaption>
               </figure>

@@ -3473,6 +3473,9 @@ html.scrolly .mars-a { height: auto; object-fit: fill; }
 .stp-origin-t p { font-size: 14.5px; color: var(--ink-2); margin: 0; }
 .stp-pats { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; align-items: end; }
 .stp-pats figure { margin: 0; }
+/* a drawing that deserves more room (the Qing vase): two rows tall */
+.stp-pats figure.big { grid-row: span 2; align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; }
+.stp-pats figure.big img { height: 430px; }
 .stp-pats img { width: 100%; height: 190px; object-fit: contain; display: block; }
 .stp-pats figcaption, .stp-gallery figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 6px; line-height: 1.4; }
 .stp-four { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; margin-top: 22px; }
@@ -3497,6 +3500,8 @@ html.scrolly .mars-a { height: auto; object-fit: fill; }
   .stp-origin { grid-template-columns: 1fr; gap: 14px; }
   .stp-pats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stp-pats img { height: 140px; }
+  .stp-pats figure.big { grid-column: 1 / -1; grid-row: auto; }
+  .stp-pats figure.big img { height: 360px; }
   .stp-four { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
   .stp-strength li { grid-template-columns: 1fr; gap: 4px; }
   .stp-door { grid-template-columns: 1fr; }

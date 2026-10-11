@@ -46,7 +46,8 @@ export const stencils = {
       place: 'China',
       note: 'Blue and white porcelain, where the blue began: Qing dynasty vases, clouds and flowers.',
       items: [
-        { src: P('cn-china'), caption: 'After Qing porcelain' },
+        { src: P('cn-vase-up'), caption: 'A Qing porcelain vase, as a stencil', big: true },
+        { src: P('cn-border'), caption: 'A border and a qilin, from the porcelain' },
         { src: P('cn-flower'), caption: 'A flower, cut as one line' },
       ],
     },
