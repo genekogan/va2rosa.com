@@ -128,10 +128,10 @@ export const stencils = {
     images: [
       { src: I('set-2'), caption: 'The same pieces, as a corridor in one-point perspective' },
       { src: I('lisbon-roller'), caption: 'The Blue Wall Project, Lisbon, 2015' },
-      { src: I('little-skips'), caption: 'Little Skips, New York, 2015' },
       { src: I('stroke-2016'), caption: 'Live painting at the Stroke Art Fair, Munich, 2016' },
       { src: I('cartography'), caption: 'Cartography. Spray and acrylic on laser-cut paper, 2015' },
       { src: P('cp-firjan'), caption: 'A composition of stencils as one tile' },
+      { src: I('ceramic-funtun'), caption: 'The stencil patterns in another material: ceramic, 2021' },
     ],
   },
 
