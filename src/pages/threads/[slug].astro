@@ -18,7 +18,7 @@ const rows = t.exhibited?.length ? t.exhibited : cvForThread(slug).map((r) => ({
 const related = (t.related || []).map(threadBySlug).filter((r) => r && r.hasPage);
 ---
 
-<Base
+<Base brief
   title={t.title}
   description={t.lede}
   palette={t.palette || ''}

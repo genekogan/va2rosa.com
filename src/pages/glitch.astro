@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
 import { glitch as g } from '../data/glitch.js';
 ---
 
-<Base title={g.title} description={g.intro[0]} image={g.hero} current="Art" bodyClass="paper">
+<Base brief title={g.title} description={g.intro[0]} image={g.hero} current="Art" bodyClass="paper">
   <div class="projhero">
     <img src={g.hero} alt={g.heroAlt} fetchpriority="high" />
     <div class="t">

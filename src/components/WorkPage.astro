@@ -8,7 +8,7 @@ import Spine from './Spine.astro';
 const { work } = Astro.props;
 ---
 
-<Base title={work.title} description={work.lede} bodyClass="paper" current="Art">
+<Base brief title={work.title} description={work.lede} bodyClass="paper" current="Art">
   <div class="projhero">
     <img src={work.hero} alt={work.heroAlt} fetchpriority="high" />
     <div class="t">

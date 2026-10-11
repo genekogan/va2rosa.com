@@ -3544,4 +3544,5 @@ html.brief .paper .vidcap,
 html.brief .paper .lmpipe,
 html.brief .paper .coauthor-line,
 html.brief .paper .thesis,
-html.brief .paper .strand p { display: none; }
+html.brief .paper .strand p,
+html.brief .paper li:not(:has(a, img, svg, video, iframe, figure, button)):not(.sitefoot *):not(.nav *) { display: none; }

@@ -5,7 +5,7 @@ import Story from '../../components/Story.astro';
 import { visibleMemories as vm } from '../../data/visible-memories.js';
 ---
 
-<Base title={vm.title} description={vm.lede} bodyClass="paper">
+<Base brief title={vm.title} description={vm.lede} bodyClass="paper">
   <div class="projhero">
     <img src={vm.hero} alt={vm.heroAlt} fetchpriority="high" />
     <div class="t">

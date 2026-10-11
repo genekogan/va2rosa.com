@@ -5,7 +5,7 @@ import { fiction as f } from '../../data/fiction.js';
 const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
 ---
 
-<Base title={f.title} current="Art" description={f.lede} image={f.hero} bodyClass="paper">
+<Base brief title={f.title} current="Art" description={f.lede} image={f.hero} bodyClass="paper">
   <div class="projhero">
     <img src={f.hero} alt={f.heroAlt} fetchpriority="high" />
     <div class="t">
