@@ -156,7 +156,7 @@ export const threads = [
         ],
         images: [
           { src: '/images/sr2/porto-1.webp', caption: 'Porto, northern Portugal, 2015' },
-          { src: '/images/muzi/mz-03.webp', caption: 'A laser-cut stencil, lit. Photograph by Marcos Muzi.' },
+          { src: '/images/muzi/mz-03-sq.webp', caption: 'A laser-cut stencil, lit. Photograph by Marcos Muzi.' },
         ],
       },
       {
