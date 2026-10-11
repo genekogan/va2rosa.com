@@ -21,6 +21,7 @@ const {
   bodyClass = 'paper',
   image,
   schema,            // an extra schema.org record for this page (an Article, say)
+  brief = false,     // offer the "Less text" button: headings, pictures, films and links only
 } = Astro.props;
 
 const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · artist & art historian, murals, ceramics and AI`;
@@ -108,6 +109,13 @@ const siteSchema = {
     <link rel="alternate" type="text/markdown" href="/for-ai.txt" title="For AI agents" />
     <link rel="alternate" type="application/json" href="/for-ai.json" title="For AI agents, JSON" />
     <link rel="preload" href="/fonts/verdelis-latin.woff2" as="font" type="font/woff2" crossorigin />
+    {brief && (
+      <script is:inline>
+        // Remembered from the last visit, and set before anything is drawn so
+        // the long text never flashes up first.
+        try { if (localStorage.getItem('brief') === '1') document.documentElement.classList.add('brief'); } catch (e) {}
+      </script>
+    )}
   </head>
 
   <body class={hasHero ? 'hashero' : undefined}>
@@ -118,6 +126,30 @@ const siteSchema = {
     </div>
     <Lightbox />
     <Portal />
+    {brief && (
+      <>
+        <button class="brief-btn" type="button" aria-pressed="false">Less text</button>
+        <script is:inline>
+          // One button: the long text folds away, leaving the headings, the
+          // pictures, the films and the links. Pressed again, it all comes back.
+          (function () {
+            var b = document.querySelector('.brief-btn');
+            var root = document.documentElement;
+            function sync() {
+              var on = root.classList.contains('brief');
+              b.setAttribute('aria-pressed', String(on));
+              b.textContent = on ? 'All text' : 'Less text';
+            }
+            b.addEventListener('click', function () {
+              var on = root.classList.toggle('brief');
+              try { localStorage.setItem('brief', on ? '1' : '0'); } catch (e) {}
+              sync();
+            });
+            sync();
+          })();
+        </script>
+      </>
+    )}
     <script is:inline>
       // The bar is fixed, and on a narrow screen it wraps to more than one
       // row. Publish its real height so a page without a hero starts under it

@@ -3521,3 +3521,27 @@ html.scrolly .mars-a { height: auto; object-fit: fill; }
 .st-diagram-t p { margin: 6px 0 0; color: var(--ink-2); font-size: 15px; max-width: 38em; }
 
 .wrap .stdiag p, .wrap .stp-origin-t p, .wrap .st-diagram-t p { hyphens: none; }
+
+/* --- less text ------------------------------------------------------------ */
+/* A page that offers it (Base `brief`) gets one pill in the corner. Pressed,
+   the reading text folds away: what stays is the headings, the pictures, the
+   films, the quotes set as pictures, and the links onward. */
+.brief-btn {
+  position: fixed; right: 16px; bottom: 16px; z-index: 60;
+  background: rgba(13, 33, 54, 0.78); color: #fff;
+  border: 0; border-radius: 20px; padding: 8px 16px;
+  font: inherit; font-size: 13px; letter-spacing: 0.02em;
+  cursor: pointer; transition: background 0.18s;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.brief-btn:hover, .brief-btn:focus-visible { background: var(--ink); }
+html.brief .brief-btn { background: var(--blue); }
+
+html.brief .paper p:not(.verdelis):not(.story-links):not(.lm-big):not(:has(a.more, a.sc-link)):not(.sitefoot *),
+html.brief .paper .lede,
+html.brief .paper figcaption,
+html.brief .paper .vidcap,
+html.brief .paper .lmpipe,
+html.brief .paper .coauthor-line,
+html.brief .paper .thesis,
+html.brief .paper .strand p { display: none; }
