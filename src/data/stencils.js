@@ -20,8 +20,6 @@ export const stencils = {
 
   idea: [
     'I imagined how interesting it could be to make optical illusions based on those old Portuguese tiles, giving the impression of volume and depth on flat, blank walls. One might have the impression of an entrance where there is none, or see a painting that extends to the floor, as if there were an entire structure on a different plane than the flat wall.',
-    'All of this is possible with digital distortions: digital layouts turned into stencils with laser cutting. It changes the very way of conceiving a public art intervention, our way of relating to space.',
-    'Imaginary Tiles became a collaboration with the architect Verônica Natividade, who specialises in parametric architecture. With the parametric process we pushed the optical illusion further, into anamorphosis. And to tell stories through the tiles, we mixed the Portuguese aesthetic with others: Arabic tiles, Chinese porcelain, the Adinkra pictograms of Ghana.',
   ],
 
   // where the patterns come from: each group is a set of cutting files
@@ -40,16 +38,16 @@ export const stencils = {
       items: [
         { src: P('is-alhambra'), caption: 'After the Alhambra, Granada' },
         { src: P('is-bluemosque'), caption: 'After the Blue Mosque, Istanbul' },
+        { src: P('cn-vase'), caption: 'An Alhambra pattern, in perspective' },
         { src: P('is-hexagons'), caption: 'Hexagons, drawn as an algorithm' },
       ],
     },
     {
       place: 'China',
-      note: 'Blue and white porcelain, where the blue began: Qing dynasty vases, clouds, frets and flowers.',
+      note: 'Blue and white porcelain, where the blue began: Qing dynasty vases, clouds and flowers.',
       items: [
         { src: P('cn-china'), caption: 'After Qing porcelain' },
         { src: P('cn-flower'), caption: 'A flower, cut as one line' },
-        { src: P('cn-vase'), caption: 'A Chinese fret, bent into a curve' },
       ],
     },
     {
@@ -62,12 +60,9 @@ export const stencils = {
     },
     {
       place: 'Africa',
-      note: 'Adinkra symbols from Ghana, Ethiopian crosses, and the Sona drawings of the Chokwe in Angola, the patterns that later led to the ethnomathematics research.',
+      note: 'Patterns from Ethiopia. The African patterns also run through the mixed tiles below, and later led to the ethnomathematics research.',
       items: [
-        { src: P('af-funtun'), caption: 'Funtunfunefu, an Adinkra symbol from Ghana, set into tiles' },
         { src: P('af-ethiopia'), caption: 'After Ethiopian patterns' },
-        { src: P('af-cross'), caption: 'An Ethiopian cross, drawn as an algorithm' },
-        { src: P('af-sona'), caption: 'Sona from Angola, crossed with a Chinese pattern' },
       ],
     },
     {
@@ -75,7 +70,9 @@ export const stencils = {
       note: 'The point of the series: the routes the patterns travelled, made into one surface.',
       items: [
         { src: P('mx-ptafro'), caption: 'Portuguese and African patterns in one tile' },
-        { src: P('mx-yantra'), caption: 'An Islamic pattern and a yantra' },
+        { src: P('af-sona'), caption: 'Sona from Angola, crossed with a Chinese pattern. Designed by Verônica Natividade' },
+        { src: P('mx-yantra'), caption: 'An Islamic pattern and a yantra. Designed by Verônica Natividade' },
+        { src: P('af-cross'), caption: 'An Ethiopian cross, drawn as an algorithm. Designed by Verônica Natividade' },
       ],
     },
   ],
@@ -124,22 +121,8 @@ export const stencils = {
     body: [
       'Each layout can be painted in several places with variations: changing the colours or the door shape, opening windows onto other places, making completely different compositions with the same pieces, or answering an architectural element that is already there.',
     ],
-    door: {
-      src: I('door-mock'),
-      caption: 'A layout for a closed space, every number a different stencil',
-      key: [
-        'A door handle',
-        'A different tile pattern for the door detail',
-        'The flat tile pattern',
-        'The tiles distorted upwards',
-        'The tiles distorted diagonally, flipped for the other side',
-        'The tiles distorted sideways, made of several stencils because it does not fit the machine, flipped for the other side',
-        'The floor, in anamorphosis, so that from one point the whole structure stands on another plane',
-      ],
-    },
     images: [
       { src: I('set-2'), caption: 'The same pieces, as a corridor in one-point perspective' },
-      { src: I('door-open'), caption: 'A layout for an open space' },
       { src: I('lisbon-roller'), caption: 'The Blue Wall Project, Lisbon, 2015' },
       { src: I('little-skips'), caption: 'Little Skips, New York, 2015' },
       { src: I('stroke-2016'), caption: 'Live painting at the Stroke Art Fair, Munich, 2016' },

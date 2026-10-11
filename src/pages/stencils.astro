@@ -79,13 +79,6 @@ import { stencils as s } from '../data/stencils.js';
     <section class="wsec">
       <div class="kicker">Modules: one set of pieces, many walls</div>
       <div class="narrow" style="margin-top:14px">{s.modules.body.map((p) => <p>{p}</p>)}</div>
-      <div class="stp-door">
-        <figure>
-          <img src={s.modules.door.src} alt={s.modules.door.caption} loading="lazy" />
-          <figcaption>{s.modules.door.caption}</figcaption>
-        </figure>
-        <ol>{s.modules.door.key.map((k) => <li>{k}</li>)}</ol>
-      </div>
       <div class="wgrid">
         {s.modules.images.map((im) => (
           <figure><img src={im.src} alt={im.caption} loading="lazy" /><figcaption>{im.caption}</figcaption></figure>
