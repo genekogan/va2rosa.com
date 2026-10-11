@@ -1,0 +1,116 @@
+---
+// The stencil research behind Silk Roads: the diagram first, then the idea,
+// where the patterns come from, how a picture becomes a stencil, what holds
+// and what breaks, distortion, and the modules that make a wall.
+import Base from '../layouts/Base.astro';
+import Spine from '../components/Spine.astro';
+import StencilDiagram from '../components/StencilDiagram.astro';
+import { stencils as s } from '../data/stencils.js';
+---
+
+<Base
+  title={s.title}
+  current="Art"
+  bodyClass="paper"
+  image={s.hero}
+  description={`${s.title}: laser-cut stencils, 2015 to 2018. ${s.lede}`}
+>
+  <article class="wrap stp">
+    <p class="fx-back" style="padding-top:60px"><a href="/threads/the-silk-roads">← Silk Roads</a></p>
+    <div class="kicker" style="margin-top:20px">{s.kicker}</div>
+    <h1 class="sec" style="margin:12px 0 14px">{s.title}</h1>
+    <p class="lede stp-lede">{s.lede}</p>
+
+    <StencilDiagram />
+
+    <section class="wsec">
+      <div class="kicker">The idea</div>
+      <div class="narrow" style="margin-top:14px">{s.idea.map((p) => <p>{p}</p>)}</div>
+    </section>
+
+    <section class="wsec">
+      <div class="kicker">Where the patterns come from</div>
+      {s.origins.map((o) => (
+        <div class="stp-origin">
+          <div class="stp-origin-t">
+            <h3>{o.place}</h3>
+            <p>{o.note}</p>
+          </div>
+          <div class="stp-pats">
+            {o.items.map((im) => (
+              <figure>
+                <img src={im.src} alt={im.caption} loading="lazy" />
+                <figcaption>{im.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <section class="wsec">
+      <div class="kicker">From a picture to a stencil</div>
+      <div class="narrow" style="margin-top:14px">{s.method.body.map((p) => <p>{p}</p>)}</div>
+      <div class="wgrid stp-four">
+        {s.method.images.map((im) => (
+          <figure><img src={im.src} alt={im.caption} loading="lazy" /><figcaption>{im.caption}</figcaption></figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="wsec">
+      <div class="kicker">What holds, and what breaks</div>
+      <p class="narrow stp-note">From my notes on the first stencils, on how the shape of a pattern decides whether its stencil survives the cutting.</p>
+      <ul class="stp-strength">
+        {s.strength.map((x) => <li><b>{x.t}</b><span>{x.d}</span></li>)}
+      </ul>
+    </section>
+
+    <section class="wsec">
+      <div class="kicker">Distortion and scale</div>
+      <div class="narrow" style="margin-top:14px">{s.distortion.body.map((p) => <p>{p}</p>)}</div>
+      <div class="stp-gallery">
+        {s.distortion.images.map((im) => (
+          <figure><img src={im.src} alt={im.caption} loading="lazy" /><figcaption>{im.caption}</figcaption></figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="wsec">
+      <div class="kicker">Modules: one set of pieces, many walls</div>
+      <div class="narrow" style="margin-top:14px">{s.modules.body.map((p) => <p>{p}</p>)}</div>
+      <div class="stp-door">
+        <figure>
+          <img src={s.modules.door.src} alt={s.modules.door.caption} loading="lazy" />
+          <figcaption>{s.modules.door.caption}</figcaption>
+        </figure>
+        <ol>{s.modules.door.key.map((k) => <li>{k}</li>)}</ol>
+      </div>
+      <div class="wgrid">
+        {s.modules.images.map((im) => (
+          <figure><img src={im.src} alt={im.caption} loading="lazy" /><figcaption>{im.caption}</figcaption></figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="wsec">
+      <div class="kicker">Algorithms</div>
+      <div class="narrow" style="margin-top:14px">{s.algorithms.body.map((p) => <p>{p}</p>)}</div>
+      <figure class="wgrid solo" style="margin-top:20px">
+        <img src={s.algorithms.image.src} alt={s.algorithms.image.caption} loading="lazy" />
+        <figcaption>{s.algorithms.image.caption}</figcaption>
+      </figure>
+    </section>
+
+    <section class="wsec">
+      <div class="kicker">Workshops</div>
+      <ul class="stp-list">{s.workshops.map((w) => <li>{w}</li>)}</ul>
+    </section>
+
+    <p class="story-links" style="margin-top:40px">
+      {s.links.map((l) => <a class="more" href={l.href}>{l.label} ⇢</a>)}
+    </p>
+
+    <div style="padding:30px 0 90px"><Spine current="the-silk-roads" /></div>
+  </article>
+</Base>

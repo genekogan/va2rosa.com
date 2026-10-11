@@ -160,6 +160,16 @@ export const threads = [
         ],
       },
       {
+        // the method, drawn, and the way into the page that explains it
+        diagram: {
+          kicker: 'How the stencils work',
+          title: 'Pattern, stencil, distortion, modules',
+          body: 'A pattern becomes a laser-cut stencil, is bent into perspective and cut at several scales, and the pieces are sprayed side by side into spaces that are not there.',
+          href: '/stencils',
+          label: 'The stencil research',
+        },
+      },
+      {
         title: 'Where the blue comes from',
         body: [
           'In New York, people looked at my tile-like paintings and asked about Moorish art, about Morocco, whether I was Muslim. It made sense, because Portugal never stopped being kinda Moorish. In the late 15th century King Manuel fell for the ceramics of Islamic Spain and wanted something similar in his palace in Sintra. Even the word “azulejo” comes from the Arabic azzelij, small polished stone, and has nothing to do with “azul”, though it looks like it does. The blue and white came from China, which imported cobalt oxide from Persia because it gave the most intense colour on ceramics. I like to think symbolism is often born from material limitations, and the love for blue may not be what spread it, at least at first. Sometimes it’s hard to know who started what, and why things moved in a certain direction.',

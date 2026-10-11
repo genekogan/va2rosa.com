@@ -3434,3 +3434,85 @@ html.scrolly .mars-a { height: auto; object-fit: fill; }
 /* the footer's link for machines: there, but quiet */
 .sitefoot .foot-ai { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
 .sitefoot .foot-ai:hover { color: var(--ink); }
+
+/* --- the stencil diagram (StencilDiagram.astro) ---------------------------------- */
+.stdiag { margin: 34px 0; }
+.stdiag-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.stdiag-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; counter-reset: none; }
+.stdiag-steps li { position: relative; }
+/* the arrow from one drawing to the next */
+.stdiag-steps li + li::before {
+  content: '→'; position: absolute; left: -22px; top: calc(50% - 40px);
+  font-family: var(--hand); color: var(--ink-3); font-size: 20px;
+}
+.stdiag svg { width: 100%; height: auto; display: block; overflow: visible; }
+.stdiag .ink { fill: none; stroke: var(--blue); stroke-width: 1.6; stroke-linejoin: round; }
+.stdiag .plate, .stdiag .bridge { fill: var(--blue); }
+.stdiag .hole { fill: var(--paper); }
+.stdiag .frame { fill: none; stroke: var(--blue); stroke-width: 1.2; opacity: 0.5; }
+.stdiag .callout path { fill: none; stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 3; }
+.stdiag .callout text { font-family: var(--hand); font-size: 14px; fill: var(--ink-2); }
+.stdiag-t { font-family: var(--hand); color: var(--blue); font-size: 17px; margin-top: 10px; text-align: center; }
+.stdiag-t span { display: inline-block; min-width: 1.4em; color: var(--ink-3); }
+.stdiag p { font-size: 13.5px; line-height: 1.45; color: var(--ink-2); text-align: center; margin: 6px 0 0; }
+.stdiag.compact .stdiag-steps { gap: 18px; }
+.stdiag.compact .stdiag-t { font-size: 14px; }
+@media (max-width: 760px) {
+  .stdiag-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; }
+  .stdiag-steps li + li::before { display: none; }
+}
+
+/* --- the stencils page ------------------------------------------------------------ */
+.stp-lede { max-width: 34em; }
+.stp-origin {
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr); gap: 30px;
+  padding: 30px 0; border-top: 1px solid var(--line);
+}
+.stp-origin:first-of-type { margin-top: 18px; }
+.stp-origin-t h3 { font-family: var(--hand); color: var(--blue); font-size: clamp(22px, 2.4vw, 28px); margin: 0 0 8px; }
+.stp-origin-t p { font-size: 14.5px; color: var(--ink-2); margin: 0; }
+.stp-pats { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; align-items: end; }
+.stp-pats figure { margin: 0; }
+.stp-pats img { width: 100%; height: 190px; object-fit: contain; display: block; }
+.stp-pats figcaption, .stp-gallery figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 6px; line-height: 1.4; }
+.stp-four { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; margin-top: 22px; }
+.stp-four img { aspect-ratio: 3 / 4; object-fit: cover; }
+.wrap p.stp-note { font-size: 14px; color: var(--ink-3); margin-top: 10px; }
+.stp-strength { list-style: none; padding: 0; margin: 16px 0 0; max-width: 46em; }
+.stp-strength li { display: grid; grid-template-columns: 11em minmax(0, 1fr); gap: 18px; padding: 12px 0; border-bottom: 1px solid var(--line-2); }
+.stp-strength b { font-family: var(--hand); font-weight: 400; color: var(--blue); font-size: 17px; }
+.stp-strength span { font-size: 15px; color: var(--ink-2); }
+.stp-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 22px; margin-top: 22px; align-items: end; }
+.stp-gallery figure { margin: 0; }
+.stp-gallery img { width: 100%; height: 220px; object-fit: contain; display: block; }
+.stp-door { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 34px; align-items: center; margin: 24px 0 30px; }
+.stp-door figure { margin: 0; }
+.stp-door img { width: 100%; max-width: 420px; height: auto; display: block; }
+.stp-door figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 8px; }
+.stp-door ol { margin: 0; padding-left: 1.4em; font-size: 15px; color: var(--ink-2); }
+.stp-door li { padding: 5px 0; }
+.stp-list { margin: 14px 0 0 1.2em; font-size: 15px; color: var(--ink-2); }
+.stp-list li { padding: 3px 0; }
+@media (max-width: 760px) {
+  .stp-origin { grid-template-columns: 1fr; gap: 14px; }
+  .stp-pats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stp-pats img { height: 140px; }
+  .stp-four { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .stp-strength li { grid-template-columns: 1fr; gap: 4px; }
+  .stp-door { grid-template-columns: 1fr; }
+  .stp-gallery img { height: 180px; }
+}
+
+/* the diagram as a card on the Silk Roads page, pointing to /stencils */
+.st-diagram {
+  display: block; margin: 30px 0 10px; padding: 26px 26px 22px;
+  border: 1px solid rgba(28, 74, 134, 0.28); border-radius: 22px 18px 24px 20px / 20px 24px 18px 22px;
+  background: rgba(255, 255, 255, 0.45); transition: background 0.25s, border-color 0.25s;
+}
+.st-diagram:hover { background: rgba(255, 255, 255, 0.75); border-color: var(--blue); }
+.st-diagram .stdiag { margin: 0 0 14px; }
+.st-diagram-t { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; }
+.st-diagram-t h3 { font-family: var(--hand); color: var(--blue); font-size: clamp(22px, 2.6vw, 30px); margin: 4px 0 0; }
+.st-diagram-t p { margin: 6px 0 0; color: var(--ink-2); font-size: 15px; max-width: 38em; }
+
+.wrap .stdiag p, .wrap .stp-origin-t p, .wrap .st-diagram-t p { hyphens: none; }

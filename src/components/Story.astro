@@ -2,11 +2,24 @@
 // A long text with its pictures and films set into it, section by section.
 // Used where a thread carries an essay rather than a thesis and four strands.
 // The markup matches WorkPage's, so the slide galleries behave the same way.
+import StencilDiagram from './StencilDiagram.astro';
 const { story } = Astro.props;
 ---
 
 {story.map((sec) => (
-  sec.highlight ? (
+  sec.diagram ? (
+    <a class="st-diagram" href={sec.diagram.href}>
+      <StencilDiagram compact />
+      <div class="st-diagram-t">
+        <div>
+          <div class="kicker">{sec.diagram.kicker}</div>
+          <h3>{sec.diagram.title}</h3>
+          <p>{sec.diagram.body}</p>
+        </div>
+        <span class="more">{sec.diagram.label} ⇢</span>
+      </div>
+    </a>
+  ) : sec.highlight ? (
     <a class="st-big" href={sec.highlight.href}>
       <img src={sec.highlight.image} alt={sec.highlight.imageAlt} loading="lazy" data-nozoom />
       <div>
