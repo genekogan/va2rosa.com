@@ -300,17 +300,6 @@ const tabs = [
       </p>
     </section>
 
-    <!-- HOW ONE IS MADE -------------------------------------------------------- -->
-    <section class="wsec">
-      <div class="kicker">{lmPage.pipeline.kicker}</div>
-      <h2 class="sec" style="margin:10px 0 16px">{lmPage.pipeline.title}</h2>
-      <ol class="lmpipe">
-        {lmPage.pipeline.steps.map((t, i) => (
-          <li><span>{String(i + 1).padStart(2, '0')}</span>{t}</li>
-        ))}
-      </ol>
-    </section>
-
     <!-- THE CODEX ------------------------------------------------------------ -->
     {codex && (
       <section class="wsec">
