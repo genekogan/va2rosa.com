@@ -479,7 +479,7 @@ const figs = essays.research.figures.filter((f) =>
         var SPEED = [1, 0.93, 0.8];
         if (svg.dataset.key !== key) {
           svg.dataset.key = key; svg._w = innerWidth; svg._h = Hs;
-          var narrow = innerWidth <= 760, w = narrow ? 30 : 170, cx = w / 2, A = narrow ? 8 : 38;
+          var narrow = innerWidth <= 760, w = narrow ? 40 : 170, cx = w / 2, A = narrow ? 11 : 38;
           svg.setAttribute('viewBox', '0 0 ' + w + ' ' + Hs);
           svg.style.width = w + 'px';
           // the stops, each a little off the middle, in height and to the side,
@@ -496,7 +496,7 @@ const figs = essays.research.figures.filter((f) =>
           // the knot: a trefoil each thread goes round once as it reaches a
           // stop. It takes scroll to tie (KNOT px of "time"), and the threads
           // come in one after another (LAG), so you see the knot being made.
-          var KNOT = narrow ? 80 : 130, LAG = narrow ? 18 : 28, sc = narrow ? 2.2 : 3.4;
+          var KNOT = narrow ? 90 : 130, LAG = narrow ? 18 : 28, sc = narrow ? 3 : 3.4;
           var built = [];
           for (var n = 0; n < 3; n++) {
             var ph = [0, 2.1, 4.2][n], pts = [], tm = [], shift = 0, sk = 1;
@@ -553,6 +553,14 @@ const figs = essays.research.figures.filter((f) =>
         var Tlin = p >= 1 && !document.documentElement.classList.contains('scrolly')
           ? Infinity
           : Math.max(0, (steadyH() * 0.6 - r.top) * (svg._end / svg._yEnd));
+        // the pen follows the scroll a few frames behind, so a phone's flick
+        // (which reports the scroll in big jumps) draws as one smooth stroke
+        // instead of the line leaping ahead
+        if (Tlin !== Infinity && svg._T != null && svg.dataset.key === svg._Tkey) {
+          var gap = Tlin - svg._T;
+          if (Math.abs(gap) > 2) { Tlin = svg._T + gap * 0.3; ask(); }
+        }
+        svg._T = Tlin === Infinity ? null : Tlin; svg._Tkey = svg.dataset.key;
         for (var n2 = 0; n2 < paths.length; n2++) {
           var el = paths[n2], tm = el._tm, L = el._len, lo = 0, hi = tm.length - 1;
           // its own pace, a little uneven, never going backwards

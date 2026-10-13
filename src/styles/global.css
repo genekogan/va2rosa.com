@@ -3346,8 +3346,15 @@ html.scrolly .portal-win { clip-path: circle(0px at 50% 50%); }
 .bw-links a span { font-size: 11px; color: var(--ink-3); letter-spacing: 0.04em; }
 .bw-links a:hover { color: var(--ink); }
 .bw-links a:hover::before { background: rgba(28, 74, 134, 0.09); }
+/* the same on phones for the text coming into focus and the pencil edge round
+   each label: they are redrawn at every scroll step, and the threads stutter
+   with them. The text fades in instead; the labels keep their uneven outline. */
+@media (max-width: 760px), (hover: none) {
+  .bw-text { filter: none; }
+  .bw-links a::before, .bw-links a::after { filter: none; }
+}
 @media (max-width: 760px) {
-  .bw-braid { left: 9px; translate: -50% 0; }
+  .bw-braid { left: 12px; translate: -50% 0; }
   .bw-item { grid-template-columns: 1fr; gap: 18px; padding: 34px 0 34px 30px; }
   .bw-item:nth-child(even) .bw-img { order: 0; }
   .bw-img { aspect-ratio: 4 / 3.4; }
