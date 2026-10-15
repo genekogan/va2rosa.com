@@ -45,7 +45,7 @@ export const films = [
     id: '1BJsrK_8AdI',
     year: 2024,
     title: 'Dear Human, My Muse',
-    note: 'Introducing Verdelis. Cannes World, Best Female Director, Super Short Film',
+    note: 'Introducing Verdelis. Global South Special Award, Korea International AI Film Festival',
     blurb:
       'Little Martians are future beings who claim to be the creators of our reality. One of them wants to apologise to humanity. Built from real ceramics, with Blender and Eden.art, and music made with Suno. The most travelled of the films: some thirty festivals and a dozen prizes.',
   },

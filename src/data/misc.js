@@ -58,7 +58,7 @@ export const research = [
     kind: 'film',
     year: 2024,
     title: 'Dear Human, My Muse',
-    venue: 'Cannes World Film Festival, Best Female Director (Super Short)',
+    venue: 'Korea International AI Film Festival, Global South Special Award',
   },
 ];
 
