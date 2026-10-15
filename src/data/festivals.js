@@ -126,7 +126,7 @@ export const festivalRows = [
   r(2026, VM, 'The Galactic Imaginarium Film Festival', 'Official selection, 18 to 27 September 2026', 'Timiș and Dumbrăvița, Romania'),
   r(2026, VM, 'Experimental Brasil', 'Best Experimental Film Made with AI', 'Campos dos Goytacazes, Brazil'),
   r(2026, VM, 'AI Artist', 'Official selection', 'Beijing and Shanghai, China'),
-  r(2026, VM, 'BAIFF, Burano Artificial Intelligence Film Festival', 'Official selection', 'Venice, Italy'),
+  r(2026, VM, 'BAIFF, Burano Artificial Intelligence Film Festival', 'Nominee', 'Venice, Italy'),
   r(2026, VM, 'Shapeshift Festival', 'Official selection', 'Sofia, Bulgaria'),
   r(2026, VM, 'MetaCannes Film3 Festival', 'Official selection', 'Cannes, France'),
   r(2025, VM, 'AI International Film Festival', 'Best Musical', ''),

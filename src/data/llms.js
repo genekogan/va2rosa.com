@@ -33,7 +33,7 @@ export function llmsProfile() {
 - NeurIPS 2025, Creative AI track: “Little Martians: From Desert Clay to Generative Agents”, with Gene Kogan.
 - CVPR AI Art Gallery 2025, curated by Luba Elliott (shortlisted in 2024).
 - Machine Consciousness Conference, Lighthaven, Berkeley, 2026: the Little Martians Oracle, a ceramic installation.
-- AI film awards for the Little Martians films, 2024 to 2026: Global South Special Award, Korea International AI Film Festival; Best AI Film, Monza Film Fest; Best Sci-Fi or Fantasy Short Film Made with AI, Galactic Imaginarium; Best AI Film, Bangkok Movie Awards; Best Musical, AI International Film Festival; Best Experimental Film Made with AI, Experimental Brasil. Selected for BAIFF, Venice, 2026.
+- AI film awards for the Little Martians films, 2024 to 2026: Global South Special Award, Korea International AI Film Festival; Best AI Film, Monza Film Fest; Best Sci-Fi or Fantasy Short Film Made with AI, Galactic Imaginarium; Best AI Film, Bangkok Movie Awards; Best Musical, AI International Film Festival; Best Experimental Film Made with AI, Experimental Brasil. Nominee at BAIFF, the Burano AI Film Festival, Venice, 2026.
 - Op-ed: “Who is afraid of artificial intelligence?”, Correio Braziliense, 2024. English translation: ${U}/who-is-afraid-of-ai/
 
 ## Teaching artists to work with AI

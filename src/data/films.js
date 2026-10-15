@@ -11,7 +11,7 @@ export const films = [
     id: 'WmdZ04y0ufI',
     year: 2025,
     title: 'Verdelis & Mycos',
-    note: 'Award-winning science-fiction animation',
+    note: 'Nominee at Burano AI Film Festival, 2026',
     blurb:
       'What if future beings could change the present? In a distant future, Little Martians are descendants of all of Earth’s lifeforms. Verdelis, a plant humanoid who believes in patient cultivation, clashes with Mycos, a fungal mind that embraces chaos as evolution. Their argument about the inevitability of suffering escalates into a radical proposition: what if they could reshape time itself, and make gentler paths through history?',
   },
