@@ -28,7 +28,7 @@ export const films = [
     id: 'yWZLU5njSbk',
     year: 2024,
     title: 'Little Martians & Abraham',
-    note: 'Sold at Christie’s with the original sculpture',
+    note: 'Sold at Christie’s with the original sculpture, Verdelia, as one lot',
     blurb:
       'Little Martians are future beings who claim to be the creators of our reality. I made this one alone, as a love letter to Gene Kogan and his Abraham project. It went to Christie’s Augmented Intelligence auction alongside the ceramic it came from, and to the CVPR AI Art Gallery.',
   },

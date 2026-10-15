@@ -37,7 +37,7 @@ export const lm = {
       title: 'Augmented Intelligence, Christie’s',
       where: 'Rockefeller Center, New York · 20 February to 5 March 2025',
       body: [
-        'Verdelia went to the first auction at a major house dedicated entirely to AI art. She was sold as a physical ceramic sculpture with the film attached to it, which is the whole argument of the project in one lot: the object is not a by-product of the animation, and the animation is not a substitute for the object.',
+        'Verdelia went to the first auction at a major house dedicated entirely to AI art. She was sold as a physical ceramic sculpture with her film, Little Martians & Abraham, attached to it, which is the whole argument of the project in one lot: the object is not a by-product of the animation, and the animation is not a substitute for the object.',
       ],
       href: '/christies',
       images: [
@@ -89,7 +89,7 @@ export const lm = {
     title: 'The Arium metaverses',
     body: [
       'Twice I built the Little Martians as a world to be visited online, both on the Arium platform. The first went up in early 2022 as part of my Untitled Frontier collection. The second, later that same year, was made for Pupila Dilatada 3.',
-      'The architecture of the first metaverse was based on a 3d scan of one my ceramics. The second was a real place I 3d scanned in Portugal. I intend to return to building metaverses soon, they are getting new powers with AI and we’ve barely scratched the surface.',
+      'The architecture of the first metaverse was based on a 3d scan of one of my ceramics. The second was a real place I 3d scanned in Portugal. I intend to return to building metaverses soon, they are getting new powers with AI and we’ve barely scratched the surface.',
     ],
   },
 

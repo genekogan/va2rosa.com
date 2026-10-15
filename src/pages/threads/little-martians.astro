@@ -53,19 +53,23 @@ const otherShows = mainShows
 const all = cvForThread('little-martians');
 const prs = press.filter((p) => p.thread === 'little-martians');
 
-// The upcoming rows in cv.js are written by hand and some of them describe a
-// festival that the festival dataset already carries. On /info those live in
-// different sections; merged into one list here they would read as doubles.
-// Keep the festival row, and let it inherit the "upcoming" flag.
+// Some rows in cv.js are written by hand and describe a screening the festival
+// dataset already carries. On /info those live in different sections; merged
+// into one list here they would read as doubles. Keep the festival row, and let
+// it inherit the hand-written row's flags.
 const city = (c = '') => c.toLowerCase().split(',').map((x) => x.trim()).slice(-2).join(', ');
 const drop = new Set();
 for (const n of all) {
-  if (!n.now) continue;
+  if (n.film) continue;
   const twin = all.find(
     (r) => r !== n && r.film && r.year === n.year &&
       r.film.toLowerCase() === n.title.toLowerCase() && city(r.city) === city(n.city),
   );
-  if (twin) { twin.now = true; drop.add(n); }
+  if (twin) {
+    if (n.now) twin.now = true;
+    if (n.lmSelected) twin.lmSelected = true;
+    drop.add(n);
+  }
 }
 const rows = all.filter((r) => !drop.has(r));
 
@@ -78,6 +82,12 @@ const KIND = {
   teaching: 'talk',
   publication: 'publication',
 };
+
+// The monthly and bimonthly prizes stay in the record, but after the rest of
+// their year, so the selective ones are what a reader meets first.
+const isMinor = (r) =>
+  /\b(bi)?monthly\b/i.test(`${r.outcome ?? ''} ${r.title ?? ''} ${r.venue ?? ''}`) ||
+  /night of (drama )?shorts|reale film festival|absurd film festival/i.test(`${r.title ?? ''} ${r.venue ?? ''}`);
 
 // A festival's own wording. Everything that is not one of these is a win.
 const isWin = (o) =>
@@ -92,6 +102,7 @@ const record = [
     href: r.href,
     featured: !!r.lmSelected,
     tag: isWin(r.outcome) ? r.outcome : '',
+    minor: (r.type === 'award' || isWin(r.outcome)) && isMinor(r),
   })),
   ...prs.map((p) => ({
     year: p.year,
@@ -102,7 +113,12 @@ const record = [
     featured: !!p.lmSelected,
     tag: '',
   })),
-].sort((a, b) => b.year - a.year);
+].sort((a, b) => b.year - a.year || (a.minor ? 1 : 0) - (b.minor ? 1 : 0));
+
+// On now and coming next: the hand-written upcoming rows, soonest first.
+const nowRows = all
+  .filter((r) => r.now && !r.film)
+  .sort((a, b) => (a.year - b.year) || ((a.month ?? 0) - (b.month ?? 0)));
 
 const counts = (k) => record.filter((r) => r.kind === k).length;
 const tabs = [
@@ -141,6 +157,15 @@ const tabs = [
         <a href="https://littlemartians.world" target="_blank" rel="noopener" style="border-bottom:1px solid rgba(13,33,54,.3)">littlemartians.world</a>
       </div>
     </div>
+
+    <nav class="lmnav" aria-label="On this page">
+      <a href="#ceramics">Ceramics</a>
+      <a href="#books">Books</a>
+      <a href="#films">Films</a>
+      <a href="#shows">Art shows</a>
+      <a href="#list" data-lmgo="talk">Talks</a>
+      <a href="#list" data-lmgo="all">List</a>
+    </nav>
 
     <div class="narrow" style="margin-top:52px">
       <p class="lede">{t.lede}</p>
@@ -204,7 +229,7 @@ const tabs = [
   </div>
 
   <!-- IMAGINING THE FUTURE WITH OUR HANDS ------------------------------------ -->
-  <section class="lmquote">
+  <section class="lmquote" id="ceramics">
     <div class="lmquote-in">
       <div class="lmquote-t">
         <p class="verdelis lmquote-big">{lmPage.hands.quote}</p>
@@ -264,13 +289,14 @@ const tabs = [
       </div>
     </div>
 
+    <h3 class="lmlora-t">Training AI models on the original ceramic characters</h3>
     <figure class="lmlora">
       <img src="/images/lm/verdelis-lora.webp" alt="Verdelis: the original photographs of the ceramic head, the LoRA concept trained on them on Eden, and the AI generations that came out of it." loading="lazy" />
       <figcaption>Verdelis, from clay to model: the original photographs, the LoRA concept trained on them, and the AI generations, trained on <a class="ul" href="https://eden.art" target="_blank" rel="noopener">Eden.art</a>.</figcaption>
     </figure>
 
     <!-- THE FILMS ------------------------------------------------------------ -->
-    <section class="wsec lm-films">
+    <section class="wsec lm-films" id="films">
       <div class="kicker">{lm.films.kicker}</div>
       <h2 class="sec" style="margin:10px 0 6px">{lm.films.title}</h2>
       <div class="narrow">
@@ -302,7 +328,7 @@ const tabs = [
 
     <!-- THE CODEX ------------------------------------------------------------ -->
     {codex && (
-      <section class="wsec">
+      <section class="wsec" id="books">
         <div class="kicker">The book at the centre</div>
         <h2 class="sec" style="margin:10px 0 6px">{codex.title}</h2>
         <div class="narrow"><p>{codex.body}</p></div>
@@ -345,7 +371,7 @@ const tabs = [
     </a>
 
     <!-- THE SHOWS ------------------------------------------------------------ -->
-    <section class="wsec">
+    <section class="wsec" id="shows">
       <div class="kicker">Shown</div>
       <h2 class="sec" style="margin:10px 0 6px">Three rooms</h2>
     </section>
@@ -520,7 +546,7 @@ const tabs = [
     </section>
 
     <!-- THE RECORD ----------------------------------------------------------- -->
-    <section class="wsec">
+    <section class="wsec" id="list">
       <div class="kicker">The record</div>
       <h2 class="sec" style="margin:10px 0 6px">Little Martians, everywhere it has been</h2>
       <p style="font-size:14px; color:var(--ink-2); max-width:42em">{lm.record.note}</p>
@@ -550,6 +576,23 @@ const tabs = [
         ))}
       </div>
     </section>
+
+    {nowRows.length > 0 && (
+      <section class="wsec lmnow">
+        <div class="kicker">Now</div>
+        {nowRows.map((r) => (
+          <div class="lmnow-row">
+            <span class="lmnow-when">{r.monthLabel ? `${r.monthLabel} ${r.year}` : r.year}</span>
+            <div>
+              {r.href
+                ? <a class="pr-t" href={r.href} target="_blank" rel="noopener">{r.title}</a>
+                : <b>{r.title}</b>}
+              <div class="t">{[r.venue, r.city].filter(Boolean).join(', ')}</div>
+            </div>
+          </div>
+        ))}
+      </section>
+    )}
 
     <p style="margin:56px 0 0">
       <a class="more" href="/art">All the art ⇢</a>
@@ -637,6 +680,13 @@ const tabs = [
           });
           apply(b.getAttribute('data-lmfilter'));
         });
+      });
+      function go(key) {
+        var b = document.querySelector('[data-lmfilter="' + key + '"]');
+        if (b) b.click();
+      }
+      document.querySelectorAll('[data-lmgo]').forEach(function (a) {
+        a.addEventListener('click', function () { go(a.getAttribute('data-lmgo')); });
       });
       apply('selected');
     })();

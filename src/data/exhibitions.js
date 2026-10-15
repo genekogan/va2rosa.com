@@ -98,7 +98,7 @@ const showCards = [
     venue: 'Christie’s, Rockefeller Center, New York',
     image: '/images/shows/christies.webp',
     imageAlt: 'Verdelia, a Little Martian ceramic head, on display at Christie’s.',
-    body: 'Verdelia went to the first auction at a major house dedicated to AI art, 20 February to 5 March 2025. She was sold as a physical sculpture with a digital film attached.',
+    body: 'Verdelia went to the first auction at a major house dedicated to AI art, 20 February to 5 March 2025. She was sold as a physical sculpture with a digital film attached, Little Martians & Abraham.',
     href: '/christies',
   },
   {

@@ -909,7 +909,7 @@ export const christies = {
   intro: [
     'Augmented Intelligence was the first auction at a major house dedicated to AI art. It gathered work from early pioneers of the 1960s such as Harold Cohen through to Refik Anadol, Pindar Van Arman, Holly Herndon & Mat Dryhurst, Alexander Reben, Claire Silver, Sasha Stiles and others.',
     'The sale set out to explore human agency in the age of AI: robotics, GANs and interactive work alongside painting, sculpture, print and digital art. The exhibition stayed up at Rockefeller Center for the length of the online sale.',
-    'Verdelia went as a physical sculpture with a digital film attached, and was sold.',
+    'Verdelia went as a physical sculpture with a digital film attached, Little Martians & Abraham, and was sold as one lot.',
   ],
   videos: [
     { title: 'The film', youtube: '5w1JrowPvjo', caption: 'Little Martians at Christie’s Augmented Intelligence.' },

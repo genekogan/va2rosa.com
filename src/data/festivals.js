@@ -18,7 +18,6 @@ export const FESTIVAL_SITES = {
   'Dubai City Film Festival': 'https://filmfreeway.com/DubaiCityFilmFestival',
   'AI International Film Festival': 'https://filmfreeway.com/AIInternationalFilmFestival',
   'Experimental Brasil': 'https://experimentalbrasiljournal.neocities.org/interviews#2026-2026-vanessa-rosa',
-  'Experimenta Brasil': 'https://www.experimentabrasil.com.br/',
   'AI Artist': 'https://aiartistfestival.com/',
   'Bangkok Movie Awards': 'https://www.bangkokmovieawards.com/',
   'Shapeshift Festival': 'https://shapeshiftfestival.com/',
@@ -189,7 +188,7 @@ export const festivalRows = [
   // ——— Little Martians & Abraham ———
   r(2025, LA, 'Neu Wave AI Film Festival', 'Finalist', 'Los Angeles'),
   r(2025, LA, 'AI Film Fest Serbia', 'Semi-finalist', 'Belgrade, Serbia'),
-  r(2025, LA, 'Experimenta Brasil', 'Official selection, Best Experimental Film Made with AI', 'Campos dos Goytacazes, Brazil'),
+  r(2025, LA, 'Experimental Brasil', 'Official selection, Best Experimental Film Made with AI', 'Campos dos Goytacazes, Brazil'),
   r(2025, LA, 'The Seattle AI Film Festival', 'Official selection, Best Experimental Short', 'Seattle'),
   r(2025, LA, 'BAIFF, Burano Artificial Intelligence Film Festival', 'Official selection, animation', 'Venice, Italy'),
 
