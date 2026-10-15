@@ -156,7 +156,7 @@ const figs = essays.research.figures.filter((f) =>
       </p>
 
       <ol class="bw-list" data-scrolly="braid">
-        <svg class="bw-braid" aria-hidden="true"><g class="bw-lines"><path /><path /><path /><path /><path /><path /></g><g class="bw-stops"></g></svg>
+        <svg class="bw-braid" aria-hidden="true"><g class="bw-lines"><path /><path /><path /><path /><path /><path /></g><g class="bw-stops"></g></svg><canvas class="bw-braid bw-cv" aria-hidden="true"></canvas>
         {collections.map((c, i) => (
           <li class="bw-item" data-scrolly="reveal">
             <a class="bw-img" href={c.items[0].href} tabindex="-1" aria-hidden="true">
@@ -331,6 +331,48 @@ const figs = essays.research.figures.filter((f) =>
       return cl((vh - r.top) / r.height);
     }
 
+    // the braid on a canvas: each thread drawn from its start to where its pen
+    // has got to, then a fainter second pass beside it (as in the drawing)
+    var CV_INK = ['rgba(28,74,134,0.6)', 'rgba(91,63,143,0.45)', 'rgba(170,132,52,0.75)'];
+    function paintCv(cv, Tlin, SPEED) {
+      var b = cv._b, ends = [];
+      for (var n = 0; n < 3; n++) {
+        var tm = b[n].tm, hi = tm.length - 1, lo = 0;
+        var T = Tlin === Infinity ? Infinity : Tlin * SPEED[n] + 24 * Math.sin(Tlin / 230 + n * 2.1) * Math.min(1, Tlin / 200);
+        if (T >= tm[hi]) { ends.push([hi, 1]); continue; }
+        if (T <= tm[0]) { ends.push([0, 0]); continue; }
+        while (hi - lo > 1) { var mid = (lo + hi) >> 1; tm[mid] <= T ? (lo = mid) : (hi = mid); }
+        ends.push([lo, tm[hi] > tm[lo] ? (T - tm[lo]) / (tm[hi] - tm[lo]) : 0]);
+      }
+      var key = ends.map(function (e) { return e[0] + ':' + e[1].toFixed(2); }).join(',');
+      if (key === cv._last) return;
+      cv._last = key;
+      var ctx = cv.getContext('2d'), dpr = cv._dpr;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      for (var n2 = 0; n2 < 3; n2++) {
+        var pts = b[n2].pts, e = ends[n2];
+        if (e[0] === 0 && e[1] === 0) continue;
+        for (var ghost = 0; ghost < 2; ghost++) {
+          var dx = ghost ? 0.9 - n2 * 0.5 : 0, dy = ghost ? 1.5 : 0;
+          ctx.setTransform(dpr, 0, 0, dpr, dx * dpr, dy * dpr);
+          ctx.globalAlpha = ghost ? 0.45 : 1;
+          ctx.lineWidth = ghost ? 0.7 : 1.15;
+          ctx.strokeStyle = CV_INK[n2];
+          ctx.beginPath();
+          ctx.moveTo(pts[0][0], pts[0][1]);
+          for (var m = 1; m <= e[0]; m++) ctx.lineTo(pts[m][0], pts[m][1]);
+          if (e[0] + 1 < pts.length && e[1] > 0) {
+            var a = pts[e[0]], c = pts[e[0] + 1];
+            ctx.lineTo(a[0] + (c[0] - a[0]) * e[1], a[1] + (c[1] - a[1]) * e[1]);
+          }
+          ctx.stroke();
+        }
+      }
+      ctx.globalAlpha = 1;
+    }
+
     var draw = {
       portal: function (sec, p) {
         var layer = sec.querySelector('.tlp-portal'), cv = layer.querySelector('canvas');
@@ -466,7 +508,12 @@ const figs = essays.research.figures.filter((f) =>
       },
 
       braid: function (sec, p) {
-        var svg = sec.querySelector('.bw-braid'), paths = svg.querySelectorAll('.bw-lines path');
+        var svg = sec.querySelector('svg.bw-braid'), paths = svg.querySelectorAll('.bw-lines path');
+        // on phones and tablets the threads are painted on a canvas instead:
+        // Safari repaints only parts of a tall drawing whose lines are being
+        // drawn on, so the thread showed up in broken pieces. A canvas is
+        // always repainted whole.
+        var cv = sec.querySelector('canvas.bw-cv');
         var stopsG = svg.querySelector('.bw-stops');
         // rebuild only when the list really changes (a new width, or its height
         // moving by more than a few pixels as pictures settle), never mid-scroll
@@ -529,7 +576,7 @@ const figs = essays.research.figures.filter((f) =>
               d += (m ? 'L' : 'M') + pts[m][0].toFixed(1) + ' ' + pts[m][1].toFixed(1);
               if (m) len.push(len[m - 1] + Math.hypot(pts[m][0] - pts[m - 1][0], pts[m][1] - pts[m - 1][1]));
             }
-            built.push({ d: d, tm: tm, len: len });
+            built.push({ d: d, tm: tm, len: len, pts: pts });
           }
           // the time it takes the slowest thread to finish, and the height that
           // time is spread over
@@ -546,6 +593,13 @@ const figs = essays.research.figures.filter((f) =>
             });
           }
           stopsG.innerHTML = '';
+          svg._useCv = !!cv && getComputedStyle(cv).display !== 'none';
+          if (svg._useCv) {
+            var dpr = Math.min(devicePixelRatio || 1, 2);
+            cv.width = Math.round(w * dpr); cv.height = Math.round(Hs * dpr);
+            cv.style.width = w + 'px';
+            cv._dpr = dpr; cv._b = built; cv._last = '';
+          }
         }
         // the drawing keeps pace with a line about 60% down the screen, on
         // phones and computers alike (finished when standing still)
@@ -561,6 +615,7 @@ const figs = essays.research.figures.filter((f) =>
           if (Math.abs(gap) > 2) { Tlin = svg._T + gap * 0.3; ask(); }
         }
         svg._T = Tlin === Infinity ? null : Tlin; svg._Tkey = svg.dataset.key;
+        if (svg._useCv) { paintCv(cv, Tlin, SPEED); return; }
         for (var n2 = 0; n2 < paths.length; n2++) {
           var el = paths[n2], tm = el._tm, L = el._len, lo = 0, hi = tm.length - 1;
           // its own pace, a little uneven, never going backwards
