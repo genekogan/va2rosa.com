@@ -3563,8 +3563,12 @@ html.brief .paper .strand p,
 html.brief .paper li:not(:has(a, img, svg, video, iframe, figure, button)):not(.sitefoot *):not(.nav *) { display: none; }
 
 /* --- Little Martians: the menu under the facts, and what is on now -------- */
+.lmsum { text-align: center; max-width: 40em; margin: 46px auto 0; }
+.lmsum-a { font-size: clamp(18px, 1.9vw, 22px); line-height: 1.5; color: var(--ink); }
+.lmsum-b { font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.9; color: var(--ink-2); margin-top: 12px; }
+.lmsum-b span { white-space: nowrap; }
 /* the same hand-drawn labels as the bodies of work on the homepage, a size up */
-.lmnav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px; margin: 40px auto 0; }
+.lmnav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px; margin: 30px auto 0; }
 .lmnav a {
   position: relative; display: inline-block;
   padding: 11px 24px 12px; font-size: 17px; color: var(--blue);
