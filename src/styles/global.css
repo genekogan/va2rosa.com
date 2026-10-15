@@ -3563,13 +3563,36 @@ html.brief .paper .strand p,
 html.brief .paper li:not(:has(a, img, svg, video, iframe, figure, button)):not(.sitefoot *):not(.nav *) { display: none; }
 
 /* --- Little Martians: the menu under the facts, and what is on now -------- */
-.lmnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; }
+/* the same hand-drawn labels as the bodies of work on the homepage, a size up */
+.lmnav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px; margin: 40px auto 0; }
 .lmnav a {
-  font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
-  border: 1px solid rgba(13, 33, 54, 0.25); border-radius: 20px; padding: 6px 13px;
-  transition: background 0.18s, color 0.18s;
+  position: relative; display: inline-block;
+  padding: 11px 24px 12px; font-size: 17px; color: var(--blue);
+  transition: color 0.2s;
 }
-.lmnav a:hover, .lmnav a:focus-visible { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.lmnav a::before, .lmnav a::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  border: 1.3px solid rgba(28, 74, 134, 0.6);
+  border-radius: 26px 22px 24px 19px / 20px 24px 19px 23px;
+  filter: url(#pencil-edge);
+  transition: background 0.25s;
+}
+.lmnav a::after {
+  inset: 2px -2px -1px 1px; border-width: 0.8px; border-color: rgba(28, 74, 134, 0.28);
+  border-radius: 22px 26px 19px 24px / 24px 19px 23px 20px;
+}
+.lmnav a:nth-child(2)::before { border-radius: 21px 27px 22px 25px / 24px 19px 25px 20px; }
+.lmnav a:nth-child(2)::after { border-radius: 27px 21px 25px 22px / 19px 24px 20px 25px; }
+.lmnav a:nth-child(3)::before { border-radius: 24px 20px 27px 22px / 22px 26px 20px 24px; }
+.lmnav a:nth-child(3)::after { border-radius: 20px 25px 22px 27px / 26px 21px 24px 20px; }
+.lmnav a:nth-child(4)::before { border-radius: 23px 26px 20px 25px / 25px 20px 24px 21px; }
+.lmnav a:nth-child(4)::after { border-radius: 26px 23px 25px 20px / 20px 25px 21px 24px; }
+.lmnav a:hover, .lmnav a:focus-visible { color: var(--ink); }
+.lmnav a:hover::before { background: rgba(28, 74, 134, 0.09); }
+@media (max-width: 600px) {
+  .lmnav { gap: 10px 10px; margin-top: 30px; }
+  .lmnav a { font-size: 15px; padding: 9px 18px 10px; }
+}
 #ceramics, #books, #films, #shows, #list { scroll-margin-top: calc(var(--navh, 64px) + 16px); }
 .lmnow-row { display: grid; grid-template-columns: 11em 1fr; gap: 4px 20px; padding: 14px 0; border-top: 1px solid var(--line); }
 .lmnow-row:first-of-type { margin-top: 14px; }
