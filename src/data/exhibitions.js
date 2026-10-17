@@ -246,7 +246,7 @@ export const workPages = [
   },
   {
     title: 'Drawings',
-    years: '2009 to now',
+    years: 'Always',
     href: '/sketchbooks',
     image: '/images/sk/dr-03.webp',
     imageAlt: 'A watercolour portrait, eyes closed, in blues and reds.',

@@ -3239,7 +3239,7 @@ h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
   max-width: none;
   margin: 0;
 }
-@media (max-width: 760px) { .intro-what br { display: none; } }
+/* "let me share my story with you." always starts its own line, phones too */
 
 /* --- the timeline, and the way through it ----------------------------------
    With motion: the section is tall and its stage is pinned (the script sets
