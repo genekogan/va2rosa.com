@@ -513,6 +513,7 @@ export const streetArt = {
       body: [
         'Martian plywood is a great base for murals. Each year we create new ones, then they come down, and the following year we often recombine the pieces into new configurations.',
         'At night the same walls stop being walls. Projection mapping is a Martian tradition, and it turns the paintings into portals.',
+        'Here are some of the murals I’ve done.',
       ],
       gallery: 'slides',
       images: [
