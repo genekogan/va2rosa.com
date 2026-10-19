@@ -519,7 +519,7 @@ export const streetArt = {
       images: [
         { src: '/images/mars/mural/m-01.webp', caption: '2021. A jungle painted across the plywood.' },
         { src: '/images/mars/mural/m-02.webp', caption: '2022. Blue arches under the solar array.' },
-        { src: '/images/mars/mural/m-03.webp', caption: '2024. Chiba, with the lettering by Will Simmons and a central flower after Marzipan’s AI version of Kirby’s Mars College logo.' },
+        { src: '/images/mars/mural/m-03.webp', caption: '2024. Chiba, with the lettering by Will Simmons and a central flower I painted after Marzipan’s AI version of Kirby’s Mars College logo. Overall design and painting by Vanessa Rosa' },
         { src: '/images/mars/mural/m-04.webp', caption: '2024. Painted with Cekis.' },
         { src: '/images/mars/mural/m-05.webp', caption: '2026. Saturn’s Theater of Minds: painting and projections.' },
       ],
