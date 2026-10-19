@@ -7,7 +7,7 @@
 // summary, plate) and as its own page at /threads/<slug>.
 //
 // Fields marked DRAFT below were written from the structure brief and need
-// your words. Thread 03 is the one that is fully written.
+// your words. Thread 02 (Silk Roads) is the one that is fully written.
 // ---------------------------------------------------------------------------
 
 export const threads = [
@@ -27,7 +27,7 @@ export const threads = [
     status: 'Ended, 2016',
     carrier: 'The painted bodies, human scale',
     media: 'Acrylic, spray paint, parametric stencil, wall',
-    related: ['mauricio-hora', 'the-silk-roads'],
+    related: ['the-silk-roads'],
     summary: [
       'The port zone of Rio was once the biggest slave port of the Americas, and one of the birthplaces of samba and modern carnival. Ten years ago barely anyone in the city went there. I started painting in the region in 2010, on an undergraduate research scholarship, making life-size figures of people from other times, as if the everyday life of the past had been mixed into the present one.',
       'It was the strongest formative experience I had in the arts. It is where I understood what art and activism are to each other.',
@@ -76,52 +76,6 @@ export const threads = [
 
   {
     number: '02',
-    slug: 'mauricio-hora',
-    hasPage: false,
-    href: '/mauricio-hora', // its own page
-    title: 'Maurício Hora',
-    // The studio years ended, the friendship did not: the work with his
-    // archive continued in 2020 and again in 2023.
-    years: '2011–present',
-    start: 2011, end: null,
-    state: 'ongoing',
-    collection: 'public',
-    places: 'Port zone, Rio de Janeiro',
-    status: 'Ongoing',
-    carrier: 'A shared studio, learning about favelas and community',
-    media: 'Studio · photography · public art · community organising',
-    related: ['visible-memories'],
-    coauthor:
-      'With Maurício Hora, photographer and community leader of Rio’s port zone.',
-    summary: [
-      'For more than two years I shared a studio in the port zone with the community leader Maurício Hora. Working next to someone who had spent his life documenting and defending this territory changed what I thought a public artwork was for.',
-      'DRAFT. This page needs your account of the studio years and of the work you made together.',
-    ],
-    lede:
-      'More than two years sharing a studio in Rio’s port zone with Maurício Hora, photographer, community leader, and the person who had been holding that ground long before I arrived.', // DRAFT
-    thesis:
-      'An outsider painting in a neighbourhood is a guest. Who vouches for you, and who you work beside, is the ground the work stands on.', // DRAFT
-    strands: [
-      {
-        title: 'I. The studio',
-        body:
-          'DRAFT. Two years of a shared workspace in the port zone: what was made there, who came through it, and what it meant to have a base in the neighbourhood rather than visiting it.',
-      },
-      {
-        title: 'II. Photography beside painting',
-        body:
-          'DRAFT. Maurício’s photographic record of the territory and the paintings going up on its walls are two ways of doing the same job. Say here how they informed each other.',
-      },
-    ],
-    exhibited: [],
-    reading: [],
-    credits: 'With Maurício Hora.',
-    hero: '/images/work/mauricio-hora-plate.webp',
-    heroAlt: 'A street in Rio’s port zone at night.',
-  },
-
-  {
-    number: '03',
     slug: 'the-silk-roads',
     hasPage: true,
     title: 'Silk Roads',
@@ -133,7 +87,7 @@ export const threads = [
     status: 'Concluded, 2020',
     carrier: 'Following the blue and white tiles',
     media: 'Acrylic, spray, laser-cut stencil, projection',
-    related: ['ethnocomputing', 'same-putumi'],
+    related: ['ethnocomputing'],
     lede:
       'A personal account on the development of an artistic research.',
     thesis:
@@ -380,7 +334,7 @@ export const threads = [
   },
 
   {
-    number: '04',
+    number: '03',
     slug: 'ethnocomputing',
     hasPage: true,
     title: 'Ethnomathematics & Ethnocomputing',
@@ -392,7 +346,9 @@ export const threads = [
     status: 'Ongoing',
     carrier: 'The pattern, and the rule that makes it',
     media: 'Laser-cut stencil · parametric design · painting · installation · writing',
-    related: ['the-silk-roads', 'same-putumi', 'little-martians'],
+    related: ['the-silk-roads', 'little-martians'],
+    // Same Putumi is not a movement of its own: it opens this page as its most important project
+    highlight: 'same-putumi',
     summary: [
       'A weave is a program. It has a grammar, a compiler and a lineage of engineers, and almost none of them appear in any history of computing.',
       'The research runs from Islamic sacred geometry and African fractals through a master’s dissertation to a Little Martian who is a pattern rather than a body.',
@@ -573,61 +529,7 @@ export const threads = [
   },
 
   {
-    number: '05',
-    slug: 'same-putumi',
-    hasPage: false,
-    href: '/threads/same-putumi', // its own page tree, not the generic template
-    title: 'Same Putumi', // OPEN: title, and whether it carries both names
-    years: '2018–2019',
-    start: 2018, end: 2019,
-    state: 'ended',
-    collection: 'public',
-    places: 'Upper Envira, Acre · São Paulo',
-    status: 'Complete · co-authored',
-    carrier: 'Life in the Amazon rainforest',
-    media: 'Jenipapo, airbrush, laser-cut stencil, photography, projection mapping',
-    related: ['ethnocomputing'],
-    coauthor:
-      'A collaboration with Same Putumi, Huni Kuin artist, artisan, healer and religious leader, and with her village on the upper Envira river.',
-    palette: 'envira', // this thread uses its own colours, not the site blue
-    summary: [
-      'I went for a month and stopped being the one who explains. We made photographs with laser-cut stencils and the sun, body paintings with jenipapo and airbrush, and later Nhandepa at MIS São Paulo: five weaving patterns Same chose herself, projection-mapped, alongside an infinity box of medicinal plants.',
-      'Everything here is co-authored and says so. The full essay on mesh networks, autonomy and what a knowledge system needs in order to survive is attached.',
-    ],
-    lede:
-      'A month on the upper Envira, working with someone who already knew everything I had been reading about. The work that came out of it has two authors, and the site says so before it says anything else.', // DRAFT
-    thesis:
-      'A knowledge system does not survive by being documented. It survives by staying in the hands of the people who can still change it.', // DRAFT
-    strands: [
-      {
-        title: 'I. Five patterns Same chose',
-        body:
-          'Nhandepa at MIS São Paulo was built from five weaving patterns Same selected himself, projection-mapped at architectural scale, alongside an infinity box of medicinal plants. The selection was the authorship.',
-      },
-      {
-        title: 'II. Stencils and sunlight',
-        body:
-          'Photographs made by laying laser-cut stencils against skin and letting the sun do the printing. A camera records; this method lets the place itself expose the image.',
-      },
-      {
-        title: 'III. Mesh networks and autonomy',
-        body:
-          'The essay attached to this thread is about infrastructure: what a community needs to own, from the generator to the router to the hard drive, for its own knowledge to remain its own. It belongs on this page, not filed under research.',
-      },
-    ], // DRAFT
-    exhibited: [
-      { years: '2018', text: 'One month on the upper Envira with Same Putumi, Acre. Residency' },
-      { years: '2019', text: 'Nhandepa, MIS São Paulo' },
-      { years: '2019', text: 'Katxanawa' },
-    ],
-    reading: [],
-    credits: 'Co-authored with Same Putumi and the community of the upper Envira.',
-    hero: '/images/work/same-putumi-plate.webp',
-    heroAlt: 'A Huni Kuin woven pattern laid on forest leaves.',
-  },
-
-  {
-    number: '06',
+    number: '04',
     slug: 'mars-college',
     hasPage: false,
     href: '/mars-college', // its own page, set like the college's booklet
@@ -678,7 +580,7 @@ export const threads = [
   },
 
   {
-    number: '07',
+    number: '05',
     slug: 'little-martians',
     hasPage: false,
     href: '/threads/little-martians', // its own page

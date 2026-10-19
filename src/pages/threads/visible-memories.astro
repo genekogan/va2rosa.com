@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Spine from '../../components/Spine.astro';
 import Story from '../../components/Story.astro';
 import { visibleMemories as vm } from '../../data/visible-memories.js';
+import { mauricioHora, streetArt } from '../../data/works.js';
 ---
 
 <Base brief title={vm.title} description={vm.lede} bodyClass="paper">
@@ -95,12 +96,34 @@ import { visibleMemories as vm } from '../../data/visible-memories.js';
       ))}
     </div>
 
+    <!-- HIGHLIGHT: the studio years with Maurício Hora ----------------------- -->
+    <a class="st-big" href="/mauricio-hora" style="margin-top:70px">
+      <img src={mauricioHora.hero} alt={mauricioHora.heroAlt} loading="lazy" data-nozoom style="aspect-ratio:4/3; object-fit:cover" />
+      <div>
+        <div class="kicker">A friendship · 2011 to now</div>
+        <h3>Maurício Hora</h3>
+        <p>More than two years sharing a studio in Rio’s port zone with Maurício Hora, photographer and community leader.</p>
+        <span class="more">The whole story ⇢</span>
+      </div>
+    </a>
+
     <p class="closing">{vm.closing}</p>
 
     <div class="kicker" style="margin:70px 0 20px">Reading</div>
     <div class="readlist">
       {vm.reading.map((r) => <p set:html={r} />)}
     </div>
+
+    <!-- HIGHLIGHT: the walls around it --------------------------------------- -->
+    <a class="st-big" href="/street-art" style="margin-top:70px">
+      <img src={streetArt.hero} alt={streetArt.heroAlt} loading="lazy" data-nozoom />
+      <div>
+        <div class="kicker">Public work · 2009 to now</div>
+        <h3>Street art over the years</h3>
+        <p>The walls this came out of, from 2009 onwards.</p>
+        <span class="more">All the walls ⇢</span>
+      </div>
+    </a>
 
     <Spine current="visible-memories" />
   </div>

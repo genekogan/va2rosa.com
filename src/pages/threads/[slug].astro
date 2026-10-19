@@ -4,6 +4,7 @@ import Spine from '../../components/Spine.astro';
 import Story from '../../components/Story.astro';
 import { threads, internalThreads, threadBySlug } from '../../data/threads.js';
 import { cvForThread } from '../../data/cv.js';
+import { samePutumi } from '../../data/same-putumi.js';
 
 export function getStaticPaths() {
   return internalThreads.map((t) => ({ params: { slug: t.slug } }));
@@ -58,6 +59,18 @@ const related = (t.related || []).map(threadBySlug).filter((r) => r && r.hasPage
           : '–'}
       </div>
     </div>
+
+    {t.highlight === 'same-putumi' && (
+      <a class="st-big" href="/threads/same-putumi" style="margin-top:44px">
+        <img src={samePutumi.hero} alt={samePutumi.heroAlt} loading="lazy" data-nozoom />
+        <div>
+          <div class="kicker">The most important project · co-authored · {samePutumi.years}</div>
+          <h3>Same Putumi</h3>
+          <p>{samePutumi.lede}</p>
+          <span class="more">The collaboration ⇢</span>
+        </div>
+      </a>
+    )}
 
     {t.coauthor && <p class="coauthor-line">{t.coauthor}</p>}
 

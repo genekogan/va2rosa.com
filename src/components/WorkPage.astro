@@ -18,6 +18,7 @@ const { work } = Astro.props;
   </div>
 
   <div class="wrap">
+    {work.back && <p class="fx-back"><a href={work.back.href}>← {work.back.label}</a></p>}
     {work.meta && (
       <div class="meta">
         {work.meta.map(([k, v]) => (
