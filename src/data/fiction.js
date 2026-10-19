@@ -65,7 +65,10 @@ export const fiction = {
       {
         year: 2024,
         title: 'Little Martians on Kojii.ai',
-        body: 'Interactive generative storytelling. Six characters, each from a real ceramic sculpture, made into image models and given language-model personalities. I set the world, its context and its rules; visitors prompt a character and the story goes where they take it. The project was shortlisted for the CVPR AI Art Gallery in 2024. The platform shut down before launch; the model moved to Eden.art, where some three hundred images were made. A selection became a book, each image paired with the prompt that summoned it.',
+        body: [
+          'Interactive generative storytelling. Six characters, each from a real ceramic sculpture, made into image models and given language-model personalities. I set the world, its context and its rules; visitors prompt a character and the story goes where they take it. The project was shortlisted for the CVPR AI Art Gallery in 2024.',
+          'The model lived on Eden.art, where some three hundred images were made. A selection became a book, each image paired with the prompt that summoned it.',
+        ],
         book: {
           photo: '/images/vbooks/kojii-book.webp',
           photoAlt: 'The printed book: Little Martians, Interactive Storytelling Experiment.',

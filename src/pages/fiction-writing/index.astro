@@ -81,7 +81,7 @@ const ext = (l) => (l.external ? { target: '_blank', rel: 'noopener' } : {});
             <div>
               <div class="fx-year">{c.year}</div>
               <h3 class="fx-h3">{c.title}</h3>
-              <p class="fx-kojii-p">{c.body}</p>
+              {[].concat(c.body).map((p) => <p class="fx-kojii-p">{p}</p>)}
               <p class="story-links">
                 <a class="more" href={`/books/${c.book.read.slug}`}>Read the whole book ⇢</a>
                 {c.links.map((l) => <a class="more" href={l.href} {...ext(l)}>{l.label} ⇢</a>)}
