@@ -1299,16 +1299,23 @@ export const eyes = {
     ['With', 'Thiago Haule, for Zona Imaginária'],
   ],
   intro: [],
+  // in order of date, oldest first
   sections: [
     {
-      title: 'Munich, 2016. Loomit’s eyes',
+      title: 'Morro da Formiga, Rio de Janeiro, 2013',
+      images: [{ src: '/images/eyes/formiga-1.webp' }],
+    },
+    {
+      title: 'About Amarildo, 2013',
+      body: ['A man who was murdered by police in the favela da Rocinha.'],
+      gallery: 'slides',
       images: [
-        { src: '/images/eyes/loomit-1.webp' },
-        { src: '/images/eyes/loomit-2.webp' },
+        { src: '/images/eyes/amarildo-room.webp' },
+        { src: '/images/eyes/amarildo-mouth.webp', caption: 'Detail' },
       ],
     },
     {
-      title: 'UN Women',
+      title: 'UN Women, 2014',
       body: [
         'A project done in Brasília about domestic violence, later reproduced in several publications on the fight against domestic violence.',
       ],
@@ -1328,7 +1335,11 @@ export const eyes = {
       ],
     },
     {
-      title: 'Sesc Cultural Center, Cinelândia, Rio de Janeiro',
+      title: 'Galerio Project, north zone of Rio de Janeiro, 2014',
+      images: [{ src: '/images/eyes/galerio-1.webp' }],
+    },
+    {
+      title: 'Sesc Cultural Center, Cinelândia, Rio de Janeiro, 2014',
       body: [
         'An exhibition in Rio de Janeiro. Vanessa Rosa and Thiago Haule, representing the Zona Imaginária project.',
       ],
@@ -1337,26 +1348,22 @@ export const eyes = {
         { src: '/images/eyes/sesc-1.webp' },
         { src: '/images/eyes/sesc-2.webp' },
         { src: '/images/eyes/sesc-3.webp' },
-        { src: '/images/eyes/sesc-4.webp' },
+      ],
+    },
+    {
+      title: 'Sesc Cultural Center, Cinelândia, Rio de Janeiro, 2015',
+      gallery: 'slides',
+      images: [
         { src: '/images/eyes/sesc-5.webp' },
+        { src: '/images/eyes/sesc-4.webp' },
         { src: '/images/eyes/sesc-6.webp' },
       ],
     },
     {
-      title: 'Morro da Formiga, Rio de Janeiro, 2013',
-      images: [{ src: '/images/eyes/formiga-1.webp' }],
-    },
-    {
-      title: 'Galerio Project, north zone of Rio de Janeiro',
-      images: [{ src: '/images/eyes/galerio-1.webp' }],
-    },
-    {
-      title: 'About Amarildo',
-      body: ['A man who was murdered by police in the favela da Rocinha.'],
-      gallery: 'slides',
+      title: 'Munich, 2016. Loomit’s eyes',
       images: [
-        { src: '/images/eyes/amarildo-room.webp' },
-        { src: '/images/eyes/amarildo-mouth.webp', caption: 'Detail' },
+        { src: '/images/eyes/loomit-1.webp' },
+        { src: '/images/eyes/loomit-2.webp' },
       ],
     },
   ],
