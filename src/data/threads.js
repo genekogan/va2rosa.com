@@ -100,7 +100,6 @@ export const threads = [
         body: [
           'In downtown Rio de Janeiro there are many blue and white tiles over old buildings, which we call Portuguese “azulejos”. For a long time, I thought all “azulejos” should be blue and white, or at least a little blue, because after all, “azulejos” has the Portuguese word for blue as part of its linguistic root. Like many of my fellow countrymen, I found most of the recent ordinary architecture terribly uglier than the ancient one, hence the tiles represented a certain nostalgia.',
         ],
-        video: { vimeo: '195309979', caption: 'Azulejos Imaginários. The reel for the series.' },
       },
       {
         title: 'The stencils',
@@ -300,6 +299,8 @@ export const threads = [
           'Trying to understand how things are built, to understand even the one that hurts me, gives me some relief from the distressing situation of the current moment. It helps me to have the lightness to think of alternatives — calm down, the world was once different and could change again — to think about human exchanges, their joys, pains and violence as part of a process that I can’t really understand, it is far too complex, but I can at least admire and try to contribute by creating images with what I was able to see. It is an internal need, it calms me and helps me to look with some distance, to have some hope. It is a pleasure to be able to be enchanted by the world, even with its pains, and to return something that I believe has a good energy, a good contribution for others.',
         ],
       },
+      // the reel for the series, kept for the record at the very end
+      { video: { vimeo: '195309979', caption: 'Azulejos Imaginários. The reel for the series.' } },
     ],
 
     strands: [],
