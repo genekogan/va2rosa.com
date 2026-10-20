@@ -213,7 +213,20 @@ const showCards = [
   },
 ];
 
-export const mainShows = [...showCards].sort((a, b) => b.year - a.year);
+// The highlights first, in the order Vanessa chose; the rest by year, newest first.
+const SHOW_ORDER = [
+  'Augmented Intelligence',
+  'Vision Weekend',
+  'Immersive exhibitions',
+  'Saturn’s Theater of Minds',
+  'Uncanny Nova Phenomenon',
+  'Glitch ARTS+TECH Residency',
+  'Simulated Worlds',
+  'Little Martians at Saturn',
+  'Little Martians pop-up',
+];
+const rank = (s) => { const i = SHOW_ORDER.indexOf(s.title); return i < 0 ? Infinity : i; };
+export const mainShows = [...showCards].sort((a, b) => (rank(a) - rank(b)) || (b.year - a.year));
 
 // ---------------------------------------------------------------------------
 // The bodies of work that have their own page. These sit under the show cards.
