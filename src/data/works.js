@@ -846,6 +846,7 @@ export const gerardQuenum = {
   sections: [
     {
       title: 'Dialogues',
+      gallery: 'slides',
       images: [
         { src: '/images/gq/gq-dial-1.webp' },
         { src: '/images/gq/gq-dial-2.webp' },
@@ -858,6 +859,7 @@ export const gerardQuenum = {
     },
     {
       title: 'Afro-Brésil',
+      gallery: 'slides',
       images: [
         { src: '/images/gq/gq-afro-1.webp' },
         { src: '/images/gq/gq-afro-2.webp' },
@@ -867,6 +869,7 @@ export const gerardQuenum = {
     },
     {
       title: 'Vanessa’s canvas',
+      gallery: 'slides',
       images: [
         { src: '/images/gq/gq-canvas-1.webp' },
         { src: '/images/gq/gq-canvas-2.webp' },
