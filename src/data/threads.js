@@ -404,15 +404,15 @@ export const threads = [
       {
         title: 'Dialogues, with Gérard Quenum, 2017',
         body: [
-          'A month at Le Centre in Cotonou, Benin, working with the sculptor Gérard Quenum. What came out of it was a series of nine paintings in which his portraits are overrun by pattern: azulejo motifs of Portuguese descent that I had been collecting off Brazilian walls, and Adinkra symbols from Ghana, laid over the same face again and again. The portrait repeats, the eyes meet, only the cloth changes. Is it the same person?',
+          'A month at Le Centre in Cotonou, Benin, working with the artist Gérard Quenum. What came out of it was a series of nine paintings in which his portraits are overrun by pattern: azulejo motifs of Portuguese descent that I had been collecting off Brazilian walls, and Adinkra symbols from Ghana, laid over the same face again and again. The portrait repeats, the eyes meet, only the cloth changes. Is it the same person?',
         ],
         gallery: 'slides',
         images: [
+          { src: '/images/gq/gq-afro-1.webp', caption: 'Afro-Brésil, painted in the sculpture garden at Le Centre' },
           { src: '/images/gq/gq-dial-1.webp', caption: 'From the Dialogues series, 2017' },
           { src: '/images/gq/gq-dial-3.webp' },
           { src: '/images/gq/gq-dial-5.webp' },
           { src: '/images/gq/gq-dial-7.webp' },
-          { src: '/images/gq/gq-afro-1.webp', caption: 'Afro-Brésil, painted in the sculpture garden at Le Centre' },
         ],
         more: { label: 'The whole exhibition', href: '/gerard-quenum' },
       },
