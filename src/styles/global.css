@@ -2358,6 +2358,9 @@ html.bk-lock, html.bk-lock body { overflow: hidden; }
 
 /* Headings should not drop a single word onto a line by itself. */
 h1, h2, h3, .sec, .lede, .thesis, .closing { text-wrap: pretty; }
+/* no word left alone on the last line of a paragraph (Base also ties the last
+   two words together, for browsers that do not know text-wrap: pretty) */
+p, li, figcaption, .bw-lede { text-wrap: pretty; }
 
 /* --- 2. Heroes ------------------------------------------------------------
    66vh of a phone screen is a very tall, very narrow window onto a landscape

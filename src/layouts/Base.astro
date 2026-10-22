@@ -151,6 +151,23 @@ const siteSchema = {
       </>
     )}
     <script is:inline>
+      // No word alone on a line: the last two words of every paragraph are
+      // joined by a non-breaking space, so they always wrap together.
+      (function () {
+        var els = document.querySelectorAll('.paper p, .paper li, .paper figcaption, .bw-lede');
+        for (var i = 0; i < els.length; i++) {
+          var el = els[i];
+          if (el.closest('nav, .sitefoot')) continue;
+          var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n, last = null;
+          while ((n = w.nextNode())) if (/\S/.test(n.nodeValue)) last = n;
+          if (!last) continue;
+          var t = last.nodeValue.replace(/\s+$/, ''), k = t.lastIndexOf(' ');
+          // only when the last word is short enough to travel with its neighbour
+          if (k > 0 && t.length - k <= 14) last.nodeValue = t.slice(0, k) + '\u00a0' + t.slice(k + 1) + last.nodeValue.slice(t.length);
+        }
+      })();
+    </script>
+    <script is:inline>
       // The bar is fixed, and on a narrow screen it wraps to more than one
       // row. Publish its real height so a page without a hero starts under it
       // instead of behind it.
