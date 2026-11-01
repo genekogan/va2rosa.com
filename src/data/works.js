@@ -40,6 +40,13 @@ export const pioneerWorks = {
     ],
     linkText: 'Read it in the Star-Revue',
   },
+  diagram: {
+    kicker: 'How the stencils work',
+    title: 'Pattern, stencil, distortion, modules',
+    body: 'A pattern becomes a laser-cut stencil, is bent into perspective and cut at several scales, and the pieces are sprayed side by side into spaces that are not there.',
+    href: '/stencils',
+    label: 'The stencil research',
+  },
   sections: [
     // the 2017 photographs, Vanessa's own selection, one slideshow for each
     // side of the fence

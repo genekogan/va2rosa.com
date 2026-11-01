@@ -4,6 +4,7 @@
 // object so adding a page is adding a data file.
 import Base from '../layouts/Base.astro';
 import Spine from './Spine.astro';
+import StencilDiagram from './StencilDiagram.astro';
 
 const { work } = Astro.props;
 ---
@@ -87,6 +88,21 @@ const { work } = Astro.props;
           {work.read.linkText ?? 'Read it'} ⇢
         </a>
       </aside>
+    )}
+
+    {/* a highlighted way into the stencil research, the same card as on Silk Roads */}
+    {work.diagram && (
+      <a class="st-diagram" href={work.diagram.href} style="margin-top:36px">
+        <StencilDiagram compact />
+        <div class="st-diagram-t">
+          <div>
+            <div class="kicker">{work.diagram.kicker}</div>
+            <h3>{work.diagram.title}</h3>
+            <p>{work.diagram.body}</p>
+          </div>
+          <span class="more">{work.diagram.label} ⇢</span>
+        </div>
+      </a>
     )}
 
     {/* one video, from Vimeo, from YouTube, or a file served by this site */}
