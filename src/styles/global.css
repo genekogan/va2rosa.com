@@ -3099,17 +3099,14 @@ p, li, figcaption, .bw-lede { text-wrap: pretty; }
 .lifemap { padding-top: 10px; padding-bottom: 90px; }
 .lifemap .wpop { max-width: 17rem; }
 
-/* phones: no timeline at all. It needs width to mean anything; tablets keep
-   the cards, wide screens the chart. */
-@media (max-width: 600px) {
-  #timeline { display: none; }
-}
+/* the timeline is the gravity well on every screen now (upright on phones,
+   on its side wider up); the old bar chart stays in the code, unshown */
+#timeline { display: none; }
 
-/* --- the timeline for phones: threads in a gravity well ------------------- */
-.st-wrap { display: none; }
-@media (max-width: 600px) {
-  .st-wrap { display: block; margin-top: 56px; }
-}
+/* --- the timeline: threads in a gravity well ------------------------------ */
+.st-wrap { display: block; margin-top: 44px; }
+@media (max-width: 600px) { .st-wrap { margin-top: 56px; } }
+.st-hint { margin: 10px 0 0; font-size: 12px; letter-spacing: 0.04em; color: var(--ink-3); }
 .st-canvas { display: block; width: 100%; margin-top: 10px; touch-action: pan-y; cursor: grab; }
 .st-info { min-height: 96px; margin-top: 4px; }
 .st-info-meta { margin: 0; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }

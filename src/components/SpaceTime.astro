@@ -1,9 +1,11 @@
 ---
-// The timeline for phones, as a drawing rather than a chart: a gravity well
-// of rings, 2009 deep in the middle and "now" at the rim. Each period is a
-// thread that spirals out from its first year to its last; the ones still
-// going run on to the rim and fade. It turns slowly, can be dragged, and a tap
-// on a node (or a name in the list) lights up that thread.
+// The timeline as a drawing rather than a chart: a gravity well of rings,
+// 2009 deep inside and "now" at the rim. Each period is a thread that spirals
+// out from its first year to its last; the ones still going run on to the rim
+// and fade. On phones the well opens upward; on wider screens it lies on its
+// side and opens to the right, towards now. It turns slowly and can be
+// dragged. A tap on a node or a name lights up that thread; a second tap on
+// the same one opens its page.
 import { threads, timelineExtra, linkFor } from '../data/threads.js';
 
 const stateLabel = { ended: 'ended', transformed: 'became the next thing', ongoing: 'ongoing' };
@@ -31,7 +33,7 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
     <p class="st-info-c"></p>
   </div>
 
-  <ol class="st-list">
+  <ol class="st-list" aria-describedby="st-hint">
     {rows.map((r, i) => (
       <li>
         <button type="button" data-i={i}>
@@ -40,6 +42,7 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
       </li>
     ))}
   </ol>
+  <p class="st-hint" id="st-hint">Once to see it, twice to open it.</p>
 </section>
 
 <script is:inline>
@@ -52,25 +55,36 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
     var FIRST = 2009, LAST = 2027, SPAN = LAST - FIRST;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    var W = 0, H = 0, R = 0, cx = 0, cy = 0, dpr = 1;
+    var W = 0, H = 0, R = 0, cx = 0, cy = 0, dpr = 1, wide = false, x0 = 0, L = 0;
     function size() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = cv.clientWidth; H = Math.round(W * 1.02);
+      W = cv.clientWidth;
+      wide = W > 600;
+      H = wide ? Math.round(Math.min(560, Math.max(320, W * 0.44))) : Math.round(W * 1.02);
       cv.style.height = H + 'px';
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      R = W * 0.46; cx = W / 2; cy = H * 0.40;
+      if (wide) {
+        // lying on its side: the rim on the right, the deep end on the left
+        R = H * 0.44; cy = H * 0.5; x0 = 46; L = W - x0 - R * 0.42 - 34;
+      } else {
+        R = W * 0.46; cx = W / 2; cy = H * 0.40;
+      }
     }
 
     // year -> radius and depth: the early years sink into the middle of the well
     function rad(y) { return R * (0.1 + 0.9 * (y - FIRST) / SPAN); }
     function depth(y) { var t = 1 - (y - FIRST) / SPAN; return R * 0.95 * t * t; }
+    // lying down, how far along the well a year sits (the early years spread
+    // out a little more, the way they sink deeper in the upright drawing)
+    function along(y) { var t = (y - FIRST) / SPAN; return x0 + L * (1 - (1 - t) * (1 - t) * 0.55 - 0.45 * (1 - t)); }
 
     var theta = 0.6;
     function project(y, a) {
-      var r = rad(y), x = r * Math.cos(a + theta), z = r * Math.sin(a + theta);
+      var r = rad(y), u = r * Math.cos(a + theta), z = r * Math.sin(a + theta);
       var persp = 1 / (1 + z / (R * 5));               // the far side a little smaller
-      return { x: cx + x * persp, y: cy + (z * 0.42 + depth(y)) * persp, z: z };
+      if (wide) return { x: along(y) + z * 0.42 * persp, y: cy + u * persp, z: z };
+      return { x: cx + u * persp, y: cy + (z * 0.42 + depth(y)) * persp, z: z };
     }
 
     // each thread gets its own bearing, and spirals as the years pass
@@ -112,11 +126,22 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
       ctx.font = '10px ui-sans-serif, system-ui, sans-serif';
       ctx.fillStyle = 'rgba(' + BLUE + ',0.55)';
       ctx.textAlign = 'center';
-      ctx.fillText('2009', cx, cy + depth(FIRST) + 16);
-      // "now" sits on the right-hand edge of the rim, clear of the threads
-      var rim = project(LAST, -theta);
-      ctx.textAlign = 'right';
-      ctx.fillText('now', rim.x - 2, rim.y - 7);
+      if (wide) {
+        // under the well: where each year sits along it
+        [2009, 2012, 2015, 2018, 2021, 2024].forEach(function (yr) {
+          ctx.fillStyle = 'rgba(' + BLUE + ',' + (yr === 2009 ? 0.55 : 0.35) + ')';
+          ctx.fillText(String(yr), along(yr), cy + rad(yr) + 16);
+        });
+        ctx.fillStyle = 'rgba(' + BLUE + ',0.55)';
+        ctx.textAlign = 'left';
+        ctx.fillText('now', along(LAST) + R * 0.12, cy + rad(LAST) + 16);
+      } else {
+        ctx.fillText('2009', cx, cy + depth(FIRST) + 16);
+        // "now" sits on the right-hand edge of the rim, clear of the threads
+        var rim = project(LAST, -theta);
+        ctx.textAlign = 'right';
+        ctx.fillText('now', rim.x - 2, rim.y - 7);
+      }
 
       // the threads
       nodes = [];
@@ -166,8 +191,13 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
       btns.forEach(function (b) { b.classList.toggle('is-on', +b.getAttribute('data-i') === i); });
       draw();
     }
+    // once to light it up, a second time on the same one to open its page
+    function pick(i) {
+      if (i === sel && rows[i].href) { window.location.href = rows[i].href; return; }
+      select(i);
+    }
     btns.forEach(function (b) {
-      b.addEventListener('click', function () { select(+b.getAttribute('data-i')); });
+      b.addEventListener('click', function () { pick(+b.getAttribute('data-i')); });
     });
 
     // drag to turn the well; a tap near a node picks that thread
@@ -183,7 +213,7 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
         var rect = cv.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top;
         var best = null, bd = 26;
         nodes.forEach(function (n) { var d = Math.hypot(n.x - x, n.y - y); if (d < bd) { bd = d; best = n; } });
-        if (best) select(best.i);
+        if (best) pick(best.i);
       }
       down = null;
     });
@@ -201,7 +231,9 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
     }
     new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(cv);
 
-    size(); select(rows.length > 6 ? 6 : 0);
+    // start on Little Martians, the work going on now
+    var start = rows.findIndex(function (r) { return r.title === 'Little Martians'; });
+    size(); select(start < 0 ? 0 : start);
     window.addEventListener('resize', function () { size(); draw(); });
     requestAnimationFrame(tick);
   })();
