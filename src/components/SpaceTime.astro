@@ -6,6 +6,10 @@
 // side and opens to the right, towards now. It turns slowly and can be
 // dragged. A tap on a node or a name lights up that thread; a second tap on
 // the same one opens its page.
+//
+// Wider up, the spiral sits over a plain timeline on the same year scale: one
+// thin bar per period, directly under where its thread runs in the well, so
+// the drawing and the dates read together. Hovering a bar lights its thread.
 import { threads, timelineExtra, linkFor } from '../data/threads.js';
 
 const stateLabel = { ended: 'ended', transformed: 'became the next thing', ongoing: 'ongoing' };
@@ -21,11 +25,35 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
   href: t.href ?? linkFor(t) ?? '',
   underlay: !!t.underlay,
 }));
+
+// the year scale the strip under the spiral shares with it (as fractions)
+const FIRST = 2009, LAST = 2027, SPAN = LAST - FIRST;
+const f = (y) => ((y - FIRST) / SPAN).toFixed(4);
+const ticks = [2009, 2012, 2015, 2018, 2021, 2024];
 ---
 
 <section class="spacetime" aria-label="The work over time, drawn as threads in a gravity well">
   <div class="kicker">Timeline</div>
   <canvas class="st-canvas" data-rows={JSON.stringify(rows)} aria-hidden="true"></canvas>
+
+  <!-- wider screens: the same periods as a timeline, under the well -->
+  <div class="st-strip">
+    {ticks.map((y) => <i class="st-grid" style={`--a:${f(y)}`} aria-hidden="true"></i>)}
+    {rows.map((r, i) => (
+      <button
+        type="button"
+        data-i={i}
+        class={`st-row s-${r.state}${r.end === null ? ' going' : ''}${r.underlay ? ' under' : ''}`}
+        style={`--a:${f(r.start)}; --b:${f(r.end ?? LAST)}`}
+      >
+        <span class="st-bar"><span>{r.n ? `${r.n} · ` : ''}{r.title}</span><em>{r.years}</em></span>
+      </button>
+    ))}
+    <div class="st-axis" aria-hidden="true">
+      {ticks.map((y) => <span style={`--a:${f(y)}`}>{y}</span>)}
+      <span style={`--a:${f(2026)}`}>now</span>
+    </div>
+  </div>
 
   <div class="st-info" aria-live="polite">
     <p class="st-info-meta"></p>
@@ -56,17 +84,22 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     var W = 0, H = 0, R = 0, cx = 0, cy = 0, dpr = 1, wide = false, x0 = 0, L = 0;
+    var strip = box.querySelector('.st-strip');
     function size() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       W = cv.clientWidth;
       wide = W > 600;
-      H = wide ? Math.round(Math.min(560, Math.max(320, W * 0.44))) : Math.round(W * 1.02);
+      H = wide ? Math.round(Math.min(360, Math.max(250, W * 0.27))) : Math.round(W * 1.02);
+      box.classList.toggle('is-wide', wide);
       cv.style.height = H + 'px';
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       if (wide) {
-        // lying on its side: the rim on the right, the deep end on the left
+        // lying on its side: the rim on the right, the deep end on the left;
+        // the strip underneath takes the same left edge and length
         R = H * 0.44; cy = H * 0.5; x0 = 46; L = W - x0 - R * 0.42 - 34;
+        strip.style.setProperty('--x0', x0 + 'px');
+        strip.style.setProperty('--L', L + 'px');
       } else {
         R = W * 0.46; cx = W / 2; cy = H * 0.40;
       }
@@ -77,7 +110,7 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
     function depth(y) { var t = 1 - (y - FIRST) / SPAN; return R * 0.95 * t * t; }
     // lying down, how far along the well a year sits (the early years spread
     // out a little more, the way they sink deeper in the upright drawing)
-    function along(y) { var t = (y - FIRST) / SPAN; return x0 + L * (1 - (1 - t) * (1 - t) * 0.55 - 0.45 * (1 - t)); }
+    function along(y) { return x0 + L * (y - FIRST) / SPAN; }
 
     var theta = 0.6;
     function project(y, a) {
@@ -95,7 +128,7 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
     });
     function bearing(r, y) { return r.a0 + TWIST * (y - r.start); }
 
-    var sel = 0, nodes = [];
+    var sel = 0, hov = -1, nodes = [];
     var BLUE = '28, 74, 134', GREY = '109, 130, 153';
 
     function draw() {
@@ -127,14 +160,16 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
       ctx.fillStyle = 'rgba(' + BLUE + ',0.55)';
       ctx.textAlign = 'center';
       if (wide) {
-        // under the well: where each year sits along it
-        [2009, 2012, 2015, 2018, 2021, 2024].forEach(function (yr) {
-          ctx.fillStyle = 'rgba(' + BLUE + ',' + (yr === 2009 ? 0.55 : 0.35) + ')';
-          ctx.fillText(String(yr), along(yr), cy + rad(yr) + 16);
-        });
-        ctx.fillStyle = 'rgba(' + BLUE + ',0.55)';
-        ctx.textAlign = 'left';
-        ctx.fillText('now', along(LAST) + R * 0.12, cy + rad(LAST) + 16);
+        // the years are written on the strip below; here, the lit thread is
+        // tied down to its bar by a faint plumb line from where it begins
+        var lit = hov >= 0 ? hov : sel, rl = rows[lit];
+        if (rl) {
+          var p0 = project(rl.start, bearing(rl, rl.start));
+          ctx.beginPath(); ctx.setLineDash([2, 4]);
+          ctx.moveTo(p0.x, p0.y); ctx.lineTo(along(rl.start), H);
+          ctx.strokeStyle = 'rgba(' + BLUE + ',0.35)'; ctx.lineWidth = 1; ctx.stroke();
+          ctx.setLineDash([]);
+        }
       } else {
         ctx.fillText('2009', cx, cy + depth(FIRST) + 16);
         // "now" sits on the right-hand edge of the rim, clear of the threads
@@ -146,7 +181,7 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
       // the threads
       nodes = [];
       rows.forEach(function (r, i) {
-        var on = i === sel;
+        var on = i === sel || i === hov;
         var col = r.underlay ? GREY : BLUE;
         var pts = [];
         for (var y = r.start; y <= r.stop; y += 0.25) pts.push(project(y, bearing(r, y)));
@@ -179,7 +214,7 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
     }
 
     var info = box.querySelector('.st-info');
-    var btns = box.querySelectorAll('.st-list button');
+    var btns = box.querySelectorAll('.st-list button, .st-row');
     function select(i) {
       sel = i;
       var r = rows[i];
@@ -198,6 +233,11 @@ const rows = [...threads, ...timelineExtra].map((t) => ({
     }
     btns.forEach(function (b) {
       b.addEventListener('click', function () { pick(+b.getAttribute('data-i')); });
+    });
+    // hovering a bar lights its thread in the well
+    box.querySelectorAll('.st-row').forEach(function (b) {
+      b.addEventListener('mouseenter', function () { hov = +b.getAttribute('data-i'); draw(); });
+      b.addEventListener('mouseleave', function () { hov = -1; draw(); });
     });
 
     // drag to turn the well; a tap near a node picks that thread

@@ -3107,6 +3107,50 @@ p, li, figcaption, .bw-lede { text-wrap: pretty; }
 .st-wrap { display: block; margin-top: 44px; }
 @media (max-width: 600px) { .st-wrap { margin-top: 56px; } }
 .st-hint { margin: 10px 0 0; font-size: 12px; letter-spacing: 0.04em; color: var(--ink-3); }
+
+/* wider screens: the strip under the well, on the same year scale (--x0 and
+   --L are the well's left edge and length, set by the script) */
+.st-strip { display: none; position: relative; margin-top: 2px; padding-bottom: 26px; }
+.spacetime.is-wide .st-strip { display: block; }
+.spacetime.is-wide .st-list { display: none; }
+.st-grid {
+  position: absolute; top: 0; bottom: 22px; width: 1px;
+  left: calc(var(--x0, 0px) + var(--L, 100%) * var(--a));
+  background: rgba(28, 74, 134, 0.09);
+}
+.st-row {
+  display: block; position: relative; width: 100%; height: 25px; padding: 0; margin: 0 0 3px;
+  border: 0; background: none; font: inherit; cursor: pointer; text-align: left;
+}
+.st-bar {
+  position: absolute; top: 2px; bottom: 2px;
+  left: calc(var(--x0, 0px) + var(--L, 100%) * var(--a));
+  width: calc(var(--L, 100%) * (var(--b) - var(--a)));
+  display: flex; align-items: center; gap: 10px; padding: 0 10px; white-space: nowrap;
+  border-radius: 3px 12px 12px 3px;
+  background: rgba(28, 74, 134, 0.13); color: var(--ink);
+  font-size: 12.5px; letter-spacing: 0.01em;
+  transition: background 0.2s, color 0.2s;
+}
+.st-bar em { font-style: normal; font-size: 11px; color: var(--ink-3); transition: color 0.2s; }
+.st-row.s-ended .st-bar { background: rgba(28, 74, 134, 0.09); box-shadow: inset 0 0 0 1px rgba(28, 74, 134, 0.22); }
+.st-row.s-transformed .st-bar { background: rgba(28, 74, 134, 0.09); box-shadow: none; outline: 1px dashed rgba(28, 74, 134, 0.4); outline-offset: -1px; }
+/* still going: the bar runs on past now and fades out */
+.st-row.going .st-bar {
+  border-radius: 3px 0 0 3px;
+  background: linear-gradient(90deg, rgba(28, 74, 134, 0.18) 70%, rgba(28, 74, 134, 0) 100%);
+}
+.st-row.under .st-bar { background: linear-gradient(90deg, rgba(109, 130, 153, 0.14) 70%, rgba(109, 130, 153, 0) 100%); color: var(--ink-2); }
+.st-row:hover .st-bar { background: rgba(28, 74, 134, 0.26); }
+.st-row.is-on .st-bar { background: var(--blue); color: #fff; box-shadow: none; outline: none; }
+.st-row.going.is-on .st-bar { background: linear-gradient(90deg, var(--blue) 70%, rgba(28, 74, 134, 0.15) 100%); }
+.st-row.is-on .st-bar em { color: rgba(255, 255, 255, 0.75); }
+.st-axis { position: absolute; left: 0; right: 0; bottom: 0; height: 18px; }
+.st-axis span {
+  position: absolute; left: calc(var(--x0, 0px) + var(--L, 100%) * var(--a)); translate: -50% 0;
+  font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-3);
+}
+.spacetime.is-wide .st-info { margin-top: 10px; min-height: 0; }
 .st-canvas { display: block; width: 100%; margin-top: 10px; touch-action: pan-y; cursor: grab; }
 .st-info { min-height: 96px; margin-top: 4px; }
 .st-info-meta { margin: 0; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
