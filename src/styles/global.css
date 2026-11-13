@@ -3647,3 +3647,24 @@ html.brief .paper li:not(:has(a, img, svg, video, iframe, figure, button)):not(.
 .lmnow-when { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); padding-top: 3px; }
 .lmnow-row .t { font-size: 14px; color: var(--ink-2); margin-top: 2px; }
 @media (max-width: 600px) { .lmnow-row { grid-template-columns: 1fr; } }
+
+/* --- info: the press kit ---------------------------------------------------- */
+.kit { padding-bottom: 90px; }
+.kit-lede { font-size: 15px; color: var(--ink-2); max-width: 42em; }
+.kit-all { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 22px 0 8px; }
+.kit-all span { font-size: 12px; letter-spacing: 0.04em; color: var(--ink-3); }
+.kit-btn {
+  display: inline-block; background: var(--blue); color: #fff; border-radius: 22px;
+  padding: 11px 22px; font-size: 14px; letter-spacing: 0.02em; transition: background 0.18s;
+}
+.kit-btn:hover, .kit-btn:focus-visible { background: var(--ink); }
+.kit-btn::after { content: ' ↓'; }
+.kit-group { margin-top: 34px; }
+.kit-group h3 { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); font-weight: 400; margin: 0 0 12px; }
+.kit-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px 16px; }
+.kit-grid a { display: block; }
+.kit-grid img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: rgba(13, 33, 54, 0.05); transition: opacity 0.2s; }
+.kit-grid a:hover img { opacity: 0.85; }
+.kit-l { display: block; font-size: 13px; line-height: 1.35; margin-top: 7px; color: var(--ink); }
+.kit-m { display: block; font-size: 11px; letter-spacing: 0.06em; color: var(--blue); margin-top: 3px; }
+@media (max-width: 600px) { .kit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px; } }

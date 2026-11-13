@@ -5,6 +5,7 @@ import { byYear, cvTypes, typeLabel } from '../data/cv.js';
 import { pressByYear, pressKinds } from '../data/press.js';
 import WorldMap from '../components/WorldMap.astro';
 import { lifePins } from '../data/lifemap.js';
+import { pressKit as kit } from '../data/presskit.js';
 
 const portraits = [
   { src: '/images/me/me-01.webp', caption: 'Photo by Edu Monteiro, 2025', alt: 'Vanessa Rosa in a patterned dress, against a grey backdrop.' },
@@ -204,6 +205,38 @@ const portraits = [
         with the streets the project pages add.
       </p>
       <WorldMap pins={lifePins} one="entry" many="entries" note="{n} places. Tap a pin to see what happened there." />
+    </section>
+
+    <!-- THE PRESS KIT: everything to share, in one place ------------------ -->
+    <section class="wrap kit" id="press-kit">
+      <div class="rule" style="margin:10px 0 30px"></div>
+      <div class="kicker">Press kit</div>
+      <h2 class="sec" style="margin:10px 0 8px">Little Martians, to share</h2>
+      <p class="kit-lede">
+        Press releases, posters, film stills, photographs and videos. For press, write to
+        <a class="ul" href={`mailto:${kit.contact}`}>{kit.contact}</a>.
+      </p>
+      <p class="kit-all">
+        <a class="kit-btn" href={kit.all.href} download>Download the whole kit</a>
+        <span>ZIP · {kit.all.size} · the videos are below, on their own</span>
+      </p>
+
+      {kit.groups.map((g) => (
+        <div class="kit-group">
+          <h3>{g.title}</h3>
+          <ul class="kit-grid">
+            {g.items.map((it) => (
+              <li>
+                <a href={it.href} download>
+                  <img src={it.t} alt="" loading="lazy" data-nozoom data-full />
+                  <span class="kit-l">{it.label}</span>
+                  <span class="kit-m">{it.kind} · {it.size} ↓</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </section>
   </div>
 

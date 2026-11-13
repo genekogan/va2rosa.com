@@ -318,6 +318,9 @@ export const threads = [
       { years: '2017', text: 'The perimeter mural at Pioneer Works, Red Hook, Brooklyn' },
       { years: '2017', text: 'Installation for Lilo.think space, São Paulo' },
       { years: '2017', text: 'ITP NYU summer program final show, New York' },
+      { years: '2020', text: '<a class="ul" href="https://www.sp-arte.com/exposicoes/casa-de-colecionador" target="_blank" rel="noopener">Casa de Colecionador</a>, Artur Fidalgo Galeria' },
+      { years: '2020', text: 'SP-Arte, Artur Fidalgo Galeria' },
+      { years: '2020', text: 'Casa Cor, Artur Fidalgo Galeria' },
     ],
     reading: [
       'Frankopan, Peter. <em>The Silk Roads: A New History of the World</em>. Bloomsbury, 2015.',
