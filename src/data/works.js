@@ -1722,3 +1722,94 @@ export const immersiveMural = {
     ],
   },
 };
+
+// ---------------------------------------------------------------------------
+// Penrose tiles, Mars College, 2021: a series made with laser-cut stencils of
+// Penrose tiles. Murals, body painting, and Sophie's tarot cards decorated
+// with the mural. A highlight inside Ethnomathematics & Ethnocomputing.
+// ---------------------------------------------------------------------------
+const PN = (k) => `/images/penrose/${k}.webp`;
+export const penroseTiles = {
+  slug: 'penrose-tiles',
+  spine: 'ethnocomputing',
+  back: { label: 'Ethnomathematics & Ethnocomputing', href: '/threads/ethnocomputing' },
+  kicker: 'Mars College · 2021',
+  title: 'Penrose tiles',
+  hero: PN('mural-1'),
+  heroAlt: 'Penrose tiles sprayed in pink, orange and yellow, the mural seen up close.',
+  lede:
+    'A series made with my laser-cut stencils of Penrose tiles: murals and body painting, at Mars College, 2021.',
+  meta: [
+    ['Where', 'Mars College, California'],
+    ['When', 'March 2021'],
+    ['Media', 'Laser-cut stencils · spray paint · body painting'],
+  ],
+  intro: [
+    'Penrose tiles cover a surface with two shapes and never repeat.',
+  ],
+  diagram: {
+    kicker: 'How the stencils work',
+    title: 'Pattern, stencil, distortion, modules',
+    body: 'A pattern becomes a laser-cut stencil, is bent into perspective and cut at several scales, and the pieces are sprayed side by side into spaces that are not there.',
+    href: '/stencils',
+    label: 'The stencil research',
+  },
+  sections: [
+    {
+      title: 'The mural',
+      gallery: 'slides',
+      images: [
+        { src: PN('mural-1'), caption: 'The mural, up close' },
+        { src: PN('mural-2'), caption: 'The mural, up close' },
+      ],
+    },
+    {
+      title: 'Under the jungle',
+      gallery: 'slides',
+      images: [
+        { src: PN('jungle-1'), caption: 'The jungle mural, Mars College, 2021' },
+        { src: PN('jungle-detail'), caption: 'Detail: the tiles under the leaves' },
+        { src: PN('jungle-2') },
+        { src: PN('jungle-3') },
+      ],
+    },
+    {
+      title: 'Body painting',
+      gallery: 'slides',
+      images: [
+        { src: PN('body-01'), caption: 'In front of the mural' },
+        { src: PN('body-02') },
+        { src: PN('body-03') },
+        { src: PN('body-04') },
+        { src: PN('body-05') },
+        { src: PN('body-06') },
+        { src: PN('body-07') },
+        { src: PN('body-08'), caption: 'Painting through the stencil' },
+        { src: PN('body-09'), caption: 'Painting through the stencil' },
+        { src: PN('body-10'), caption: 'Painting through the stencil' },
+      ],
+    },
+    {
+      title: 'Sophie’s tarot',
+      body: ['The Penrose tiles mural was used to decorate Sophie’s tarot cards.'],
+      gallery: 'slides',
+      images: [
+        { src: PN('tarot-1') },
+        { src: PN('tarot-2') },
+        { src: PN('tarot-3') },
+      ],
+    },
+    {
+      title: 'The mural as a style',
+      body: ['The mural fed to a neural style transfer, over photographs of the Mars sign.'],
+      gallery: 'slides',
+      images: [
+        { src: PN('style-3') },
+        { src: PN('style-4') },
+        { src: PN('style-5') },
+        { src: PN('style-1') },
+        { src: PN('style-2') },
+      ],
+    },
+  ],
+};

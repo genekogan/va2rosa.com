@@ -56,7 +56,7 @@ export const cv = [
   { year: 2018, type: 'exhibition', title: 'Ethnocomputing Experiments', venue: 'Pioneer Works, with Wenqi Li', city: 'Brooklyn, New York', thread: 'ethnocomputing' , href: 'https://pioneerworks.org/' },
   { year: 2017, type: 'exhibition', title: 'Dialogues', venue: 'Le Centre. Two-person exhibition with Gérard Quenum, made during a one-month residency', city: 'Cotonou, Benin', thread: 'the-silk-roads', href: '/gerard-quenum', href2: 'https://www.lecentre-benin.com/g%C3%A9rard-quenum-vanessa-rosa', href2Label: 'Le Centre' },
   { year: 2017, type: 'solo', title: 'Imaginary Tiles', venue: 'B[x] Space, solo exhibition, March to April 2017. Statement by Marjan Fadavi', city: 'Bushwick, New York', thread: 'the-silk-roads' , href: '/imaginary-tiles' },
-  { year: 2017, type: 'exhibition', title: 'Context Art Fair, and Terra Nova', venue: 'Haas Art Advisory', city: 'New York' },
+  { year: 2017, type: 'exhibition', title: 'Context Art Fair, and Terra Nova', venue: 'Shown by Haas Art Advisory', city: 'New York', thread: 'the-silk-roads', href: 'https://haasadvisory.com/artists' },
   { year: 2017, type: 'exhibition', title: 'Installation for Lilo.think space', venue: 'Installation', city: 'São Paulo, Brazil', thread: 'the-silk-roads' },
   { year: 2017, type: 'exhibition', title: 'ITP Camp final show', venue: 'New York University, Tisch School of the Arts, summer program final show', city: 'New York', thread: 'the-silk-roads' },
   { year: 2016, type: 'exhibition', title: 'As Mulheres nas Ruas', venue: 'Intervention and talk in the Ciclo Feminino em Obras at Midrash Centro Cultural, curated and mediated by Pagu, with Rafa Mon, Criola and Camila Camiz, 28 September', city: 'Leblon, Rio de Janeiro' },

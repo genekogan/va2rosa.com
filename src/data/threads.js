@@ -318,6 +318,7 @@ export const threads = [
       { years: '2017', text: 'The perimeter mural at Pioneer Works, Red Hook, Brooklyn' },
       { years: '2017', text: 'Installation for Lilo.think space, São Paulo' },
       { years: '2017', text: 'ITP NYU summer program final show, New York' },
+      { years: '2017', text: 'Context Art Fair, shown by <a class="ul" href="https://haasadvisory.com/artists" target="_blank" rel="noopener">Haas Art Advisory</a>' },
       { years: '2020', text: '<a class="ul" href="https://www.sp-arte.com/exposicoes/casa-de-colecionador" target="_blank" rel="noopener">Casa de Colecionador</a>, Artur Fidalgo Galeria' },
       { years: '2020', text: 'SP-Arte, Artur Fidalgo Galeria' },
       { years: '2020', text: 'Casa Cor, Artur Fidalgo Galeria' },
@@ -488,6 +489,17 @@ export const threads = [
           { src: '/images/mad/mad-17.webp' },
         ],
         more: { label: 'The whole project', href: '/mad' },
+      },
+      {
+        highlight: {
+          href: '/penrose-tiles',
+          image: '/images/penrose/mural-1.webp',
+          imageAlt: 'Penrose tiles sprayed in pink, orange and yellow.',
+          kicker: 'Mars College · 2021',
+          title: 'Penrose tiles',
+          body: 'A series made with my laser-cut stencils of Penrose tiles: murals and body painting. The mural also decorated Sophie’s tarot cards.',
+          label: 'The whole series',
+        },
       },
       {
         title: 'Then latent space',
