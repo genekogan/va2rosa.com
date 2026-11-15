@@ -497,7 +497,7 @@ export const threads = [
           imageAlt: 'Penrose tiles sprayed in pink, orange and yellow.',
           kicker: 'Mars College · 2021',
           title: 'Penrose tiles',
-          body: 'A series made with my laser-cut stencils of Penrose tiles: murals and body painting. The mural also decorated Sophie’s tarot cards.',
+          body: 'A series made with my laser-cut stencils of Penrose tiles: murals and body painting. The mural also decorated Sofy Yuditskaya’s tarot cards.',
           label: 'The whole series',
         },
       },

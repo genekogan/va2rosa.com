@@ -35,7 +35,7 @@ const { work } = Astro.props;
     <div class="narrow" style="margin-top:26px">
       {work.intro.map((p, i) => (
         <>
-          <p>{p}</p>
+          {typeof p === 'string' ? <p>{p}</p> : <p set:html={p.html} />}
           {work.introInline?.[i] && (
             <div class="wp-inline">
               <div class="wp-inline-imgs">

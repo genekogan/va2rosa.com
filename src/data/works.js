@@ -1725,7 +1725,7 @@ export const immersiveMural = {
 
 // ---------------------------------------------------------------------------
 // Penrose tiles, Mars College, 2021: a series made with laser-cut stencils of
-// Penrose tiles. Murals, body painting, and Sophie's tarot cards decorated
+// Penrose tiles. Murals, body painting, and Sofy Yuditskaya's tarot cards decorated
 // with the mural. A highlight inside Ethnomathematics & Ethnocomputing.
 // ---------------------------------------------------------------------------
 const PN = (k) => `/images/penrose/${k}.webp`;
@@ -1745,7 +1745,7 @@ export const penroseTiles = {
     ['Media', 'Laser-cut stencils · spray paint · body painting'],
   ],
   intro: [
-    'Penrose tiles cover a surface with two shapes and never repeat.',
+    { html: 'Penrose tiles cover a surface with two shapes and never repeat. The stencils come out of my <a class="ul" href="/stencils">stencil research</a>.' },
   ],
   diagram: {
     kicker: 'How the stencils work',
@@ -1775,6 +1775,7 @@ export const penroseTiles = {
     },
     {
       title: 'Body painting',
+      body: ['Painted on Laz, the Fake Pope. Photographs by Decoy.'],
       gallery: 'slides',
       images: [
         { src: PN('body-01'), caption: 'In front of the mural' },
@@ -1790,8 +1791,8 @@ export const penroseTiles = {
       ],
     },
     {
-      title: 'Sophie’s tarot',
-      body: ['The Penrose tiles mural was used to decorate Sophie’s tarot cards.'],
+      title: 'Sofy Yuditskaya’s tarot',
+      body: [{ html: 'The Penrose tiles mural was used to decorate <a class="ul" href="https://www.yuditskaya.com/" target="_blank" rel="noopener">Sofy Yuditskaya</a>’s tarot cards.' }],
       gallery: 'slides',
       images: [
         { src: PN('tarot-1') },
