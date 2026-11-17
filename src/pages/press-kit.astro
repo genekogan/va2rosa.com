@@ -1,0 +1,39 @@
+---
+// The Little Martians press kit: everything to share, in one place. The files
+// live under /kit; the list is in src/data/presskit.js.
+import Base from '../layouts/Base.astro';
+import { pressKit as kit } from '../data/presskit.js';
+---
+
+<Base title="Press kit" description="The Little Martians press kit: press releases, posters, film stills, photographs and videos by Vanessa Rosa, ready to download." current="Info" bodyClass="paper">
+    <section class="wrap kit" id="press-kit" style="padding-top:calc(var(--navh, 64px) + 50px); padding-bottom:40px">
+      <div class="kicker">Press kit</div>
+      <h1 class="sec" style="margin:12px 0 10px">Little Martians, to share</h1>
+      <p class="kit-lede">
+        Press releases, posters, film stills, photographs and videos. For press, write to
+        <a class="ul" href={`mailto:${kit.contact}`}>{kit.contact}</a>.
+      </p>
+      <p class="kit-all">
+        <a class="kit-btn" href={kit.all.href} download>Download the whole kit</a>
+        <span>ZIP · {kit.all.size} · the videos are below, on their own</span>
+      </p>
+
+      {kit.groups.map((g) => (
+        <div class="kit-group">
+          <h3>{g.title}</h3>
+          <ul class="kit-grid">
+            {g.items.map((it) => (
+              <li>
+                <a href={it.href} download>
+                  <img src={it.t} alt="" loading="lazy" data-nozoom data-full />
+                  <span class="kit-l">{it.label}</span>
+                  <span class="kit-m">{it.kind} · {it.size} ↓</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+  <p class="wrap" style="margin:0 auto 90px"><a class="more" href="/info">← Info</a></p>
+</Base>
