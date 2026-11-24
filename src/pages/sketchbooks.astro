@@ -4,13 +4,14 @@
 // behind a still: nothing downloads until somebody presses play.
 import Base from '../layouts/Base.astro';
 import { selfPortrait as sp, highlights, years } from '../data/drawings.js';
+import BookReader from '../components/BookReader.astro';
 ---
 
 <Base brief
   title="Drawings"
   current="Art"
   bodyClass="paper"
-  description="Drawings and sketchbooks by Vanessa Rosa, from a self portrait in 2000 to watercolour sketchbooks in 2018: made on the streets, in cafés and in life model sessions."
+  description="Drawings and sketchbooks by Vanessa Rosa, from a self portrait in 2000 to the sketchbooks of 2025 and 2026: made on the streets, in cafés and in life model sessions."
 >
   <section class="wrap" style="padding-top:70px">
     <div class="kicker">Drawings</div>
@@ -63,6 +64,8 @@ import { selfPortrait as sp, highlights, years } from '../data/drawings.js';
             <figcaption>{y.video.caption}</figcaption>
           </figure>
         )}
+
+        {y.book && <div style="margin-top:22px"><BookReader book={y.book} /></div>}
 
         {y.slides && (
           <div class="slides" data-slides>

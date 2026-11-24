@@ -13,7 +13,8 @@
 //
 // book = { slug, pages: [pdf page numbers], spread, aspect (one page, w/h), title }
 const { book } = Astro.props;
-const { slug, pages, spread = false, aspect = 0.75, title } = book;
+const { slug, pages, spread = false, aspect = 0.75, title, singles = [] } = book;
+// singles: in a book of spreads, pages that are one page only (shown on their own)
 
 const url = (n) => `/images/books/${slug}/p-${String(n).padStart(3, '0')}.webp`;
 
@@ -24,7 +25,8 @@ const [cover, ...rest] = pages;
 openings.push([null, { src: url(cover), part: 'full' }]);
 if (spread) {
   for (const n of rest) {
-    openings.push([{ src: url(n), part: 'l' }, { src: url(n), part: 'r' }]);
+    if (singles.includes(n)) openings.push([null, { src: url(n), part: 'full' }]);
+    else openings.push([{ src: url(n), part: 'l' }, { src: url(n), part: 'r' }]);
   }
 } else {
   for (let i = 0; i < rest.length; i += 2) {

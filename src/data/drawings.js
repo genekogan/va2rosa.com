@@ -21,7 +21,6 @@ export const selfPortrait = {
 
 // single drawings, oldest first
 export const highlights = [
-  { src: d('h-2011-leaning'), year: 2011, caption: 'Watercolour, 2011' },
   { src: d('h-2011-reclining'), year: 2011, caption: 'Life model, watercolour, 2011' },
   { src: d('h-2012-arms'), year: 2012, caption: 'Life model, watercolour, 2012' },
   { src: d('h-2012-back'), year: 2012, caption: 'Life model, watercolour, 2012' },
@@ -29,9 +28,8 @@ export const highlights = [
   { src: d('h-2012-seated'), year: 2012, caption: 'Life model, mixed media, 2012' },
   { src: d('h-2013-capoeira'), year: 2013, caption: 'Capoeira, watercolour, 2013' },
   { src: d('h-2013-man'), year: 2013, caption: 'Portrait, watercolour, 2013' },
-  { src: d('h-2013-nefertiti'), year: 2013, caption: 'Nefertiti, watercolour, 2013' },
   { src: d('h-2014-model'), year: 2014, caption: 'Life model, watercolour, 2014' },
-  { src: d('h-2015-class'), year: 2015, caption: 'Drawn during a documentary class, 2015' },
+  { src: d('h-2016-portrait'), year: 2016, caption: 'Portrait, watercolour, 2016' },
 ];
 
 // the sketchbooks, year by year
@@ -79,9 +77,13 @@ export const years = [
       .map((n) => ({ src: d('t18-' + n) })),
   },
   {
-    year: '2018',
-    title: 'Watercolours with Same Putumi',
-    body: 'Kene patterns, painted during the immersion with the Huni Kuin.',
-    video: { ...v('draw-2018-same'), caption: 'Turning the pages.' },
+    year: '2025',
+    title: 'Little Martians sketchbook',
+    book: { slug: 'sketch-2025', spread: true, aspect: 0.64, pages: Array.from({ length: 24 }, (_, i) => i + 1), singles: [2], title: 'Little Martians sketchbook, 2025' },
+  },
+  {
+    year: '2026',
+    title: 'Sketchbook',
+    book: { slug: 'sketch-2026', spread: true, aspect: 0.64, pages: Array.from({ length: 20 }, (_, i) => i + 1), title: 'Sketchbook, 2026' },
   },
 ];
