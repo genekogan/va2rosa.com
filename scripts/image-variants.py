@@ -64,7 +64,10 @@ def main():
     wdir = os.path.join(images, '_w')
     for d, _, files in os.walk(wdir):
         for f in files:
-            orig = '/images/' + os.path.relpath(os.path.join(d, f), wdir).split(os.sep, 1)[1].replace(os.sep, '/')
+            rel = os.path.relpath(os.path.join(d, f), wdir)
+            if f.startswith('.') or os.sep not in rel:   # Finder's .DS_Store and the like
+                continue
+            orig = '/images/' + rel.split(os.sep, 1)[1].replace(os.sep, '/')
             if orig not in sizes:
                 os.remove(os.path.join(d, f))
 

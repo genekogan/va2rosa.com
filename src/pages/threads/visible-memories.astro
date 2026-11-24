@@ -78,6 +78,10 @@ import { mauricioHora, streetArt } from '../../data/works.js';
             ))}
           </div>
 
+          {ph.galleries && (
+            <div class="ph-slides"><Story story={ph.galleries.map((g) => ({ title: g.title, gallery: 'slides', images: g.images }))} /></div>
+          )}
+
           {ph.images.length > 0 && ph.gallery === 'slides' && (
             <div class="ph-slides"><Story story={[{ gallery: 'slides', images: ph.images }]} /></div>
           )}
