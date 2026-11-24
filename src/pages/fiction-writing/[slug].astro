@@ -66,6 +66,9 @@ const isHead = (p) => p.length < 64 && !/[.:,;!?…"”]$/.test(p) && !p.startsW
       <section class="fx-part">
         <h2 class="fx-part-h">{page.seen.title}</h2>
         <div class="narrow"><p>{page.seen.body}</p></div>
+        {page.seen.link && (
+          <p class="story-links"><a class="more" href={page.seen.link.href} target="_blank" rel="noopener">{page.seen.link.label} ⇢</a></p>
+        )}
         <figure class="wgrid solo" style="margin-top:18px">
           <img src={page.seen.image.src} alt={page.seen.image.caption} loading="lazy" />
           <figcaption>{page.seen.image.caption}</figcaption>
