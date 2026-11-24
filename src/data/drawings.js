@@ -27,7 +27,6 @@ export const highlights = [
   { src: d('h-2012-yellow'), year: 2012, caption: 'Life model, watercolour, 2012' },
   { src: d('h-2012-seated'), year: 2012, caption: 'Life model, mixed media, 2012' },
   { src: d('h-2013-capoeira'), year: 2013, caption: 'Capoeira, watercolour, 2013' },
-  { src: d('h-2013-man'), year: 2013, caption: 'Portrait, watercolour, 2013' },
   { src: d('h-2014-model'), year: 2014, caption: 'Life model, watercolour, 2014' },
   { src: d('h-2016-portrait'), year: 2016, caption: 'Portrait, watercolour, 2016' },
 ];
