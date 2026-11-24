@@ -47,6 +47,21 @@ const isHead = (p) => p.length < 64 && !/[.:,;!?…"”]$/.test(p) && !p.startsW
       </div>
     )}
 
+    {/* a booklet to leaf through, and photographs of the printed copy */}
+    {page.read && (
+      <section class="fx-part"><BookReader book={page.read} /></section>
+    )}
+    {page.photos && (
+      <section class="fx-part">
+        <h2 class="fx-part-h">{page.photos.title}</h2>
+        <div class="wgrid">
+          {page.photos.images.map((im) => (
+            <figure><img src={im.src} alt={im.caption} loading="lazy" /><figcaption>{im.caption}</figcaption></figure>
+          ))}
+        </div>
+      </section>
+    )}
+
     {/* ================================================================== */}
     {slug === 'dear-human' && (
       <>
