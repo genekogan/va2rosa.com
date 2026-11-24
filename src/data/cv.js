@@ -44,6 +44,7 @@ export const cv = [
   { year: 2023, type: 'solo', title: 'Little Martians pop-up', venue: 'Re.gen.cy, solo exhibition', city: 'New York', thread: 'little-martians' , href: '/little-martians-popup', href2: 'https://www.instagram.com/re_gen_cy_/', href2Label: 'Re:Gen:Cy' },
   { year: 2023, type: 'exhibition', title: 'Glitch ARTS+TECH Residency', venue: 'Château du Feÿ. Little Martians shown during the residency', city: 'Joigny, France', thread: 'little-martians' , href: 'https://www.instagram.com/glitchresidency/' },
   { year: 2023, type: 'exhibition', title: 'Pupila Dilatada 3', venue: 'Metaverse art show. A Little Martians world built on the Arium platform', city: 'Online', thread: 'little-martians' },
+  { year: 2022, type: 'exhibition', title: 'NFT Rio Exhibition', venue: 'Parque Lage, with NFTRio', city: 'Rio de Janeiro, Brazil', thread: 'little-martians', href: 'https://superuber.com/nft-rio-exhibition/' },
   { year: 2022, type: 'exhibition', title: 'Little Martians metaverse', venue: 'The first of two worlds built on the Arium platform', city: 'Online', thread: 'little-martians' },
   { year: 2021, type: 'exhibition', title: 'Pupila Dilatada', venue: 'Metaverse art show', city: 'Online', thread: 'little-martians' },
   { year: 2023, type: 'exhibition', title: 'Deforum', venue: 'Bright Moments Gallery', city: 'Los Angeles, California', thread: 'little-martians' , href: 'https://brightmoments.io/' },
