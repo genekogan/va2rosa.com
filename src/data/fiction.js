@@ -178,7 +178,7 @@ export const fictionPages = {
     context: [
       'A short experiment: the encounter of the Mechanical Duck and Ada, the Little Martian, in the Floating Castle of Recursive Rooms in the Clouds of Venus. It was created as character ideation, imagining the basics of their world.',
       'Ada’s world is inspired by Vredeman de Vries, M. C. Escher and Howl’s Moving Castle by Miyazaki. The Mechanical Duck is Gene Kogan’s character: his alter ego and Discord name at Mars College, and also a meme coin he created in 2025.',
-      'I have not written much of Ada’s world; she is still mysterious to me. But I see her as the super intelligent woman who is always idealized by nerdy men, but they can never reach her.',
+      'I have not written much of Ada’s world; she is still mysterious to me. I see her as the super intelligent woman who is always idealized by nerdy men, but they can never reach her.',
       'The pages were made with ChatGPT’s image model in May 2026, and printed as a booklet.',
     ],
     read: { slug: 'ada-duck', spread: false, aspect: 0.6471, pages: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], title: 'Ada, the Little Martian, & the Mechanical Duck' },
