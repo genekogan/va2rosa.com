@@ -191,6 +191,11 @@ export const fictionPages = {
         { src: '/images/writing/ada/print-4.webp', caption: 'The back cover' },
       ],
     },
+    seen: {
+      title: 'At Saturn’s Theater of Minds',
+      body: 'The two characters also appeared in the Saturn’s Theater of Minds performance during the Bombay Beach Biennale 2026, as projected entities on my own mural panels.',
+      image: { src: '/images/writing/ada/saturn-2026.webp', caption: 'The Mechanical Duck and Ada, projected on the mural panels. Saturn’s Theater of Minds, Bombay Beach Biennale, 2026' },
+    },
   },
   'dear-human': {
     title: 'Dear Human, My Muse',

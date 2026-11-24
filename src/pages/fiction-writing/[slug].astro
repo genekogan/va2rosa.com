@@ -62,6 +62,17 @@ const isHead = (p) => p.length < 64 && !/[.:,;!?…"”]$/.test(p) && !p.startsW
       </section>
     )}
 
+    {page.seen && (
+      <section class="fx-part">
+        <h2 class="fx-part-h">{page.seen.title}</h2>
+        <div class="narrow"><p>{page.seen.body}</p></div>
+        <figure class="wgrid solo" style="margin-top:18px">
+          <img src={page.seen.image.src} alt={page.seen.image.caption} loading="lazy" />
+          <figcaption>{page.seen.image.caption}</figcaption>
+        </figure>
+      </section>
+    )}
+
     {/* ================================================================== */}
     {slug === 'dear-human' && (
       <>
