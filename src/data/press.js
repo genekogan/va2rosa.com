@@ -24,6 +24,15 @@ export const press = [
   },
   {
     year: 2026,
+    outlet: 'New York Magazine, Intelligencer',
+    title: 'What Is It Like to Be a Cucumber?',
+    note: 'By Elizabeth Weil, 29 July 2026. On the biologist Michael Levin. Little Martians appears among the artworks by fans of his work, as a series inspired by his research on bioelectric signals.',
+    href: 'https://nymag.com/intelligencer/article/biologist-michael-levin-minds.html',
+    kinds: ['online'],
+    thread: 'little-martians',
+  },
+  {
+    year: 2026,
     outlet: 'The Guardian',
     title:
       'No tuition, no grades, no power grid: why are people flocking to a “college” in the middle of the desert?',
