@@ -5,7 +5,7 @@
 //   thread pages     rows matching that thread's slug
 //
 // type: exhibition | solo | talk | teaching | film | award | residency |
-//       publication | publicart | education | affiliation
+//       publication | publicart | filmwork | education | affiliation
 // Press lives in its own file, press.js.
 //
 // featured: true puts a row in the Selected list at the top of Info.
@@ -168,7 +168,7 @@ export const cv = [
   { year: 2015, type: 'publicart', title: 'Libre Art Festival', venue: 'Street art festival', city: 'Salvador, Bahia, Brazil' },
   { year: 2016, type: 'publicart', title: 'Refugee Nation', venue: 'A campaign by Amnesty International, August', city: 'Rio de Janeiro, Brazil' },
   { year: 2014, type: 'publicart', title: 'La Lucha Mapuche en el Mapocho', venue: 'Mural with Injusticia, supported by the Red de Apoyo a los Presos Políticos Mapuche, December', city: 'Santiago, Chile' , href: '/street-art' },
-  { year: 2014, type: 'publicart', title: 'Há muitas noites na noite', venue: 'Time-lapse painting animations for the film by Silvio Tendler, 2014 and 2015', city: 'Rio de Janeiro, Brazil' , href: '/ha-muitas-noites' },
+  { year: 2014, type: 'filmwork', title: 'Há muitas noites na noite', venue: 'Time-lapse painting animations for the film by Silvio Tendler, 2014 and 2015', city: 'Rio de Janeiro, Brazil' , href: '/ha-muitas-noites' },
   { year: 2014, type: 'publicart', title: 'Galerio', venue: 'Collective mural project by EixoRio, with more than a hundred artists, April', city: 'Rio de Janeiro, Brazil' },
   { year: 2013, type: 'publicart', title: 'Festival CONCEGRAFF', venue: 'International graffiti and street art festival, collective mural, March', city: 'Concepción, Chile' , href: '/street-art' },
   { year: 2012, type: 'publicart', title: 'Festival Kolirius II', venue: 'International graffiti festival, collective mural, July', city: 'Macaé, Brazil' },
@@ -219,6 +219,7 @@ export const cvTypes = [
   { key: 'exhibition', label: 'Exhibitions' },
   { key: 'solo', label: 'Solo shows' },
   { key: 'film', label: 'Film festivals' },
+  { key: 'filmwork', label: 'Film work' },
   { key: 'award', label: 'Awards' },
   { key: 'talk', label: 'Talks' },
   { key: 'teaching', label: 'Teaching' },
@@ -235,6 +236,7 @@ export const typeLabel = {
   talk: 'talk',
   teaching: 'teaching',
   film: 'film',
+  filmwork: 'film work',
   residency: 'residency',
   publication: 'publishing',
   publicart: 'public art',
