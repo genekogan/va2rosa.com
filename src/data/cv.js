@@ -182,6 +182,7 @@ export const cv = [
   { year: 2022, type: 'publicart', title: 'Immersive mural experiment', venue: 'Mural for GAU on Calçada da Glória, August, then 3-D scans, an animation and Deforum experiments', city: 'Lisbon, Portugal', href: '/immersive-mural-experiment' },
   { year: 2015, type: 'publicart', title: 'Blue Wall Project, GAU and Lisbon Municipality', venue: '', city: 'Lisbon', thread: 'the-silk-roads' , href: '/street-art' },
   { year: 2011, type: 'publicart', title: 'Public murals in Brazil, the United States, Portugal, Chile, France, Germany and Benin', venue: 'Including Santiago, Chile (2014) and Concepción, Chile (2013). Ongoing since 2011', city: '' , href: '/street-art' },
+  { year: 2024, type: 'publicart', title: 'Murals for Mars College', venue: 'Chiba, with the lettering by Will Simmons, and a mural painted with Cekis', city: 'Bombay Beach, California', thread: 'mars-college', href: '/mars-college' },
   { year: 2022, type: 'publicart', title: 'Penrose-tile stencils and body painting', venue: 'Mars College', city: 'Bombay Beach', thread: 'ethnocomputing' , href: 'https://mars.college/' },
 
   // ——— Publishing ———
