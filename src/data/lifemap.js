@@ -82,6 +82,7 @@ const P = {
   tianjin: { label: 'Tianjin', lat: 39.1, lon: 117.2 },
   shanghai: { label: 'Shanghai', lat: 31.2, lon: 121.5 },
   seoul: { label: 'Seoul', lat: 37.6, lon: 127.0 },
+  taipei: { label: 'Taipei', lat: 25.0, lon: 121.6 },
   jeju: { label: 'Jeju', lat: 33.5, lon: 126.5 },
   sydney: { label: 'Sydney', lat: -33.9, lon: 151.2 },
   brisbane: { label: 'Brisbane, Queensland', lat: -27.5, lon: 153.0 },
@@ -119,7 +120,7 @@ const CITY = {
   'Cotonou, Benin': ['cotonou'], 'United Arab Emirates': ['uae'], 'Bangalore, India': ['bangalore'], 'Bengaluru, India': ['bangalore'],
   'Bangkok, Thailand': ['bangkok'], 'Koh Lon, Thailand': ['kohlon'], 'Bali, Indonesia': ['bali'],
   'Bacolod, Philippines': ['bacolod'], 'Beijing and Shanghai, China': ['beijing', 'shanghai'], 'Tianjin, China': ['tianjin'],
-  'Seoul, South Korea': ['seoul'], 'Jeju Halla University, Jeju City, South Korea': ['jeju'],
+  'Seoul, South Korea': ['seoul'], 'Taipei, Taiwan': ['taipei'], 'Jeju Halla University, Jeju City, South Korea': ['jeju'],
   'Sydney, Australia': ['sydney'], 'Brisbane, Australia': ['brisbane'], 'Queensland, Australia': ['brisbane'],
 };
 

@@ -17,6 +17,7 @@ export const FESTIVAL_SITES = {
   'The Galactic Imaginarium Film Festival': 'https://festival.galactic.one',
   'Dubai City Film Festival': 'https://filmfreeway.com/DubaiCityFilmFestival',
   'AI International Film Festival': 'https://filmfreeway.com/AIInternationalFilmFestival',
+  'CSFCCA International AI Film Festival': 'https://csfccaaifilm.com/winners',
   'Experimental Brasil': 'https://experimentalbrasiljournal.neocities.org/interviews#2026-2026-vanessa-rosa',
   'AI Artist': 'https://aiartistfestival.com/',
   'Bangkok Movie Awards': 'https://www.bangkokmovieawards.com/',
@@ -124,6 +125,7 @@ const r = (year, film, festival, outcome, city) => ({
 export const festivalRows = [
   // ——— Verdelis & Mycos ———
   r(2026, VM, 'The Galactic Imaginarium Film Festival', 'Official selection, 18 to 27 September 2026', 'Timiș and Dumbrăvița, Romania'),
+  r(2026, VM, 'CSFCCA International AI Film Festival', 'Best AI Creative Vision, Fall Edition', 'Taipei, Taiwan'),
   r(2026, VM, 'Experimental Brasil', 'Best Experimental Film Made with AI', 'Campos dos Goytacazes, Brazil'),
   r(2026, VM, 'AI Artist', 'Official selection', 'Beijing and Shanghai, China'),
   r(2026, VM, 'BAIFF, Burano Artificial Intelligence Film Festival', 'Nominee', 'Venice, Italy'),

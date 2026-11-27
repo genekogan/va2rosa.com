@@ -102,6 +102,7 @@ export const cv = [
   { year: 2025, type: 'award', title: 'Best Musical. Verdelis & Mycos', venue: 'AI International Film Festival', city: '', thread: 'little-martians' , href: 'https://filmfreeway.com/AIInternationalFilmFestival' },
   { year: 2025, type: 'award', title: 'Best AI Film. Verdelis & Mycos', venue: 'Bangkok Movie Awards', city: 'Bangkok, Thailand', thread: 'little-martians' , href: 'https://www.bangkokmovieawards.com/' },
   { year: 2025, type: 'award', title: 'Animated Film Award. Verdelis & Mycos', venue: 'Dubai City Film Festival', city: 'United Arab Emirates', thread: 'little-martians' , href: 'https://filmfreeway.com/DubaiCityFilmFestival' },
+  { year: 2026, type: 'award', title: 'Best AI Creative Vision. Verdelis & Mycos', venue: 'CSFCCA International AI Film Festival, 2026 Fall Edition', city: 'Taipei, Taiwan', thread: 'little-martians', href: 'https://csfccaaifilm.com/winners' },
   { year: 2026, type: 'award', title: 'Best Experimental Film Made with AI. Verdelis & Mycos', venue: 'Experimental Brasil', city: 'Campos dos Goytacazes, Brazil', thread: 'little-martians' , href: 'https://experimentalbrasiljournal.neocities.org/interviews#2026-2026-vanessa-rosa' },
 
   // ——— Films, and the rest of the festival run ———
