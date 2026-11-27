@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { topics } from '../data/topics.js';
-import { positions, featured, groups, pending, pressHighlight as ph } from '../data/writing.js';
+import { positions, featured, groups, pending, pressHighlight as ph, talkHighlights } from '../data/writing.js';
 import { site } from '../data/site.js';
 import Shelf from '../components/Shelf.astro';
 
@@ -158,6 +158,24 @@ const isExternal = (h) => h.startsWith('http');
     </article>
   </section>
 
+  <!-- TWO TALKS, set apart under the op-ed ------------------------------ -->
+  <section class="wrap" style="margin-top:56px">
+    <div class="kicker">Featured talks</div>
+    {talkHighlights.map((t) => (
+      <article class="posrow posrow-press posrow-talk">
+        <a href={t.links[0]?.href} target="_blank" rel="noopener" data-nozoom>
+          <img src={t.image} alt={t.imageAlt ?? ''} loading="lazy" />
+        </a>
+        <div>
+          <h3><a href={t.links[0]?.href} target="_blank" rel="noopener">{t.title.replace(/-/g, '\u2011')}</a></h3>
+          <div class="posrow-meta">{t.kind} · {t.year} · {t.venue}</div>
+          {t.detail && <p>{t.detail}</p>}
+          {t.links[0] && <a class="sc-link" href={t.links[0].href} target="_blank" rel="noopener">{t.links[0].label} →</a>}
+        </div>
+      </article>
+    ))}
+  </section>
+
   <!-- THE LIBRARY -------------------------------------------------------- -->
   {groups.map((g) => (
     <section class="wrap lib">
@@ -166,7 +184,7 @@ const isExternal = (h) => h.startsWith('http');
 
       <ul class="lib-list">
         {/* newest first, whatever order the data happens to be in */}
-        {[...g.items].sort((a, b) => b.year - a.year).map((it) => (
+        {[...g.items].filter((it) => !it.highlight).sort((a, b) => b.year - a.year).map((it) => (
           <li class={it.image ? 'has-img' : undefined}>
             <span class="ly">{it.year ?? '·'}</span>
 

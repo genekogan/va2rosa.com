@@ -23,7 +23,6 @@ export const selfPortrait = {
 export const highlights = [
   { src: d('h-2011-reclining'), year: 2011, caption: 'Life model, watercolour, 2011' },
   { src: d('h-2012-arms'), year: 2012, caption: 'Life model, watercolour, 2012' },
-  { src: d('h-2012-back'), year: 2012, caption: 'Life model, watercolour, 2012' },
   { src: d('h-2012-yellow'), year: 2012, caption: 'Life model, watercolour, 2012' },
   { src: d('h-2012-seated'), year: 2012, caption: 'Life model, mixed media, 2012' },
   { src: d('h-2013-capoeira'), year: 2013, caption: 'Capoeira, watercolour, 2013' },

@@ -272,6 +272,7 @@ export const groups = [
       {
         year: 2024,
         title: 'The Art of World Building: The Little Martians Project',
+        highlight: true,
         image: '/images/writing/talk-foresight.webp',
         imageAlt: 'Still from the talk at Edge Esmeralda.',
         kind: 'Talk',
@@ -281,7 +282,7 @@ export const groups = [
         links: [{ label: 'Watch it', href: 'https://www.youtube.com/watch?v=JV10RDZuu14' }],
       },
       { year: 2024, title: 'Artists Exploring Creativity and Language with Generative AI', kind: 'Talk', image: '/images/writing/lm-agentic.webp', imageAlt: 'From the Agentic Storytelling essay.', venue: 'NVIDIA GTC 2024, San Jose · panel', detail: 'A panel on the tools generative AI gives artists for language and storytelling, chaired by Wallis Mills of NVIDIA, with Andrea Gagliano (Getty Images), Pinar Seyhan Demirdag (Seyhan Lee and Cuebric), Amelia Winger-Bearskin (Studio Amelia) and Youmna Chamcham (Mini Studio AI).', links: [{ label: 'Watch it on NVIDIA On-Demand', href: 'https://www.nvidia.com/en-us/on-demand/session/gtc24-s62958/' }] },
-      { year: 2023, title: 'Custom World Building with AI Avatars: The Little Martians Sci-Fi Project', kind: 'Talk', image: '/images/writing/lm-imaginarium.webp', imageAlt: 'From the Human Imaginarium essay.', venue: 'NVIDIA GTC Digital Spring 2023 · featured session', detail: 'How the Little Martians are made, and what physical things are for in a world built with AI: each character begins as a sculpture in ceramic, 3D print or resin, is scanned, and becomes an avatar inside the simulation.', links: [{ label: 'Watch it on NVIDIA On-Demand', href: 'https://www.nvidia.com/en-us/on-demand/session/gtcspring23-s51360/' }] },
+      { year: 2023, highlight: true, title: 'Custom World Building with AI Avatars: The Little Martians Sci-Fi Project', kind: 'Talk', image: '/images/writing/lm-imaginarium.webp', imageAlt: 'From the Human Imaginarium essay.', venue: 'NVIDIA GTC Digital Spring 2023 · featured session', detail: 'How the Little Martians are made, and what physical things are for in a world built with AI: each character begins as a sculpture in ceramic, 3D print or resin, is scanned, and becomes an avatar inside the simulation.', links: [{ label: 'Watch it on NVIDIA On-Demand', href: 'https://www.nvidia.com/en-us/on-demand/session/gtcspring23-s51360/' }] },
       { year: 2020, title: 'Making across cultures',
         image: '/images/same/weave.webp',
         imageAlt: 'A Huni Kuin woven textile.', kind: 'Educators’ panel', venue: 'FabLearn Global 2020, and again at FabLearn Asia 2020', detail: 'Indigenous patterns, algorithmic design and digital fabrication with high-schoolers at Colégio Magno, São Paulo.', links: [{ label: 'The project', href: '/threads/same-putumi/research-and-education' }] },
@@ -322,3 +323,10 @@ export const pressHighlight = {
   href: '/who-is-afraid-of-ai',
   original: 'https://www.correiobraziliense.com.br/opiniao/2024/10/6975443-quem-tem-medo-da-inteligencia-artificial.html',
 };
+
+// Two talks set apart just under the op-ed, chosen by Vanessa. They leave the
+// Talks list below so they are not shown twice.
+export const talkHighlights = groups
+  .flatMap((g) => g.items)
+  .filter((it) => it.highlight)
+  .sort((a, b) => b.year - a.year);
