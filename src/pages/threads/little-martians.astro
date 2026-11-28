@@ -15,9 +15,9 @@ const t = threadBySlug('little-martians');
 const codex = books.titles.find((b) => b.read?.slug === 'codex');
 
 // The other Little Martians books, each with a page of its own.
-const otherBooks = ['kojii', 'verdelis', 'kweku']
-  .map((slug) => books.titles.find((bk) => bk.read?.slug === slug))
-  .filter(Boolean);
+// Only the Kojii book is highlighted here, next to a link to fiction writing;
+// Verdelis and Kweku stay on the books and fiction pages.
+const kojii = books.titles.find((bk) => bk.read?.slug === 'kojii');
 
 // The research row: the posts Vanessa named, in the order she named them,
 // taken from the same list the research page uses.
@@ -357,32 +357,22 @@ const tabs = [
           </a>
         </p>
 
-        <div class="lmbooks">
-          {otherBooks.map((bk) => (
-            <a class="lmbook" href={`/books/${bk.read.slug}`}>
-              <img src={bk.image} alt="" loading="lazy" />
-              <h3>{bk.title}</h3>
+        <div class="lmbooks lmbooks-2">
+          {kojii && (
+            <a class="lmbook" href="/books/kojii">
+              <img src={kojii.image} alt={kojii.imageAlt ?? ''} loading="lazy" />
+              <h3>{kojii.title}</h3>
               <span class="more">Read it ⇢</span>
             </a>
-          ))}
+          )}
+          <a class="lmbook" href="/fiction-writing">
+            <img src="/images/writing/fiction-books.webp" alt="Three Little Martians books in print on a wrought-iron table." loading="lazy" />
+            <h3>Fiction writing</h3>
+            <span class="more">The fiction writing page ⇢</span>
+          </a>
         </div>
       </section>
     )}
-
-    <!-- FICTION WRITING: a call out, between the books and the shows --------- -->
-    <a class="st-big lm-fiction" href="/fiction-writing">
-      <img src="/images/writing/fiction-books.webp" alt="Three Little Martians books in print on a wrought-iron table." loading="lazy" data-nozoom />
-      <div>
-        <div class="kicker">Go and read</div>
-        <h3>Fiction writing</h3>
-        <p>
-          Stories, songs, scripts and books, most of them set in this world. With the experiments in writing
-          alongside language models, from GPT-3 in 2022 to the agent that published Verdelis’s films, each one
-          marked so you can see who wrote what.
-        </p>
-        <span class="more">The fiction writing page ⇢</span>
-      </div>
-    </a>
 
     <!-- THE SHOWS ------------------------------------------------------------ -->
     <section class="wsec" id="shows">

@@ -2922,6 +2922,9 @@ p, li, figcaption, .bw-lede { text-wrap: pretty; }
 .lmbook img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; box-shadow: 0 4px 18px rgba(13, 33, 54, 0.15); }
 .lmbook h3 { font-size: 14.5px; margin-top: 10px; font-weight: 400; }
 .lmbook .more { margin-top: 6px; display: inline-block; }
+.lmbooks-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
+.lmbooks-2 .lmbook img { aspect-ratio: 4 / 3; }
+.lmbooks-2 .lmbook h3 { font-family: var(--hand); font-size: 22px; }
 
 /* the marks, and the agents behind them */
 .lmchars { margin-top: 76px; padding-top: 34px; border-top: 1px solid var(--line); }
